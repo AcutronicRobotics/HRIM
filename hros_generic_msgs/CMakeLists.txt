@@ -21,6 +21,7 @@ find_package(std_msgs REQUIRED)
 set(msg_files
   "msg/Info.msg"
   "msg/Power.msg"
+  "msg/Status.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
