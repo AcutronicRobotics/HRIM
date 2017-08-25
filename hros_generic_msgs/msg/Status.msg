@@ -1,5 +1,7 @@
 std_msgs/Header header
 
+string name			# hros name
+
 # CPU
 
 float32 system_cpu		# Total CPU utilization in %
