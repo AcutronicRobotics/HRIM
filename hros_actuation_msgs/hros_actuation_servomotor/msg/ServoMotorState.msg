@@ -1,5 +1,7 @@
 std_msgs/Header header        # Motor state is at this time
 
+string joint_name
+
 float64 goal                  # commanded position (rad)
 float64 position              # current position encoder (rad)
 float64 error                 # difference between current and goal positions (rad)
