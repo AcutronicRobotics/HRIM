@@ -17,7 +17,7 @@ float32 system_io_in		# Disk I/O IN in kilobytes/s
 float32 system_io_out		# Disk I/O OUT in kilobytes/s
 
 # IPv4 Bandwidth
-string[] system_ipv4_ip		# IP address (xxx.xxx.xxx.xxx/zz) *
+#string[] system_ipv4_ip		# IP address (xxx.xxx.xxx.xxx/zz) *
 float32 system_ipv4_received	# IPv4 bandwidth received in kilobits/s
 float32 system_ipv4_sent	# IPv4 bandwidth sent in kilobits/s
 
