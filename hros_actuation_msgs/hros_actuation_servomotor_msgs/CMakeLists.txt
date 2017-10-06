@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(hros_actuation_servomotor)
+project(hros_actuation_servomotor_msgs)
 
 # Default to C++14
 

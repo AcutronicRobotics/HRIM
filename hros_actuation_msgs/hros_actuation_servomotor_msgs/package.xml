@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>hros_actuation_servomotor</name>
+  <name>hros_actuation_servomotor_msgs</name>
   <version>0.0.2</version>
   <description>
-     hros_actuation_servomotor defines the messages to interact with servomotors.
+     hros_actuation_servomotor_msgs defines the messages to interact with servomotors.
   </description>
   <maintainer email="alex@erlerobotics.com">Alejandro Hernández Cordero</maintainer>
   <maintainer email="victor@erlerobotics.com">Víctor Mayoral Vilches</maintainer>
