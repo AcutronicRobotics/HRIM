@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>hros_sensing_rangefinder</name>
+  <name>hros_sensing_rangefinder_msgs</name>
   <version>0.0.2</version>
   <description>
      hros_sensing_rangefinder defines the messages to interact with a
