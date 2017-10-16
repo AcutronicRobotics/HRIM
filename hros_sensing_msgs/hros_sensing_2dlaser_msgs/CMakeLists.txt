@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(hros_sensing_laser2d_msgs)
+project(hros_sensing_2dlaser_msgs)
 
 # Default to C++14
 
@@ -21,7 +21,7 @@ find_package(std_msgs REQUIRED)
 
 set(msg_files
   "msg/LaserScan.msg"
-  "msg/SpecsLaser2D.msg"
+  "msg/Specs2DLaser.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
