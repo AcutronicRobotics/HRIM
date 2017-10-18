@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(hros_sensing_camera)
+project(hros_sensing_camera_msgs)
 
 # Default to C++14
 
