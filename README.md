@@ -1,10 +1,10 @@
 # Information model
 
-###What is an Information model
+## What is an Information model
 
 An information model is typically understood as an abstraction and a representation of the entities in an environment including their properties, attributes and operations. An information model also describes the way that entities (modules in this particular case) relate to each other.  An information model is typically independent of any specific repository, software usage, protocol, or platform.  As such it can be used to define the semantics for the interactions between modules, becoming all of these interoperable.
 
-####Our objectives
+### Our objectives
 
 * Standardize logical middleware interfaces between robot modules.
 
@@ -19,13 +19,13 @@ An information model is typically understood as an abstraction and a representat
 * Take into account that it will be used in differents implementations (midlewares).
 
 
-####Collaborative
+### Collaborative
 
 The best way to create a standardization project is to build it collaboratively. For us it is very important to count with the opinions of the [ROS](http://www.ros.org/) community (considering that the Information Model is written using ROS messages syntax), robotics experts (being the information model an implementation for differents midleware) and device manufacturers (since there are the ones who know the most all the characerristics and the possibilities of each component), among others (all constructive opinions are welcome).
 
 The more collaborative the more solid will be the Model Information and more useful will be for all who want to benefit from the work done. That is why we wanted to share it in the **state of development**. For our part, we will continue adding more components, giving priority to the most useful robotics component, and also improve the existent documentation with received feedback.
 
-####Building process
+### Building process
 
 We are working on creating a modular interface assigning at least a basic message that covers the main objective of the device. For the other characteristics we use optional messages, so the user will be able to work with the 100% of possibilities that the component offers.
 
@@ -33,7 +33,7 @@ Although the information model has required analyzing each device separately to 
 
 To create a easily understable interface, the Information model follows a naming convention.
 
-###H-ROS
+## H-ROS
 
 The Information Model is funded as part of our work in [H-ROS](www.h-ros.com).
 
@@ -46,7 +46,7 @@ H-ROS is an infrastructure that works on top of [ROS 2](http://design.ros2.org/a
 Solve one of the biggest problems of robotics: the incompatibility in terms of communication between components. The Information Model is focused on create a software standard content that each device has contain to be sure that all of them speak the same language all levels simplifying the **ROBOT BUILDING PROCESS**. As mentioned before, [H-ROS](www.h-ros.com) uses [ROS 2](http://design.ros2.org/articles/why_ros2.html) infrastructure, that is why we have worked focused on it.
 
 
-###Standadization organizations
+## Standadization organizations
 
 To push ROS to the next level of acceptance, we are working actively with organizations like [ISO 299](https://www.iso.org/committee/5915511.html) or [OMG](http://www.omg.org/). That will help us to create a solid [H-ROS](www.h-ros.com) infrastructure and also make the Information Model a reference document to create a standard robot modules. For the moment, as well as we are totally involved in the [ISO](https://www.iso.org/home.html), International Organization for Standardization, with the OMG organization we are just on the first steps.
 
