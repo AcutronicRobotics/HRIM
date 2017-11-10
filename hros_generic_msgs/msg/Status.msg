@@ -8,9 +8,9 @@ float32 system_cpu		# Total CPU utilization in %
 float32 core_temperature	# CPU temperature in C
 
 # RAM
-uint16 system_ram_total		# Total RAM in MB (megabyte)
-uint16 system_ram_used		# Used RAM in MB (megabyte)
-uint16 system_ram_free		# Free RAM in MB (megabyte)
+uint32 system_ram_total		# Total RAM in MB (megabyte)
+uint32 system_ram_used		# Used RAM in MB (megabyte)
+uint32 system_ram_free		# Free RAM in MB (megabyte)
 
 # Disk I/O
 float32 system_io_in		# Disk I/O IN in kilobytes/s
