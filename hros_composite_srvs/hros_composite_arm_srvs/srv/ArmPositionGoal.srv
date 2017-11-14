@@ -1,0 +1,13 @@
+# The position to which the end effector should go
+# if any value es empty, means that the arm is not able to move on that axis
+
+int32 goal_x        # x position respect the origin [m]
+int32 goal_y        # y position respect the origin [m]
+int32 goal_z        # z position respect the origin [m]
+
+
+int32 velocity      # velocity of the movements [m/s]
+
+...
+bool goal_accepted                     # true: the goal is accepted
+                                       # false: do not      
