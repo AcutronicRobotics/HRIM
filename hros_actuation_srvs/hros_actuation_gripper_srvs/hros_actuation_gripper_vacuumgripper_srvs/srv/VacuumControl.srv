@@ -1,0 +1,7 @@
+# Control service allows the user to work with different suction values
+
+double goal_percentage_suction         # suction value on the maximum allowed [%]
+
+...
+bool goal_accepted                     # true: the goal is accepted
+                                       # false: do not   
