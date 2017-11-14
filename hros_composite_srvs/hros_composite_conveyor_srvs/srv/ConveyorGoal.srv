@@ -1,0 +1,4 @@
+int32 velocity                         # conveyor velocity [m/s]
+...
+bool goal_accepted                     # true: the goal is accepted
+                                       # false: do not
