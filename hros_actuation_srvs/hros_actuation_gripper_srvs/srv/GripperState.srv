@@ -1,5 +1,0 @@
-# The gripper state service notify if the gripper is activate or not
-
-...
-bool on_off                           # True: the gripper is working
-                                      # False:  the gripper is not working
