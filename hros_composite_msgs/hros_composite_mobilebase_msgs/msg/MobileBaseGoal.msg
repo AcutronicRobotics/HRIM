@@ -1,3 +1,4 @@
+std_msgs/Header header
 
 float32 velocity             # vehicle velocity [m/s]
                              # if, negative value = backwards
