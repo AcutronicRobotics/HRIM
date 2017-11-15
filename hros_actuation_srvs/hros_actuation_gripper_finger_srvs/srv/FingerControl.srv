@@ -1,0 +1,21 @@
+# Control service allows the user to work with different values
+
+# There are two types of finger grippers taking into acoount the path of the fingers: linear or angular.
+# One of them (linear or angular) has to be empty implying that it is not the technique it uses:
+
+float32 goal_linearposition_open       # distance between fingers, leave objects [m]
+float32 goal_linearposition_close      # distance between fingers, hold objects [m]
+
+float32 goal_angularposition_open      # distance between fingers, leave objects [rad]
+float32 goal_angularposition_close    # distance between fingers, hold objects [rad]
+
+float32 goal_velocity_open             # velocity to open fingers [m/s]
+float32 goal_velocity_close            # velocity to close fingers [m/s]
+                                       # if goal_velocity_close=0 the gripper contain pressure sensor
+
+float32 goal_acceleration_open         # acceleration to open fingers [m/s2]
+float32 goal_acceleration_close        # acceleration to close fingers [m/s2]
+
+---
+bool goal_accepted                     # true: the goal is accepted
+                                       # false: do not
