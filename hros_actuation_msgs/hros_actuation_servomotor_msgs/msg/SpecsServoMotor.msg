@@ -2,6 +2,12 @@ std_msgs/Header header
 
 string joint_name
 
+# type of control that accepts the rotary servomotor
+uint8 CONTROL_TYPE_POSITION=0
+uint8 CONTROL_TYPE_POSITION_VELOCITY=1
+uint8 CONTROL_TYPE_POSITION_VELOCITY_EFFORT=0
+uint8 control_type                               # servomotor control type
+
 float64 range_min              # servomotor work range max (rad)
 float64 range_max              # servomotor work range min (rad)
 float64 precision              # angular precision (rad)
