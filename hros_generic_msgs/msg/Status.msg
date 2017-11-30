@@ -29,3 +29,26 @@ float32 ipv4_tcp_errors		# Number of TCP error packages
 float32 ipv4_udppackets_received# Number of UDP packets received
 float32 ipv4_udppackets_sent	# Number of UDP packets sent
 float32 ipv4_udp_errors		# Number of UDP error packages
+
+float32 cpu_interrupts
+float32 cpu_context_switches
+
+uint32 softnet_processed
+uint32 softnet_dropped
+uint32 softnet_squeezed
+uint32 softnet_received_rps
+uint32 softnet_flow_limit_count
+uint64 softirqs_hi
+uint64 softirqs_timer
+uint64 softirqs_net_tx
+uint64 softirqs_net_rx
+uint64 softirqs_block
+uint64 softirqs_irq_poll
+uint64 softirqs_tasklet
+uint64 softirqs_sched
+uint64 softirqs_hrtimer
+uint64 softirqs_rcu
+
+float32 load1
+float32 load5
+float32 loda15
