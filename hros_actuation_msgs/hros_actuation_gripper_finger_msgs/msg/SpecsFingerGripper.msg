@@ -21,7 +21,3 @@ float32 max_length                       # Maximum permitted finger length [mm]
 float32 max_angle                        # Maximum permitted finger angle [rad]
 
 float32 repeatability                    # Parallel grip repeatability [s]
-
-float32 max_vacuum_force                 # The force of the vacuum [N]
-                                      # If the magnetic gripper do not include vacuum = 0
-                                      # If it includes max_total_gripper_force =  max_magnetic_force + max_vacuum_force
