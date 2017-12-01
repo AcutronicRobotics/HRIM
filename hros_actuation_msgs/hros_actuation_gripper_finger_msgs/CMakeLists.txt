@@ -22,6 +22,7 @@ find_package(std_msgs REQUIRED)
 set(msg_files
   "msg/GoalTactilePressure.msg"
   "msg/SpecsFingerGripper.msg"
+  "msg/GripperFingerState.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
