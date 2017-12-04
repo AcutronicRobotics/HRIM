@@ -51,4 +51,4 @@ uint64 softirqs_rcu
 
 float32 load1
 float32 load5
-float32 loda15
+float32 load15
