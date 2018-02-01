@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(hrim_actuator_servomotor_msgs)
+project(hrim_actuator_rotaryservo_msgs)
 
 # Default to C++14
 
@@ -22,7 +22,7 @@ find_package(std_msgs REQUIRED)
 set(msg_files
   "msg/ServoMotorGoal.msg"
   "msg/ServoMotorState.msg"
-  "msg/SpecsServoMotor.msg"
+  "msg/SpecsRotaryServo.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}

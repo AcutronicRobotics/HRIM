@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>hrim_actuator_servomotor_msgs</name>
+  <name>hrim_actuator_rotaryservo_msgs</name>
   <version>0.0.2</version>
   <description>
-     hrim_actuator_servomotor_msgs defines the messages to interact with servomotors.
+     hrim_actuator_rotaryservo_msgs defines the messages to interact with servomotors.
   </description>
   <maintainer email="alex@erlerobotics.com">Alejandro Hernández Cordero</maintainer>
   <maintainer email="victor@erlerobotics.com">Víctor Mayoral Vilches</maintainer>
