@@ -1,15 +1,15 @@
-### Hardware Robot Information Model (HRIM), what is it?
+## Hardware Robot Information Model (HRIM), what is it?
 
 HRIM, is an standard interface that offers to the robotics community thefacilitate  manufacturing of reusable and interoperable
 robot hardware modules for the construction of modular robots. HRIM focuses on the standardization of the logical interfaces between robot modules, or said otherwise HRIM focuses on hardware, designing a set of rules that each device has to meet in order to achieve interoperability.
 
 An information model for modular robots built upon the principles and abstractions of the popular Robot Operating System (ROS) framework.
 
-####Information Model definition
+###Information Model definition
 
 An information model is typically understood as an abstraction and a representation of the entities in an environment including their properties, attributes and operations. An information model also describes the way that entities (modules in this particular case) relate to each other.  An information model is typically independent of any specific repository, software usage, protocol, or platform.  As such it can be used to define the semantics for the interactions between modules, becoming all of these interoperable.
 
-####Motivation
+###Motivation
 
 HRIM is created due to the need for a standard model in terms of communication between components.
 
@@ -21,7 +21,7 @@ HRIM wants to simplify this whole process, creating a series of rules and steps 
 
 Many sectors will benefit thanks to HRIM: developers, industrial roboticists, robot modules manufacturers etc., the robotics industry in general.
 
-####Our objectives
+###Our objectives
 
 * Standardize logical middleware interfaces between robot modules.
 * Make HRIM a common interface for building any robot, for that we have taking into account all [module types](/hrim/standard%20modules) that make up a robot.
@@ -34,13 +34,13 @@ Many sectors will benefit thanks to HRIM: developers, industrial roboticists, ro
 * In the future the intention is the implemention of MDE techniques to make HRIM usable among robotics frameworks, not only with ROSe
 
 
-####Collaborative
+###Collaborative
 
 The best way to create a standardization project is to build it collaboratively. For us it is very important to count with the opinions of the [ROS](http://www.ros.org/) community (considering that the first interaction of the information model is written using ROS messages syntax), robotics experts (being the information model an implementation for differents midlewares) and device manufacturers (since there are the ones who know the most about all the characteristics and the possibilities of each component), among others (all constructive opinions are welcome).
 
 The more collaborative the more solid will be the information model and more useful will be for all who want to benefit from the work done. That is why we wanted to share it in the **state of development**. For our part, we will continue adding more components (giving priority to the most used in robotics), while improving the existing with received feedback.
 
-####Building process
+###Building process
 
 We are working on creating a modular interface assigning at least a basic message that covers the main objective of the device. For the other characteristics we use optional messages, so the user will be able to work with the 100% of possibilities that the component offers.
 
@@ -48,11 +48,11 @@ Although the information model has required analyzing each device separately to 
 
 To create an easily understable interface, the information model follows a [naming convention](/hrim/introduction/naming%20convention). It is recommended to check it before jumping to particular cases.
 
-###Standardization organizations
+##Standardization organizations
 
 To push the information model to the next level of acceptance, we are working actively with organizations like [ISO 299](https://www.iso.org/committee/5915511.html) or [OMG](http://www.omg.org/). Especially we have to mention the Hardware Abstraction Layer for Robotics Technology (HAL4RT) created by the OMG organization.
 
-####HAL4RT
+###HAL4RT
 
 HAL4RT is an Application Program Interface (API) for the layer between an application software of a middleware and the drivers for devices (such as sensor inputs, motor control commands) that increases the portability and reusability of the device drivers. This specification aims to enable device makers, device users and software users to build robotic software without any concern about the differences among the targeted devices. HRIM shares some correlation with different standardization
 projects, specifically with [HAL4RT 2.0](http://www.omg.org/spec/HAL4RT/) which although the objective is different, is the existing standardis closest to our vision. However, we must highlight some differences and enhancements:
@@ -68,7 +68,7 @@ components that provide: sensing, actuation, communication, cognition, user inte
 
 Comparing to other related work and standards, HRIM aims for generality, which is essential for acceptance of the model and for achieving global hardware standardization of robotic components.
 
-####Conformance with HAL4RT
+###Conformance with HAL4RT
 
 Conformance with HAL4RT version 2.0 is described below:
 
@@ -77,7 +77,7 @@ Conformance with HAL4RT version 2.0 is described below:
 * HRIM conforms with Section 7.4.3 of HAL4RT, creating a model for each one of the most common sensor devices. In addition, motivated by components that could send more than an individual value, HRIM extends the defined abstraction of sensors defined by HAL4RT. For example A camera, besides sending traditional images, could also be capable of sending a compressed image.
 
 
-###H-ROS
+##H-ROS
 
 HRIM was created through a need found during the development of [H-ROS](https://www.h-ros.com),  where  the need of reusability and interoperability in robotics is solved by a plug-and-play hardware components. For that, a standard communication between components is needed. So, HRIM
 is the part in charge of providing a common interface.
