@@ -1,18 +1,18 @@
-std_msgs/Header header          # communication master state at this time
+std_msgs/Header header
 
-string vendor                   # vendor name
-string id                       # vendor ID
-string part_number              # part number
-string serial_number            # serial number
-string hrim_version             # HROS version - API.addfunctionality.bugfixes
-uint16 COMM_TYPE_ETHERNET_10=0
-uint16 COMM_TYPE_ETHERNET_100=1
-uint16 COMM_TYPE_ETHERNET_1000=2
-uint16 COMM_TYPE_USB=3
-uint16 comm_type                # communication type
+uint8 HRIM_COMM=0
+uint8 HRIM_SENSOR=1
+uint8 HRIM_ACTUATOR=2
+uint8 HRIM_COGNITION=3
+uint8 HRIM_UI=4
+uint8 HRIM_POWER=5
+uint8 HRIM_COMPOSITE=6
+unit8 device_kind_id     # device classification
 
-uint8 HROS_COMM=0
-uint8 HROS_SENSOR=1
-uint8 HROS_ACTUATOR=2
-uint8 HROS_COGNITION=3
-uint8 hrim_type                 # HROS node type
+string device_name       # sub-type, for example, camera
+uint32 vendor_id         # identifier to identify the vendor
+unit32 product_id        # part-number
+unit32 instance_id       # unique number to identify the module
+
+string hrim_version      # used hrim version
+string hros_version      # used h-ros version
