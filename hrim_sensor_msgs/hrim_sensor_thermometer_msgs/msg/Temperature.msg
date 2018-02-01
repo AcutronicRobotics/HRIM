@@ -1,5 +1,7 @@
-# This message contains the internal temperature of the component
-std_msgs/Header header      # Header timestamp should be acquisition time
-                            # of temperature
+std_msgs/Header header
 
-float32 temperature         # Temperature in Celsius
+uint32 instance_id
+
+float64 temperature           # Current tempreture in Celsius
+bool    temperature_error     # True: the component is working up to its operating temperature /
+                              # False: The temperature is within the allowed range
