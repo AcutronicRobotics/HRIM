@@ -1,6 +1,6 @@
 std_msgs/Header header
 
-string name			# hros name
+uint32 instance_id		
 
 # CPU
 
