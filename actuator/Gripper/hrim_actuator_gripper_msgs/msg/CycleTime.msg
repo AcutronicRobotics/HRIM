@@ -1,4 +1,4 @@
-# The time that the gripper takes to complete the cycle: the time between catching the object and leaving it.
+# The time that the gripper must take to complete the cycle: the time between catching the object and leaving it.
 
 std_msgs/Header header            # timestamp in the header is the acquisition time of
                                   # the completed cycle.
