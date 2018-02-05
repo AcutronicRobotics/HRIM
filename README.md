@@ -30,7 +30,7 @@ sensor/
 ...
 ```
 
-A preliminary whitepaper about this work is available at https://arxiv.org/abs/TODO. Please use the following BibTex entry to cite our work:
+A preliminary whitepaper about this work is available at https://arxiv.org/submit/2153555/view. Please use the following BibTex entry to cite our work:
 
 ```
 @article{hrim,
