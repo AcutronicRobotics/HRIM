@@ -1,6 +1,5 @@
 std_msgs/Header header
 
-unit32 instance_id
 
 float32 voltage
 float32 current_consumption
