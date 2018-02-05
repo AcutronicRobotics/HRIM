@@ -19,7 +19,7 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
 
 set(srv_files
-  "srv/ArmPositionGoal.srv"
+  "srv/GoalArmPosition.srv"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${srv_files}
