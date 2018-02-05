@@ -1,7 +1,5 @@
 std_msgs/Header header
 
-uint32 instance_id
-
 # type of control that accepts the rotary servomotor
 uint8 CONTROL_TYPE_NONE=0
 uint8 CONTROL_TYPE_POSITION=1
