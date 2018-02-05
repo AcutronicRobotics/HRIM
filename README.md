@@ -7,6 +7,29 @@ The Hardware Robot Information Model or **HRIM** for short, is a common interfac
 - [Discussion and issues](https://github.com/erlerobot/HRIM/issues)
 - [Contributions (through pull requests)](https://github.com/erlerobot/HRIM/pulls)
 
+Real world implementations requires taking into account the common hardware modules used in robotics. The robot modules have been classified in 7 **types** of devices: sensor, actuator, cognition, communication, power, ui and composite. Each type is composed by **sub-types or devices** related to the functionality of the module. *For example, a camera is a sub-type of the sensor type* and represented with the following structure:
+
+```
+sensor/
+...
+├── camera
+│   ├── hrim_sensor_camera_msgs
+│   │   ├── CMakeLists.txt
+│   │   ├── msg
+│   │   │   ├── CameraInfo.msg
+│   │   │   ├── CompressedImage.msg
+│   │   │   ├── Image.msg
+│   │   │   ├── PTZ.msg
+│   │   │   └── SpecsCamera.msg
+│   │   └── package.xml
+│   └── hrim_sensor_camera_srvs
+│       ├── CMakeLists.txt
+│       ├── package.xml
+│       └── srv
+│           └── SetCameraInfo.srv
+...
+```
+
 A preliminary whitepaper about this work is available at https://arxiv.org/abs/TODO. Please use the following BibTex entry to cite our work:
 
 ```
