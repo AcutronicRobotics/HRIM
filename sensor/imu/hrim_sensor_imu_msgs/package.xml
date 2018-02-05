@@ -1,18 +1,15 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>hrim_generic_msgs</name>
+  <name>hrim_sensor_imu_msgs</name>
   <version>0.1.0</version>
   <description>
-     hrim_generic_msgs defines the common messages to interact with an
-     H-ROS part.
+     hrim_sensor_imu_msgs defines the messages to interact with a IMU.
   </description>
   <maintainer email="alex@erlerobotics.com">Alejandro Hernández Cordero</maintainer>
-  <maintainer email="victor@erlerobotics.com">Víctor Mayoral Vilches</maintainer>
   <license>All rights reserved</license>
 
   <url></url>
   <author>alex@erlerobotics.com</author>
-  <author>victor@erlerobotics.com</author>
 
   <buildtool_depend version_gte="0.5.78">catkin</buildtool_depend>
 

@@ -1,6 +1,6 @@
 std_msgs/Header header            # timestamp in the header is the acquisition time of
                                   # the first ray in the scan.
-
+                         
 float32 angle_start               # start angle of the scan in radians
 float32 angle_end                 # end angle of the scan in radians
 
