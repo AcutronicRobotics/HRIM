@@ -1,5 +1,7 @@
 # Hardware Robot Information Model (HRIM)
 
+![](https://docs.h-ros.com/user/pages/04.HRIM/StandardLogicalInterface.jpg)
+
 The Hardware Robot Information Model or **HRIM** for short, is a common interface that facilitates interoperability among different vendors of robot hardware components with the purpose of building modular robots. HRIM focuses on the standardization of the logical interfaces between robot modules, designing a set of rules that each device has to meet in order to achieve interoperability.
 
 - [Documentation](https://docs.h-ros.com/hrim)
