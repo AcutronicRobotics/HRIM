@@ -1,3 +1,5 @@
+# Depth sensor
+
 # This message define the most important characteristic of the Depth sensor camera
 
 # It defines the possibilities the camera can provide
