@@ -30,13 +30,13 @@ sensor/
 ...
 ```
 
-A preliminary whitepaper about this work is available at https://arxiv.org/submit/2153555/view. Please use the following BibTex entry to cite our work:
+A preliminary whitepaper about this work is available at https://arxiv.org/abs/1802.01459. Please use the following BibTex entry to cite our work:
 
 ```
 @article{hrim,
   title={An information model for modular robots: the Hardware Robot Information Model (HRIM)},
   author={Zamalloa, Irati and Muguruza, Iñigo and Hernández, Alejandro and Kojcev, Risto and Mayoral, Víctor},
-  journal={arXiv preprint arXiv:TODO},
+  journal={arXiv preprint arXiv:1802.01459},
   year={2018}
 }
 ```
