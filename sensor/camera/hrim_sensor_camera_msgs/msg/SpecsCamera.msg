@@ -16,8 +16,6 @@
 
 std_msgs/Header header
 
-uint32 instance_id
-
 string resolution           # Example: 752x480, 1280x1024, ...  (px)
 uint32 frame_rate           # maximum value (fps)
 string image_formats        # Example: mono8, rgb1, bayergrbg8, ...
