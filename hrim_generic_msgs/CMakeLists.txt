@@ -19,8 +19,10 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
 
 set(msg_files
-  "msg/Info.msg"
+  "msg/ID.msg"
   "msg/Power.msg"
+  "msg/Simulation3D.msg"
+  "msg/SimulationURDF.msg"
   "msg/Status.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}

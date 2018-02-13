@@ -21,7 +21,7 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
 set(msg_files
-  "msg/Imu.msg"
+  "msg/Reconfiguration.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}

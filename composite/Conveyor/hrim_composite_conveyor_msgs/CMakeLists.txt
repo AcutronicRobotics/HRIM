@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(hrim_composite_mobilebase_msgs)
+project(hrim_composite_conveyor_msgs)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -19,8 +19,9 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
 
 set(msg_files
-  "msg/MobileBaseGoal.msg"
-  "msg/SpecsMobileBase.msg"
+  "msg/GoalConveyor.msg"
+  "msg/SpecsConveyor.msg"
+  "msg/SpecsConveyorIndependent.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}

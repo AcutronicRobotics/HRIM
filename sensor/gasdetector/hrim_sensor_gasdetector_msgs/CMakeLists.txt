@@ -22,7 +22,7 @@ find_package(std_msgs REQUIRED)
 set(msg_files
   "msg/GasMeasurement.msg"
   "msg/GasMeasurements.msg"
-  "msg/SpecsGas.msg"
+  "msg/SpecsGasDetector.msg"
   "msg/GasType.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
