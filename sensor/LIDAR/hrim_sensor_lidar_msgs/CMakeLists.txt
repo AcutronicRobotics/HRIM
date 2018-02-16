@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(hrim_sensor_2dlaser_msgs)
+project(hrim_sensor_lidar_msgs)
 
 # Default to C++14
 
@@ -20,8 +20,8 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
 
 set(msg_files
-  "msg/LaserScan.msg"
-  "msg/Specs2DLaser.msg"
+  "msg/LidarScan.msg"
+  "msg/SpecsLidar.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
