@@ -19,8 +19,11 @@ find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
 
 set(srv_files
-  "srv/SetGripperGoal.srv"
+  "srv/ControlFinger.srv"
+  "srv/GoalGripper.srv"
+  "srv/ControlVacuum.srv"
 )
+
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${srv_files}
   DEPENDENCIES builtin_interfaces std_msgs
