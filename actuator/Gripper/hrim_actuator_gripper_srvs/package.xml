@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>hrim_actuator_gripper_srvs</name>
   <version>0.1.0</version>
   <description>
@@ -22,6 +22,8 @@
   <exec_depend>message_generation</exec_depend> <!-- provide message generation to downstream packages -->
   <exec_depend>message_runtime</exec_depend>
   <exec_depend>std_msgs</exec_depend>
+
+  <member_of_group>rosidl_interface_packages</member_of_group>
 
   <export>
     <build_type>ament_cmake</build_type>
