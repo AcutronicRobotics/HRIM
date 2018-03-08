@@ -12,3 +12,5 @@ float32 min_scan_time           # minimum time between measurements in seconds
 float32 distance_min            # operating minimum distance in meters
 float32 distance_max            # operating maximum distance in meters
 float32 points_max              # maximum points per second
+
+bool intensity                 
