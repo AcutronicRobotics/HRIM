@@ -17,11 +17,4 @@ uint8 FAULT_BUS_VOLTAGE=3
 uint8 FAULT_BRIDGE_DRIVER=4
 uint8 fault # fault cause
 
-# type of control that accepts the rotary servomotor
-uint8 CONTROL_TYPE_NONE=0
-uint8 CONTROL_TYPE_POSITION=1
-uint8 CONTROL_TYPE_EFFORT=2
-uint8 CONTROL_TYPE_VELOCITY=3
-uint8 CONTROL_TYPE_POSITION_VELOCITY=4
-uint8 CONTROL_TYPE_POSITION_VELOCITY_EFFORT=5
-uint8 control_type                               # servomotor control type
+uint8 control_type           # servomotor control type, explained in SpecsRotaryServo.msg
