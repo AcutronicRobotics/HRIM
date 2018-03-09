@@ -15,6 +15,6 @@ uint8 FAULT_CURRENT=1
 uint8 FAULT_TEMPERATURE=2
 uint8 FAULT_BUS_VOLTAGE=3
 uint8 FAULT_BRIDGE_DRIVER=4
-uint8 fault # fault cause
+uint8 fault                   # fault cause
 
-uint8 control_type           # servomotor control type, explained in SpecsRotaryServo.msg
+uint8 control_type            # servomotor control type, explained in SpecsRotaryServo.msg
