@@ -5,7 +5,8 @@ uint8 MOTOR_DC_BRUSHLESS=1
 uint8 MOTOR_DC_GEAREDDOWN=2
 uint8 motor_type                  # motor type
 
-bool encoder
+bool encoder                      # True: the motor has movement control device
+                                  # False: it does not
 
 int32 rated_power                 # (W)
 int32 rated_voltage               # (V)
