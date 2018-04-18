@@ -18,3 +18,6 @@ int32 noload_current              # current without load (A)
 int32 noload_speed                # speed without load (rpm)
 
 int32 stall_torque                # torqye without speed (N*m)
+
+float64 temperature_range_min     # minimum operational temperature (celsius)
+float64 temperature_range_max     # maximum operational temperature (celsius)
