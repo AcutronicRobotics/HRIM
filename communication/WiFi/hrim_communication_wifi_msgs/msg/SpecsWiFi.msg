@@ -1,4 +1,3 @@
-
 std_msgs/Header header
 
 uint8 WiFi_standard_802.11b=0
