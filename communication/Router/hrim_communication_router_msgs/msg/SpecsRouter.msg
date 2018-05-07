@@ -1,5 +1,9 @@
 std_msgs/Header header
 
+string router_ip                    # the ip to access inside the router
+string user_name                    # user name to access inside the router
+string password                     # password to access inside the router
+
 uint32 max_devices                  # number of connected devices
 
 float32 data_transfer               # data transfer velocity (Mbps)
