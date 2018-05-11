@@ -1,5 +1,4 @@
 dist: xenial
-
 before_script:
   - mkdir /tmp/hrim
   - mv * /tmp/hrim
