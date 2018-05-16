@@ -8,5 +8,4 @@ float32 goal_z        # z position respect the origin [m]
 float32 velocity     # velocity of the movements [m/s]
 
 ---
-bool goal_accepted                     # true: the goal is accepted
-                                       # false: do not
+bool success
