@@ -22,6 +22,7 @@ find_package(std_msgs REQUIRED)
 set(msg_files
   "msg/CycleTime.msg"
   "msg/StateGripper.msg"
+  "msg/StateFingerGripper.msg"
   "msg/GoalTactilePressure.msg"
   "msg/SpecsFingerGripper.msg"
   "msg/SpecsMagneticGripper.msg"
