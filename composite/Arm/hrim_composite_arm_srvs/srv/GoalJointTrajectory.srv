@@ -1,0 +1,7 @@
+Header header
+
+string[] joint_names
+hrim_composite_arm_msgs/msg/JointTrajectoryPoint[] points
+
+---
+bool success
