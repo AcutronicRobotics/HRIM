@@ -1,7 +1,5 @@
-Header header
-
 string[] joint_names
-hrim_composite_arm_msgs/msg/JointTrajectoryPoint[] points
+hrim_composite_arm_msgs/JointTrajectoryPoint[] points
 
 ---
 bool success
