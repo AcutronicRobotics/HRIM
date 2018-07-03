@@ -20,6 +20,8 @@ find_package(std_msgs REQUIRED)
 
 set(msg_files
   "msg/SpecsArm.msg"
+  "msg/JointTrajectoryPoint.msg"
+  "msg/JointStates.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}

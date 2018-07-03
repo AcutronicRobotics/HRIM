@@ -1,4 +1,4 @@
-Header header
+std_msgs/Header header
 
 uint8 control_type           # arm control type, explained in MoveCommand.srv
 

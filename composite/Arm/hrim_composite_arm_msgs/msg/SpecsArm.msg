@@ -1,5 +1,7 @@
 # The main characteristics of the robotic arm
 
+std_msgs/Header header
+
 uint8 ARM_TYPE_CARTESIAN=0
 uint8 ARM_TYPE_CYLIDRICAL=1
 uint8 ARM_TYPE_SPHERICAL=2
