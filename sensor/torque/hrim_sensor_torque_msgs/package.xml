@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>hrim_sensor_torque_msgs</name>
+  <version>0.1.0</version>
+  <description>
+     hrim_sensor_torque_msgs defines the messages to interact with a
+     torque sensor.
+  </description>
+  <maintainer email="alex@erlerobotics.com">Alejandro Hernández Cordero</maintainer>
+  <maintainer email="irati@erlerobotics.com">Irati Zamalloa</maintainer>
+  <license>All rights reserved</license>
+
+  <url></url>
+  <author>alex@erlerobotics.com</author>
+  <author>irati@erlerobotics.com</author>
+
+  <build_depend>message_generation</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+  <exec_depend>message_generation</exec_depend> <!-- provide message generation to downstream packages -->
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
