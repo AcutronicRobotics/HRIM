@@ -10,7 +10,7 @@
 #        receiver, usually the location of the antenna.  This is a
 #        Euclidean frame relative to the vehicle, not a reference
 #        ellipsoid.
-Header header
+std_msgs/Header header
 
 # Latitude [degrees]. Positive is north of equator; negative is south.
 float64 latitude
