@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/erlerobot/HRIM.svg?branch=master)](https://travis-ci.org/erlerobot/HRIM)
+
 # Hardware Robot Information Model (HRIM)
 
 ![](https://docs.h-ros.com/user/pages/04.HRIM/StandardLogicalInterface.jpg)
