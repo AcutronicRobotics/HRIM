@@ -19,6 +19,8 @@
   <build_depend>message_generation</build_depend>
   <build_depend>std_msgs</build_depend>
   <build_depend>hrim_composite_arm_msgs</build_depend>
+  <build_depend>rosidl_default_generators</build_depend>
+
 
   <exec_depend>message_generation</exec_depend> <!-- provide message generation to downstream packages -->
   <exec_depend>message_runtime</exec_depend>
