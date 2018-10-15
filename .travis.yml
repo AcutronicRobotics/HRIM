@@ -18,7 +18,7 @@ before_script:
   - ls /home/travis/ros2_ws/src/hrim
   - sudo rosdep init
   - rosdep update
-  - rosdep install --from-paths src --ignore-src --rosdistro bouncy -y --skip-keys "console_bridge fastcdr fastrtps libopensplice67 rti-connext-dds-5.3.1 urdfdom_headers"
+  - rosdep install --from-paths src --ignore-src --rosdistro bouncy -y -r --skip-keys "console_bridge fastcdr fastrtps libopensplice67 rti-connext-dds-5.3.1 urdfdom_headers"
 script:
   - cd ~/ros2_ws/
   - colcon build --symlink-install
