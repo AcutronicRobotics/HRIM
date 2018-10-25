@@ -1,7 +1,8 @@
 std_msgs/Header header
 
-uint16 min_torque # Minimum measurable torque (Nm)
 uint16 max_torque # Maximum measurable torque (Nm)
+
+float32 resolution # Minimum detectable difference (Nm)
 
 uint8 STATIC=0
 uint8 ROTARY=1
@@ -22,13 +23,11 @@ uint8 axis # Number of axis the torque sensor detects (1-3)
 
 uint16 max_rate # Maximum amount of measurements per second (Hz)
 
-float32 min_calibrated_temp	# Minimum temperature where the detection accuracy is at it's best (°C)
-float32 max_calibrated_temp	# Maximum temperature where the detection accuracy is at it's best (°C)
+float32 min_ideal_temp	# Minimum temperature where the error margin is at it's lowest (°C)
+float32 max_ideal_temp	# Maximum temperature where the error margin is at it's lowest (°C)
 
 float32 min_operating_temp # Minimum operating temperature (°C)
 float32 max_operating_temp	# Maximum operating temperature (°C)
 
-float32 accuracy_calibrated	# Average error margin while inside the calibrated ranges (±%)
-float32 accuracy_other	# Average error margin while outside the calibrated ranges (±%)
-
-bool force_sensor # If the sensor has force measuring capabilities or not (True/False)
+float32 min_error_margin	# Average error margin while inside the ideal ranges (±%)
+float32 max_error_margin	# Average error margin while outside the ideal ranges (±%)
