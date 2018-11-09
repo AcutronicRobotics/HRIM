@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<property name="time" type="time">
+  <property name="sec" type="int32" unit="second">
+    <value></value>
+  </property>
+  <property name="nanosec" type="uint32" unit="nanosecond">
+    <value></value>
+  </property>
+</property>

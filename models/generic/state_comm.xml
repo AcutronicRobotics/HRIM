@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topic name="state_comm" type="subscribe"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="comm_rate" type="double" unit="hertz" description="frequency at which the component is working">
+    <value></value>
+  </property>
+  <property name="size_msgs" type="double" unit="megabit" description="amount of megabits the component is sending">
+    <value></value>
+  </property>
+</topic>

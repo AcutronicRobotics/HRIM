@@ -1,0 +1,69 @@
+<?xml version="1.0" standalone="no"?>
+
+<module name="torque"
+  noNamespaceSchemaLocation="../../generic/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <topic name="specs" type="subscribe" description="device features">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="max_torque" type="uint16" unit="newtons per metre" description="maximum measurable torque">
+        <value></value>
+      </property>
+      <property name="resolution" type="float32" unit="newtons per metre" description="maximum measurable torque">
+        <value></value>
+      </property>
+      <property name="device_type" type="uint8" unit="enum" description="way the sensor detects torque">
+        <value></value>
+      </property>
+      <property name="sensor_direction" type="uint8" unit="enum" description="rotatory direction the sensor measures">
+        <value></value>
+      </property>
+      <property name="max_rpm" type="uint32" unit="rpm" description="maximum rpm the sensor withstands">
+        <value></value>
+      </property>
+      <property name="safe_overload" type="uint16" unit="percentage" description="maximum force the sensor withstands safely">
+        <value></value>
+      </property>
+      <property name="max_overload" type="uint16" unit="percentage" description="maximum force the sensor withstands before total breakdown">
+        <value></value>
+      </property>
+      <property name="max_rate" type="uint16" unit="hertz" description="maximum amount of measurements per second">
+        <value></value>
+      </property>
+      <property name="min_ideal_temp" type="float32" unit="celsius" description="minimum temperature where the error margin is at it's lowest">
+        <value></value>
+      </property>
+      <property name="max_ideal_temp" type="float32" unit="celsius" description="maximum temperature where the error margin is at it's lowest">
+        <value></value>
+      </property>
+      <property name="min_operating_temp" type="float32" unit="celsius" description="minimum operating temperature">
+        <value></value>
+      </property>
+      <property name="max_operating_temp" type="float32" unit="celsius" description="maximum operating temperature">
+        <value></value>
+      </property>
+      <property name="min_error_margin" type="float32" unit="plus-minus percentage" description="average error margin while inside the ideal temperature ranges">
+        <value></value>
+      </property>
+      <property name="max_error_margin" type="float32" unit="plus-minus percentage" description="average error margin while outside the ideal temperature ranges">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="torque" type="subscribe" description="torque force on the measured axis">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="torque" type="float64" unit="newtons per metre" description="torque reading">
+        <value></value>
+      </property>
+    </topic>
+
+    <param name="frame_id" type="string" unit="" description="tf frame from which the torque sensor is publishing">
+      <value></value>
+    </param>
+
+  </mandatory>
+
+</module>

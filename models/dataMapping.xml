@@ -1,0 +1,38 @@
+<dataMapping>
+  <platform name="ros2">
+    <type name="boolean" value="ros2 bool"/>
+    <type name="byte" value="ros2 byte"/>
+    <type name="double" value="ros2 double"/>
+    <type name="enum" value="ros2 enum"/>
+    <type name="float32" value="ros2 float32"/>
+    <type name="float64" value="ros2 float64"/>
+    <type name="int32" value="ros2 int32"/>
+    <type name="string" value="ros2 string"/>
+    <type name="uint8" value="ros2 uint8"/>
+    <type name="uint16" value="ros2 uint16"/>
+    <type name="uint32" value="ros2 uint32"/>
+    <type name="uint64" value="ros2 uint64"/>
+    <type name="header" value="ros2 std_msgs/Header"/>
+    <type name="time" value="ros2 builtin_interfaces/Time"/>
+    <type name="quaternion" value="ros2 geometry_msgs/Quaternion"/>
+    <type name="vector3" value="ros2 geometry_msgs/Vector3"/>
+  </platform>
+  <platform name="none">
+    <type name="boolean" value="boolean"/>
+    <type name="byte" value="byte"/>
+    <type name="double" value="double"/>
+    <type name="enum" value="enum"/>
+    <type name="float32" value="float32"/>
+    <type name="float64" value="float64"/>
+    <type name="int32" value="int32"/>
+    <type name="string" value="string"/>
+    <type name="uint8" value="uint8"/>
+    <type name="uint16" value="uint16"/>
+    <type name="uint32" value="uint32"/>
+    <type name="uint64" value="uint64"/>
+    <type name="header" value="header"/>
+    <type name="time" value="time"/>
+    <type name="quaternion" value="quaternion"/>
+    <type name="vector3" value="vector3"/>
+  </platform>
+</dataMapping>

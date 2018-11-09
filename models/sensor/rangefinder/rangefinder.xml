@@ -1,0 +1,89 @@
+<?xml version="1.0" standalone="no"?>
+
+<module name="range_finder"
+  noNamespaceSchemaLocation="../../generic/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <topic name="specs" type="subscribe" description="device features">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="radiation_type" type="uint8" unit="enum" description="">
+        <value></value>
+      </property>
+      <property name="field_of_view" type="float32" unit="" description="">
+        <value></value>
+      </property>
+      <property name="min_time_measuremets" type="float32" unit="" description="">
+        <value></value>
+      </property>
+      <property name="min_operating_temp" type="float32" unit="" description="">
+        <value></value>
+      </property>
+      <property name="max_range" type="float32" unit="" description="">
+        <value></value>
+      </property>
+      <property name="accuracy" type="float32" unit="" description="">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="distance" type="subscribe" description="distance from the object">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="range_min" type="float32" unit="metre" description="minimum range value">
+        <value></value>
+      </property>
+      <property name="range_max" type="float32" unit="metre" description="maximum range value">
+        <value></value>
+      </property>
+      <property name="time_measurements" type="float32" unit="second" description="time between measurements">
+        <value></value>
+      </property>
+      <property name="distance" type="float32" unit="metre" description="range data">
+        <value></value>
+      </property>
+    </topic>
+
+    <param name="frame_id" type="string" unit="" description="tf frame from which the range_finder is publishing">
+      <value></value>
+    </param>
+    <param name="time_measurements" type="double" unit="second" description="time between measurements">
+      <value></value>
+    </param>
+    <param name="distance_min" type="double" unit="metre" description="the minimum distance to return">
+      <value></value>
+    </param>
+    <param name="distance_max" type="double" unit="metre" description="the maximum distance to return">
+      <value></value>
+    </param>
+
+  </mandatory>
+
+  <optional>
+
+    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="orientation" type="quaternion" unit="" description="">
+        <xi:include href="../../complex/quaternion.xml" xpointer="xpointer(//root/property)"/>
+      </property>
+      <property name="orientation_covariance" type="float64" unit="" description="">
+        <value></value>
+      </property>
+      <property name="angular_velocity" type="vector3" unit="" description="">
+        <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
+      </property>
+      <property name="angular_velocity_covariance" type="float64[9]" unit="" description="">
+        <value></value>
+      </property>
+      <property name="linear_acceleration" type="vector3" unit="" description="">
+        <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
+      </property>
+      <property name="linear_acceleration_covariance" type="float64[9]" unit="" description="">
+        <value></value>
+      </property>
+    </topic>
+
+  </optional>
+
+</module>

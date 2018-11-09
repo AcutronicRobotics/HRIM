@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topic name="specs_comm" type="subscribe"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
+    <value></value>
+  </property>
+  <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
+    <value></value>
+  </property>
+  <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
+    <value></value>
+  </property>
+</topic>
