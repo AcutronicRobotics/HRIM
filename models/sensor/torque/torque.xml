@@ -15,10 +15,10 @@
       <property name="resolution" type="float32" unit="newtons per metre" description="maximum measurable torque">
         <value></value>
       </property>
-      <property name="device_type" type="uint8" unit="enum" description="way the sensor detects torque">
+      <property name="device_type" type="uint8" unit="enum" enum='{"STATIC": 0, "ROTARY": 1, "NONCONTACTING": 2}' description="way the sensor detects torque">
         <value></value>
       </property>
-      <property name="sensor_direction" type="uint8" unit="enum" description="rotatory direction the sensor measures">
+      <property name="sensor_direction" type="uint8" unit="enum" enum='{"CLOCKWISE": 0, "COUNTERCLOCKWISE": 1, "BIDIRECTIONAL": 2}' description="rotatory direction the sensor measures">
         <value></value>
       </property>
       <property name="max_rpm" type="uint32" unit="rpm" description="maximum rpm the sensor withstands">

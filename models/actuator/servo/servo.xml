@@ -7,7 +7,7 @@
       <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
       <topic name="specs" type="subscribe" description="device features">
         <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-        <property name="control_type" type="uint8" unit="enum" description="rotary servomotor control type">
+        <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
           <value></value>
         </property>
         <property name="range_min" type="float64" unit="radian" description="minimum work range">
@@ -42,7 +42,7 @@
         <property name="header" type="header" description="motor state is at this time">
           <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
         </property>
-        <property name="control_type" type="uint8" unit="enum" description="rotary servomotor control type">
+        <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
           <value></value>
         </property>
         <property name="position" type="float64" unit="radian" description="goal position">
@@ -91,10 +91,10 @@
       <property name="moving" type="boolean" unit="" description="whether the motor is currently in motion">
         <value></value>
       </property>
-      <property name="fault" type="uint8" unit="enum" description="fault cause">
+      <property name="fault" type="uint8" unit="enum" enum='{"FAULT_NONE": 0, "FAULT_CURRENT": 1, "FAULT_TEMPERATURE": 2, "FAULT_BUS_VOLTAGE": 3, "FAULT_BRIDGE_DRIVER": 4}' description="fault cause">
         <value></value>
       </property>
-      <property name="control_type" type="uint8" unit="enum" description="rotary servomotor control type">
+      <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
         <value></value>
       </property>
     </topic>

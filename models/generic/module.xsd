@@ -46,6 +46,7 @@
     <xsd:attribute name="name" type="xsd:string" use="required"/>
     <xsd:attribute name="type" type="propertyTypeType" use="required"/>
     <xsd:attribute name="unit" type="xsd:string" use="optional"/>
+    <xsd:attribute name="enum" type="xsd:string" use="optional"/>
     <xsd:attribute name="description" type="xsd:string" use="optional"/>
   </xsd:complexType>
 

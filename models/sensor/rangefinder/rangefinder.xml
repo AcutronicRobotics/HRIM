@@ -9,7 +9,7 @@
 
     <topic name="specs" type="subscribe" description="device features">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-      <property name="radiation_type" type="uint8" unit="enum" description="">
+      <property name="radiation_type" type="uint8" unit="enum" enum='{"ULTRASOUND": 0, "INFRARED": 1}' description="">
         <value></value>
       </property>
       <property name="field_of_view" type="float32" unit="" description="">

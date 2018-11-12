@@ -19,8 +19,8 @@
           <value></value>
         </property>
       </property>
-      <property name="device_kind_id" type="uint8" unit="enum" description="device classification">
-        <value></value>
+      <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
+        <value>3</value>
       </property>
       <property name="device_name" type="string" description="sub-type">
         <value></value>
@@ -299,7 +299,7 @@
           <value></value>
         </property>
       </property>
-      <property name="radiation_type" type="uint8" unit="enum" description="">
+      <property name="radiation_type" type="uint8" unit="enum" enum='{"ULTRASOUND": 0, "INFRARED": 1}' description="">
         <value></value>
       </property>
       <property name="field_of_view" type="float32" unit="" description="">
