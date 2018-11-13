@@ -78,6 +78,9 @@
       <property name="system_io_out" type="float32" unit="kilobytes per second" description="disk output speed">
         <value></value>
       </property>
+      <property name="system_ipv4_ip" type="string[]" unit="ip" description="ipv4 address">
+        <value></value>
+      </property>
       <property name="system_ipv4_received" type="float32" unit="kilobytes per second" description="ipv4 received bandwidth">
         <value></value>
       </property>
@@ -259,7 +262,7 @@
           <value></value>
         </property>
       </property>
-      <property name="3d_model" type="byte" unit="stl" description=".stl of the component">
+      <property name="3d_model" type="byte[]" unit="stl" description=".stl of the component">
         <value></value>
       </property>
     </topic>
