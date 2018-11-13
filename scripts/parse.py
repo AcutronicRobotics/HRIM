@@ -89,7 +89,7 @@ def mostrar(tabs, title, value, type=None):
 			msg+="["
 			for val in value:
 				if not type is None and type == "string":
-					msg+="\'"+val+"\', "
+					msg+=("\'"+val +"\'")if val is not None else "None, "
 				elif val is None:
 					msg+="None, "
 				else:
