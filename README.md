@@ -34,6 +34,9 @@ sensor/
 ...
 ```
 
+###
+
+
 A preliminary whitepaper about this work is available at https://arxiv.org/abs/1802.01459. Please use the following BibTex entry to cite our work:
 
 ```
@@ -44,3 +47,19 @@ A preliminary whitepaper about this work is available at https://arxiv.org/abs/1
   year={2018}
 }
 ```
+
+#### Script usage
+
+To parse and print the contents of a component the command structure would be the following:
+```
+python hrim.py {path-to-component.xml} [1]
+```
+Where `{path-to-component.xml}` is mandatory and signifies the absolute path to one of the following files:
+* models/actuator/servo/servo.xml
+* models/actuator/servo/servo_clean.xml
+* models/sensor/rangefinder/rangefinder.xml
+* models/sensor/rangefinder/rangefinder_clean.xml
+* models/sensor/torque/torque.xml
+* models/sensor/torque/torque_clean.xml
+
+And `[1]` is optional and signifies the script should show the definition of topics/properties not defined inside the parsed component itself, for example the generic topics (id, power...) or the header. Disabled by default.
