@@ -1,13 +1,12 @@
 <?xml version="1.0"?>
-
 <module name="torque"
-  noNamespaceSchemaLocation="../../generic/module.xsd">
+  noNamespaceSchemaLocation="../../schemas/module.xsd">
 
   <mandatory>
 
-    <topic name="id" type="subscribe">
-      <property name="header" type="header">
-        <property name="time" type="time">
+    <topic name="id" type="subscribe" origin="generic/id.xml">
+      <property name="header" type="header" origin="generic/header.xml">
+        <property name="time" type="time" origin="complex/time.xml">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -42,9 +41,9 @@
       </property>
     </topic>
 
-    <topic name="status" type="subscribe">
-      <property name="header" type="header">
-        <property name="time" type="time">
+    <topic name="status" type="subscribe" origin="generic/status.xml">
+      <property name="header" type="header" origin="generic/header.xml">
+        <property name="time" type="time" origin="complex/time.xml">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -56,7 +55,7 @@
           <value></value>
         </property>
       </property>
-      <property name="instance_id" type="uint32" description="">
+      <property name="instance_id" type="uint32">
         <value></value>
       </property>
       <property name="system_cpu" type="float32" unit="percentage" description="total cpu utilization">
@@ -107,71 +106,71 @@
       <property name="ipv4_udp_errors" type="float32" description="number of udp error packages">
         <value></value>
       </property>
-      <property name="cpu_interrupts" type="float32" description="">
+      <property name="cpu_interrupts" type="float32">
         <value></value>
       </property>
-      <property name="cpu_context_switches" type="float32" description="">
+      <property name="cpu_context_switches" type="float32">
         <value></value>
       </property>
-      <property name="softnet_processed" type="uint32" description="">
+      <property name="softnet_processed" type="uint32">
         <value></value>
       </property>
-      <property name="softnet_dropped" type="uint32" description="">
+      <property name="softnet_dropped" type="uint32">
         <value></value>
       </property>
-      <property name="softnet_squeezed" type="uint32" description="">
+      <property name="softnet_squeezed" type="uint32">
         <value></value>
       </property>
-      <property name="softnet_received_rps" type="uint32" description="">
+      <property name="softnet_received_rps" type="uint32">
         <value></value>
       </property>
-      <property name="softnet_flow_limit_count" type="uint32" description="">
+      <property name="softnet_flow_limit_count" type="uint32">
         <value></value>
       </property>
-      <property name="softirqs_hi" type="uint64" description="">
+      <property name="softirqs_hi" type="uint64">
         <value></value>
       </property>
-      <property name="softirqs_timer" type="uint64" description="">
+      <property name="softirqs_timer" type="uint64">
         <value></value>
       </property>
-      <property name="softirqs_net_tx" type="uint64" description="">
+      <property name="softirqs_net_tx" type="uint64">
         <value></value>
       </property>
-      <property name="softirqs_net_rx" type="uint64" description="">
+      <property name="softirqs_net_rx" type="uint64">
         <value></value>
       </property>
-      <property name="softirqs_block" type="uint64" description="">
+      <property name="softirqs_block" type="uint64">
         <value></value>
       </property>
-      <property name="softirqs_irq_poll" type="uint64" description="">
+      <property name="softirqs_irq_poll" type="uint64">
         <value></value>
       </property>
-      <property name="softirqs_tasklet" type="uint64" description="">
+      <property name="softirqs_tasklet" type="uint64">
         <value></value>
       </property>
-      <property name="softirqs_sched" type="uint64" description="">
+      <property name="softirqs_sched" type="uint64">
         <value></value>
       </property>
-      <property name="softirqs_hrtimer" type="uint64" description="">
+      <property name="softirqs_hrtimer" type="uint64">
         <value></value>
       </property>
-      <property name="softirqs_rcu" type="uint64" description="">
+      <property name="softirqs_rcu" type="uint64">
         <value></value>
       </property>
-      <property name="load1" type="float32" description="">
+      <property name="load1" type="float32">
         <value></value>
       </property>
-      <property name="load5" type="float32" description="">
+      <property name="load5" type="float32">
         <value></value>
       </property>
-      <property name="load15" type="float32" description="">
+      <property name="load15" type="float32">
         <value></value>
       </property>
     </topic>
 
-    <topic name="power" type="subscribe">
-      <property name="header" type="header">
-        <property name="time" type="time">
+    <topic name="power" type="subscribe" origin="generic/power.xml">
+      <property name="header" type="header" origin="generic/header.xml">
+        <property name="time" type="time" origin="complex/time.xml">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -183,16 +182,16 @@
           <value></value>
         </property>
       </property>
-      <property name="voltage" type="float32" unit="volt" description="">
+      <property name="voltage" type="float32" unit="volt">
         <value></value>
       </property>
-      <property name="current_consumption" type="float32" unit="ampere" description="">
+      <property name="current_consumption" type="float32" unit="ampere">
         <value></value>
       </property>
       <property name="current_surplus" type="float32" unit="ampere" description="current injection for the whole system">
         <value></value>
       </property>
-      <property name="power_consumption" type="float32" unit="watt" description="">
+      <property name="power_consumption" type="float32" unit="watt">
         <value></value>
       </property>
       <property name="power_surplus" type="float32" unit="watt" description="power injection for the whole system">
@@ -200,9 +199,9 @@
       </property>
     </topic>
 
-    <topic name="specs_comm" type="subscribe">
-      <property name="header" type="header">
-        <property name="time" type="time">
+    <topic name="specs_comm" type="subscribe" origin="generic/specs_comm.xml">
+      <property name="header" type="header" origin="generic/header.xml">
+        <property name="time" type="time" origin="complex/time.xml">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -225,9 +224,9 @@
       </property>
     </topic>
 
-    <topic name="state_comm" type="subscribe">
-      <property name="header" type="header">
-        <property name="time" type="time">
+    <topic name="state_comm" type="subscribe" origin="generic/state_comm.xml">
+      <property name="header" type="header" origin="generic/header.xml">
+        <property name="time" type="time" origin="complex/time.xml">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -247,9 +246,9 @@
       </property>
     </topic>
 
-    <topic name="model_3d" type="subscribe">
-      <property name="header" type="header">
-        <property name="time" type="time">
+    <topic name="model_3d" type="subscribe" origin="generic/model_3d.xml">
+      <property name="header" type="header" origin="generic/header.xml">
+        <property name="time" type="time" origin="complex/time.xml">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -266,9 +265,9 @@
       </property>
     </topic>
 
-    <topic name="model_urdf" type="subscribe">
-      <property name="header" type="header">
-        <property name="time" type="time">
+    <topic name="model_urdf" type="subscribe" origin="generic/model_urdf.xml">
+      <property name="header" type="header" origin="generic/header.xml">
+        <property name="time" type="time" origin="complex/time.xml">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -286,8 +285,8 @@
     </topic>
 
     <topic name="specs" type="subscribe" description="device features">
-      <property name="header" type="header">
-        <property name="time" type="time">
+      <property name="header" type="header" origin="generic/header.xml">
+        <property name="time" type="time" origin="complex/time.xml">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -344,8 +343,8 @@
     </topic>
 
     <topic name="torque" type="subscribe" description="torque force on the measured axis">
-      <property name="header" type="header">
-        <property name="time" type="time">
+      <property name="header" type="header" origin="generic/header.xml">
+        <property name="time" type="time" origin="complex/time.xml">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>

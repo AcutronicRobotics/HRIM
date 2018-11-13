@@ -1,73 +1,78 @@
-<?xml version="1.0" standalone="no"?>
-
+<?xml version="1.0"?>
 <module name="rotary_servomotor"
-  noNamespaceSchemaLocation="../../generic/module.xsd"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <mandatory>
-      <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
-      <topic name="specs" type="subscribe" description="device features">
-        <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-        <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
-          <value></value>
-        </property>
-        <property name="range_min" type="float64" unit="radian" description="minimum work range">
-          <value></value>
-        </property>
-        <property name="range_max" type="float64" unit="radian" description="maximum work range">
-          <value></value>
-        </property>
-        <property name="precision" type="float64" unit="radian" description="angular precision">
-          <value></value>
-        </property>
-        <property name="rated_speed" type="float64" unit="radians per second" description="servomotor speed">
-          <value></value>
-        </property>
-        <property name="reachable_speed" type="float64" unit="radians per second" description="maximum speed">
-          <value></value>
-        </property>
-        <property name="rated_torque" type="float64" unit="newtons per metre" description="servomotor torque">
-          <value></value>
-        </property>
-        <property name="reachable_torque" type="float64" unit="newtons per metre" description="peak torque">
-          <value></value>
-        </property>
-        <property name="temperature_range_min" type="float64" unit="celsius" description="minimum operational temperature">
-          <value></value>
-        </property>
-        <property name="temperature_range_max" type="float64" unit="celsius" description="maximum operational temperature">
-          <value></value>
-        </property>
-      </topic>
-      <topic name="goal" type="subscribe" description="control the position, velocity or/and effort">
-        <property name="header" type="header" description="motor state is at this time">
-          <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
-        </property>
-        <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
-          <value></value>
-        </property>
-        <property name="position" type="float64" unit="radian" description="goal position">
-          <value></value>
-        </property>
-        <property name="velocity" type="float32" unit="radians per second" description="movement velocity">
-          <value></value>
-        </property>
-        <property name="effort" type="float32" unit="newtons per metre" description="movement torque">
-          <value></value>
-        </property>
-      </topic>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <topic name="specs" type="subscribe" description="device features">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
+        <value></value>
+      </property>
+      <property name="range_min" type="float64" unit="radian" description="minimum work range">
+        <value></value>
+      </property>
+      <property name="range_max" type="float64" unit="radian" description="maximum work range">
+        <value></value>
+      </property>
+      <property name="precision" type="float64" unit="radian" description="angular precision">
+        <value></value>
+      </property>
+      <property name="rated_speed" type="float64" unit="radians per second" description="servomotor speed">
+        <value></value>
+      </property>
+      <property name="reachable_speed" type="float64" unit="radians per second" description="maximum speed">
+        <value></value>
+      </property>
+      <property name="rated_torque" type="float64" unit="newtons per metre" description="servomotor torque">
+        <value></value>
+      </property>
+      <property name="reachable_torque" type="float64" unit="newtons per metre" description="peak torque">
+        <value></value>
+      </property>
+      <property name="temperature_range_min" type="float64" unit="celsius" description="minimum operational temperature">
+        <value></value>
+      </property>
+      <property name="temperature_range_max" type="float64" unit="celsius" description="maximum operational temperature">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="goal" type="subscribe" description="control the position, velocity or/and effort">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
+        <value></value>
+      </property>
+      <property name="position" type="float64" unit="radian" description="goal position">
+        <value></value>
+      </property>
+      <property name="velocity" type="float32" unit="radians per second" description="movement velocity">
+        <value></value>
+      </property>
+      <property name="effort" type="float32" unit="newtons per metre" description="movement torque">
+        <value></value>
+      </property>
+    </topic>
+
     <param name="frame_rate" type="int" unit="hertz" description="refresh rate">
       <value></value>
     </param>
+
     <param name="origin" type="float" unit="radian" description="zero/starting point">
       <value></value>
     </param>
-    <param name="joint_name" type="string" unit="" description="name of the joint">
+
+    <param name="joint_name" type="string" description="name of the joint">
       <value></value>
     </param>
+
   </mandatory>
   <optional>
+
     <topic name="state" type="subscribe" description="motor condition and the reason in case of error">
-      <property name="header" type="header" description="motor state is at this time">
+      <property name="header" type="header" description="motor state is at this time" origin="generic/header.xml">
         <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
       </property>
       <property name="goal" type="float64" unit="radian" description="commanded position">
@@ -88,7 +93,7 @@
       <property name="load" type="float64" unit="radian" description="load imposed on the motor">
         <value></value>
       </property>
-      <property name="moving" type="boolean" unit="" description="whether the motor is currently in motion">
+      <property name="moving" type="boolean" description="whether the motor is currently in motion">
         <value></value>
       </property>
       <property name="fault" type="uint8" unit="enum" enum='{"FAULT_NONE": 0, "FAULT_CURRENT": 1, "FAULT_TEMPERATURE": 2, "FAULT_BUS_VOLTAGE": 3, "FAULT_BRIDGE_DRIVER": 4}' description="fault cause">
@@ -99,45 +104,52 @@
       </property>
     </topic>
 
-    <topic name="temperature" type="subscribe" description="motor internal temperature, also informs if there is temperature error">
+    <topic name="temperature" type="subscribe" description="motor internal temperature, also informs if there is temperature error" origin="sensor/thermometer/temperature.xml">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="temperature" type="float64" unit="celsius" description="current temperature">
         <value></value>
       </property>
-      <property name="temperature_error" type="boolean" unit="" description="wether current temperature is outside of the component's allowed range">
+      <property name="temperature_error" type="boolean" description="wether current temperature is outside of the component's allowed range">
         <value></value>
       </property>
     </topic>
 
-    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems">
+    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" origin="sensor/imu/reconfiguration.xml">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-      <property name="orientation" type="quaternion" unit="" description="">
+      <property name="orientation" type="quaternion" origin="complex/quaternion.xml">
         <xi:include href="../../complex/quaternion.xml" xpointer="xpointer(//root/property)"/>
       </property>
-      <property name="orientation_covariance" type="float64[9]" unit="" description="">
+      <property name="orientation_covariance" type="float64[9]">
+        <value></value>
       </property>
-      <property name="angular_velocity" type="vector3" unit="" description="">
+      <property name="angular_velocity" type="vector3" origin="complex/vector3.xml">
         <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
       </property>
-      <property name="angular_velocity_covariance" type="float64[9]" unit="" description="">
+      <property name="angular_velocity_covariance" type="float64[9]">
+        <value></value>
       </property>
-      <property name="linear_acceleration" type="vector3" unit="" description="">
+      <property name="linear_acceleration" type="vector3" origin="complex/vector3.xml">
         <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
       </property>
-      <property name="linear_acceleration_covariance" type="float64[9]" unit="" description="">
+      <property name="linear_acceleration_covariance" type="float64[9]">
+        <value></value>
       </property>
     </topic>
+
     <topic name="acceleration" type="subscribe" description="control the acceleration">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="acceleration" type="float32" unit="radians per second squared" description="angular acceleration">
         <value></value>
       </property>
     </topic>
+
     <param name="min_temperature" type="float" unit="celsius" description="minimum operating temperature">
       <value></value>
     </param>
+
     <param name="max_temperature" type="float" unit="celsius" description="maximum operating temperature">
       <value></value>
     </param>
+
   </optional>
 </module>

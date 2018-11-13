@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<topic name="model_urdf" type="subscribe"
+<?xml version="1.0"?>
+<topic name="model_urdf" type="subscribe" origin="generic/model_urdf.xml"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
   <property name="urdf_model" type="string" unit="urdf" description="the urdf corresponding to the component's .stl">

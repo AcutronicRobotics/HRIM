@@ -1,7 +1,6 @@
-<?xml version="1.0" standalone="no"?>
-
+<?xml version="1.0"?>
 <module name="torque"
-  noNamespaceSchemaLocation="../../generic/module.xsd"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <mandatory>
 
@@ -60,10 +59,9 @@
       </property>
     </topic>
 
-    <param name="frame_id" type="string" unit="" description="tf frame from which the torque sensor is publishing">
+    <param name="frame_id" type="string" description="tf frame from which the torque sensor is publishing">
       <value></value>
     </param>
 
   </mandatory>
-
 </module>

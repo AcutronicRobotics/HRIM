@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<topic name="status" type="subscribe"
+<?xml version="1.0"?>
+<topic name="status" type="subscribe" origin="generic/status.xml"
   xmlns:xi="http://www.w3.org/2001/XInclude">
-
   <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
-
-  <property name="instance_id" type="uint32" unit="" description="">
+  <property name="instance_id" type="uint32">
     <value></value>
   </property>
   <property name="system_cpu" type="float32" unit="percentage" description="total cpu utilization">
@@ -34,86 +32,85 @@
   <property name="system_ipv4_sent" type="float32" unit="kilobytes per second" description="ipv4 sent bandwidth">
     <value></value>
   </property>
-  <property name="ipv4_tcpsock" type="uint16" unit="" description="number of tcp active connections">
+  <property name="ipv4_tcpsock" type="uint16" description="number of tcp active connections">
     <value></value>
   </property>
-  <property name="ipv4_tcppackets_received" type="float32" unit="" description="number of tcp received packages">
+  <property name="ipv4_tcppackets_received" type="float32" description="number of tcp received packages">
     <value></value>
   </property>
-  <property name="ipv4_tcppackets_sent" type="float32" unit="" description="number of tcp sent packages">
+  <property name="ipv4_tcppackets_sent" type="float32" description="number of tcp sent packages">
     <value></value>
   </property>
-  <property name="ipv4_tcp_errors" type="float32" unit="" description="number of tcp error packages">
+  <property name="ipv4_tcp_errors" type="float32" description="number of tcp error packages">
     <value></value>
   </property>
-  <property name="ipv4_udppackets_received" type="float32" unit="" description="number of udp received packages">
+  <property name="ipv4_udppackets_received" type="float32" description="number of udp received packages">
     <value></value>
   </property>
-  <property name="ipv4_udppackets_sent" type="float32" unit="" description="number of udp sent packages">
+  <property name="ipv4_udppackets_sent" type="float32" description="number of udp sent packages">
     <value></value>
   </property>
-  <property name="ipv4_udp_errors" type="float32" unit="" description="number of udp error packages">
+  <property name="ipv4_udp_errors" type="float32" description="number of udp error packages">
     <value></value>
   </property>
-  <property name="cpu_interrupts" type="float32" unit="" description="">
+  <property name="cpu_interrupts" type="float32">
     <value></value>
   </property>
-  <property name="cpu_context_switches" type="float32" unit="" description="">
+  <property name="cpu_context_switches" type="float32">
     <value></value>
   </property>
-  <property name="softnet_processed" type="uint32" unit="" description="">
+  <property name="softnet_processed" type="uint32">
     <value></value>
   </property>
-  <property name="softnet_dropped" type="uint32" unit="" description="">
+  <property name="softnet_dropped" type="uint32">
     <value></value>
   </property>
-  <property name="softnet_squeezed" type="uint32" unit="" description="">
+  <property name="softnet_squeezed" type="uint32">
     <value></value>
   </property>
-  <property name="softnet_received_rps" type="uint32" unit="" description="">
+  <property name="softnet_received_rps" type="uint32">
     <value></value>
   </property>
-  <property name="softnet_flow_limit_count" type="uint32" unit="" description="">
+  <property name="softnet_flow_limit_count" type="uint32">
     <value></value>
   </property>
-  <property name="softirqs_hi" type="uint64" unit="" description="">
+  <property name="softirqs_hi" type="uint64">
     <value></value>
   </property>
-  <property name="softirqs_timer" type="uint64" unit="" description="">
+  <property name="softirqs_timer" type="uint64">
     <value></value>
   </property>
-  <property name="softirqs_net_tx" type="uint64" unit="" description="">
+  <property name="softirqs_net_tx" type="uint64">
     <value></value>
   </property>
-  <property name="softirqs_net_rx" type="uint64" unit="" description="">
+  <property name="softirqs_net_rx" type="uint64">
     <value></value>
   </property>
-  <property name="softirqs_block" type="uint64" unit="" description="">
+  <property name="softirqs_block" type="uint64">
     <value></value>
   </property>
-  <property name="softirqs_irq_poll" type="uint64" unit="" description="">
+  <property name="softirqs_irq_poll" type="uint64">
     <value></value>
   </property>
-  <property name="softirqs_tasklet" type="uint64" unit="" description="">
+  <property name="softirqs_tasklet" type="uint64">
     <value></value>
   </property>
-  <property name="softirqs_sched" type="uint64" unit="" description="">
+  <property name="softirqs_sched" type="uint64">
     <value></value>
   </property>
-  <property name="softirqs_hrtimer" type="uint64" unit="" description="">
+  <property name="softirqs_hrtimer" type="uint64">
     <value></value>
   </property>
-  <property name="softirqs_rcu" type="uint64" unit="" description="">
+  <property name="softirqs_rcu" type="uint64">
     <value></value>
   </property>
-  <property name="load1" type="float32" unit="" description="">
+  <property name="load1" type="float32">
     <value></value>
   </property>
-  <property name="load5" type="float32" unit="" description="">
+  <property name="load5" type="float32">
     <value></value>
   </property>
-  <property name="load15" type="float32" unit="" description="">
+  <property name="load15" type="float32">
     <value></value>
   </property>
-
 </topic>

@@ -1,20 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<topic name="power" type="subscribe"
+<?xml version="1.0"?>
+<topic name="power" type="subscribe" origin="generic/power.xml"
   xmlns:xi="http://www.w3.org/2001/XInclude">
-
   <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
-
-  <property name="voltage" type="float32" unit="volt" description="">
+  <property name="voltage" type="float32" unit="volt">
     <value></value>
   </property>
-  <property name="current_consumption" type="float32" unit="ampere" description="">
+  <property name="current_consumption" type="float32" unit="ampere">
     <value></value>
   </property>
   <property name="current_surplus" type="float32" unit="ampere" description="current injection for the whole system">
     <value></value>
   </property>
-  <property name="power_consumption" type="float32" unit="watt" description="">
+  <property name="power_consumption" type="float32" unit="watt">
     <value></value>
   </property>
   <property name="power_surplus" type="float32" unit="watt" description="power injection for the whole system">
