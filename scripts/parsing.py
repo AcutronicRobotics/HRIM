@@ -78,7 +78,7 @@ def main(filePath):
 	root=tree.getroot()
 
 	# instantiate module
-	module = Module(root.attrib.get("name"))
+	module = Module(root.attrib.get("name"), root.attrib.get("type"))
 
 	# loop through mandatory topics and parameters
 	for tag in root[0]:
