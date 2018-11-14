@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<module name="gripper" type="actuator" description="defines the messages to interact with grippers"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <topic name="specsFinger" type="subscribe" description="main characteristics of the finger gripper">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="min_force" type="float32" unit="newton" description="minimum gripping force">
+        <value></value>
+      </property>
+      <property name="max_force" type="float32" unit="newton" description="maximum gripping force">
+        <value></value>
+      </property>
+      <property name="max_payload" type="float32" unit="kilogram" description="maximum recommended payload">
+        <value></value>
+      </property>
+      <property name="min_speed" type="float32" unit="millimeters per second" description="minimum closing speed, if equal to max_speed the component doesn't have that capability">
+        <value></value>
+      </property>
+      <property name="max_speed" type="float32" unit="millimeters per second" description="maximum closing speed, if equal to min_speed the component doesn't have that capability">
+        <value></value>
+      </property>
+      <property name="max_acceleration" type="float32" unit="millimeters per second squared" description="maximum acceleration, if 0 the component doesn't have that capability">
+        <value></value>
+      </property>
+      <property name="max_length" type="float32" unit="millimeter" description="maximum permitted finger length">
+        <value></value>
+      </property>
+      <property name="max_angle" type="float32" unit="radian" description="maximum permitted finger angle">
+        <value></value>
+      </property>
+      <property name="repeatability" type="float32" unit="second" description="parallel grip repeatability">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="specsMagnetic" type="subscribe" description="main characteristics of the magnetic gripper">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="magnetic_force" type="float32" unit="newton" description="the magnet's force">
+        <value></value>
+      </property>
+      <property name="max_payload" type="float32" unit="kilogram" description="maximum payload">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="specsVacuum" type="subscribe" description="main characteristics of the vacuum gripper">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="cycle_time" type="float32" unit="second" description="needed time for one cycle">
+        <value></value>
+      </property>
+      <property name="max_force" type="float32" unit="newton" description="taking into account 100% vacuum and with non-porous material">
+        <value></value>
+      </property>
+      <property name="max_payload" type="float32" unit="kilogram" description="maximum recommended payload">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="goal" type="service" description="orders the gripper to grab or release">
+      <property name="on_off" type="boolean" description="true: grab the object | false: release the object">
+        <value></value>
+      </property>
+      <response>
+        <property name="goal_accepted" type="boolean" description="true: the goal is accepted | false: the goal is not accepted">
+          <value></value>
+        </property>
+      </response>
+    </topic>
+
+    <topic name="state" type="subscribe" description="notify if the gripper is activate or not">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="on_off" type="boolean" description="true: the gripper is active | false: the gripper is inactive">
+        <value></value>
+      </property>
+    </topic>
+
+  </mandatory>
+  <optional>
+
+    <topic name="controlFinger" type="service" description="allows the user to work with different values">
+      <property name="goal_linearposition" type="float32" unit="metre" description="distance between fingers">
+        <value></value>
+      </property>
+      <property name="goal_angularposition" type="float32" unit="radian" description="angle of the joint">
+        <value></value>
+      </property>
+      <property name="goal_effort" type="float32" unit="newton" description="maximun effort to apply">
+        <value></value>
+      </property>
+      <property name="goal_velocity" type="float32" unit="metres per second" description="velocity to open/close fingers, if 0 gripper contains pressure sensor">
+        <value></value>
+      </property>
+      <property name="goal_acceleration" type="float32" unit="metres per second squared" description="acceleration to open fingers">
+        <value></value>
+      </property>
+      <response>
+        <property name="goal_accepted" type="boolean" description="true: the goal is accepted | false: the goal is not accepted">
+          <value></value>
+        </property>
+      </response>
+    </topic>
+
+    <topic name="controlVacuum" type="service" description="allows the user to work with different suction values">
+      <property name="goal_percentage_suction" type="float32" unit="percentage" description="suction value on the maximum allowed">
+        <value></value>
+      </property>
+      <response>
+        <property name="goal_accepted" type="boolean" description="true: the goal is accepted | false: the goal is not accepted">
+          <value></value>
+        </property>
+      </response>
+    </topic>
+
+    <topic name="stateFinger" type="subscribe" description="finger gripper state is at this time">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="angular_position" type="float32">
+        <value></value>
+      </property>
+      <property name="linear_position" type="float32">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="cycle" type="subscribe" description="time that the gripper must take to complete the cycle: the time between catching the object and leaving it">
+      <property name="header" type="header" origin="generic/header.xml" description="the acquisition time of the completed cycle">
+        <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
+      </property>
+      <property name="cycle_time" type="float32" unit="second" description="pick and place cycle time">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="goalPressure" type="subscribe" description="maximum pressure that the gripper will make on the object">
+      <property name="header" type="header" origin="generic/header.xml" description="pressure is at this time">
+        <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
+      </property>
+      <property name="goal_pressure" type="float32" unit="newtons per meters squared" description="maximum pressure fingers can make">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" origin="sensor/imu/reconfiguration.xml">
+      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+      <property name="orientation" type="quaternion" origin="complex/quaternion.xml">
+        <xi:include href="../../complex/quaternion.xml" xpointer="xpointer(//root/property)"/>
+      </property>
+      <property name="orientation_covariance" type="float64[9]">
+        <value></value>
+      </property>
+      <property name="angular_velocity" type="vector3" origin="complex/vector3.xml">
+        <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
+      </property>
+      <property name="angular_velocity_covariance" type="float64[9]">
+        <value></value>
+      </property>
+      <property name="linear_acceleration" type="vector3" origin="complex/vector3.xml">
+        <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
+      </property>
+      <property name="linear_acceleration_covariance" type="float64[9]">
+        <value></value>
+      </property>
+    </topic>
+
+  </optional>
+</module>
