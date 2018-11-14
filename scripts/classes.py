@@ -1,7 +1,8 @@
 class Module:
-    def __init__(self, name, type):
+    def __init__(self, name, type, description):
         self.name = name
         self.type = type
+        self.desc = description
         self.topics = []
         self.params = []
     def addTopic(self, topic):

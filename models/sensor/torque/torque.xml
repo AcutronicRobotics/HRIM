@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<module name="torque" type="sensor"
+<module name="torque" type="sensor" description="defines the messages to interact with a torque sensor"
   noNamespaceSchemaLocation="../../schemas/module.xsd"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <mandatory>
