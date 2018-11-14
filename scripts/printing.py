@@ -43,7 +43,6 @@ def printProperty(property, baseTabs):
 		for val in property.enumeration.keys():
 			print getTabs(baseTabs+3)+val
 		print getTabs(baseTabs+2)+"]"
-		# mostrar(baseTabs+2, "possible values", property.enumeration)
 	mostrar(baseTabs+2, "description", property.desc)
 	if len(property.properties) > 0:
 		print getTabs(baseTabs+2)+"origin: "+(property.origin if len(property.origin)>0 else "own")
@@ -64,14 +63,19 @@ def printTopic(topic, baseTabs):
 	mostrar(baseTabs+1, "description", topic.desc)
 	mostrar(baseTabs+1, "type", topic.type)
 	print getTabs(baseTabs+1)+"origin: "+(topic.origin if len(topic.origin)>0 else "own")
-	# print getTabs(baseTabs+1)+"origin: "+(topic.origin if len(topic.origin)>0 else "own")
 	print getTabs(baseTabs+1)+"mandatory: "+("yes" if topic.mandatory else "no")
 
 	if extend or not len(topic.origin)>0:
-		print getTabs(baseTabs+1)+"properties {\n"
-		for prop in topic.properties:
-			printProperty(prop, baseTabs+1)
-		print getTabs(baseTabs+1)+"}\n"
+		if len(topic.properties)>0:
+			print getTabs(baseTabs+1)+"properties {\n"
+			for prop in topic.properties:
+				printProperty(prop, baseTabs+1)
+			print getTabs(baseTabs+1)+"}\n"
+		if len(topic.response)>0:
+			print getTabs(baseTabs+1)+"response {\n"
+			for res in topic.response:
+				printProperty(res, baseTabs+1)
+			print getTabs(baseTabs+1)+"}\n"
 	print "\t}\n"
 
 def main(module, full):

@@ -16,10 +16,13 @@ class Topic:
         self.type = type
         self.mandatory = mandatory
         self.properties = []
+        self.response = []
         self.desc=None
         self.origin = ""
     def addProp(self, property):
         self.properties.append(property)
+    def addRes(self, response):
+        self.response.append(response)
 
 class Property:
     def __init__(self, name="", type=None):

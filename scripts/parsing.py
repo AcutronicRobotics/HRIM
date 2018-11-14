@@ -12,6 +12,9 @@ def processTopic(topic, mandatory):
 	for prop in topic:
 		if prop.tag == "property":
 			top.addProp(processProperty(prop))
+		if prop.tag == "response":
+			for res in prop:
+				top.addRes(processProperty(res))
 	if "origin" in topic.attrib:
 		top.origin = topic.attrib.get("origin")
 	return top
