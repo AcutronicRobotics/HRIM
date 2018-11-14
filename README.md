@@ -58,11 +58,13 @@ Where:
 
 `{show|generate}` is mandatory and signifies the action to take:
 * `show` parses the passed module file and prints it's processed contents.
-* `generate` parses the passed module file and generates the corresponding .msg files to use with ROS2. The generated files will be located inside  a `generated` folder on the root of the repository.
+* `generate` parses the passed module file and generates the corresponding .msg and/or .srv files to use with ROS2. The generated files will be located inside  a `generated` folder on the root of the repository.
 
 `{path-to-component.xml}` is mandatory and signifies the absolute path to one of the following files:
 * models/actuator/servo/servo.xml
 * models/actuator/servo/servo_clean.xml
+* models/actuator/gripper/gripper.xml
+* models/actuator/gripper/gripper_clean.xml
 * models/sensor/rangefinder/rangefinder.xml
 * models/sensor/rangefinder/rangefinder_clean.xml
 * models/sensor/torque/torque.xml
