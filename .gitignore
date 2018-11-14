@@ -1,6 +1,8 @@
 build
 install
 log
+generated
 scripts/classes.pyc
+scripts/compiling.pyc
 scripts/parsing.pyc
 scripts/printing.pyc
