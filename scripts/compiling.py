@@ -2,6 +2,13 @@ import lxml.etree as ET
 import sys
 import os
 
+# shorthand for yaml tabulation
+def getTabs(n):
+	str=""
+	for x in range(n):
+		str+="  "
+	return str
+
 def main(module):
 
 	messages = False
@@ -205,3 +212,31 @@ def main(module):
 		cmake = open("CMakeLists.txt", "w")
 		cmake.write(srvMakeFile)
 		cmake.close()
+
+	# reposition ourselves on the generated module's root folder
+	os.chdir(cwd)
+	manParams = ""
+	optParams = ""
+
+	for param in module.params:
+
+		# mandatory parameters parsing
+		if param.mandatory:
+			if param.desc is not None:
+				manParams+=getTabs(1)+"# "+param.desc+"\n"
+			manParams+=getTabs(1)+param.name+": "+(param.value if param.value is not None else "")+"\n\n"
+
+		# optional parameters parsing
+		else:
+			optParams+=getTabs(1)+"# "+param.desc+"\n"
+			optParams+=getTabs(1)+param.name+": "+(param.value if param.value is not None else "")+"\n\n"
+
+	if len(manParams)>0:
+		params = open("mandatory_parameters.yaml", "w")
+		params.write(module.name+":\n"+manParams)
+		params.close()
+
+	if len(optParams)>0:
+		params = open("optional_parameters.yaml", "w")
+		params.write(module.name+":\n"+optParams)
+		params.close()
