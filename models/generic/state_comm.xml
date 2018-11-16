@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<topic name="state_comm" type="subscribe" origin="generic/state_comm.xml" fileName="StateCommunication"
+<topic name="state_comm" type="subscribe" fileName="StateCommunication"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
   <property name="comm_rate" type="double" unit="hertz" description="frequency at which the component is working">

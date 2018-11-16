@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <property name="header" type="header" origin="generic/header.xml"
+  <property name="header" type="header" fileName="Header"
     xmlns:xi="http://www.w3.org/2001/XInclude">
     <xi:include href="../complex/time.xml"/>
     <property name="frame_id" type="string" description="transform frame with which this data is associated">

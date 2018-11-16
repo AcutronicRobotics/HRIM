@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<topic name="model_3d" type="subscribe" origin="generic/model_3d.xml" fileName="Simulation3D"
+<topic name="model_3d" type="subscribe" fileName="Simulation3D"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
   <property name="model" type="byte[]" unit="stl" description=".stl of the component">

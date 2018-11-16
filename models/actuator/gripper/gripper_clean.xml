@@ -3,9 +3,9 @@
   noNamespaceSchemaLocation="../../schemas/module.xsd">
   <mandatory>
 
-    <topic name="id" type="subscribe" origin="generic/id.xml" fileName="ID">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="id" type="subscribe" fileName="ID">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -40,9 +40,9 @@
       </property>
     </topic>
 
-    <topic name="status" type="subscribe" origin="generic/status.xml" fileName="Status">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="status" type="subscribe" fileName="Status">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -170,9 +170,9 @@
       </property>
     </topic>
 
-    <topic name="power" type="subscribe" origin="generic/power.xml" fileName="Power">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="power" type="subscribe" fileName="Power">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -201,9 +201,9 @@
       </property>
     </topic>
 
-    <topic name="specs_comm" type="subscribe" origin="generic/specs_comm.xml" fileName="SpecsCommunication">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="specs_comm" type="subscribe" fileName="SpecsCommunication">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -226,9 +226,9 @@
       </property>
     </topic>
 
-    <topic name="state_comm" type="subscribe" origin="generic/state_comm.xml" fileName="StateCommunication">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="state_comm" type="subscribe" fileName="StateCommunication">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -248,9 +248,9 @@
       </property>
     </topic>
 
-    <topic name="model_3d" type="subscribe" origin="generic/model_3d.xml" fileName="Simulation3D">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="model_3d" type="subscribe" fileName="Simulation3D">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -267,9 +267,9 @@
       </property>
     </topic>
 
-    <topic name="model_urdf" type="subscribe" origin="generic/model_urdf.xml" fileName="SimulationURDF">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="model_urdf" type="subscribe" fileName="SimulationURDF">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -287,8 +287,8 @@
     </topic>
 
     <topic name="specs" type="subscribe" description="main characteristics of the finger gripper" fileName="SpecsFingerGripper">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -330,8 +330,8 @@
     </topic>
 
     <topic name="specs" type="subscribe" description="main characteristics of the magnetic gripper" fileName="SpecsMagneticGripper">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -352,8 +352,8 @@
     </topic>
 
     <topic name="specs" type="subscribe" description="main characteristics of the vacuum gripper" fileName="SpecsVacuumGripper">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -388,8 +388,8 @@
     </topic>
 
     <topic name="state" type="subscribe" description="notify if the gripper is activate or not" fileName="StateGripper">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -444,8 +444,8 @@
     </topic>
 
     <topic name="state_finder_gripper" type="subscribe" description="finger gripper state is at this time" fileName="StateFingerGripper">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -466,8 +466,8 @@
     </topic>
 
     <topic name="cycle_time" type="subscribe" description="time that the gripper must take to complete the cycle: the time between catching the object and leaving it" fileName="CycleTime">
-      <property name="header" type="header" origin="generic/header.xml" description="the acquisition time of the completed cycle">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" description="the acquisition time of the completed cycle" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -485,8 +485,8 @@
     </topic>
 
     <topic name="goal_pressure" type="subscribe" description="maximum pressure that the gripper will make on the object" fileName="GoalTactilePressure">
-      <property name="header" type="header" origin="generic/header.xml" description="pressure is at this time">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" description="pressure is at this time" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -504,8 +504,8 @@
     </topic>
 
     <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -517,7 +517,7 @@
           <value></value>
         </property>
       </property>
-      <property name="orientation" type="quaternion" origin="complex/quaternion.xml">
+      <property name="orientation" type="quaternion" fileName="Quaternion">
         <property name="x" type="float64">
           <value></value>
         </property>
@@ -534,7 +534,7 @@
       <property name="orientation_covariance" type="float64[9]">
         <value></value>
       </property>
-      <property name="angular_velocity" type="vector3" origin="complex/vector3.xml">
+      <property name="angular_velocity" type="vector3" fileName="Vector3">
         <property name="x" type="float64">
           <value></value>
         </property>
@@ -548,7 +548,7 @@
       <property name="angular_velocity_covariance" type="float64[9]">
         <value></value>
       </property>
-      <property name="linear_acceleration" type="vector3" origin="complex/vector3.xml">
+      <property name="linear_acceleration" type="vector3" fileName="Vector3">
         <property name="x" type="float64">
           <value></value>
         </property>

@@ -19,7 +19,6 @@ class Topic:
         self.response = []
         self.desc=None
         self.fileName=None
-        self.origin = ""
     def addProp(self, property):
         self.properties.append(property)
     def addRes(self, response):
@@ -36,7 +35,7 @@ class Property:
         self.value = None
         self.unit=None
         self.desc=None
-        self.origin = ""
+        self.fileName=None
     def addProp(self, property):
         self.properties.append(property)
 

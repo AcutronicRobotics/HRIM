@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<property name="time" type="time" origin="complex/time.xml">
+<property name="time" type="time" fileName="Time">
   <property name="sec" type="int32" unit="second">
     <value></value>
   </property>

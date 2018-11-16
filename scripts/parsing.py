@@ -16,8 +16,6 @@ def processTopic(topic, mandatory):
 		if prop.tag == "response":
 			for res in prop:
 				top.addRes(processProperty(res))
-	if "origin" in topic.attrib:
-		top.origin = topic.attrib.get("origin")
 	return top
 
 # property and subproperty recursive parsing and processing
@@ -41,10 +39,10 @@ def processProperty(property):
 	if "description" in property.attrib:
 		prop.desc = property.attrib.get("description")
 
-	if any(x.tag == "property" for x in property):
+	if "fileName" in property.attrib:
+		prop.fileName = property.attrib.get("fileName")
 
-		if "origin" in property.attrib:
-			prop.origin = property.attrib.get("origin")
+	if any(x.tag == "property" for x in property):
 
 		for subProp in property:
 			if subProp.tag == "property":

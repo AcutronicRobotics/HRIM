@@ -4,9 +4,9 @@
 
   <mandatory>
 
-    <topic name="id" type="subscribe" origin="generic/id.xml" fileName="ID">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="id" type="subscribe" fileName="ID">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -41,9 +41,9 @@
       </property>
     </topic>
 
-    <topic name="status" type="subscribe" origin="generic/status.xml" fileName="Status">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="status" type="subscribe" fileName="Status">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -171,9 +171,9 @@
       </property>
     </topic>
 
-    <topic name="power" type="subscribe" origin="generic/power.xml" fileName="Power">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="power" type="subscribe" fileName="Power">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -202,9 +202,9 @@
       </property>
     </topic>
 
-    <topic name="specs_comm" type="subscribe" origin="generic/specs_comm.xml" fileName="SpecsCommunication">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="specs_comm" type="subscribe" fileName="SpecsCommunication">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -227,9 +227,9 @@
       </property>
     </topic>
 
-    <topic name="state_comm" type="subscribe" origin="generic/state_comm.xml" fileName="StateCommunication">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="state_comm" type="subscribe" fileName="StateCommunication">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -249,9 +249,9 @@
       </property>
     </topic>
 
-    <topic name="model_3d" type="subscribe" origin="generic/model_3d.xml" fileName="Simulation3D">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="model_3d" type="subscribe" fileName="Simulation3D">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -268,9 +268,9 @@
       </property>
     </topic>
 
-    <topic name="model_urdf" type="subscribe" origin="generic/model_urdf.xml" fileName="SimulationURDF">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+    <topic name="model_urdf" type="subscribe" fileName="SimulationURDF">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -288,8 +288,8 @@
     </topic>
 
     <topic name="specs" type="subscribe" description="device features" fileName="SpecsTorque">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>
@@ -346,8 +346,8 @@
     </topic>
 
     <topic name="torque" type="subscribe" description="torque force on the measured axis" fileName="Torque">
-      <property name="header" type="header" origin="generic/header.xml">
-        <property name="time" type="time" origin="complex/time.xml">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
             <value></value>
           </property>

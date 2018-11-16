@@ -126,7 +126,7 @@
     </topic>
 
     <topic name="cycle_time" type="subscribe" description="time that the gripper must take to complete the cycle: the time between catching the object and leaving it" fileName="CycleTime">
-      <property name="header" type="header" origin="generic/header.xml" description="the acquisition time of the completed cycle">
+      <property name="header" type="header" description="the acquisition time of the completed cycle" fileName="Header">
         <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
       </property>
       <property name="cycle_time" type="float32" unit="second" description="pick and place cycle time">
@@ -135,7 +135,7 @@
     </topic>
 
     <topic name="goal_pressure" type="subscribe" description="maximum pressure that the gripper will make on the object" fileName="GoalTactilePressure">
-      <property name="header" type="header" origin="generic/header.xml" description="pressure is at this time">
+      <property name="header" type="header" description="pressure is at this time" fileName="Header">
         <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
       </property>
       <property name="goal_pressure" type="float32" unit="newtons per meters squared" description="maximum pressure fingers can make">
@@ -145,19 +145,19 @@
 
     <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-      <property name="orientation" type="quaternion" origin="complex/quaternion.xml">
+      <property name="orientation" type="quaternion" fileName="Quaternion">
         <xi:include href="../../complex/quaternion.xml" xpointer="xpointer(//root/property)"/>
       </property>
       <property name="orientation_covariance" type="float64[9]">
         <value></value>
       </property>
-      <property name="angular_velocity" type="vector3" origin="complex/vector3.xml">
+      <property name="angular_velocity" type="vector3" fileName="Vector3">
         <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
       </property>
       <property name="angular_velocity_covariance" type="float64[9]">
         <value></value>
       </property>
-      <property name="linear_acceleration" type="vector3" origin="complex/vector3.xml">
+      <property name="linear_acceleration" type="vector3" fileName="Vector3">
         <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
       </property>
       <property name="linear_acceleration_covariance" type="float64[9]">
