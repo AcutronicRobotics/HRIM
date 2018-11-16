@@ -262,7 +262,7 @@
           <value></value>
         </property>
       </property>
-      <property name="3d_model" type="byte[]" unit="stl" description=".stl of the component">
+      <property name="model" type="byte[]" unit="stl" description=".stl of the component">
         <value></value>
       </property>
     </topic>

@@ -2,7 +2,7 @@
   <platform name="ros2">
     <type name="boolean" value="bool"/>
     <type name="byte" value="byte"/>
-    <type name="double" value="double"/>
+    <type name="double" value="float64"/>
     <type name="enum" value="enum"/>
     <type name="float32" value="float32"/>
     <type name="float64" value="float64"/>
