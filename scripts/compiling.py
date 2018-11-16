@@ -9,8 +9,32 @@ def getTabs(n):
 		str+="  "
 	return str
 
+def processSubProperty(prop):
+	if prop.fileName not in msgFiles:
+		subMsg = ""
+		for subProp in prop.properties:
+			if subProp.fileName is not None:
+				processSubProperty(subProp)
+			else:
+				if subProp.unit is not None and subProp.unit == "enum":
+
+					# sort enumeration values for readability
+					for value in sorted( ((v,k) for k,v in subProp.enumeration.iteritems())):
+						subMsg+=subProp.type+" "+value[1]+"="+str(value[0])+"\n"
+			subMsg+=formatProperty(subProp)
+		subFileName = prop.fileName+".msg"
+		msgFiles.append(prop.fileName)
+
+		text_file = open(subFileName, "w")
+		text_file.write(subMsg)
+		text_file.close()
+
 def formatProperty(prop):
-	return dataTypes[prop.type]+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
+	if prop.fileName is None:
+		type = dataTypes[prop.type]
+	else:
+		type = msgPkgName+"/"+prop.fileName
+	return type+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
 
 def main(module):
 
@@ -43,7 +67,9 @@ def main(module):
 		pkg=myfile.read()
 
 	# insert the package's name and description in package.xml's content
-	msgPkg = pkg.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_msgs")
+	global msgPkgName
+	msgPkgName = "hrim_"+module.type+"_"+module.name+"_msgs"
+	msgPkg = pkg.replace("%PKGNAME%", msgPkgName)
 	msgPkg = msgPkg.replace("%PKGDESC%", module.desc)
 
 	# insert the package's name and description in package.xml's content
@@ -54,7 +80,7 @@ def main(module):
 		makeFile=myfile.read()
 
 	# insert the package's name and description in CMakeLists.txt's content
-	msgMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_msgs")
+	msgMakeFile = makeFile.replace("%PKGNAME%", msgPkgName)
 
 	# insert the package's name and description in CMakeLists.txt's content
 	srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
@@ -75,6 +101,7 @@ def main(module):
 	cwd = os.getcwd()
 
 	# list of files for CMakeLists.txt
+	global msgFiles
 	msgFiles = []
 	srvFiles = []
 
@@ -108,15 +135,18 @@ def main(module):
 
 				for prop in topic.properties:
 
-					# check for enumeration types
-					if prop.unit is not None and prop.unit == "enum":
+					if prop.fileName is not None:
+						processSubProperty(prop)
+					else:
 
-						# sort enumeration values for readability
-						for value in sorted( ((v,k) for k,v in prop.enumeration.iteritems())):
-							msg+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+						# check for enumeration types
+						if prop.unit is not None and prop.unit == "enum":
+
+							# sort enumeration values for readability
+							for value in sorted( ((v,k) for k,v in prop.enumeration.iteritems())):
+								msg+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
 					# process each property, checking if it's value is an array and if it has any description
-					# msg+=dataTypes[prop.type]+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
 					msg+=formatProperty(prop)
 
 				# generate each .msg file and add it to the list
@@ -163,7 +193,6 @@ def main(module):
 							srv+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
 					# process each property, checking if it's value is an array and if it has any description
-					# srv+=dataTypes[prop.type]+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
 					srv+=formatProperty(prop)
 
 				srv+="---\n"
@@ -177,7 +206,6 @@ def main(module):
 							srv+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
 					# process each property, checking if it's value is an array and if it has any description
-					# srv+=dataTypes[prop.type]+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
 					srv+=formatProperty(prop)
 
 				# generate each .srv file and add it to the list
