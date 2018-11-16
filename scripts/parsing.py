@@ -9,6 +9,7 @@ def processTopic(topic, mandatory):
 	top = Topic(topic.attrib.get("name"), topic.attrib.get("type"), mandatory)
 	if "description" in topic.attrib:
 		top.desc = topic.attrib.get("description")
+	top.fileName = topic.attrib.get("fileName")
 	for prop in topic:
 		if prop.tag == "property":
 			top.addProp(processProperty(prop))

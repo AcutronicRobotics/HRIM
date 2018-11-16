@@ -40,6 +40,7 @@
     <xsd:attribute name="type" type="topicTypeType" use="required"/>
     <xsd:attribute name="description" type="xsd:string" use="optional"/>
     <xsd:attribute name="origin" type="xsd:string" use="optional"/>
+    <xsd:attribute name="fileName" type="xsd:string" use="required"/>
   </xsd:complexType>
 
   <xsd:complexType name="propertyType">

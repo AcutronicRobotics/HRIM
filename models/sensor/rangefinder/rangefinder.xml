@@ -6,7 +6,7 @@
 
     <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
 
-    <topic name="specs" type="subscribe" description="device features">
+    <topic name="specs" type="subscribe" description="device features" fileName="SpecsRangefinder">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="radiation_type" type="uint8" unit="enum" enum='{"ULTRASOUND": 0, "INFRARED": 1}'>
         <value></value>
@@ -28,7 +28,7 @@
       </property>
     </topic>
 
-    <topic name="distance" type="subscribe" description="distance from the object">
+    <topic name="distance" type="subscribe" description="distance from the object" fileName="Distance">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="range_min" type="float32" unit="metre" description="minimum range value">
         <value></value>
@@ -63,7 +63,7 @@
   </mandatory>
   <optional>
 
-    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" origin="sensor/imu/reconfiguration.xml">
+    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="orientation" type="quaternion" origin="complex/quaternion.xml">
         <xi:include href="../../complex/quaternion.xml" xpointer="xpointer(//root/property)"/>

@@ -18,6 +18,7 @@ class Topic:
         self.properties = []
         self.response = []
         self.desc=None
+        self.fileName=None
         self.origin = ""
     def addProp(self, property):
         self.properties.append(property)

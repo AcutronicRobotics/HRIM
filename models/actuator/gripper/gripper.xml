@@ -6,7 +6,7 @@
 
     <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
 
-    <topic name="specsFinger" type="subscribe" description="main characteristics of the finger gripper">
+    <topic name="specs" type="subscribe" description="main characteristics of the finger gripper" fileName="SpecsFingerGripper">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="min_force" type="float32" unit="newton" description="minimum gripping force">
         <value></value>
@@ -37,7 +37,7 @@
       </property>
     </topic>
 
-    <topic name="specsMagnetic" type="subscribe" description="main characteristics of the magnetic gripper">
+    <topic name="specs" type="subscribe" description="main characteristics of the magnetic gripper" fileName="SpecsMagneticGripper">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="magnetic_force" type="float32" unit="newton" description="the magnet's force">
         <value></value>
@@ -47,7 +47,7 @@
       </property>
     </topic>
 
-    <topic name="specsVacuum" type="subscribe" description="main characteristics of the vacuum gripper">
+    <topic name="specs" type="subscribe" description="main characteristics of the vacuum gripper" fileName="SpecsVacuumGripper">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="cycle_time" type="float32" unit="second" description="needed time for one cycle">
         <value></value>
@@ -60,7 +60,7 @@
       </property>
     </topic>
 
-    <topic name="goal" type="service" description="orders the gripper to grab or release">
+    <topic name="goal" type="service" description="orders the gripper to grab or release" fileName="GoalGripper">
       <property name="on_off" type="boolean" description="true: grab the object | false: release the object">
         <value></value>
       </property>
@@ -71,7 +71,7 @@
       </response>
     </topic>
 
-    <topic name="state" type="subscribe" description="notify if the gripper is activate or not">
+    <topic name="state" type="subscribe" description="notify if the gripper is activate or not" fileName="StateGripper">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="on_off" type="boolean" description="true: the gripper is active | false: the gripper is inactive">
         <value></value>
@@ -81,7 +81,7 @@
   </mandatory>
   <optional>
 
-    <topic name="controlFinger" type="service" description="allows the user to work with different values">
+    <topic name="goalpro" type="service" description="allows the user to work with different values" fileName="ControlFinger">
       <property name="goal_linearposition" type="float32" unit="metre" description="distance between fingers">
         <value></value>
       </property>
@@ -104,7 +104,7 @@
       </response>
     </topic>
 
-    <topic name="controlVacuum" type="service" description="allows the user to work with different suction values">
+    <topic name="goalpro" type="service" description="allows the user to work with different suction values" fileName="ControlVacuum">
       <property name="goal_percentage_suction" type="float32" unit="percentage" description="suction value on the maximum allowed">
         <value></value>
       </property>
@@ -115,7 +115,7 @@
       </response>
     </topic>
 
-    <topic name="stateFinger" type="subscribe" description="finger gripper state is at this time">
+    <topic name="state_finder_gripper" type="subscribe" description="finger gripper state is at this time" fileName="StateFingerGripper">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="angular_position" type="float32">
         <value></value>
@@ -125,7 +125,7 @@
       </property>
     </topic>
 
-    <topic name="cycle" type="subscribe" description="time that the gripper must take to complete the cycle: the time between catching the object and leaving it">
+    <topic name="cycle_time" type="subscribe" description="time that the gripper must take to complete the cycle: the time between catching the object and leaving it" fileName="CycleTime">
       <property name="header" type="header" origin="generic/header.xml" description="the acquisition time of the completed cycle">
         <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
       </property>
@@ -134,7 +134,7 @@
       </property>
     </topic>
 
-    <topic name="goalPressure" type="subscribe" description="maximum pressure that the gripper will make on the object">
+    <topic name="goal_pressure" type="subscribe" description="maximum pressure that the gripper will make on the object" fileName="GoalTactilePressure">
       <property name="header" type="header" origin="generic/header.xml" description="pressure is at this time">
         <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
       </property>
@@ -143,7 +143,7 @@
       </property>
     </topic>
 
-    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" origin="sensor/imu/reconfiguration.xml">
+    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="orientation" type="quaternion" origin="complex/quaternion.xml">
         <xi:include href="../../complex/quaternion.xml" xpointer="xpointer(//root/property)"/>

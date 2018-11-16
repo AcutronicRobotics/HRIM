@@ -6,7 +6,7 @@
 
     <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
 
-    <topic name="specs" type="subscribe" description="device features">
+    <topic name="specs" type="subscribe" description="device features" fileName="SpecsTorque">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="max_torque" type="uint16" unit="newtons per metre" description="maximum measurable torque">
         <value></value>
@@ -52,7 +52,7 @@
       </property>
     </topic>
 
-    <topic name="torque" type="subscribe" description="torque force on the measured axis">
+    <topic name="torque" type="subscribe" description="torque force on the measured axis" fileName="Torque">
       <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
       <property name="torque" type="float64" unit="newtons per metre" description="torque reading">
         <value></value>
