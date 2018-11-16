@@ -251,7 +251,8 @@ def main(module):
 
 		# optional parameters parsing
 		else:
-			optParams+=getTabs(1)+"# "+param.desc+"\n"
+			if param.desc is not None:
+				optParams+=getTabs(1)+"# "+param.desc+"\n"
 			optParams+=getTabs(1)+param.name+": "+(param.value if param.value is not None else "")+"\n\n"
 
 	if len(manParams)>0:
