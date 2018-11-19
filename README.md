@@ -48,19 +48,20 @@ A preliminary whitepaper about this work is available at https://arxiv.org/abs/1
 }
 ```
 
-#### Script usage
+### Script usage
 
 To command structure would be the following:
 ```
-python hrim.py {show|generate} {path-to-component.xml} [1]
+python hrim.py {show|generate} {path-to-component.xml}
 ```
 Where:
 
 `{show|generate}` is mandatory and signifies the action to take:
-* `show` parses the passed module file and prints it's processed contents.
-* `generate` parses the passed module file and generates the corresponding .msg and/or .srv files to use with ROS2. The generated files will be located inside  a `generated` folder on the root of the repository.
+* **show**: parses the passed module file and prints it's processed contents.
+* **generate**: parses the passed module file and generates the corresponding files to use with ROS2. The generated files will be located inside  a `generated` folder on the root of the repository.
 
-`{path-to-component.xml}` is mandatory and signifies the absolute path to one of the following files:
+`{path-to-component.xml}` is mandatory and signifies the path (either absolute or relative from the repository's root) to one of the following files:
+* models/actuator/gasdetector/gasdetector.xml
 * models/actuator/servo/servo.xml
 * models/actuator/servo/servo_clean.xml
 * models/actuator/gripper/gripper.xml
@@ -70,4 +71,28 @@ Where:
 * models/sensor/torque/torque.xml
 * models/sensor/torque/torque_clean.xml
 
-`[1]` is optional and only taken into account for the `show` command. It signifies the script should show the definition of topics/properties not defined inside the parsed component itself, for example the generic topics (id, power...) or the header.
+All of the following would be valid paths:
+* `$(pwd)/models/sensor/torque/torque.xml`
+* `./models/sensor/torque/torque.xml`
+* `/models/sensor/torque/torque.xml`
+* `models/sensor/torque/torque.xml`
+
+
+Alternatively, shorthands are provided to **generate** the files for every existing module:
+* **all**: will generate the files for every existing (non-development) module file.
+* **allClean**: will generate the files for every existing development module file (module xml files ending with *_clean*).
+
+### Examples
+
+While positioned at the repository's root all of the following are valid command executions:
+
+* `python hrim.py show $(pwd)/models/sensor/torque/torque.xml`
+* `python hrim.py show ./models/sensor/torque/torque.xml`
+* `python hrim.py show /models/sensor/torque/torque.xml`
+* `python hrim.py show models/sensor/torque/torque.xml`
+* `python hrim.py generate $(pwd)/models/sensor/torque/torque.xml`
+* `python hrim.py generate ./models/sensor/torque/torque.xml`
+* `python hrim.py generate /models/sensor/torque/torque.xml`
+* `python hrim.py generate models/sensor/torque/torque.xml`
+* `python hrim.py generate all`
+* `python hrim.py generate allClean`
