@@ -2,6 +2,7 @@ import lxml.etree as ET
 import sys
 import json
 import re
+import os
 from classes import *
 
 # topic parsing and processing
@@ -70,7 +71,11 @@ def main(filePath):
 
 	# check for parsability
 	try:
-		tree = ET.parse(filePath)
+		if os.path.exists(filePath):
+			path = filePath
+		else:
+			path = os.getcwd()+filePath
+		tree = ET.parse(path)
 	except Exception as e:
 		print "Problem parsing "+filePath
 		print e
