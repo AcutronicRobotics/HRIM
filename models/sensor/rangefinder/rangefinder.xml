@@ -6,43 +6,9 @@
 
     <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
 
-    <topic name="specs" type="subscribe" description="device features" fileName="SpecsRangefinder">
-      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-      <property name="radiation_type" type="uint8" unit="enum" enum='{"ULTRASOUND": 0, "INFRARED": 1}'>
-        <value></value>
-      </property>
-      <property name="field_of_view" type="float32">
-        <value></value>
-      </property>
-      <property name="min_time_measuremets" type="float32">
-        <value></value>
-      </property>
-      <property name="min_operating_temp" type="float32">
-        <value></value>
-      </property>
-      <property name="max_range" type="float32">
-        <value></value>
-      </property>
-      <property name="accuracy" type="float32">
-        <value></value>
-      </property>
-    </topic>
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
 
-    <topic name="distance" type="subscribe" description="distance from the object" fileName="Distance">
-      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-      <property name="range_min" type="float32" unit="metre" description="minimum range value">
-        <value></value>
-      </property>
-      <property name="range_max" type="float32" unit="metre" description="maximum range value">
-        <value></value>
-      </property>
-      <property name="time_measurements" type="float32" unit="second" description="time between measurements">
-        <value></value>
-      </property>
-      <property name="distance" type="float32" unit="metre" description="range data">
-        <value></value>
-      </property>
-    </topic>
+    <xi:include href="topics/distance.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="frame_id" type="string" description="tf frame from which the range_finder is publishing">
       <value></value>
@@ -63,27 +29,7 @@
   </mandatory>
   <optional>
 
-    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
-      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-      <property name="orientation" type="quaternion" fileName="Quaternion">
-        <xi:include href="../../complex/quaternion.xml" xpointer="xpointer(//root/property)"/>
-      </property>
-      <property name="orientation_covariance" type="float64[9]">
-        <value></value>
-      </property>
-      <property name="angular_velocity" type="vector3" fileName="Vector3">
-        <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
-      </property>
-      <property name="angular_velocity_covariance" type="float64[9]">
-        <value></value>
-      </property>
-      <property name="linear_acceleration" type="vector3" fileName="Vector3">
-        <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
-      </property>
-      <property name="linear_acceleration_covariance" type="float64[9]">
-        <value></value>
-      </property>
-    </topic>
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
 
   </optional>
 </module>
