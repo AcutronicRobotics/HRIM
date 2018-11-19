@@ -12,10 +12,6 @@
     <type name="uint16" value="uint16"/>
     <type name="uint32" value="uint32"/>
     <type name="uint64" value="uint64"/>
-    <type name="header" value="std_msgs/Header"/>
-    <type name="time" value="builtin_interfaces/Time"/>
-    <type name="quaternion" value="geometry_msgs/Quaternion"/>
-    <type name="vector3" value="geometry_msgs/Vector3"/>
   </platform>
   <platform name="none">
     <type name="boolean" value="boolean"/>
@@ -30,9 +26,5 @@
     <type name="uint16" value="uint16"/>
     <type name="uint32" value="uint32"/>
     <type name="uint64" value="uint64"/>
-    <type name="header" value="header"/>
-    <type name="time" value="time"/>
-    <type name="quaternion" value="quaternion"/>
-    <type name="vector3" value="vector3"/>
   </platform>
 </dataMapping>

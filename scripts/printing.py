@@ -35,7 +35,11 @@ def mostrar(tabs, title, value, type=None):
 def printProperty(property, baseTabs):
 	print getTabs(baseTabs+1)+property.name+" {"
 	# format array values and it's length (if set)
-	type=dataTypes[property.type]+(("[{}]".format(property.length if property.length is not None else "")) if property.array else "")
+	if property.type in dataTypes:
+		type=dataTypes[property.type]+(("[{}]".format(property.length if property.length is not None else "")) if property.array else "")
+	else:
+		# if the type doesn't appear on the dataMapping file we assume it's a generated type, we capitalize it to differentiate them
+		type=property.type[0:1].upper()+property.type[1:]+(("[{}]".format(property.length if property.length is not None else "")) if property.array else "")
 	mostrar(baseTabs+2, "type", type)
 	mostrar(baseTabs+2, "unit", property.unit)
 	if property.unit == "enum":
@@ -45,8 +49,8 @@ def printProperty(property, baseTabs):
 		print getTabs(baseTabs+2)+"]"
 	mostrar(baseTabs+2, "description", property.desc)
 	if len(property.properties) > 0:
-		print getTabs(baseTabs+2)+"origin: "+(property.origin if len(property.origin)>0 else "own")
-		if extend or not len(property.origin)>0:
+		mostrar(baseTabs+2, "fileName", property.fileName)
+		if extend or property.fileName is not None:
 			print getTabs(baseTabs+2)+"properties {\n"
 			for subProp in property.properties:
 				printProperty(subProp, baseTabs+2)
@@ -62,10 +66,10 @@ def printTopic(topic, baseTabs):
 	print getTabs(baseTabs)+topic.name+" {"
 	mostrar(baseTabs+1, "description", topic.desc)
 	mostrar(baseTabs+1, "type", topic.type)
-	print getTabs(baseTabs+1)+"origin: "+(topic.origin if len(topic.origin)>0 else "own")
+	mostrar(baseTabs+1, "fileName", topic.fileName)
 	print getTabs(baseTabs+1)+"mandatory: "+("yes" if topic.mandatory else "no")
 
-	if extend or not len(topic.origin)>0:
+	if extend or topic.fileName is not None:
 		if len(topic.properties)>0:
 			print getTabs(baseTabs+1)+"properties {\n"
 			for prop in topic.properties:
