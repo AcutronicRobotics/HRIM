@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="particular_specs" type="gasType" description="specs of each gas the sensor detects" fileName="GasType">
+    <property name="detect_gas_name" type="string" description="the gases that the sensor can detect">
+      <value></value>
+    </property>
+    <property name="gas_detection_technique" type="uint8" unit="enum" enum='{"HROS_GASSENSOR_CATALYTIC": 0, "HROS_GASSENSOR_ECC": 1, "HROS_GASSENSOR_POINTIR": 2, "HROS_GASSENSOR_OPENPATH": 3, "HROS_GASSENSOR_PID": 4, "HROS_GASSENSOR_SEMICONDUCTOR": 5, "HROS_GASSENSOR_PAPERTAPE": 6, "HROS_GASSENSOR_OTHER": 7}' description="type of the sensor">
+      <value></value>
+    </property>
+    <property name="detection_range" type="uint8" description="maximum value">
+      <value></value>
+    </property>
+  </property>
+</root>

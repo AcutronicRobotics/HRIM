@@ -6,65 +6,9 @@
 
     <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
 
-    <topic name="specs" type="subscribe" description="device features" fileName="SpecsGasDetector">
-      <property name="header" type="header" fileName="Header">
-        <property name="time" type="time" fileName="Time">
-          <property name="sec" type="int32" unit="second">
-            <value></value>
-          </property>
-          <property name="nanosec" type="uint32" unit="nanosecond">
-            <value></value>
-          </property>
-        </property>
-        <property name="frame_id" type="string" description="transform frame with which this data is associated">
-          <value></value>
-        </property>
-      </property>
-      <property name="particular_specs" type="gasType[]" description="specs of each gas the sensor detects" fileName="GasType">
-        <property name="detect_gas_name" type="string" description="the gases that the sensor can detect">
-          <value></value>
-        </property>
-        <property name="gas_detection_technique" type="uint8" unit="enum" enum='{"HROS_GASSENSOR_CATALYTIC": 0, "HROS_GASSENSOR_ECC": 1, "HROS_GASSENSOR_POINTIR": 2, "HROS_GASSENSOR_OPENPATH": 3, "HROS_GASSENSOR_PID": 4, "HROS_GASSENSOR_SEMICONDUCTOR": 5, "HROS_GASSENSOR_PAPERTAPE": 6, "HROS_GASSENSOR_OTHER": 7}' description="type of the sensor">
-          <value></value>
-        </property>
-        <property name="detection_range" type="uint8" description="maximum value">
-          <value></value>
-        </property>
-      </property>
-      <property name="response_time" type="uint32" unit="second" description="time the sensor needs to refresh">
-        <value></value>
-      </property>
-      <property name="display" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
-      </property>
-      <property name="alarm" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
-      </property>
-      <property name="leds" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
-      </property>
-      <property name="wifi" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
-      </property>
-      <property name="gps" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
-      </property>
-    </topic>
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
 
-    <topic name="gas_measurements" type="subscribe" description="detected gas value" fileName="GasMeasurements">
-      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-      <property name="measurements" type="gasMeasurement[]" description="the measurement of each sensor" fileName="GasMeasurement">
-        <property name="gas_name" type="string" description="the name of the gas">
-          <value></value>
-        </property>
-        <property name="value" type="uint8" description="the measurement of the gas in ppm, ppb or % depending on the gas type">
-          <value></value>
-        </property>
-        <property name="unit" type="string" description="ppm (parts per million), ppb (parts per billion) or %">
-          <value></value>
-        </property>
-      </property>
-    </topic>
+    <xi:include href="topics/gasMeasurements.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="frame_id" type="string" description="tf frame from which the torque sensor is publishing">
       <value></value>
@@ -77,27 +21,7 @@
   </mandatory>
   <optional>
 
-    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
-      <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-      <property name="orientation" type="quaternion" fileName="Quaternion">
-        <xi:include href="../../complex/quaternion.xml" xpointer="xpointer(//root/property)"/>
-      </property>
-      <property name="orientation_covariance" type="float64[9]">
-        <value></value>
-      </property>
-      <property name="angular_velocity" type="vector3" fileName="Vector3">
-        <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
-      </property>
-      <property name="angular_velocity_covariance" type="float64[9]">
-        <value></value>
-      </property>
-      <property name="linear_acceleration" type="vector3" fileName="Vector3">
-        <xi:include href="../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
-      </property>
-      <property name="linear_acceleration_covariance" type="float64[9]">
-        <value></value>
-      </property>
-    </topic>
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
 
   </optional>
 </module>
