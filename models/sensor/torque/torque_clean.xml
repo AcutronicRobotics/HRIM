@@ -249,7 +249,7 @@
       </property>
     </topic>
 
-    <topic name="model_3d" type="subscribe" fileName="Simulation3D">
+    <topic name="module_3d" type="subscribe" fileName="Simulation3D">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -268,7 +268,7 @@
       </property>
     </topic>
 
-    <topic name="model_urdf" type="subscribe" fileName="SimulationURDF">
+    <topic name="module_urdf" type="subscribe" fileName="SimulationURDF">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">

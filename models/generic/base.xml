@@ -6,6 +6,6 @@
   <xi:include href="power.xml"/>
   <xi:include href="specs_comm.xml"/>
   <xi:include href="state_comm.xml"/>
-  <xi:include href="model_3d.xml"/>
-  <xi:include href="model_urdf.xml"/>
+  <xi:include href="module_3d.xml"/>
+  <xi:include href="module_urdf.xml"/>
 </root>
