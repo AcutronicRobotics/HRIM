@@ -27,6 +27,8 @@
 
     <xi:include href="topics/cycle.xml" xpointer="xpointer(//root/topic)"/>
 
+    <xi:include href="topics/goalPressure.xml" xpointer="xpointer(//root/topic)"/>
+
     <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
 
   </optional>
