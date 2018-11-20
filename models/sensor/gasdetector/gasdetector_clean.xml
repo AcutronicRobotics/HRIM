@@ -3,7 +3,7 @@
   noNamespaceSchemaLocation="../../schemas/module.xsd">
   <mandatory>
 
-    <topic name="id" type="subscribe" fileName="ID">
+    <topic name="id" type="publish" fileName="ID">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -40,7 +40,7 @@
       </property>
     </topic>
 
-    <topic name="status" type="subscribe" fileName="Status">
+    <topic name="status" type="publish" fileName="Status">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -170,7 +170,7 @@
       </property>
     </topic>
 
-    <topic name="power" type="subscribe" fileName="Power">
+    <topic name="power" type="publish" fileName="Power">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -201,7 +201,7 @@
       </property>
     </topic>
 
-    <topic name="specs_comm" type="subscribe" fileName="SpecsCommunication">
+    <topic name="specs_comm" type="publish" fileName="SpecsCommunication">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -226,7 +226,7 @@
       </property>
     </topic>
 
-    <topic name="state_comm" type="subscribe" fileName="StateCommunication">
+    <topic name="state_comm" type="publish" fileName="StateCommunication">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -248,7 +248,7 @@
       </property>
     </topic>
 
-    <topic name="module_3d" type="subscribe" fileName="Simulation3D">
+    <topic name="module_3d" type="publish" fileName="Simulation3D">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -267,7 +267,7 @@
       </property>
     </topic>
 
-    <topic name="module_urdf" type="subscribe" fileName="SimulationURDF">
+    <topic name="module_urdf" type="publish" fileName="SimulationURDF">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -286,7 +286,7 @@
       </property>
     </topic>
 
-    <topic name="specs" type="subscribe" description="device features" fileName="SpecsGasDetector">
+    <topic name="specs" type="publish" description="device features" fileName="SpecsGasDetector">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -331,7 +331,7 @@
       </property>
     </topic>
 
-    <topic name="gas_measurements" type="subscribe" description="detected gas value" fileName="GasMeasurements">
+    <topic name="gas_measurements" type="publish" description="detected gas value" fileName="GasMeasurements">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -369,7 +369,7 @@
   </mandatory>
   <optional>
 
-    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
+    <topic name="reconfiguration" type="publish" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="specs" type="subscribe" description="device features" fileName="SpecsTorque">
+  <topic name="specs" type="publish" description="device features" fileName="SpecsTorque">
     <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
     <property name="max_torque" type="uint16" unit="newtons per metre" description="maximum measurable torque">
       <value></value>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="specs" type="subscribe" description="main characteristics of the finger gripper" fileName="SpecsFingerGripper">
+  <topic name="specs" type="publish" description="main characteristics of the finger gripper" fileName="SpecsFingerGripper">
     <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
     <property name="min_force" type="float32" unit="newton" description="minimum gripping force">
       <value></value>

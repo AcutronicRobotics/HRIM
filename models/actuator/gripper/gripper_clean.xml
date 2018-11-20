@@ -3,7 +3,7 @@
   noNamespaceSchemaLocation="../../schemas/module.xsd">
   <mandatory>
 
-    <topic name="id" type="subscribe" fileName="ID">
+    <topic name="id" type="publish" fileName="ID">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -40,7 +40,7 @@
       </property>
     </topic>
 
-    <topic name="status" type="subscribe" fileName="Status">
+    <topic name="status" type="publish" fileName="Status">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -170,7 +170,7 @@
       </property>
     </topic>
 
-    <topic name="power" type="subscribe" fileName="Power">
+    <topic name="power" type="publish" fileName="Power">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -201,7 +201,7 @@
       </property>
     </topic>
 
-    <topic name="specs_comm" type="subscribe" fileName="SpecsCommunication">
+    <topic name="specs_comm" type="publish" fileName="SpecsCommunication">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -226,7 +226,7 @@
       </property>
     </topic>
 
-    <topic name="state_comm" type="subscribe" fileName="StateCommunication">
+    <topic name="state_comm" type="publish" fileName="StateCommunication">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -248,7 +248,7 @@
       </property>
     </topic>
 
-    <topic name="module_3d" type="subscribe" fileName="Simulation3D">
+    <topic name="module_3d" type="publish" fileName="Simulation3D">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -267,7 +267,7 @@
       </property>
     </topic>
 
-    <topic name="module_urdf" type="subscribe" fileName="SimulationURDF">
+    <topic name="module_urdf" type="publish" fileName="SimulationURDF">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -286,7 +286,7 @@
       </property>
     </topic>
 
-    <topic name="specs" type="subscribe" description="main characteristics of the finger gripper" fileName="SpecsFingerGripper">
+    <topic name="specs" type="publish" description="main characteristics of the finger gripper" fileName="SpecsFingerGripper">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -329,7 +329,7 @@
       </property>
     </topic>
 
-    <topic name="specs" type="subscribe" description="main characteristics of the magnetic gripper" fileName="SpecsMagneticGripper">
+    <topic name="specs" type="publish" description="main characteristics of the magnetic gripper" fileName="SpecsMagneticGripper">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -351,7 +351,7 @@
       </property>
     </topic>
 
-    <topic name="specs" type="subscribe" description="main characteristics of the vacuum gripper" fileName="SpecsVacuumGripper">
+    <topic name="specs" type="publish" description="main characteristics of the vacuum gripper" fileName="SpecsVacuumGripper">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -387,7 +387,7 @@
       </response>
     </topic>
 
-    <topic name="state" type="subscribe" description="notify if the gripper is activate or not" fileName="StateGripper">
+    <topic name="state" type="publish" description="notify if the gripper is activate or not" fileName="StateGripper">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -443,7 +443,7 @@
       </response>
     </topic>
 
-    <topic name="state_finger_gripper" type="subscribe" description="finger gripper state is at this time" fileName="StateFingerGripper">
+    <topic name="state_finger_gripper" type="publish" description="finger gripper state is at this time" fileName="StateFingerGripper">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -465,7 +465,7 @@
       </property>
     </topic>
 
-    <topic name="cycle_time" type="subscribe" description="time that the gripper must take to complete the cycle: the time between catching the object and leaving it" fileName="CycleTime">
+    <topic name="cycle_time" type="publish" description="time that the gripper must take to complete the cycle: the time between catching the object and leaving it" fileName="CycleTime">
       <property name="header" type="header" description="the acquisition time of the completed cycle" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -484,7 +484,7 @@
       </property>
     </topic>
 
-    <topic name="goal_pressure" type="subscribe" description="maximum pressure that the gripper will make on the object" fileName="GoalTactilePressure">
+    <topic name="goal_pressure" type="publish" description="maximum pressure that the gripper will make on the object" fileName="GoalTactilePressure">
       <property name="header" type="header" description="pressure is at this time" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -503,7 +503,7 @@
       </property>
     </topic>
 
-    <topic name="reconfiguration" type="subscribe" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
+    <topic name="reconfiguration" type="publish" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
