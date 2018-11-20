@@ -2,7 +2,7 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="acceleration" type="subscribe" description="control the acceleration" fileName="GoalAngularAcceleration">
-    <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
     <property name="acceleration" type="float32" unit="radians per second squared" description="angular acceleration">
       <value></value>
     </property>
