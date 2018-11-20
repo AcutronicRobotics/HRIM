@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="goalpro" type="service" description="allows the user to work with different values" fileName="ControlFinger">
+    <property name="goal_linearposition" type="float32" unit="metre" description="distance between fingers">
+      <value></value>
+    </property>
+    <property name="goal_angularposition" type="float32" unit="radian" description="angle of the joint">
+      <value></value>
+    </property>
+    <property name="goal_effort" type="float32" unit="newton" description="maximun effort to apply">
+      <value></value>
+    </property>
+    <property name="goal_velocity" type="float32" unit="metres per second" description="velocity to open/close fingers, if 0 gripper contains pressure sensor">
+      <value></value>
+    </property>
+    <property name="goal_acceleration" type="float32" unit="metres per second squared" description="acceleration to open fingers">
+      <value></value>
+    </property>
+    <response>
+      <property name="goal_accepted" type="boolean" description="true: the goal is accepted | false: the goal is not accepted">
+        <value></value>
+      </property>
+    </response>
+  </topic>
+</root>

@@ -443,7 +443,7 @@
       </response>
     </topic>
 
-    <topic name="state_finder_gripper" type="subscribe" description="finger gripper state is at this time" fileName="StateFingerGripper">
+    <topic name="state_finger_gripper" type="subscribe" description="finger gripper state is at this time" fileName="StateFingerGripper">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">

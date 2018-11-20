@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="goalpro" type="service" description="allows the user to work with different suction values" fileName="ControlVacuum">
+    <property name="goal_percentage_suction" type="float32" unit="percentage" description="suction value on the maximum allowed">
+      <value></value>
+    </property>
+    <response>
+      <property name="goal_accepted" type="boolean" description="true: the goal is accepted | false: the goal is not accepted">
+        <value></value>
+      </property>
+    </response>
+  </topic>
+</root>
