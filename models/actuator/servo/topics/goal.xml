@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="goal" type="subscribe" description="control the position, velocity or/and effort" fileName="GoalRotaryServo">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
+      <value></value>
+    </property>
+    <property name="position" type="float64" unit="radian" description="goal position">
+      <value></value>
+    </property>
+    <property name="velocity" type="float32" unit="radians per second" description="movement velocity">
+      <value></value>
+    </property>
+    <property name="effort" type="float32" unit="newtons per metre" description="movement torque">
+      <value></value>
+    </property>
+  </topic>
+</root>
