@@ -23,6 +23,8 @@ set(msg_files
   "msg/Power.msg"
   "msg/Simulation3D.msg"
   "msg/SimulationURDF.msg"
+  "msg/SpecsCommunication.msg"
+  "msg/StateCommunication.msg"
   "msg/Status.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
