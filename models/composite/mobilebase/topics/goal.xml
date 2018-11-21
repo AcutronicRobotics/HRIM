@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="goal_position" type="publish" description="movement orders" fileName="GoalMobileBase">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="velocity" type="float32" unit="metres per second" description="vehicle velocity, negative = backwards">
+      <value></value>
+    </property>
+    <property name="direction_angle" type="float32" description="turning angle, positive = right, negative = left">
+      <value></value>
+    </property>
+  </topic>
+</root>

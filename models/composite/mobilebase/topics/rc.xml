@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="rc" type="publish" description="remote control" fileName="RC">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="axes" type="float32[]" unit="metres per second" description="axes measurements from a joystick">
+      <value></value>
+    </property>
+    <property name="buttons" type="int32[]" description="buttons from a controller">
+      <value></value>
+    </property>
+  </topic>
+</root>
