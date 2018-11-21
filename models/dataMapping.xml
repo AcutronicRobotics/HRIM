@@ -6,6 +6,8 @@
     <type name="enum" value="enum"/>
     <type name="float32" value="float32"/>
     <type name="float64" value="float64"/>
+    <type name="int8" value="int8"/>
+    <type name="int16" value="int16"/>
     <type name="int32" value="int32"/>
     <type name="string" value="string"/>
     <type name="uint8" value="uint8"/>
@@ -20,6 +22,8 @@
     <type name="enum" value="enum"/>
     <type name="float32" value="float32"/>
     <type name="float64" value="float64"/>
+    <type name="int8" value="int8"/>
+    <type name="int16" value="int16"/>
     <type name="int32" value="int32"/>
     <type name="string" value="string"/>
     <type name="uint8" value="uint8"/>
