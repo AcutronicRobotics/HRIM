@@ -28,9 +28,16 @@ def main(args):
 		if args[2] == "all":
 			path = os.getcwd()
 			for file in [
+				path+"/models/actuator/electricmotor/electricmotor.xml",
 				path+"/models/actuator/gripper/gripper.xml",
 				path+"/models/actuator/servo/servo.xml",
+				path+"/models/composite/conveyor/conveyor.xml",
+				path+"/models/composite/mobilebase/mobilebase.xml",
+				path+"/models/power/battery/battery.xml",
+				path+"/models/sensor/encoder/encoder.xml",
 				path+"/models/sensor/gasdetector/gasdetector.xml",
+				path+"/models/sensor/gps/gps.xml",
+				path+"/models/sensor/lidar/lidar.xml",
 				path+"/models/sensor/rangefinder/rangefinder.xml",
 				path+"/models/sensor/torque/torque.xml"
 			]:
@@ -40,8 +47,16 @@ def main(args):
 		elif args[2] == "allClean":
 			path = os.getcwd()
 			for file in [
+				path+"/models/actuator/electricmotor/electricmotor_clean.xml",
 				path+"/models/actuator/gripper/gripper_clean.xml",
 				path+"/models/actuator/servo/servo_clean.xml",
+				path+"/models/composite/conveyor/conveyor_clean.xml",
+				path+"/models/composite/mobilebase/mobilebase_clean.xml",
+				path+"/models/power/battery/battery_clean.xml",
+				path+"/models/sensor/encoder/encoder_clean.xml",
+				path+"/models/sensor/gasdetector/gasdetector_clean.xml",
+				path+"/models/sensor/gps/gps_clean.xml",
+				path+"/models/sensor/lidar/lidar_clean.xml",
 				path+"/models/sensor/rangefinder/rangefinder_clean.xml",
 				path+"/models/sensor/torque/torque_clean.xml"
 			]:

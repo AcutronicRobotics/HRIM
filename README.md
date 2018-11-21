@@ -61,11 +61,26 @@ Where:
 * **generate**: parses the passed module file and generates the corresponding files to use with ROS2. The generated files will be located inside  a `generated` folder on the root of the repository.
 
 `{path-to-component.xml}` is mandatory and signifies the path (either absolute or relative from the repository's root) to one of the following files:
-* models/actuator/gasdetector/gasdetector.xml
-* models/actuator/servo/servo.xml
-* models/actuator/servo/servo_clean.xml
+* models/actuator/electricmotor/electricmotor.xml
+* models/actuator/electricmotor/electricmotor_clean.xml
 * models/actuator/gripper/gripper.xml
 * models/actuator/gripper/gripper_clean.xml
+* models/actuator/servo/servo.xml
+* models/actuator/servo/servo_clean.xml
+* models/composite/conveyor/conveyor.xml
+* models/composite/conveyor/conveyor_clean.xml
+* models/composite/mobilebase/mobilebase.xml
+* models/composite/mobilebase/mobilebase_clean.xml
+* models/power/battery/battery.xml
+* models/power/battery/battery_clean.xml
+* models/sensor/encoder/encoder.xml
+* models/sensor/encoder/encoder_clean.xml
+* models/sensor/gasdetector/gasdetector.xml
+* models/sensor/gasdetector/gasdetector_clean.xml
+* models/sensor/gps/gps.xml
+* models/sensor/gps/gps_clean.xml
+* models/sensor/lidar/lidar.xml
+* models/sensor/lidar/lidar_clean.xml
 * models/sensor/rangefinder/rangefinder.xml
 * models/sensor/rangefinder/rangefinder_clean.xml
 * models/sensor/torque/torque.xml
