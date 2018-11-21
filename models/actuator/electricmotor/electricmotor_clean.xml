@@ -379,7 +379,7 @@
   </mandatory>
   <optional>
 
-    <topic name="rc" type="publish" description="remote control" fileName="RC">
+    <topic name="rc" type="subscribe" description="remote control" fileName="RC">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">

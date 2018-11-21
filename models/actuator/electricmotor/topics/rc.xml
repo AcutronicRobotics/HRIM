@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="rc" type="publish" description="remote control" fileName="RC">
+  <topic name="rc" type="subscribe" description="remote control" fileName="RC">
     <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
     <property name="axes" type="float32[]" description="axis measurements from a joystick">
       <value></value>

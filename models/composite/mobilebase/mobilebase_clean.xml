@@ -383,7 +383,7 @@
   </mandatory>
   <optional>
 
-    <topic name="rc" type="publish" description="remote control" fileName="RC">
+    <topic name="rc" type="subscribe" description="remote control" fileName="RC">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -397,7 +397,7 @@
           <value></value>
         </property>
       </property>
-      <property name="axes" type="float32[]" unit="metres per second" description="axes measurements from a joystick">
+      <property name="axes" type="float32[]" description="axis measurements from a joystick">
         <value></value>
       </property>
       <property name="buttons" type="int32[]" description="buttons from a controller">
