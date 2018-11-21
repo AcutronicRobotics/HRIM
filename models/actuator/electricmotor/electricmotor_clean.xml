@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<module name="electricmotor" type="actuator" description="defines the messages to interact with a servomotor"
+<module name="electricmotor" type="actuator" description="defines the messages to interact with an electric motor"
   noNamespaceSchemaLocation="../../schemas/module.xsd">
   <mandatory>
 
