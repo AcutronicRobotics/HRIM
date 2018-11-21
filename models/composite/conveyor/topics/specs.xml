@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="specs" type="publish" description="device features" fileName="SpecsConveyor">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="conveyor_quantity" type="uint16" description="number of independent conveyors">
+      <value></value>
+    </property>
+    <property name="characteristics" type="specsConveyorIndependent[]" fileName="SpecsConveyorIndependent">
+      <xi:include href="specsIndependent.xml" xpointer="xpointer(//root/property/property)"/>
+    </property>
+  </topic>
+</root>

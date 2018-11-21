@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<module name="conveyor" type="composite" description="defines the messages to interact with an H-ROS conveyor"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/goal.xml" xpointer="xpointer(//root/topic)"/>
+
+  </mandatory>
+  <optional>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+
+  </optional>
+</module>
