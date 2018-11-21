@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<module name="battery" type="power" description="defines the messages to interact with batteries"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/level.xml" xpointer="xpointer(//root/topic)"/>
+
+  </mandatory>
+  <optional>
+
+    <xi:include href="topics/statusBattery.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="battery_low" type="int" unit="percentage" description="capacity percentage at first warning">
+      <value></value>
+    </param>
+
+    <param name="battery_critical" type="int" unit="percentage" description="capacity percentage at critical level">
+      <value></value>
+    </param>
+
+  </optional>
+</module>
