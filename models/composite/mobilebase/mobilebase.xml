@@ -21,5 +21,12 @@
 
     <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
 
+    <param name="rc_max_velocity" type="double" unit="meters per second" description="maximum linear velocity value through joystick control">
+      <value></value>
+    </param>
+
+    <param name="rc_max_yaw" type="double" unit="radians per second" description="maximum vehicle turning angle through joystick control">
+      <value></value>
+    </param>
   </optional>
 </module>
