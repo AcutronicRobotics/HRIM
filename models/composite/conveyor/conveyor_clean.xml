@@ -313,7 +313,7 @@
       </property>
     </topic>
 
-    <topic name="goal" type="publish" description="band 1, goal linear velocity" fileName="GoalConveyor">
+    <topic name="goal" type="publish" description="belt linear velocity goal" fileName="GoalConveyor">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">
@@ -327,7 +327,7 @@
           <value></value>
         </property>
       </property>
-      <property name="id_number" type="uint16" description="number to identify the band (provided for the manufacturer)">
+      <property name="id_number" type="uint16" description="number to identify the belt (provided for the manufacturer)">
         <value></value>
       </property>
       <property name="velocity" type="float32" unit="metres per second" description="conveyor velocity">
