@@ -1,0 +1,569 @@
+<?xml version="1.0"?>
+<module name="arm" type="composite" description="defines the messages to interact with an H-ROS arm"
+  noNamespaceSchemaLocation="../../schemas/module.xsd">
+  <mandatory>
+
+    <topic name="id" type="publish" fileName="ID">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
+        <value></value>
+      </property>
+      <property name="device_name" type="string" description="sub-type">
+        <value></value>
+      </property>
+      <property name="vendor_id" type="uint32" description="vendor identifier">
+        <value></value>
+      </property>
+      <property name="product_id" type="uint32" description="part number">
+        <value></value>
+      </property>
+      <property name="instance_id" type="uint32" description="module unique identifier">
+        <value></value>
+      </property>
+      <property name="hrim_version" type="string" description="used hrim version">
+        <value></value>
+      </property>
+      <property name="hros_version" type="string" description="used h-ros version">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="status" type="publish" fileName="Status">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="instance_id" type="uint32">
+        <value></value>
+      </property>
+      <property name="system_cpu" type="float32" unit="percentage" description="total cpu utilization">
+        <value></value>
+      </property>
+      <property name="core_temperature" type="float32" unit="celsius" description="cpu temperature">
+        <value></value>
+      </property>
+      <property name="system_ram_total" type="uint32" unit="megabyte" description="total ram">
+        <value></value>
+      </property>
+      <property name="system_ram_used" type="uint32" unit="megabyte" description="used ram">
+        <value></value>
+      </property>
+      <property name="system_ram_free" type="uint32" unit="megabyte" description="free ram">
+        <value></value>
+      </property>
+      <property name="system_io_in" type="float32" unit="kilobytes per second" description="disk input speed">
+        <value></value>
+      </property>
+      <property name="system_io_out" type="float32" unit="kilobytes per second" description="disk output speed">
+        <value></value>
+      </property>
+      <property name="system_ipv4_ip" type="string[]" unit="ip" description="ipv4 address">
+        <value></value>
+      </property>
+      <property name="system_ipv4_received" type="float32" unit="kilobytes per second" description="ipv4 received bandwidth">
+        <value></value>
+      </property>
+      <property name="system_ipv4_sent" type="float32" unit="kilobytes per second" description="ipv4 sent bandwidth">
+        <value></value>
+      </property>
+      <property name="ipv4_tcpsock" type="uint16" description="number of tcp active connections">
+        <value></value>
+      </property>
+      <property name="ipv4_tcppackets_received" type="float32" description="number of tcp received packages">
+        <value></value>
+      </property>
+      <property name="ipv4_tcppackets_sent" type="float32" description="number of tcp sent packages">
+        <value></value>
+      </property>
+      <property name="ipv4_tcp_errors" type="float32" description="number of tcp error packages">
+        <value></value>
+      </property>
+      <property name="ipv4_udppackets_received" type="float32" description="number of udp received packages">
+        <value></value>
+      </property>
+      <property name="ipv4_udppackets_sent" type="float32" description="number of udp sent packages">
+        <value></value>
+      </property>
+      <property name="ipv4_udp_errors" type="float32" description="number of udp error packages">
+        <value></value>
+      </property>
+      <property name="cpu_interrupts" type="float32">
+        <value></value>
+      </property>
+      <property name="cpu_context_switches" type="float32">
+        <value></value>
+      </property>
+      <property name="softnet_processed" type="uint32">
+        <value></value>
+      </property>
+      <property name="softnet_dropped" type="uint32">
+        <value></value>
+      </property>
+      <property name="softnet_squeezed" type="uint32">
+        <value></value>
+      </property>
+      <property name="softnet_received_rps" type="uint32">
+        <value></value>
+      </property>
+      <property name="softnet_flow_limit_count" type="uint32">
+        <value></value>
+      </property>
+      <property name="softirqs_hi" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_timer" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_net_tx" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_net_rx" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_block" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_irq_poll" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_tasklet" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_sched" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_hrtimer" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_rcu" type="uint64">
+        <value></value>
+      </property>
+      <property name="load1" type="float32">
+        <value></value>
+      </property>
+      <property name="load5" type="float32">
+        <value></value>
+      </property>
+      <property name="load15" type="float32">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="power" type="publish" fileName="Power">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="voltage" type="float32" unit="volt">
+        <value></value>
+      </property>
+      <property name="current_consumption" type="float32" unit="ampere">
+        <value></value>
+      </property>
+      <property name="current_surplus" type="float32" unit="ampere" description="current injection for the whole system">
+        <value></value>
+      </property>
+      <property name="power_consumption" type="float32" unit="watt">
+        <value></value>
+      </property>
+      <property name="power_surplus" type="float32" unit="watt" description="power injection for the whole system">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="specs_comm" type="publish" fileName="SpecsCommunication">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
+        <value></value>
+      </property>
+      <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
+        <value></value>
+      </property>
+      <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="state_comm" type="publish" fileName="StateCommunication">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="comm_rate" type="double" unit="hertz" description="frequency at which the component is working">
+        <value></value>
+      </property>
+      <property name="size_msgs" type="double" unit="megabit" description="amount of megabits the component is sending">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="module_3d" type="publish" fileName="Simulation3D">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="model" type="byte[]" unit="stl" description=".stl of the component">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="module_urdf" type="publish" fileName="SimulationURDF">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="urdf_model" type="string" unit="urdf" description="the urdf corresponding to the component's .stl">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="specs" type="publish" description="device features" fileName="SpecsArm">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="arm_type" type="uint8" unit="enum" enum='{"ARM_TYPE_CARTESIAN": 0, "ARM_TYPE_CYLIDRICAL": 1, "ARM_TYPE_SPHERICAL": 2, "ARM_TYPE_SCARA": 3, "ARM_TYPE_ARTICULATED": 4, "ARM_TYPE_PARALLEL": 5}' description="robotic arm type">
+        <value></value>
+      </property>
+      <property name="dof" type="uint32" description="amount of degrees of freedom">
+        <value></value>
+      </property>
+      <property name="max_payload" type="float32" unit="kilogram" description="maximum payload">
+        <value></value>
+      </property>
+      <property name="x_axis" type="boolean" description="wether the robot can move in the x axis">
+        <value></value>
+      </property>
+      <property name="y_axis" type="boolean" description="wether the robot can move in the y axis">
+        <value></value>
+      </property>
+      <property name="z_axis" type="boolean" description="wether the robot can move in the z axis">
+        <value></value>
+      </property>
+      <property name="max_x_reach" type="float32" unit="metre" description="x maximum position relative to the origin">
+        <value></value>
+      </property>
+      <property name="max_y_reach" type="float32" unit="metre" description="y maximum position relative to the origin">
+        <value></value>
+      </property>
+      <property name="max_z_reach" type="float32" unit="metre" description="z maximum position relative to the origin">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="goal_end" type="service" description="end-effector position" fileName="GoalEndPosition">
+      <property name="goal_x" type="float32" description="x position goal relative to origin">
+        <value></value>
+      </property>
+      <property name="goal_y" type="float32" description="y position goal relative to origin">
+        <value></value>
+      </property>
+      <property name="goal_z" type="float32" description="z position goal relative to origin">
+        <value></value>
+      </property>
+      <property name="velocity" type="float32" unit="meters per second" description="velocity of the movements">
+        <value></value>
+      </property>
+      <response>
+        <property name="success" type="boolean">
+          <value></value>
+        </property>
+      </response>
+    </topic>
+
+    <topic name="joint_states" type="publish" description="state of the joints" fileName="JointStates">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE" : 0 , "CONTROL_TYPE_POSITION" : 1 , "CONTROL_TYPE_VELOCITY" : 2 , "CONTROL_TYPE_EFFORT" : 3 , "CONTROL_TYPE_POSITION_VELOCITY" : 4 , "CONTROL_TYPE_POSITION_EFFORT" : 5 , "CONTROL_TYPE_VELOCITY_EFFORT" : 6 , "CONTROL_TYPE_POSITION_VELOCITY_EFFORT" : 7}' description="arm control type">
+        <value></value>
+      </property>
+      <property name="joint_names" type="string[]" description="parameter that each servomotor has">
+        <value></value>
+      </property>
+      <property name="position" type="float64[]" unit="radian" description="servomotor position">
+        <value></value>
+      </property>
+      <property name="velocity" type="float64[]" unit="radians per second" description="servomotor velocity">
+        <value></value>
+      </property>
+      <property name="effort" type="float64[]" unit="newtons per metre" description="servomotor torque">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="joint_movement" type="service" description="state of the joints" fileName="GoalJointMovement">
+      <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE" : 0 , "CONTROL_TYPE_POSITION" : 1 , "CONTROL_TYPE_VELOCITY" : 2 , "CONTROL_TYPE_EFFORT" : 3 , "CONTROL_TYPE_POSITION_VELOCITY" : 4 , "CONTROL_TYPE_POSITION_EFFORT" : 5 , "CONTROL_TYPE_VELOCITY_EFFORT" : 6 , "CONTROL_TYPE_POSITION_VELOCITY_EFFORT" : 7}' description="arm control type">
+        <value></value>
+      </property>
+      <property name="joint_names" type="string[]" description="parameter that each servomotor has">
+        <value></value>
+      </property>
+      <property name="position" type="float64[]" unit="radian" description="servomotor position">
+        <value></value>
+      </property>
+      <property name="velocity" type="float64[]" unit="radians per second" description="servomotor velocity">
+        <value></value>
+      </property>
+      <property name="effort" type="float64[]" unit="newtons per metre" description="servomotor torque">
+        <value></value>
+      </property>
+      <response>
+        <property name="success" type="boolean">
+          <value></value>
+        </property>
+      </response>
+    </topic>
+
+    <topic name="joint_trajectory" type="service" description="create a joint trajectory" fileName="GoalJointTrajectory">
+      <property name="joint_names" type="string[]">
+        <value></value>
+      </property>
+      <property name="points" type="jointTrajectoryPoint[]" fileName="JointTrajectoryPoint">
+        <property name="positions" type="float64[]" unit="radian">
+          <value></value>
+        </property>
+        <property name="velocities" type="float64[]" unit="radians per second">
+          <value></value>
+        </property>
+        <property name="accelerations" type="float64[]" unit="radians per second squared">
+          <value></value>
+        </property>
+        <property name="effort" type="float64[]" unit="newtons per metre">
+          <value></value>
+        </property>
+        <property name="time" type="float32" unit="second">
+          <value></value>
+        </property>
+      </property>
+      <response>
+        <property name="success" type="boolean">
+          <value></value>
+        </property>
+      </response>
+    </topic>
+
+    <param name="arm_name" type="string" description="The name of the arm.">
+      <value></value>
+    </param>
+
+    <param name="joint_names" type="string[]" description="Names of the joint of the arm.">
+      <value></value>
+    </param>
+
+    <param name="x_angle_y_direction" type="float64" unit="rad" description="Related to fix the origin: Turn the X axis in the direction where the Y axis is">
+      <value></value>
+    </param>
+
+    <param name="x_angle_z_direction" type="float64" unit="rad" description="Related to fix the origin: Turn the X axis in the direction where the Z axis is">
+      <value></value>
+    </param>
+
+    <param name="y_angle_x_direction" type="float64" unit="rad" description="Related to fix the origin: Turn the Y axis in the direction where the X axis is">
+      <value></value>
+    </param>
+
+    <param name="y_angle_z_direction" type="float64" unit="rad" description="Related to fix the origin: Turn the Y axis in the direction where the Z axis is">
+      <value></value>
+    </param>
+
+    <param name="z_direction" type="bool" unit="[0/1]" description="Related to fix the origin: True: the z-axis direction is okey/ False: reverse direction">
+      <value></value>
+    </param>
+
+    <param name="x_position" type="double" unit="m" description="Related to fix the origin: X axis position according to the marked origin">
+      <value></value>
+    </param>
+
+    <param name="y_position" type="double" unit="m" description="Related to fix the origin: Y axis position according to the marked origin">
+      <value></value>
+    </param>
+
+    <param name="z_position" type="double" unit="m" description="Related to fix the origin: Z axis position according to the marked origin">
+      <value></value>
+    </param>
+
+  </mandatory>
+  <optional>
+
+    <topic name="rc" type="subscribe" description="remote control" fileName="RC">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="axes" type="float32[]" description="axis measurements from a joystick">
+        <value></value>
+      </property>
+      <property name="buttons" type="int32[]" description="buttons from a controller">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="reconfiguration" type="publish" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="orientation" type="quaternion" fileName="Quaternion">
+        <property name="x" type="float64">
+          <value></value>
+        </property>
+        <property name="y" type="float64">
+          <value></value>
+        </property>
+        <property name="z" type="float64">
+          <value></value>
+        </property>
+        <property name="w" type="float64">
+          <value></value>
+        </property>
+      </property>
+      <property name="orientation_covariance" type="float64[9]">
+        <value></value>
+      </property>
+      <property name="angular_velocity" type="vector3" fileName="Vector3">
+        <property name="x" type="float64">
+          <value></value>
+        </property>
+        <property name="y" type="float64">
+          <value></value>
+        </property>
+        <property name="z" type="float64">
+          <value></value>
+        </property>
+      </property>
+      <property name="angular_velocity_covariance" type="float64[9]">
+        <value></value>
+      </property>
+      <property name="linear_acceleration" type="vector3" fileName="Vector3">
+        <property name="x" type="float64">
+          <value></value>
+        </property>
+        <property name="y" type="float64">
+          <value></value>
+        </property>
+        <property name="z" type="float64">
+          <value></value>
+        </property>
+      </property>
+      <property name="linear_acceleration_covariance" type="float64[9]">
+        <value></value>
+      </property>
+    </topic>
+
+    <param name="rc_max_velocity" type="double" unit="radians per second" description="maximum angular velocity value through joystick control">
+      <value></value>
+    </param>
+
+    <param name="rc_max_yaw" type="double" unit="radians per second" description="maximum turning angle through joystick control">
+      <value></value>
+    </param>
+
+  </optional>
+</module>

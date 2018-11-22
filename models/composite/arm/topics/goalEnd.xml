@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="goal_end" type="service" description="end-effector position" fileName="GoalEndPosition">
+    <property name="goal_x" type="float32" description="x position goal relative to origin">
+      <value></value>
+    </property>
+    <property name="goal_y" type="float32" description="y position goal relative to origin">
+      <value></value>
+    </property>
+    <property name="goal_z" type="float32" description="z position goal relative to origin">
+      <value></value>
+    </property>
+    <property name="velocity" type="float32" unit="meters per second" description="velocity of the movements">
+      <value></value>
+    </property>
+    <response>
+      <property name="success" type="boolean">
+        <value></value>
+      </property>
+    </response>
+  </topic>
+</root>
