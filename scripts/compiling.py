@@ -29,6 +29,57 @@ def processSubProperty(prop):
 		text_file.write(subMsg)
 		text_file.close()
 
+# separate the message generation for messages declared inside services
+def processMessage(module, topic):
+
+	# check if file has already been generated
+	if topic.fileName not in msgFiles:
+
+		global msgFolderPath
+
+		# package folder naming
+		msgFolderPath = os.getcwd()+"/hrim_"+module.type+"_"+module.name+"_msgs/msg"
+
+		# if the package directories don't exist, create them
+		if not os.path.exists(msgFolderPath):
+			os.makedirs(msgFolderPath)
+
+		# position ourselves on the package's msg folder
+		os.chdir(msgFolderPath)
+		msg = ""
+
+		# check for an overall message description
+		if topic.desc is not None and len(topic.desc)>0:
+			msg+="# "+topic.desc+"\n\n"
+
+		for prop in topic.properties:
+
+			if prop.fileName is not None:
+				processSubProperty(prop)
+			else:
+
+				# check for enumeration types
+				if prop.unit is not None and prop.unit == "enum":
+
+					# sort enumeration values for readability
+					for value in sorted( ((v,k) for k,v in prop.enumeration.iteritems())):
+						msg+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+
+			# process each property, checking if it's value is an array and if it has any description
+			msg+=formatProperty(prop)
+
+		# generate each .msg file and add it to the list
+		if topic.fileName is None:
+			fileName = topic.name.title()+".msg"
+			msgFiles.append(topic.name.title())
+		else:
+			fileName = topic.fileName+".msg"
+			msgFiles.append(topic.fileName)
+
+		text_file = open(fileName, "w")
+		text_file.write(msg)
+		text_file.close()
+
 def formatProperty(prop):
 	if prop.fileName is None:
 		type = dataTypes[prop.type]
@@ -107,6 +158,8 @@ def main(module):
 
 	# list of files for CMakeLists.txt
 	global msgFiles
+	global msgFolderPath
+	msgFolderPath = ""
 	msgFiles = []
 	srvFiles = []
 
@@ -117,54 +170,8 @@ def main(module):
 		os.chdir(cwd)
 
 		if topic.type == "publish" or topic.type == "subscribe":
-
-			# check if file has already been generated
-			if topic.fileName not in msgFiles:
-
-				messages = True
-
-				# package folder naming
-				msgFolderPath = os.getcwd()+"/hrim_"+module.type+"_"+module.name+"_msgs/msg"
-
-				# if the package directories don't exist, create them
-				if not os.path.exists(msgFolderPath):
-					os.makedirs(msgFolderPath)
-
-				# position ourselves on the package's msg folder
-				os.chdir(msgFolderPath)
-				msg = ""
-
-				# check for an overall message description
-				if topic.desc is not None and len(topic.desc)>0:
-					msg+="# "+topic.desc+"\n\n"
-
-				for prop in topic.properties:
-
-					if prop.fileName is not None:
-						processSubProperty(prop)
-					else:
-
-						# check for enumeration types
-						if prop.unit is not None and prop.unit == "enum":
-
-							# sort enumeration values for readability
-							for value in sorted( ((v,k) for k,v in prop.enumeration.iteritems())):
-								msg+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
-
-					# process each property, checking if it's value is an array and if it has any description
-					msg+=formatProperty(prop)
-
-				# generate each .msg file and add it to the list
-				if topic.fileName is None:
-					fileName = topic.name.title()+".msg"
-					msgFiles.append(topic.name.title())
-				else:
-					fileName = topic.fileName+".msg"
-					msgFiles.append(topic.fileName)
-
-				text_file = open(fileName, "w")
-				text_file.write(msg)
-				text_file.close()
+			messages = True
+			processMessage(module, topic)
 
 		elif topic.type == "service":
 
@@ -192,6 +199,9 @@ def main(module):
 
 					if prop.fileName is not None:
 						dependency = True
+						os.chdir(cwd)
+						processMessage(module, prop)
+						os.chdir(srvFolderPath)
 					# check for enumeration types
 					if prop.unit is not None and prop.unit == "enum":
 
