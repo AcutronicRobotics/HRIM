@@ -40,6 +40,7 @@ def main(module):
 
 	messages = False
 	services = False
+	dependency = False
 
 	# default platform
 	plat = "ros2"
@@ -71,6 +72,8 @@ def main(module):
 	msgPkgName = "hrim_"+module.type+"_"+module.name+"_msgs"
 	msgPkg = pkg.replace("%PKGNAME%", msgPkgName)
 	msgPkg = msgPkg.replace("%PKGDESC%", module.desc)
+	msgPkg = msgPkg.replace("%PKGBUILD%", "")
+	msgPkg = msgPkg.replace("%PKGEXEC%", "")
 
 	# insert the package's name and description in package.xml's content
 	srvPkg = pkg.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
@@ -81,6 +84,8 @@ def main(module):
 
 	# insert the package's name and description in CMakeLists.txt's content
 	msgMakeFile = makeFile.replace("%PKGNAME%", msgPkgName)
+	msgMakeFile = msgMakeFile.replace("%PKGFIND%", "")
+	msgMakeFile = msgMakeFile.replace("%PKGDEP%", "")
 
 	# insert the package's name and description in CMakeLists.txt's content
 	srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
@@ -163,10 +168,10 @@ def main(module):
 
 		elif topic.type == "service":
 
+			services = True
+
 			# check if file has already been generated
 			if topic.fileName not in srvFiles:
-
-				services = True
 
 				# package folder naming
 				srvFolderPath = os.getcwd()+"/hrim_"+module.type+"_"+module.name+"_srvs/srv"
@@ -185,6 +190,8 @@ def main(module):
 
 				for prop in topic.properties:
 
+					if prop.fileName is not None:
+						dependency = True
 					# check for enumeration types
 					if prop.unit is not None and prop.unit == "enum":
 
@@ -246,6 +253,17 @@ def main(module):
 	if services:
 		# reposition ourselves on the package's root
 		os.chdir(srvFolderPath[:-4])
+
+		if dependency:
+			srvMakeFile = srvMakeFile.replace("%PKGFIND%", "\nfind_package({} REQUIRED)".format(msgPkgName))
+			srvMakeFile = srvMakeFile.replace("%PKGDEP%", "\n\t"+msgPkgName)
+			srvPkg = srvPkg.replace("%PKGBUILD%", "\n\t<build_depend>{}</build_depend>".format(msgPkgName))
+			srvPkg = srvPkg.replace("%PKGEXEC%", "\n\t<exec_depend>{}</exec_depend>".format(msgPkgName))
+		else:
+			srvMakeFile = srvMakeFile.replace("%PKGFIND%", "")
+			srvMakeFile = srvMakeFile.replace("%PKGDEP%", "")
+			srvPkg = srvPkg.replace("%PKGBUILD%", "")
+			srvPkg = srvPkg.replace("%PKGEXEC%", "")
 
 		# generate the package.xml file
 		package = open("package.xml", "w")
