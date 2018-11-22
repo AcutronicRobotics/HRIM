@@ -25,7 +25,7 @@ def mostrar(tabs, title, value, type=None):
 				elif val is None:
 					msg+="None, "
 				else:
-					msg+=val+", "
+					msg+=str(val)+", "
 			msg=msg[:-2]+"]"
 		else:
 			msg+=value

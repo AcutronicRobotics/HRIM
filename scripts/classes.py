@@ -47,3 +47,5 @@ class Parameter:
         self.unit=unit
         self.desc=description
         self.value=value
+        self.array = False
+        self.length = None

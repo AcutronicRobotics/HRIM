@@ -293,13 +293,13 @@ def main(module):
 		if param.mandatory:
 			if param.desc is not None:
 				manParams+=getTabs(1)+"# "+param.desc+"\n"
-			manParams+=getTabs(1)+param.name+": "+(param.value if param.value is not None else "")+"\n\n"
+			manParams+=getTabs(1)+param.name+": "+(str(param.value) if param.value is not None else "")+"\n\n"
 
 		# optional parameters parsing
 		else:
 			if param.desc is not None:
 				optParams+=getTabs(1)+"# "+param.desc+"\n"
-			optParams+=getTabs(1)+param.name+": "+(param.value if param.value is not None else "")+"\n\n"
+			optParams+=getTabs(1)+param.name+": "+(str(param.value) if param.value is not None else "")+"\n\n"
 
 	if len(manParams)>0:
 		params = open("mandatory_parameters.yaml", "w")
