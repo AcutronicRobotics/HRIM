@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="image" type="publish" description="contains an uncompressed image" fileName="Image">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="height" type="uint32" description="image height, that is, number of rows">
+      <value></value>
+    </property>
+    <property name="width" type="uint32" description="image width, that is, number of columns">
+      <value></value>
+    </property>
+    <property name="encoding" type="string" description="encoding of pixels channel meaning, ordering, size">
+      <value></value>
+    </property>
+    <property name="is_bigendian" type="uint8" description="is this data bigendian?">
+      <value></value>
+    </property>
+    <property name="step" type="uint32" description="full row length in bytes">
+      <value></value>
+    </property>
+    <property name="data" type="uint8[]" description="actual matrix data, size is (step * rows)">
+      <value></value>
+    </property>
+  </topic>
+</root>
