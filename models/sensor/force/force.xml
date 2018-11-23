@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<module name="force" type="sensor" description="defines the messages to interact with a force sensor"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  noNamespaceSchemaLocation="../../schemas/module.xsd">
+
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/force.xml" xpointer="xpointer(//root/topic)"/>
+
+  </mandatory>
+
+</module>
