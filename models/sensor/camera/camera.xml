@@ -15,11 +15,11 @@
       <value></value>
     </param>
 
-    <param name="weight" type="int" unit="px" description="  Resolution: weight (weight x height)">
+    <param name="width" type="int" unit="px" description="  Resolution: width (width x height)">
       <value></value>
     </param>
 
-    <param name="height" type="int" unit="px" description="Resolution: height (weight x height)">
+    <param name="height" type="int" unit="px" description="Resolution: height (width x height)">
       <value></value>
     </param>
 
