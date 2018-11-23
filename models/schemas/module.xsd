@@ -48,11 +48,11 @@
       <xsd:element name="value" minOccurs="1" maxOccurs="unbounded"/>
     </xsd:choice>
     <xsd:attribute name="name" type="xsd:string" use="required"/>
-    <xsd:attribute name="type" type="propertyTypeType" use="required"/>
+    <xsd:attribute name="type" type="xsd:string" use="required"/>
     <xsd:attribute name="unit" type="xsd:string" use="optional"/>
     <xsd:attribute name="enum" type="xsd:string" use="optional"/>
     <xsd:attribute name="description" type="xsd:string" use="optional"/>
-    <xsd:attribute name="fileName" type="xsd:string" use="required"/>
+    <xsd:attribute name="fileName" type="xsd:string" use="optional"/>
   </xsd:complexType>
 
   <xsd:complexType name="responseType">
@@ -78,12 +78,6 @@
       <xsd:enumeration value="publish"/>
       <xsd:enumeration value="subscribe"/>
       <xsd:enumeration value="service"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-
-  <xsd:simpleType name="propertyTypeType">
-    <xsd:restriction base="xsd:string">
-      <xsd:pattern value="((boolean|byte|double|float32|float64|int32|string|uint8|uint16|uint32|uint64)(\[\d*\])?|header|quaternion|vector3|time)"/>
     </xsd:restriction>
   </xsd:simpleType>
 
