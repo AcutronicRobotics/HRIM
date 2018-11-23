@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="temperature" type="publish" description="ambient temperature, also informs if there is temperature error" fileName="Temperature">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="temperature" type="float64" unit="celsius" description="current temperature">
+      <value></value>
+    </property>
+    <property name="temperature_error" type="boolean" description="wether current temperature is outside of the component's allowed range">
+      <value></value>
+    </property>
+  </topic>
+</root>
