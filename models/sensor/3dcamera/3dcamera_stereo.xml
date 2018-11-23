@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<module name="3dcamerastereo" type="sensor" description="defines the messages to interact with a stereo 3d camera"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  noNamespaceSchemaLocation="../../schemas/module.xsd">
+
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specsStereo.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/pointCloud.xml" xpointer="xpointer(//root/topic)"/>
+
+    <topic name="left_image_raw" type="publish" description="left camera raw image" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="right_image_raw" type="publish" description="right camera raw image" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <param name="frame_id" type="string" description="Sets the TF frame from which the camera is publishing.">
+      <value></value>
+    </param>
+
+    <param name="width" type="int" unit="px" description="Resolution: width (width x height)">
+      <value></value>
+    </param>
+
+    <param name="height" type="int" unit="px" description="Resolution: height (width x height)">
+      <value></value>
+    </param>
+
+    <param name="frame_rate" type="int" unit="fps" description="Refresh rate.">
+      <value></value>
+    </param>
+
+    <param name="image_format" type="string" description="Possible values are: 'rgb8', 'rgba8', 'rgb16', 'rgba16', 'bgr8', 'bgra8', 'bgr16', 'bgra16', 'mono8', 'mono16', 'bayerrggb8', 'bayerbggr8', 'bayergbrg8', 'bayergrbg8', 'bayerrggb16', 'bayerbggr16', 'bayergbrg16', 'bayergrbg16'.">
+      <value></value>
+    </param>
+
+  </mandatory>
+
+  <optional>
+
+    <xi:include href="topics/audio.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+
+    <topic name="left_camera_info" type="publish" description="left camera meta information" fileName="CameraInfo">
+      <xi:include href="topics/cameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="left_image_raw_color" type="publish" description="color unrectified left image" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="left_compressed" type="publish" description=".jpg or .png" fileName="CompressedImage">
+      <xi:include href="topics/compressed.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="left_image_mono" type="publish" description="monochrome distorted" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="left_image_color" type="publish" description="color distorted" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="left_image_rect" type="publish" description="monochrome rectified" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="left_image_rect_color" type="publish" description="color rectified" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="right_camera_info" type="publish" description="right camera meta information" fileName="CameraInfo">
+      <xi:include href="topics/cameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="right_image_raw_color" type="publish" description="color unrectified right image" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="right_compressed" type="publish" description=".jpg or .png" fileName="CompressedImage">
+      <xi:include href="topics/compressed.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="right_image_mono" type="publish" description="monochrome distorted" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="right_image_color" type="publish" description="color distorted" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="right_image_rect" type="publish" description="monochrome rectified" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="right_image_rect_color" type="publish" description="color rectified" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="set_camera_info" type="service" description="set camera calibration" fileName="SetCameraInfo">
+      <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+      <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/response)"/>
+    </topic>
+
+    <topic name="left_set_camera_info" type="service" description="set left camera calibration" fileName="SetCameraInfo">
+      <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+      <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/response)"/>
+    </topic>
+
+    <topic name="right_set_camera_info" type="service" description="set right camera calibration" fileName="SetCameraInfo">
+      <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+      <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/response)"/>
+    </topic>
+
+    <param name="frecuency_rate" type="int" unit="Hz/s" description="Related to audio_raw topic: audio sampling frecuency. Mandatory if audio_raw topic is added.">
+      <value></value>
+    </param>
+
+    <param name="auto_calibration" type="bool" unit="[0/1]" description="Enable/disable automatic calibration.">
+      <value></value>
+    </param>
+
+    <param name="light" type="bool" unit="[0/1]" description="If camera include a integrated light, enable/disable the light.">
+      <value></value>
+    </param>
+
+    <param name="light_brightness" type="float" unit="percentage" description="If camera include a integrated light with the optional to control the brightness, adjust the brightness.">
+      <value></value>
+    </param>
+
+    <param name="flash" type="bool" unit="[0/1]" description="If camera include a integrated flash, enable/disable flash.">
+      <value></value>
+    </param>
+
+    <param name="auto_flash" type="bool" unit="Hz/s" description="If camera include a integrated flash, enable/disable flash automatic control.">
+      <value></value>
+    </param>
+
+  </optional>
+
+</module>

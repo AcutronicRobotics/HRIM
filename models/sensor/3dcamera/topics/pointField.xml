@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="field" type="pointField" description="describes the channel and it's layout in the binary data blob" fileName="PointField">
+    <property name="datatype" type="uint8" unit="enum" enum='{"INT8" : 1 , "UINT8" : 2 , "INT16" : 3 , "UINT16" : 4 , "INT32" : 5 , "UINT32" : 6 , "FLOAT32" : 7 , "FLOAT64" : 8}' description="device classification">
+      <value></value>
+    </property>
+    <property name="name" type="string" description="name of field">
+      <value></value>
+    </property>
+    <property name="offset" type="uint32" description="offset from start of point struct">
+      <value></value>
+    </property>
+    <property name="count" type="uint32" description="how many elements in the field">
+      <value></value>
+    </property>
+  </property>
+</root>
