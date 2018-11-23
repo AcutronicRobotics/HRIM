@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <module name="3dcameradepth" type="sensor" description="defines the messages to interact with a depth 3d camera"
-  noNamespaceSchemaLocation="../../../schemas/module.xsd">
+  noNamespaceSchemaLocation="../../schemas/module.xsd">
 
   <mandatory>
 
