@@ -389,13 +389,6 @@
         <value></value>
       </property>
     </topic>
-
-    <param name="min_temperature" type="float" unit="celsius" description="minimum operating temperature">
-      <value></value>
-    </param>
-
-    <param name="max_temperature" type="float" unit="celsius" description="maximum operating temperature">
-      <value></value>
-    </param>
+    
   </optional>
 </module>
