@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<module name="imu" type="sensor" description="defines the messages to interact with a inertial motion unit sensor"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  noNamespaceSchemaLocation="../../schemas/module.xsd">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/imu.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="frame_id" type="string" description="tf frame from which the torque sensor is publishing">
+      <value></value>
+    </param>
+
+    <param name="gyro_fs" type="uint8" description="gyroscope full scale to use (defined in specs topic)">
+      <value></value>
+    </param>
+
+    <param name="accel_fs" type="uint8" description="accelerometer full scale to use (defined in specs topic)">
+      <value></value>
+    </param>
+
+  </mandatory>
+  <optional>
+
+    <xi:include href="topics/compass.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="mag_fs" type="uint8" description="magnetometer full scale to use (defined in specs topic)">
+      <value></value>
+    </param>
+
+  </optional>
+</module>
