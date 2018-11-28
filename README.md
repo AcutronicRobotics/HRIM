@@ -61,30 +61,53 @@ Where:
 * **generate**: parses the passed module file and generates the corresponding files to use with ROS2. The generated files will be located inside  a `generated` folder on the root of the repository.
 
 `{path-to-component.xml}` is mandatory and signifies the path (either absolute or relative from the repository's root) to one of the following files:
-* models/actuator/electricmotor/electricmotor.xml
-* models/actuator/electricmotor/electricmotor_clean.xml
 * models/actuator/gripper/gripper.xml
 * models/actuator/gripper/gripper_clean.xml
+* models/actuator/electricmotor/electricmotor.xml
+* models/actuator/electricmotor/electricmotor_clean.xml
 * models/actuator/servo/servo.xml
 * models/actuator/servo/servo_clean.xml
-* models/composite/conveyor/conveyor.xml
-* models/composite/conveyor/conveyor_clean.xml
 * models/composite/mobilebase/mobilebase.xml
 * models/composite/mobilebase/mobilebase_clean.xml
+* models/composite/conveyor/conveyor.xml
+* models/composite/conveyor/conveyor_clean.xml
+* models/composite/arm/arm.xml
+* models/composite/arm/arm_clean.xml
 * models/power/battery/battery.xml
 * models/power/battery/battery_clean.xml
-* models/sensor/encoder/encoder.xml
-* models/sensor/encoder/encoder_clean.xml
-* models/sensor/gasdetector/gasdetector.xml
-* models/sensor/gasdetector/gasdetector_clean.xml
-* models/sensor/gps/gps.xml
-* models/sensor/gps/gps_clean.xml
 * models/sensor/lidar/lidar.xml
 * models/sensor/lidar/lidar_clean.xml
 * models/sensor/rangefinder/rangefinder.xml
 * models/sensor/rangefinder/rangefinder_clean.xml
+* models/sensor/thermometer/thermometer.xml
+* models/sensor/thermometer/thermometer_clean.xml
+* models/sensor/3dcamera/3dcamera_stereo.xml
+* models/sensor/3dcamera/3dcamera_stereo_clean.xml
+* models/sensor/3dcamera/3dcamera_tof.xml
+* models/sensor/3dcamera/3dcamera_tof_clean.xml
+* models/sensor/3dcamera/3dcamera_depth.xml
+* models/sensor/3dcamera/3dcamera_depth_clean.xml
+* models/sensor/imu/imu.xml
+* models/sensor/imu/imu_clean.xml
+* models/sensor/hygrometer/hygrometer.xml
+* models/sensor/hygrometer/hygrometer_clean.xml
+* models/sensor/forcetorque/forcetorque.xml
+* models/sensor/forcetorque/forcetorque_clean.xml
+* models/sensor/gps/gps.xml
+* models/sensor/gps/gps_clean.xml
+* models/sensor/gasdetector/gasdetector.xml
+* models/sensor/gasdetector/gasdetector_clean.xml
 * models/sensor/torque/torque.xml
 * models/sensor/torque/torque_clean.xml
+* models/sensor/force/force.xml
+* models/sensor/force/force_clean.xml
+* models/sensor/microphone/microphone.xml
+* models/sensor/microphone/microphone_clean.xml
+* models/sensor/camera/camera.xml
+* models/sensor/camera/camera_clean.xml
+* models/sensor/encoder/encoder.xml
+* models/sensor/encoder/encoder_clean.xml
+
 
 All of the following would be valid paths:
 * `$(pwd)/models/sensor/torque/torque.xml`
