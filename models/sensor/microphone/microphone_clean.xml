@@ -287,7 +287,7 @@
       </property>
     </topic>
 
-    <topic name="specs" type="publish" description="device features" fileName="SpecsThermometer">
+    <topic name="specs" type="publish" description="device features" fileName="SpecsMicrophone">
       <property name="header" type="header" fileName="Header">
         <property name="time" type="time" fileName="Time">
           <property name="sec" type="int32" unit="second">

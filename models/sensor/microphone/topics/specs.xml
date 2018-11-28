@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="specs" type="publish" description="device features" fileName="SpecsThermometer">
+  <topic name="specs" type="publish" description="device features" fileName="SpecsMicrophone">
     <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
     <property name="sensitivity" type="uint32" unit="decibel" description="typical sensitivity at 1Pa, 1KHz">
       <value></value>
