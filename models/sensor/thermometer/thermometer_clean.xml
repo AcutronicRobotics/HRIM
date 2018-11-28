@@ -319,9 +319,6 @@
       <property name="max_operating_temp" type="int32" unit="celsius" description="maximum temperature before the thermometer stops working">
         <value></value>
       </property>
-      <property name="max_rate" type="float32" unit="hertz" description="maximum data measuring rate">
-        <value></value>
-      </property>
       <property name="measuring" type="uint8" unit="enum" enum='{"AMBIENT_GAS": 0, "AMBIENT_LIQUID": 1, "COMPONENT": 2}' description="what the thermometer measures the temperature from">
         <value></value>
       </property>

@@ -24,9 +24,6 @@
     <property name="max_overload" type="uint16" unit="percentage" description="maximum force the sensor withstands before total breakdown">
       <value></value>
     </property>
-    <property name="max_rate" type="uint16" unit="hertz" description="maximum amount of measurements per second">
-      <value></value>
-    </property>
     <property name="min_ideal_temp" type="float32" unit="celsius" description="minimum temperature where the error margin is at it's lowest">
       <value></value>
     </property>
