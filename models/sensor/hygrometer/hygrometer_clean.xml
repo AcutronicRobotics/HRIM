@@ -385,7 +385,7 @@
       <property name="temperature" type="float64" unit="celsius" description="current temperature">
         <value></value>
       </property>
-      <property name="temperature_error" type="boolean" description="wether current temperature is outside of the component's allowed range">
+      <property name="temperature_error" type="boolean" description="whether current temperature is outside of the component's allowed range">
         <value></value>
       </property>
     </topic>

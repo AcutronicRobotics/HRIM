@@ -309,13 +309,13 @@
       <property name="max_payload" type="float32" unit="kilogram" description="maximum payload">
         <value></value>
       </property>
-      <property name="x_axis" type="boolean" description="wether the robot can move in the x axis">
+      <property name="x_axis" type="boolean" description="whether the robot can move in the x axis">
         <value></value>
       </property>
-      <property name="y_axis" type="boolean" description="wether the robot can move in the y axis">
+      <property name="y_axis" type="boolean" description="whether the robot can move in the y axis">
         <value></value>
       </property>
-      <property name="z_axis" type="boolean" description="wether the robot can move in the z axis">
+      <property name="z_axis" type="boolean" description="whether the robot can move in the z axis">
         <value></value>
       </property>
       <property name="max_x_reach" type="float32" unit="metre" description="x maximum position relative to the origin">

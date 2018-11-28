@@ -303,7 +303,7 @@
       <property name="motor_type" type="uint8" unit="enum" enum='{"MOTOR_DC_BRUSHED": 0, "MOTOR_DC_BRUSHLESS": 1, "MOTOR_DC_GEAREDDOWN": 2}' description="motor type">
         <value></value>
       </property>
-      <property name="encoder" type="boolean" description="wether the electric motor has movement control capabilities">
+      <property name="encoder" type="boolean" description="whether the electric motor has movement control capabilities">
         <value></value>
       </property>
       <property name="rated_power" type="float64" unit="watt">
@@ -371,7 +371,7 @@
           <value></value>
         </property>
       </property>
-      <property name="moving" type="boolean" description="wether the electric motor is working or not">
+      <property name="moving" type="boolean" description="whether the electric motor is working or not">
         <value></value>
       </property>
     </topic>
@@ -418,7 +418,7 @@
       <property name="temperature" type="float64" unit="celsius" description="current temperature">
         <value></value>
       </property>
-      <property name="temperature_error" type="boolean" description="wether current temperature is outside of the component's allowed range">
+      <property name="temperature_error" type="boolean" description="whether current temperature is outside of the component's allowed range">
         <value></value>
       </property>
     </topic>
