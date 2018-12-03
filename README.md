@@ -34,9 +34,6 @@ sensor/
 ...
 ```
 
-###
-
-
 A preliminary whitepaper about this work is available at https://arxiv.org/abs/1802.01459. Please use the following BibTex entry to cite our work:
 
 ```
@@ -57,15 +54,22 @@ sudo apt-get install python-lxml
 
 To command structure would be the following:
 ```
-python hrim.py {show|generate} {path-to-component.xml}
+python hrim.py [-h] [-p {ros2}] [-e] {show,generate} filePath
 ```
 Where:
 
-`{show|generate}` is mandatory and signifies the action to take:
-* **show**: parses the passed module file and prints it's processed contents.
-* **generate**: parses the passed module file and generates the corresponding files to use with ROS2. The generated files will be located inside  a `generated` folder on the root of the repository.
+`-h` shows script's help.
 
-`{path-to-component.xml}` is mandatory and signifies the path (either absolute or relative from the repository's root) to one of the following files:
+`-p/--platform` should be followed by which platform (e.g. ROS 2) to generate the implementation in. Current valid values are:
+* ros2
+
+`-e/--extend` indicates whether already shown definitions should be shown again or not when printing the module's model.
+
+`{show,generate}` is mandatory and signifies the action to take:
+* **show**: parses the passed module file and prints it's processed contents.
+* **generate**: parses the passed module file and generates the corresponding packages/files to use with the selected platform (ROS 2 by default). The generated files will be located inside  a `generated` folder on the root of the repository.
+
+`filePath` is mandatory and signifies the path (either absolute or relative from the repository's root) to one of the following files:
 * models/actuator/gripper/gripper.xml
 * models/actuator/gripper/gripper_clean.xml
 * models/actuator/electricmotor/electricmotor.xml
@@ -113,13 +117,11 @@ Where:
 * models/sensor/encoder/encoder.xml
 * models/sensor/encoder/encoder_clean.xml
 
-
 All of the following would be valid paths:
 * `$(pwd)/models/sensor/torque/torque.xml`
 * `./models/sensor/torque/torque.xml`
 * `/models/sensor/torque/torque.xml`
 * `models/sensor/torque/torque.xml`
-
 
 Alternatively, shorthands are provided to **generate** the files for every existing module:
 * **all**: will generate the files for every existing (non-development) module file.
@@ -131,11 +133,12 @@ While positioned at the repository's root all of the following are valid command
 
 * `python hrim.py show $(pwd)/models/sensor/torque/torque.xml`
 * `python hrim.py show ./models/sensor/torque/torque.xml`
-* `python hrim.py show /models/sensor/torque/torque.xml`
+* `python hrim.py -e show /models/sensor/torque/torque.xml`
+* `python hrim.py show --extend models/sensor/torque/torque.xml`
 * `python hrim.py show models/sensor/torque/torque.xml`
 * `python hrim.py generate $(pwd)/models/sensor/torque/torque.xml`
 * `python hrim.py generate ./models/sensor/torque/torque.xml`
-* `python hrim.py generate /models/sensor/torque/torque.xml`
+* `python hrim.py -p ros2 generate /models/sensor/torque/torque.xml`
 * `python hrim.py generate models/sensor/torque/torque.xml`
-* `python hrim.py generate all`
+* `python hrim.py generate --platform ros2 all`
 * `python hrim.py generate allClean`
