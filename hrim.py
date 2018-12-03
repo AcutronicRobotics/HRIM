@@ -5,27 +5,16 @@ import parsing
 import compiling
 import os
 from classes import *
+import argparse
 
 def main(args):
-	if args[1] == "show":
-		extend = False
-		# if topic/properties not defined on the parsed file should show their full content or not when printing
-		if len(args) == 4:
-			if args[3] == "1":
-				extend = True
-		# check for file input
-		if len(args) < 3:
-			print "Please input file to parse"
-			sys.exit()
-		module = parsing.main(args[2])
+	if args.action == "show":
+		extend = args.extend
+		module = parsing.main(args.filePath)
 		printing.main(module, extend)
-	elif args[1] == "generate":
-		extend = False
-		# check for file input
-		if len(args) < 3:
-			print "Please input file to parse"
-			sys.exit()
-		if args[2] == "all":
+	elif args.action == "generate":
+		# check for file generation shorthands
+		if args.filePath == "all":
 			path = os.getcwd()
 			for file in [
 				path+"/models/composite/mobilebase/mobilebase.xml",
@@ -51,12 +40,11 @@ def main(args):
 				path+"/models/sensor/microphone/microphone.xml",
 				path+"/models/sensor/camera/camera.xml",
 				path+"/models/sensor/encoder/encoder.xml"
-
 			]:
 				os.chdir(path)
 				module = parsing.main(file)
 				compiling.main(module)
-		elif args[2] == "allClean":
+		elif args.filePath == "allClean":
 			path = os.getcwd()
 			for file in [
 				path+"/models/composite/mobilebase/mobilebase_clean.xml",
@@ -86,8 +74,9 @@ def main(args):
 				os.chdir(path)
 				module = parsing.main(file)
 				compiling.main(module)
+		# else try to generate the implementation based on the passed file
 		else:
-			module = parsing.main(args[2])
+			module = parsing.main(args.filePath)
 			compiling.main(module)
 	else:
 		print "Unknown command"
@@ -95,4 +84,27 @@ def main(args):
 
 
 if __name__ == '__main__':
-	main(sys.argv)
+
+	# Add usage messages
+
+	parser=argparse.ArgumentParser(
+	    description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
+		formatter_class=argparse.RawTextHelpFormatter)
+	parser.add_argument('action', choices=['show','generate'], help='''Action to take:
+show:
+	print a representation of the passed valid XML module's model structure and values.
+generate:
+	generate the platform-specific implementation of the passed valid XML model.
+		''')
+	parser.add_argument('filePath', help='The path to a valid xml model file.')
+	parser.add_argument('-p', '--platform', default='ros2', choices=['ros2'], help='The platform for the generated model, ros2 by default.')
+	parser.add_argument('-e', '--extend', action='store_true', default='False', help='Whether to expand topic definitions when "show"-ing.')
+
+	# If no argument is provided, show usage
+	if len(sys.argv) == 1:
+		parser.print_help()
+		sys.exit(0)
+
+	args=parser.parse_args()
+
+	main(args)
