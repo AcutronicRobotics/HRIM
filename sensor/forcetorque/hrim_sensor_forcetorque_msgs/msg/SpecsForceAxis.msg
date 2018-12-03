@@ -1,8 +1,8 @@
 # Specs for a single force axis of a force & torque sensor
 
-uint8 FX=0
-uint8 FY=1
-uint8 FZ=2
+uint8 FORCE_AXIS_X=0
+uint8 FORCE_AXIS_Y=1
+uint8 FORCE_AXIS_Z=2
 uint8 axis # The force axis the specs describe
 
 uint16 max_force # Maximum measurable force (N)

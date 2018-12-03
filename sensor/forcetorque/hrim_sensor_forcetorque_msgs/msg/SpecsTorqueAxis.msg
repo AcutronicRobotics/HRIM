@@ -1,8 +1,8 @@
 # Specs for a single torque axis of a force & torque sensor
 
-uint8 MX=0
-uint8 MY=1
-uint8 MZ=2
+uint8 TORQUE_AXIS_X=0
+uint8 TORQUE_AXIS_Y=1
+uint8 TORQUE_AXIS_Z=2
 uint8 axis # The torque axis the specs describe
 
 uint16 max_torque # Maximum measurable torque (Nm)
