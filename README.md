@@ -48,6 +48,11 @@ A preliminary whitepaper about this work is available at https://arxiv.org/abs/1
 }
 ```
 
+### Install dependencies
+```
+sudo apt-get install python-lxml
+```
+
 ### Script usage
 
 To command structure would be the following:
