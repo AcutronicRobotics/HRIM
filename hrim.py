@@ -1,16 +1,17 @@
 import sys
 sys.path.insert(0, 'scripts')
 import printing
-import parsing
+from parsing import ModuleParser
 import compiling
 import os
 from classes import *
 import argparse
 
 def main(args):
+	parser = ModuleParser()
 	if args.action == "show":
 		extend = args.extend
-		module = parsing.main(args.filePath)
+		module = parser.parseFile(args.filePath)
 		printing.main(module, extend)
 	elif args.action == "generate":
 		# check for file generation shorthands
@@ -42,7 +43,7 @@ def main(args):
 				path+"/models/sensor/encoder/encoder.xml"
 			]:
 				os.chdir(path)
-				module = parsing.main(file)
+				module = parser.parseFile(file)
 				compiling.main(module)
 		elif args.filePath == "allClean":
 			path = os.getcwd()
@@ -72,11 +73,11 @@ def main(args):
 				path+"/models/sensor/encoder/encoder_clean.xml"
 			]:
 				os.chdir(path)
-				module = parsing.main(file)
+				module = parser.parseFile(file)
 				compiling.main(module)
 		# else try to generate the implementation based on the passed file
 		else:
-			module = parsing.main(args.filePath)
+			module = parser.parseFile(args.filePath)
 			compiling.main(module)
 	else:
 		print "Unknown command"
