@@ -2,8 +2,8 @@ import sys
 sys.path.insert(0, 'scripts')
 from printing import ModulePrinter
 from parsing import ModuleParser
-import compiling
 import os
+from compiling import ModuleCompiler
 from classes import *
 import argparse
 
@@ -44,7 +44,7 @@ def main(args):
 			]:
 				os.chdir(path)
 				module = parser.parseFile(file)
-				compiling.main(module)
+				ModuleCompiler().compileModule(module)
 		elif args.filePath == "allClean":
 			path = os.getcwd()
 			for file in [
@@ -74,11 +74,11 @@ def main(args):
 			]:
 				os.chdir(path)
 				module = parser.parseFile(file)
-				compiling.main(module)
+				ModuleCompiler().compileModule(module)
 		# else try to generate the implementation based on the passed file
 		else:
 			module = parser.parseFile(args.filePath)
-			compiling.main(module)
+			ModuleCompiler().compileModule(module)
 	else:
 		print "Unknown command"
 
