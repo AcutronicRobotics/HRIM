@@ -1,6 +1,6 @@
 import sys
 sys.path.insert(0, 'scripts')
-import printing
+from printing import ModulePrinter
 from parsing import ModuleParser
 import compiling
 import os
@@ -12,7 +12,7 @@ def main(args):
 	if args.action == "show":
 		extend = args.extend
 		module = parser.parseFile(args.filePath)
-		printing.main(module, extend)
+		ModulePrinter().printModule(module, extend)
 	elif args.action == "generate":
 		# check for file generation shorthands
 		if args.filePath == "all":
