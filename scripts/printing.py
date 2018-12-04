@@ -12,7 +12,7 @@ class ModulePrinter:
 		return str
 
 	# shorthand for printing single and list values
-	def mostrar(self, tabs, title, value, type=None):
+	def printValue(self, tabs, title, value, type=None):
 		msg = self.getTabs(tabs)
 		msg+=title
 		msg+=": "
@@ -42,33 +42,33 @@ class ModulePrinter:
 		else:
 			# if the type doesn't appear on the dataMapping file we assume it's a generated type, we capitalize it to differentiate them
 			type=property.type[0:1].upper()+property.type[1:]+(("[{}]".format(property.length if property.length is not None else "")) if property.array else "")
-		self.mostrar(baseTabs+2, "type", type)
-		self.mostrar(baseTabs+2, "unit", property.unit)
+		self.printValue(baseTabs+2, "type", type)
+		self.printValue(baseTabs+2, "unit", property.unit)
 		if property.unit == "enum":
 			print self.getTabs(baseTabs+2)+"possible values ["
 			for val in property.enumeration.keys():
 				print self.getTabs(baseTabs+3)+val
 			print self.getTabs(baseTabs+2)+"]"
-		self.mostrar(baseTabs+2, "description", property.desc)
+		self.printValue(baseTabs+2, "description", property.desc)
 		if len(property.properties) > 0:
-			self.mostrar(baseTabs+2, "fileName", property.fileName)
+			self.printValue(baseTabs+2, "fileName", property.fileName)
 			if self.extend or property.fileName is not None:
 				print self.getTabs(baseTabs+2)+"properties {\n"
 				for subProp in property.properties:
 					self.printProperty(subProp, baseTabs+2)
 				print self.getTabs(baseTabs+2)+"}"
 		elif len(property.enumeration) > 0 and property.value is not None:
-			self.mostrar(baseTabs+2, "value", property.enumeration.keys()[property.enumeration.values().index(int(property.value))])
+			self.printValue(baseTabs+2, "value", property.enumeration.keys()[property.enumeration.values().index(int(property.value))])
 		else:
-			self.mostrar(baseTabs+2, "value", property.value, property.type)
+			self.printValue(baseTabs+2, "value", property.value, property.type)
 		print self.getTabs(baseTabs+1)+"}\n"
 
 	# formats and prints topics
 	def printTopic(self, topic, baseTabs):
 		print self.getTabs(baseTabs)+topic.name+" {"
-		self.mostrar(baseTabs+1, "description", topic.desc)
-		self.mostrar(baseTabs+1, "type", topic.type)
-		self.mostrar(baseTabs+1, "fileName", topic.fileName)
+		self.printValue(baseTabs+1, "description", topic.desc)
+		self.printValue(baseTabs+1, "type", topic.type)
+		self.printValue(baseTabs+1, "fileName", topic.fileName)
 		print self.getTabs(baseTabs+1)+"mandatory: "+("yes" if topic.mandatory else "no")
 
 		if self.extend or topic.fileName is not None:
@@ -120,10 +120,10 @@ class ModulePrinter:
 	    	for param in module.params:
 	    		print "\t"+param.name+":"
 	    		print self.getTabs(2)+"type: "+param.type
-	    		self.mostrar(2, "unit", param.unit)
-	    		self.mostrar(2, "description", param.desc)
+	    		self.printValue(2, "unit", param.unit)
+	    		self.printValue(2, "description", param.desc)
 	    		print self.getTabs(2)+"mandatory: "+("yes" if param.mandatory else "no")
-	    		self.mostrar(2, "value", param.value)
+	    		self.printValue(2, "value", param.value)
 	    		print "\n"
 
 	def __init__(self):
