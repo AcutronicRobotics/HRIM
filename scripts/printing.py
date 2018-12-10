@@ -52,7 +52,8 @@ class ModulePrinter:
 		self.printValue(baseTabs+2, "description", property.desc)
 		if len(property.properties) > 0:
 			self.printValue(baseTabs+2, "fileName", property.fileName)
-			if self.extend or property.fileName is not None:
+			if property.fileName is not None and (property.fileName not in self.shownFiles or self.extend):
+				self.shownFiles.append(property.fileName)
 				print self.getTabs(baseTabs+2)+"properties {\n"
 				for subProp in property.properties:
 					self.printProperty(subProp, baseTabs+2)
@@ -71,7 +72,8 @@ class ModulePrinter:
 		self.printValue(baseTabs+1, "fileName", topic.fileName)
 		print self.getTabs(baseTabs+1)+"mandatory: "+("yes" if topic.mandatory else "no")
 
-		if self.extend or topic.fileName is not None:
+		if topic.fileName is not None and (topic.fileName not in self.shownFiles or self.extend):
+			self.shownFiles.append(topic.fileName)
 			if len(topic.properties)>0:
 				print self.getTabs(baseTabs+1)+"properties {\n"
 				for prop in topic.properties:
@@ -129,3 +131,4 @@ class ModulePrinter:
 	def __init__(self):
 		self.extend = False
 		self.dataTypes = {}
+		self.shownFiles = []

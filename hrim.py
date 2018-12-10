@@ -81,7 +81,7 @@ generate:
 		''')
 	parser.add_argument('filePath', help='The path to a valid xml model file.')
 	parser.add_argument('-p', '--platform', default='ros2', choices=['ros2'], help='The platform for the generated model, ros2 by default.')
-	parser.add_argument('-e', '--extend', action='store_true', default='False', help='Whether to expand topic definitions when "show"-ing.')
+	parser.add_argument('-e', '--extend', action='store_true', default=False, help='Whether to expand topic definitions when "show"-ing.')
 
 	# If no argument is provided, show usage
 	if len(sys.argv) == 1:
