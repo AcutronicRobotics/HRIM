@@ -86,14 +86,11 @@ class ModuleCompiler:
 			type = self.msgPkgName+"/"+prop.fileName
 		return type+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
 
-	def compileModule(self, module):
+	def compileModule(self, module, plat):
 
 		messages = False
 		services = False
 		dependency = False
-
-		# default platform
-		plat = "ros2"
 
 		# map the datatypes
 		self.dataTypes = {}

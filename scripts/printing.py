@@ -87,11 +87,8 @@ class ModulePrinter:
 		print "\t}\n"
 
 	# main print method
-	def printModule(self, module, full):
+	def printModule(self, module, plat, full):
 	    self.extend = full
-
-	    # default platform
-	    plat = "ros2"
 
 	    cwd = os.getcwd()
 

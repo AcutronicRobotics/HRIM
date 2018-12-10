@@ -36,7 +36,7 @@ def main(args):
 	if args.action == "show":
 		extend = args.extend
 		module = parser.parseFile(args.filePath)
-		ModulePrinter().printModule(module, extend)
+		ModulePrinter().printModule(module, args.platform, extend)
 	elif args.action == "generate":
 		# check for file generation shorthands
 		if args.filePath == "all":
@@ -47,7 +47,7 @@ def main(args):
 				if not bool(re.search('.*_clean.xml$', item)):
 					os.chdir(path)
 					module = parser.parseFile(item)
-					ModuleCompiler().compileModule(module)
+					ModuleCompiler().compileModule(module, args.platform)
 		elif args.filePath == "allClean":
 			path = os.getcwd()
 			fileList = findModels(os.path.join(path, "models"))
@@ -56,11 +56,11 @@ def main(args):
 				if bool(re.search('.*_clean.xml$', item)):
 					os.chdir(path)
 					module = parser.parseFile(item)
-					ModuleCompiler().compileModule(module)
+					ModuleCompiler().compileModule(module, args.platform)
 		# else try to generate the implementation based on the passed file
 		else:
 			module = parser.parseFile(args.filePath)
-			ModuleCompiler().compileModule(module)
+			ModuleCompiler().compileModule(module, args.platform)
 	else:
 		print "Unknown command"
 
