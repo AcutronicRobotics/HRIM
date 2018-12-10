@@ -1,8 +1,9 @@
 import sys
+import os
+os.chdir(os.path.abspath(os.path.dirname(__file__)))
 sys.path.insert(0, 'scripts')
 from printing import ModulePrinter
 from parsing import ModuleParser
-import os
 from compiling import ModuleCompiler
 from classes import *
 import argparse
