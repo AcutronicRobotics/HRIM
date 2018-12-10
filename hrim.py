@@ -6,6 +6,29 @@ import os
 from compiling import ModuleCompiler
 from classes import *
 import argparse
+import re
+
+# locate all module models of the repository and return a list with their full path
+def findModels(dirName):
+	# list given directory's files and subdirectories
+    dirContents = os.listdir(dirName)
+    modelFiles = list()
+    # iterate over directory contents
+    for entry in dirContents:
+        # create full path
+        fullPath = os.path.join(dirName, entry)
+        # if item is a directory, iterate through it's contents
+        if os.path.isdir(fullPath):
+            modelFiles = modelFiles + findModels(fullPath)
+        else:
+			# else check the file is a model: look for xml files inside model
+			# categories and ignore files inside "topics" directories
+			if (
+				bool(re.search('models.(actuator|sensor|communication|cognition|ui|power|composite).*\.xml$', fullPath)) and
+				not bool(re.search('.*models.*topics', fullPath))
+			):
+				modelFiles.append(fullPath)
+    return modelFiles
 
 def main(args):
 	parser = ModuleParser()
@@ -17,64 +40,22 @@ def main(args):
 		# check for file generation shorthands
 		if args.filePath == "all":
 			path = os.getcwd()
-			for file in [
-				path+"/models/composite/mobilebase/mobilebase.xml",
-				path+"/models/composite/conveyor/conveyor.xml",
-				path+"/models/composite/arm/arm.xml",
-				path+"/models/power/battery/battery.xml",
-				path+"/models/actuator/gripper/gripper.xml",
-				path+"/models/actuator/electricmotor/electricmotor.xml",
-				path+"/models/actuator/servo/servo.xml",
-				path+"/models/sensor/lidar/lidar.xml",
-				path+"/models/sensor/rangefinder/rangefinder.xml",
-				path+"/models/sensor/thermometer/thermometer.xml",
-				path+"/models/sensor/3dcamera/3dcamera_stereo.xml",
-				path+"/models/sensor/3dcamera/3dcamera_tof.xml",
-				path+"/models/sensor/3dcamera/3dcamera_depth.xml",
-				path+"/models/sensor/imu/imu.xml",
-				path+"/models/sensor/hygrometer/hygrometer.xml",
-				path+"/models/sensor/forcetorque/forcetorque.xml",
-				path+"/models/sensor/gps/gps.xml",
-				path+"/models/sensor/gasdetector/gasdetector.xml",
-				path+"/models/sensor/torque/torque.xml",
-				path+"/models/sensor/force/force.xml",
-				path+"/models/sensor/microphone/microphone.xml",
-				path+"/models/sensor/camera/camera.xml",
-				path+"/models/sensor/encoder/encoder.xml"
-			]:
-				os.chdir(path)
-				module = parser.parseFile(file)
-				ModuleCompiler().compileModule(module)
+			fileList = findModels(os.path.join(path, "models"))
+			for item in fileList:
+				# if the model isn't a development file process it
+				if not bool(re.search('.*_clean.xml$', item)):
+					os.chdir(path)
+					module = parser.parseFile(item)
+					ModuleCompiler().compileModule(module)
 		elif args.filePath == "allClean":
 			path = os.getcwd()
-			for file in [
-				path+"/models/composite/mobilebase/mobilebase_clean.xml",
-				path+"/models/composite/conveyor/conveyor_clean.xml",
-				path+"/models/composite/arm/arm_clean.xml",
-				path+"/models/power/battery/battery_clean.xml",
-				path+"/models/actuator/gripper/gripper_clean.xml",
-				path+"/models/actuator/electricmotor/electricmotor_clean.xml",
-				path+"/models/actuator/servo/servo_clean.xml",
-				path+"/models/sensor/lidar/lidar_clean.xml",
-				path+"/models/sensor/rangefinder/rangefinder_clean.xml",
-				path+"/models/sensor/thermometer/thermometer_clean.xml",
-				path+"/models/sensor/3dcamera/3dcamera_stereo_clean.xml",
-				path+"/models/sensor/3dcamera/3dcamera_tof_clean.xml",
-				path+"/models/sensor/3dcamera/3dcamera_depth_clean.xml",
-				path+"/models/sensor/imu/imu_clean.xml",
-				path+"/models/sensor/hygrometer/hygrometer_clean.xml",
-				path+"/models/sensor/forcetorque/forcetorque_clean.xml",
-				path+"/models/sensor/gps/gps_clean.xml",
-				path+"/models/sensor/gasdetector/gasdetector_clean.xml",
-				path+"/models/sensor/torque/torque_clean.xml",
-				path+"/models/sensor/force/force_clean.xml",
-				path+"/models/sensor/microphone/microphone_clean.xml",
-				path+"/models/sensor/camera/camera_clean.xml",
-				path+"/models/sensor/encoder/encoder_clean.xml"
-			]:
-				os.chdir(path)
-				module = parser.parseFile(file)
-				ModuleCompiler().compileModule(module)
+			fileList = findModels(os.path.join(path, "models"))
+			for item in fileList:
+				# if the model is a development file process it
+				if bool(re.search('.*_clean.xml$', item)):
+					os.chdir(path)
+					module = parser.parseFile(item)
+					ModuleCompiler().compileModule(module)
 		# else try to generate the implementation based on the passed file
 		else:
 			module = parser.parseFile(args.filePath)
