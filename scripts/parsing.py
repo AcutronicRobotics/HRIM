@@ -130,6 +130,22 @@ class ModuleParser:
 		else:
 			return Parameter(parameter.attrib.get("name"), parameter.attrib.get("type"), mandatory, parameter.attrib.get("unit"), parameter.attrib.get("description"), self.processValue(parameter[0].text,parameter.attrib.get("type")))
 
+	def parseGeneric(self):
+		genericPath = os.path.join(os.getcwd(), "models", "generic", "base.xml")
+
+		genericTopics = []
+
+		try:
+			genTree = ET.parse(genericPath)
+			genTree.xinclude()
+			genRoot=genTree.getroot()
+			for topic in genRoot:
+				genericTopics.append(self.processTopic(topic, True))
+		except:
+			print "Problem parsing generic topics"
+			sys.exit(1)
+		return genericTopics
+
 	# main parse method
 	def parseFile(self, filePath):
 

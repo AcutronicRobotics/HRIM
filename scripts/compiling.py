@@ -4,12 +4,15 @@ import os
 from utils import getTabs
 
 class ModuleCompiler:
-	def processSubProperty(self, prop):
-		if prop.fileName not in self.msgFiles:
+	def processSubProperty(self, prop, generic):
+		if prop.fileName not in self.msgFiles and prop.fileName not in self.ownFiles:
 			subMsg = ""
 			for subProp in prop.properties:
 				if subProp.fileName is not None:
-					self.processSubProperty(subProp)
+					if prop.fileName in ["Header", "Time"]:
+						self.processSubProperty(subProp, True)
+					else:
+						self.processSubProperty(subProp, False)
 				else:
 					if subProp.unit is not None and subProp.unit == "enum" and len(subProp.enumeration) > 0:
 						# sort enumeration values for readability
@@ -17,7 +20,10 @@ class ModuleCompiler:
 							subMsg+=subProp.type+" "+value[1]+"="+str(value[0])+"\n"
 				subMsg+=self.formatProperty(subProp)
 			subFileName = prop.fileName+".msg"
-			self.msgFiles.append(prop.fileName)
+			if generic:
+				self.msgFiles.append(prop.fileName)
+			else:
+				self.ownFiles.append(prop.fileName)
 
 			text_file = open(subFileName, "w")
 			text_file.write(subMsg)
@@ -27,7 +33,7 @@ class ModuleCompiler:
 	def processMessage(self, module, topic):
 
 		# check if file has already been generated
-		if topic.fileName not in self.msgFiles:
+		if topic.fileName not in self.msgFiles and topic.fileName not in self.ownFiles:
 
 			# package folder naming
 			self.msgFolderPath = os.getcwd()+"/hrim_"+module.type+"_"+module.name+"_msgs/msg"
@@ -47,7 +53,7 @@ class ModuleCompiler:
 			for prop in topic.properties:
 
 				if prop.fileName is not None:
-					self.processSubProperty(prop)
+					self.processSubProperty(prop, False)
 				else:
 
 					# check for enumeration types
@@ -63,10 +69,10 @@ class ModuleCompiler:
 			# generate each .msg file and add it to the list
 			if topic.fileName is None:
 				fileName = topic.name.title()+".msg"
-				self.msgFiles.append(topic.name.title())
+				self.ownFiles.append(topic.name.title())
 			else:
 				fileName = topic.fileName+".msg"
-				self.msgFiles.append(topic.fileName)
+				self.ownFiles.append(topic.fileName)
 
 			text_file = open(fileName, "w")
 			text_file.write(msg)
@@ -76,8 +82,126 @@ class ModuleCompiler:
 		if prop.fileName is None:
 			type = self.dataTypes[prop.type]
 		else:
-			type = self.msgPkgName+"/"+prop.fileName
+			if prop.fileName in ["Header", "Time"]:
+				type = "hrim_generic_msgs/"+prop.fileName
+			else:
+				type = self.msgPkgName+"/"+prop.fileName
 		return type+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
+
+	def compileGeneric(self, topics, plat):
+		try:
+			cwd = os.getcwd()
+
+			self.msgPkgName = "hrim_generic_msgs"
+
+			self.dataTypes = {}
+			cwd = os.getcwd()
+			dataTree = ET.parse(cwd+"/models/dataMapping.xml")
+			dataRoot = dataTree.getroot()
+
+			# check for the platform
+			if any(platform.attrib.get("name") == plat for platform in dataRoot):
+				for platform in dataRoot.iter("platform"):
+					if platform.attrib.get("name") == plat:
+						for type in platform.iter("type"):
+							self.dataTypes[type.attrib.get("name")] = type.attrib.get("value")
+			else:
+				print "Chosen platform doesn't exist"
+				sys.exit(1)
+
+			os.chdir("templates")
+			with open('package.txt', 'r') as myfile:
+				pkg=myfile.read()
+
+			with open('cmake.txt', 'r') as myfile:
+				makeFile=myfile.read()
+
+			os.chdir(cwd)
+
+			genPath = os.path.join(cwd, "generated", "generic", self.msgPkgName, "msg")
+
+			genPkg = pkg.replace("%PKGNAME%", "hrim_generic_msgs")
+			genPkg = genPkg.replace("%PKGDESC%", "defines the generic HRIM messages used by every module")
+			genPkg = genPkg.replace("%PKGBUILD%", "")
+			genPkg = genPkg.replace("%PKGEXEC%", "")
+
+			# if the generic package directory doesn't exist, create it
+			if not os.path.exists(genPath):
+				os.makedirs(genPath)
+
+			os.chdir(genPath)
+
+			self.ownFiles = []
+
+			for topic in topics:
+
+				# reposition ourselves for each topic
+				os.chdir(genPath)
+
+				msg = ""
+
+				# check for an overall message description
+				if topic.desc is not None and len(topic.desc)>0:
+					msg+="# "+topic.desc+"\n\n"
+
+				for prop in topic.properties:
+
+					if prop.fileName is not None:
+						self.processSubProperty(prop, True)
+					else:
+
+						# check for enumeration types
+						if prop.unit is not None and prop.unit == "enum":
+
+							# sort enumeration values for readability
+							for value in sorted( ((v,k) for k,v in prop.enumeration.iteritems())):
+								msg+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+
+					# process each property, checking if it's value is an array and if it has any description
+					msg+=self.formatProperty(prop)
+
+				# generate each .msg file and add it to the list
+				if topic.fileName is None:
+					fileName = topic.name.title()+".msg"
+					self.msgFiles.append(topic.name.title())
+				else:
+					fileName = topic.fileName+".msg"
+					self.msgFiles.append(topic.fileName)
+
+				text_file = open(fileName, "w")
+				text_file.write(msg)
+				text_file.close()
+
+			# insert the .msg list in the CMakeLists.txt
+			msgList = ""
+			for tmp in self.msgFiles:
+				msgList+="\t\"msg/"+tmp+".msg\"\n"
+
+			# insert the package's name and description in CMakeLists.txt's content
+			msgMakeFile = makeFile.replace("%PKGNAME%", self.msgPkgName)
+			msgMakeFile = msgMakeFile.replace("%PKGFIND%", "")
+			msgMakeFile = msgMakeFile.replace("%PKGDEP%", "")
+
+			msgMakeFile = msgMakeFile.replace("%PKGFILES%", msgList[:-1])
+
+			os.chdir("..")
+
+			# generate the CMakeLists.txt file
+			cmake = open("CMakeLists.txt", "w")
+			cmake.write(msgMakeFile)
+			cmake.close()
+
+			# generate the package.xml file
+			package = open("package.xml", "w")
+			package.write(genPkg)
+			package.close()
+
+		except Exception as e:
+			print "Error compiling generic package"
+			print e
+			return False
+
+		return True
 
 	def compileModule(self, module, plat):
 
@@ -110,8 +234,8 @@ class ModuleCompiler:
 		self.msgPkgName = "hrim_"+module.type+"_"+module.name+"_msgs"
 		msgPkg = pkg.replace("%PKGNAME%", self.msgPkgName)
 		msgPkg = msgPkg.replace("%PKGDESC%", module.desc)
-		msgPkg = msgPkg.replace("%PKGBUILD%", "")
-		msgPkg = msgPkg.replace("%PKGEXEC%", "")
+		msgPkg = msgPkg.replace("%PKGBUILD%", "\n\t<build_depend>hrim_generic_msgs</build_depend>")
+		msgPkg = msgPkg.replace("%PKGEXEC%", "\n\t<exec_depend>hrim_generic_msgs</exec_depend>")
 
 		# insert the package's name and description in package.xml's content
 		srvPkg = pkg.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
@@ -122,8 +246,8 @@ class ModuleCompiler:
 
 		# insert the package's name and description in CMakeLists.txt's content
 		msgMakeFile = makeFile.replace("%PKGNAME%", self.msgPkgName)
-		msgMakeFile = msgMakeFile.replace("%PKGFIND%", "")
-		msgMakeFile = msgMakeFile.replace("%PKGDEP%", "")
+		msgMakeFile = msgMakeFile.replace("%PKGFIND%", "\nfind_package(hrim_generic_msgs REQUIRED)".format(self.msgPkgName))
+		msgMakeFile = msgMakeFile.replace("%PKGDEP%", "\n\thrim_generic_msgs")
 
 		# insert the package's name and description in CMakeLists.txt's content
 		srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
@@ -145,7 +269,7 @@ class ModuleCompiler:
 
 		# list of files for CMakeLists.txt
 		self.msgFolderPath = ""
-		self.msgFiles = []
+		self.ownFiles = []
 		srvFiles = []
 
 		# for each topic of the module
@@ -234,7 +358,7 @@ class ModuleCompiler:
 
 			# insert the .msg list in the CMakeLists.txt
 			msgList = ""
-			for tmp in self.msgFiles:
+			for tmp in self.ownFiles:
 				msgList+="\t\"msg/"+tmp+".msg\"\n"
 
 			msgMakeFile = msgMakeFile.replace("%PKGFILES%", msgList[:-1])
@@ -309,5 +433,6 @@ class ModuleCompiler:
 	def __init__(self):
 		self.dataTypes = None
 		self.msgPkgName = None
-		self.msgFiles = None
+		self.msgFiles = []
+		self.ownFiles = None
 		self.msgFolderPath = None
