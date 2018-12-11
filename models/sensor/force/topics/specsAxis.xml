@@ -2,7 +2,7 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <property name="axis_spec" type="specsForceAxis" description="specs related to each of the measured axes" fileName="SpecsForceAxis">
-    <property name="axis" type="uint8" unit="enum" enum='{"X": 0, "Y": 1, "Z": 2}' description="the axis the specs describe">
+    <property name="axis" type="uint8" unit="enum" enum='{"FORCE_AXIS_X": 0, "FORCE_AXIS_Y": 1, "FORCE_AXIS_Z": 2}' description="the axis the specs describe">
       <value></value>
     </property>
     <property name="max_force" type="uint16" unit="newton" description="maximum measurable force">
