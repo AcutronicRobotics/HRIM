@@ -1,15 +1,9 @@
 import lxml.etree as ET
 import sys
 import os
+from utils import getTabs
 
 class ModuleCompiler:
-	# shorthand for yaml tabulation
-	def getTabs(self, n):
-		str=""
-		for x in range(n):
-			str+="  "
-		return str
-
 	def processSubProperty(self, prop):
 		if prop.fileName not in self.msgFiles:
 			subMsg = ""
@@ -294,14 +288,14 @@ class ModuleCompiler:
 			# mandatory parameters parsing
 			if param.mandatory:
 				if param.desc is not None:
-					manParams+=self.getTabs(1)+"# "+param.desc+"\n"
-				manParams+=self.getTabs(1)+param.name+": "+(str(param.value) if param.value is not None else "")+"\n\n"
+					manParams+=getTabs(1)+"# "+param.desc+"\n"
+				manParams+=getTabs(1)+param.name+": "+(str(param.value) if param.value is not None else "")+"\n\n"
 
 			# optional parameters parsing
 			else:
 				if param.desc is not None:
-					optParams+=self.getTabs(1)+"# "+param.desc+"\n"
-				optParams+=self.getTabs(1)+param.name+": "+(str(param.value) if param.value is not None else "")+"\n\n"
+					optParams+=getTabs(1)+"# "+param.desc+"\n"
+				optParams+=getTabs(1)+param.name+": "+(str(param.value) if param.value is not None else "")+"\n\n"
 
 		if len(manParams)>0:
 			params = open("mandatory_parameters.yaml", "w")
