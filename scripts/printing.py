@@ -37,7 +37,7 @@ class ModulePrinter:
 			type=property.type[0:1].upper()+property.type[1:]+(("[{}]".format(property.length if property.length is not None else "")) if property.array else "")
 		self.printValue(baseTabs+2, "type", type)
 		self.printValue(baseTabs+2, "unit", property.unit)
-		if property.unit == "enum":
+		if property.unit == "enum" and len(property.enumeration) > 0:
 			print getTabs(baseTabs+2)+"possible values ["
 			for val in property.enumeration.keys():
 				print getTabs(baseTabs+3)+val

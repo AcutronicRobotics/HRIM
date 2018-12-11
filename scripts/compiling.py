@@ -11,8 +11,7 @@ class ModuleCompiler:
 				if subProp.fileName is not None:
 					self.processSubProperty(subProp)
 				else:
-					if subProp.unit is not None and subProp.unit == "enum":
-
+					if subProp.unit is not None and subProp.unit == "enum" and len(subProp.enumeration) > 0:
 						# sort enumeration values for readability
 						for value in sorted( ((v,k) for k,v in subProp.enumeration.iteritems())):
 							subMsg+=subProp.type+" "+value[1]+"="+str(value[0])+"\n"
