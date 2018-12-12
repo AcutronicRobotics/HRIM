@@ -10,10 +10,6 @@
 
     <xi:include href="topics/goal.xml" xpointer="xpointer(//root/topic)"/>
 
-    <param name="frame_rate" type="int" unit="hertz" description="refresh rate">
-      <value></value>
-    </param>
-
     <param name="origin" type="float" unit="radian" description="zero/starting point">
       <value></value>
     </param>
@@ -32,6 +28,10 @@
     <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
 
     <xi:include href="topics/acceleration.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="publish_rate" type="int" unit="hertz" description="publishing rate of the state topic">
+      <value></value>
+    </param>
 
     <param name="min_temperature" type="float" unit="celsius" description="minimum operating temperature">
       <value></value>
