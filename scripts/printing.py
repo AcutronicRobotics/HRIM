@@ -2,6 +2,7 @@ import lxml.etree as ET
 import sys
 import os
 from utils import getTabs
+from parsing import ModuleParser
 
 class ModulePrinter:
 	# shorthand for printing single and list values
@@ -85,17 +86,7 @@ class ModulePrinter:
 
 	    cwd = os.getcwd()
 
-	    dataTree = ET.parse(cwd+"/models/dataMapping.xml")
-	    dataRoot = dataTree.getroot()
-
-	    if any(platform.attrib.get("name") == plat for platform in dataRoot):
-	    	for platform in dataRoot.iter("platform"):
-	    		if platform.attrib.get("name") == plat:
-	    			for type in platform.iter("type"):
-	    				self.dataTypes[type.attrib.get("name")] = type.attrib.get("value")
-	    else:
-	    	print "Chosen platform doesn't exist"
-	    	sys.exit(1)
+	    self.dataTypes = ModuleParser().getDataTypes(plat)
 
 	    # print parsing
 	    print "\n\n{0} MODULE:\n\n".format(module.name.upper())

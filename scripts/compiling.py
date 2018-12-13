@@ -2,6 +2,7 @@ import lxml.etree as ET
 import sys
 import os
 from utils import getTabs
+from parsing import ModuleParser
 
 class ModuleCompiler:
 	def processSubProperty(self, prop, generic):
@@ -94,20 +95,7 @@ class ModuleCompiler:
 
 			self.msgPkgName = "hrim_generic_msgs"
 
-			self.dataTypes = {}
-			cwd = os.getcwd()
-			dataTree = ET.parse(cwd+"/models/dataMapping.xml")
-			dataRoot = dataTree.getroot()
-
-			# check for the platform
-			if any(platform.attrib.get("name") == plat for platform in dataRoot):
-				for platform in dataRoot.iter("platform"):
-					if platform.attrib.get("name") == plat:
-						for type in platform.iter("type"):
-							self.dataTypes[type.attrib.get("name")] = type.attrib.get("value")
-			else:
-				print "Chosen platform doesn't exist"
-				sys.exit(1)
+			self.dataTypes = ModuleParser().getDataTypes(plat)
 
 			os.chdir("templates")
 			with open('package.txt', 'r') as myfile:
@@ -209,22 +197,10 @@ class ModuleCompiler:
 		services = False
 		dependency = False
 
-		# map the datatypes
-		self.dataTypes = {}
 		cwd = os.getcwd()
-		dataTree = ET.parse(cwd+"/models/dataMapping.xml")
-		dataRoot = dataTree.getroot()
 
-		# check for the platform
-		if any(platform.attrib.get("name") == plat for platform in dataRoot):
-			for platform in dataRoot.iter("platform"):
-				if platform.attrib.get("name") == plat:
-					for type in platform.iter("type"):
-						self.dataTypes[type.attrib.get("name")] = type.attrib.get("value")
-		else:
-			print "Chosen platform doesn't exist"
-			sys.exit(1)
-
+		self.dataTypes = ModuleParser().getDataTypes(plat)
+		
 		# parse the templates necessary for the package
 		os.chdir("templates")
 		with open('package.txt', 'r') as myfile:
@@ -431,7 +407,7 @@ class ModuleCompiler:
 			params.close()
 
 	def __init__(self):
-		self.dataTypes = None
+		self.dataTypes = {}
 		self.msgPkgName = None
 		self.msgFiles = []
 		self.ownFiles = None

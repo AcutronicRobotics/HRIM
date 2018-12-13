@@ -7,6 +7,42 @@ from classes import *
 
 class ModuleParser:
 
+	# calling-path independent method to get a platforms data type mapping
+	def getDataTypes(self, plat):
+		try:
+
+			dataTypes = {}
+
+			# save the current path
+			basePath = os.path.abspath(os.getcwd())
+
+			# look for the main script to assure the repository root path
+			while not os.path.exists(os.path.join(os.getcwd(), "hrim.py")):
+				os.chdir("..")
+
+			# parse the mapping file
+			dataTree = ET.parse(os.path.join(os.getcwd(), "models", "dataMapping.xml"))
+			dataRoot = dataTree.getroot()
+
+			# return to the previous path
+			os.chdir(basePath)
+
+			# map the data types
+			if any(platform.attrib.get("name") == plat for platform in dataRoot):
+				for platform in dataRoot.iter("platform"):
+					if platform.attrib.get("name") == plat:
+						for dataType in platform.iter("type"):
+							dataTypes[dataType.attrib.get("name")] = dataType.attrib.get("value")
+			else:
+				print "Chosen platform doesn't exist"
+				sys.exit(1)
+
+		except Exception as e:
+			print "Error parsing dataType mapping file"
+			raise
+
+		return dataTypes
+
 	# check for value type, else all values'll be strings
 	def processValue(self, value, type):
 		if value is None or len(value)==0:
