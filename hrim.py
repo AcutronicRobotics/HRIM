@@ -32,41 +32,44 @@ def findModels(dirName):
     return modelFiles
 
 def main(args):
-	parser = ModuleParser()
-	if args.action == "show":
-		extend = args.extend
-		module = parser.parseFile(args.filePath)
-		ModulePrinter().printModule(module, args.platform, extend)
-	elif args.action == "generate":
-		path = os.getcwd()
-		generic = parser.parseGeneric()
-		compiler = ModuleCompiler()
-		compiler.compileGeneric(generic, args.platform)
-		os.chdir(path)
-		# check for file generation shorthands
-		if args.filePath == "all":
-			fileList = findModels(os.path.join(path, "models"))
-			for item in fileList:
-				# if the model isn't a development file process it
-				if not bool(re.search('.*_clean.xml$', item)):
-					os.chdir(path)
-					module = parser.parseFile(item)
-					compiler.compileModule(module, args.platform)
-		elif args.filePath == "allClean":
-			fileList = findModels(os.path.join(path, "models"))
-			for item in fileList:
-				# if the model is a development file process it
-				if bool(re.search('.*_clean.xml$', item)):
-					os.chdir(path)
-					module = parser.parseFile(item)
-					compiler.compileModule(module, args.platform)
-		# else try to generate the implementation based on the passed file
-		else:
-			module = parser.parseFile(args.filePath)
-			compiler.compileModule(module, args.platform)
-	else:
-		print "Unknown command"
-
+    try:
+    	parser = ModuleParser()
+    	if args.action == "show":
+    		extend = args.extend
+    		module = parser.parseFile(args.filePath)
+    		ModulePrinter().printModule(module, args.platform, extend)
+    	elif args.action == "generate":
+    		path = os.getcwd()
+    		generic = parser.parseGeneric()
+    		compiler = ModuleCompiler()
+    		compiler.compileGeneric(generic, args.platform)
+    		os.chdir(path)
+    		# check for file generation shorthands
+    		if args.filePath == "all":
+    			fileList = findModels(os.path.join(path, "models"))
+    			for item in fileList:
+    				# if the model isn't a development file process it
+    				if not bool(re.search('.*_clean.xml$', item)):
+    					os.chdir(path)
+    					module = parser.parseFile(item)
+    					compiler.compileModule(module, args.platform)
+    		elif args.filePath == "allClean":
+    			fileList = findModels(os.path.join(path, "models"))
+    			for item in fileList:
+    				# if the model is a development file process it
+    				if bool(re.search('.*_clean.xml$', item)):
+    					os.chdir(path)
+    					module = parser.parseFile(item)
+    					compiler.compileModule(module, args.platform)
+    		# else try to generate the implementation based on the passed file
+    		else:
+    			module = parser.parseFile(args.filePath)
+    			compiler.compileModule(module, args.platform)
+    	else:
+    		print "Unknown command"
+    except:
+        print "An error occurred during command execution"
+        sys.exit(1)
 
 
 if __name__ == '__main__':
