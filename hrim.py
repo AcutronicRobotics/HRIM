@@ -8,6 +8,7 @@ from compiling import ModuleCompiler
 from classes import *
 import argparse
 import re
+import shutil
 
 # locate all module models of the repository and return a list with their full path
 def findModels(dirName):
@@ -43,6 +44,7 @@ def main(args):
     		generic = parser.parseGeneric()
     		compiler = ModuleCompiler()
     		compiler.compileGeneric(generic, args.platform)
+    		print "Succesfully generated "+args.platform+" implementation of HRIM's generic package."
     		os.chdir(path)
     		# check for file generation shorthands
     		if args.filePath == "all":
@@ -53,6 +55,7 @@ def main(args):
     					os.chdir(path)
     					module = parser.parseFile(item)
     					compiler.compileModule(module, args.platform)
+    					print "Succesfully generated "+args.platform+" implementation of "+module.name+" module."
     		elif args.filePath == "allClean":
     			fileList = findModels(os.path.join(path, "models"))
     			for item in fileList:
@@ -61,10 +64,29 @@ def main(args):
     					os.chdir(path)
     					module = parser.parseFile(item)
     					compiler.compileModule(module, args.platform)
+    					print "Succesfully generated "+args.platform+" implementation of "+module.name+" module."
     		# else try to generate the implementation based on the passed file
     		else:
     			module = parser.parseFile(args.filePath)
     			compiler.compileModule(module, args.platform)
+                print "Succesfully generated "+args.platform+" implementation of "+module.name+" module."
+        elif args.action == "clear":
+    		if len(os.listdir("generated")) > 0:
+        		if args.filePath == "all":
+        			delDirs = os.listdir("generated")
+        			for delPath in os.listdir("generated"):
+        				fullPath = os.path.join(os.getcwd(), "generated", delPath)
+        				shutil.rmtree(fullPath)
+        				print "Deleted "+fullPath
+        		else:
+        			fullPath = os.path.join(os.getcwd(), "generated", args.filePath)
+        			if os.path.exists(fullPath):
+        				shutil.rmtree(fullPath)
+        				print "Deleted "+fullPath
+        			else:
+        				print "Couldn't find passed directory for deletion."
+    		else:
+        		print "There is no implementation to delete (generated directory is empty)."
     	else:
     		print "Unknown command"
     except:
@@ -79,13 +101,26 @@ if __name__ == '__main__':
 	parser=argparse.ArgumentParser(
 	    description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
 		formatter_class=argparse.RawTextHelpFormatter)
-	parser.add_argument('action', choices=['show','generate'], help='''Action to take:
+	parser.add_argument('action', choices=['show','generate', 'clear'], help='''Action to take:
 show:
 	print a representation of the passed valid XML module's model structure and values.
 generate:
 	generate the platform-specific implementation of the passed valid XML model.
+clear:
+	delete the passed generated implementation.
 		''')
-	parser.add_argument('filePath', help='The path to a valid xml model file.')
+	parser.add_argument('filePath', help='''The path to a valid xml model file.
+Alternatively, either a shorthand for the generate command:
+    all:
+        generates the implementation of every existent model
+    allClean:
+        same as all, but taking into account the development models (file name ends in _clean)
+Or the implementation to be deleted by the clear command:
+    all:
+        all implementations on the generation folder.
+    {module name}:
+        deletes the files related to said module (i.e. "force" would delete generated/force).
+                     ''')
 	parser.add_argument('-p', '--platform', default='ros2', choices=['ros2'], help='The platform for the generated model, ros2 by default.')
 	parser.add_argument('-e', '--extend', action='store_true', default=False, help='Whether to expand topic definitions when "show"-ing.')
 
