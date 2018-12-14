@@ -50,11 +50,16 @@ A preliminary whitepaper about this work is available at https://arxiv.org/abs/1
 sudo apt-get install python-lxml
 ```
 
+Alternatively, the OS-independent `pip` command would be:
+```bash
+pip install lxml
+```
+
 ### Script usage
 
-To command structure would be the following:
+The command structure would be the following:
 ```
-python hrim.py [-h] [-p {ros2}] [-e] {show,generate} filePath
+python hrim.py [-h] [-p {ros2}] [-e] {show,generate,clear} filePath
 ```
 Where:
 
@@ -65,9 +70,10 @@ Where:
 
 `-e/--extend` indicates whether already shown definitions should be shown again or not when printing the module's model.
 
-`{show,generate}` is mandatory and signifies the action to take:
+`{show,generate,clear}` is mandatory and signifies the action to take:
 * **show**: parses the passed module file and prints it's processed contents.
-* **generate**: parses the passed module file and generates the corresponding packages/files to use with the selected platform (ROS 2 by default). The generated files will be located inside  a `generated` folder on the root of the repository.
+* **generate**: parses the passed module file and generates the corresponding packages/files to use with the selected platform (ROS 2 by default). The generated files will be located inside  a *generated* directory on the root of the repository.
+* **clear**: deletes the passed module's generated implementation. Looks for the passed path inside the *generated* directory, i.e. `force` would look for *generated/force* for deletion.
 
 `filePath` is mandatory and signifies the path (either absolute or relative from the repository's root) to one of the following files:
 * models/actuator/gripper/gripper.xml
@@ -127,6 +133,9 @@ Alternatively, shorthands are provided to **generate** the files for every exist
 * **all**: will generate the files for every existing (non-development) module file.
 * **allClean**: will generate the files for every existing development module file (module xml files ending with *_clean*).
 
+And for implementation deletion using the **clear** argument:
+* **all**: will delete every implementation of the chosen platform.
+
 ### Examples
 
 While positioned at the repository's root all of the following are valid command executions:
@@ -142,3 +151,5 @@ While positioned at the repository's root all of the following are valid command
 * `python hrim.py generate models/sensor/torque/torque.xml`
 * `python hrim.py generate --platform ros2 all`
 * `python hrim.py generate allClean`
+* `python hrim.py clear force`
+* `python hrim.py clear all`
