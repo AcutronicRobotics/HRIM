@@ -2,6 +2,9 @@
 <topic name="module_3d" type="publish" fileName="Simulation3D"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="model_name" type="string" description="identifier name for the passed model">
+    <value></value>
+  </property>
   <property name="model" type="byte[]" unit="stl" description=".stl of the component">
     <value></value>
   </property>
