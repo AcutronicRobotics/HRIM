@@ -69,12 +69,26 @@ def main(args):
     		else:
     			module = parser.parseFile(args.filePath)
     			compiler.compileModule(module, args.platform)
-                print "Succesfully generated "+args.platform+" implementation of "+module.name+" module."
+    			print "Succesfully generated "+args.platform+" implementation of "+module.name+" module."
+        elif args.action == "list":
+    		if args.filePath == "models":
+    			modelList = findModels(os.path.join(os.getcwd(), "models"))
+    			for model in sorted(modelList):
+        			if not bool(re.search('.*_clean.xml$', model)):
+        				pathList = model.split(os.sep)
+        				print pathList[-3]+"/"+pathList[-2]+"/"+pathList[-1].replace('.xml',"")
+    		elif args.filePath == "implementations":
+    			impList = os.listdir("generated")
+    			if len(impList) > 0:
+        			for implementation in sorted(impList):
+        				print implementation
+    			else:
+        			print "There's no generated implementations."
         elif args.action == "clear":
     		if len(os.listdir("generated")) > 0:
         		if args.filePath == "all":
         			delDirs = os.listdir("generated")
-        			for delPath in os.listdir("generated"):
+        			for delPath in sorted(delDirs):
         				fullPath = os.path.join(os.getcwd(), "generated", delPath)
         				shutil.rmtree(fullPath)
         				print "Deleted "+fullPath
@@ -101,11 +115,13 @@ if __name__ == '__main__':
 	parser=argparse.ArgumentParser(
 	    description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
 		formatter_class=argparse.RawTextHelpFormatter)
-	parser.add_argument('action', choices=['show','generate', 'clear'], help='''Action to take:
+	parser.add_argument('action', choices=['show','generate', 'list', 'clear'], help='''Action to take:
 show:
 	print a representation of the passed valid XML module's model structure and values.
 generate:
 	generate the platform-specific implementation of the passed valid XML model.
+list:
+	list available models or generated implementations.
 clear:
 	delete the passed generated implementation.
 		''')
@@ -115,6 +131,11 @@ Alternatively, either a shorthand for the generate command:
         generates the implementation of every existent model
     allClean:
         same as all, but taking into account the development models (file name ends in _clean)
+What the list command will look for:
+    models:
+        will list all available models.
+    implementations:
+        will list all generated module implementations.
 Or the implementation to be deleted by the clear command:
     all:
         all implementations on the generation folder.

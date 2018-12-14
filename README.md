@@ -59,7 +59,7 @@ pip install lxml
 
 The command structure would be the following:
 ```
-python hrim.py [-h] [-p {ros2}] [-e] {show,generate,clear} filePath
+python hrim.py [-h] [-p {ros2}] [-e] {show,generate,list,clear} filePath
 ```
 Where:
 
@@ -70,12 +70,16 @@ Where:
 
 `-e/--extend` indicates whether already shown definitions should be shown again or not when printing the module's model.
 
-`{show,generate,clear}` is mandatory and signifies the action to take:
+`{show,generate,list,clear}` is mandatory and signifies the action to take:
 * **show**: parses the passed module file and prints it's processed contents.
 * **generate**: parses the passed module file and generates the corresponding packages/files to use with the selected platform (ROS 2 by default). The generated files will be located inside  a *generated* directory on the root of the repository.
-* **clear**: deletes the passed module's generated implementation. Looks for the passed path inside the *generated* directory, i.e. `force` would look for *generated/force* for deletion.
+* **list**: provides a list of existing models or implementations.
+* **clear**: deletes generated implementations.
+<!-- * **clear**: deletes the passed module's generated implementation. Looks for the passed path inside the *generated* directory, i.e. `force` would look for *generated/force* for deletion. -->
 
-`filePath` is mandatory and signifies the path (either absolute or relative from the repository's root) to one of the following files:
+`filePath` is mandatory and is dependent on the action to take.
+
+If the chosen action is **show** it signifies the path (either absolute or relative from the repository's root) to one of the following files:
 * models/actuator/gripper/gripper.xml
 * models/actuator/gripper/gripper_clean.xml
 * models/actuator/electricmotor/electricmotor.xml
@@ -129,11 +133,16 @@ All of the following would be valid paths:
 * `/models/sensor/torque/torque.xml`
 * `models/sensor/torque/torque.xml`
 
-Alternatively, shorthands are provided to **generate** the files for every existing module:
-* **all**: will generate the files for every existing (non-development) module file.
-* **allClean**: will generate the files for every existing development module file (module xml files ending with *_clean*).
+If the chosen action is **generate** it can either represent one of the models listed above or one of the existing shorthands to generate the files for every existing module:
+* **all**: will generate the files for every existing (non-development) model file.
+* **allClean**: will generate the files for every existing development module file (model xml files ending with *_clean*).
 
-And for implementation deletion using the **clear** argument:
+If the chosen action is **list** it signifies what is meant to get listed:
+* **models**: will list all existing models.
+* **implementations**: will list all existing generated implementations.
+
+If the chosen action is **clear** it can either represent a directory name or a shorthand:
+* **{directory}**: will delete that directory inside the generation folder (i.e. *force* would delete `generated/force`)
 * **all**: will delete every implementation of the chosen platform.
 
 ### Examples
