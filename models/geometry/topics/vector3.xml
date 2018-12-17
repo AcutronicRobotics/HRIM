@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<topic name="vector3" type="publish" fileName="Vector3" description="This represents a vector in free space.">
+  <property name="x" type="float64">
+    <value></value>
+  </property>
+  <property name="y" type="float64">
+    <value></value>
+  </property>
+  <property name="z" type="float64">
+    <value></value>
+  </property>
+</topic>

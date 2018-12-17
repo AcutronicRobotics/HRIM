@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<topic name="pose_covariance_stamped" type="publish" fileName="PoseWithCovarianceStamped" description="This expresses an estimated pose with a reference coordinate frame and timestamp."
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="pose" type="poseWithCovariance" fileName="PoseWithCovariance">
+    <xi:include href="poseCovariance.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+</topic>

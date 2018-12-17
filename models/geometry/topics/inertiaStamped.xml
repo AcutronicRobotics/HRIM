@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<topic name="inertia_stamped" type="publish" fileName="InertiaStamped"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="inertia" type="inertia" fileName="Inertia">
+    <xi:include href="inertia.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+</topic>

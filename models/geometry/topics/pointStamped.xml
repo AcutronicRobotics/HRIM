@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<topic name="point_stamped" type="publish" fileName="PointStamped" description="This represents a Point with reference coordinate frame and timestamp."
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="point" type="point" fileName="Point">
+    <xi:include href="point.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+</topic>

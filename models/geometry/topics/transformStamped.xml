@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<topic name="transform_stamped" type="publish" fileName="TransformStamped" description="This expresses a transform from coordinate frame header.frame_id to the coordinate frame child_frame_id."
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="child_frame" type="string" description="the frame id of the child frame">
+    <value></value>
+  </property>
+  <property name="transform" type="transform" fileName="Transform">
+    <xi:include href="transform.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+</topic>

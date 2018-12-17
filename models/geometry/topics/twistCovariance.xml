@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<topic name="twist_covariance" type="publish" fileName="TwistWithCovariance" description="This expresses velocity in free space with uncertainty."
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="twist" type="twist" fileName="Twist">
+    <xi:include href="twist.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+  <property name="covariance" type="float64[36]" description="x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis">
+    <value></value>
+  </property>
+</topic>

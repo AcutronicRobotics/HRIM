@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="topics/vector3.xml"/>
+  <xi:include href="topics/accel.xml"/>
+  <xi:include href="topics/accelStamped.xml"/>
+  <xi:include href="topics/accelCovariance.xml"/>
+  <xi:include href="topics/accelCovarianceStamped.xml"/>
+  <xi:include href="topics/inertia.xml"/>
+  <xi:include href="topics/inertiaStamped.xml"/>
+  <xi:include href="topics/point.xml"/>
+  <xi:include href="topics/point32.xml"/>
+  <xi:include href="topics/pointStamped.xml"/>
+  <xi:include href="topics/polygon.xml"/>
+  <xi:include href="topics/polygonStamped.xml"/>
+  <xi:include href="topics/quaternion.xml"/>
+  <xi:include href="topics/pose.xml"/>
+  <xi:include href="topics/pose2d.xml"/>
+  <xi:include href="topics/poseArray.xml"/>
+  <xi:include href="topics/poseStamped.xml"/>
+  <xi:include href="topics/poseCovariance.xml"/>
+  <xi:include href="topics/poseCovarianceStamped.xml"/>
+  <xi:include href="topics/quaternionStamped.xml"/>
+  <xi:include href="topics/transform.xml"/>
+  <xi:include href="topics/transformStamped.xml"/>
+  <xi:include href="topics/twist.xml"/>
+  <xi:include href="topics/twistStamped.xml"/>
+  <xi:include href="topics/twistCovariance.xml"/>
+  <xi:include href="topics/twistCovarianceStamped.xml"/>
+  <xi:include href="topics/vector3Stamped.xml"/>
+  <xi:include href="topics/wrench.xml"/>
+  <xi:include href="topics/wrenchStamped.xml"/>
+</root>

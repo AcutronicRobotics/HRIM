@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<topic name="pose_array" type="publish" fileName="PoseArray" description="An array of poses with a header for global reference."
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="poses" type="pose[]" fileName="Pose">
+    <xi:include href="pose.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+</topic>

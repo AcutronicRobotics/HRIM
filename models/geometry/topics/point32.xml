@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<topic name="point32" type="publish" fileName="Point32" description="This contains the position of a point in free space (with 32 bits of precision).">
+  <property name="x" type="float32">
+    <value></value>
+  </property>
+  <property name="y" type="float32">
+    <value></value>
+  </property>
+  <property name="z" type="float32">
+    <value></value>
+  </property>
+</topic>

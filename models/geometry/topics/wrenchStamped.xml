@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<topic name="wrench_stamped" type="publish" fileName="WrenchStamped" description="A wrench with reference coordinate frame and timestamp."
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="wrench" type="wrench" fileName="Wrench">
+    <xi:include href="wrench.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+</topic>
