@@ -41,10 +41,24 @@ def main(args):
     		ModulePrinter().printModule(module, args.platform, extend)
     	elif args.action == "generate":
     		path = os.getcwd()
-    		generic = parser.parseGeneric()
+
+            # if generic package exists we delete it
+    		if os.path.exists(os.path.join(os.getcwd(), "generated", "generic")):
+				shutil.rmtree(os.path.join(os.getcwd(), "generated", "generic"))
+
+    		generic = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
     		compiler = ModuleCompiler()
     		compiler.compileGeneric(generic, args.platform)
     		print "Succesfully generated "+args.platform+" implementation of HRIM's generic package."
+    		os.chdir(path)
+    		geometry = parser.parseBase(os.path.join(path, "models", "geometry", "geometry.xml"))
+
+            # if geometry package exists we delete it
+    		if os.path.exists(os.path.join(os.getcwd(), "generated", "geometry")):
+				shutil.rmtree(os.path.join(os.getcwd(), "generated", "geometry"))
+                
+    		compiler.compileGeneric(geometry, args.platform, "geometry")
+    		print "Succesfully generated "+args.platform+" implementation of HRIM's geometry package."
     		os.chdir(path)
     		# check for file generation shorthands
     		if args.filePath == "all":

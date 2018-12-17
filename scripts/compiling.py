@@ -7,7 +7,7 @@ from parsing import ModuleParser
 class ModuleCompiler:
 	def processSubProperty(self, prop, generic):
 		try:
-			if prop.fileName not in self.msgFiles and prop.fileName not in self.ownFiles:
+			if prop.fileName not in self.msgFiles and prop.fileName not in self.ownFiles and self.checkGenerated(prop.fileName) == False:
 				subMsg = ""
 				for subProp in prop.properties:
 					if subProp.fileName is not None:
@@ -93,17 +93,18 @@ class ModuleCompiler:
 		if prop.fileName is None:
 			type = self.dataTypes[prop.type]
 		else:
-			if prop.fileName in ["Header", "Time"]:
-				type = "hrim_generic_msgs/"+prop.fileName
+			found = self.checkGenerated(prop.fileName)
+			if found != False:
+				type = found+"/"+prop.fileName
 			else:
 				type = self.msgPkgName+"/"+prop.fileName
 		return type+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
 
-	def compileGeneric(self, topics, plat):
+	def compileGeneric(self, topics, plat, package="generic"):
 		try:
 			cwd = os.getcwd()
 
-			self.msgPkgName = "hrim_generic_msgs"
+			self.msgPkgName = "hrim_"+package+"_msgs"
 
 			self.dataTypes = ModuleParser().getDataTypes(plat)
 
@@ -116,12 +117,7 @@ class ModuleCompiler:
 
 			os.chdir(cwd)
 
-			genPath = os.path.join(cwd, "generated", "generic", self.msgPkgName, "msg")
-
-			genPkg = pkg.replace("%PKGNAME%", "hrim_generic_msgs")
-			genPkg = genPkg.replace("%PKGDESC%", "defines the generic HRIM messages used by every module")
-			genPkg = genPkg.replace("%PKGBUILD%", "")
-			genPkg = genPkg.replace("%PKGEXEC%", "")
+			genPath = os.path.join(cwd, "generated", package, self.msgPkgName, "msg")
 
 			# if the generic package directory doesn't exist, create it
 			if not os.path.exists(genPath):
@@ -158,29 +154,47 @@ class ModuleCompiler:
 					# process each property, checking if it's value is an array and if it has any description
 					msg+=self.formatProperty(prop)
 
-				# generate each .msg file and add it to the list
-				if topic.fileName is None:
-					fileName = topic.name.title()+".msg"
-					self.msgFiles.append(topic.name.title())
-				else:
-					fileName = topic.fileName+".msg"
-					self.msgFiles.append(topic.fileName)
+				genName = topic.fileName if topic.fileName is not None else topic.name.title()
+				checkFile = self.checkGenerated(genName)
 
-				text_file = open(fileName, "w")
-				text_file.write(msg)
-				text_file.close()
+				if checkFile == False:
+					fileName = genName+".msg"
+					self.msgFiles.append(genName)
+					text_file = open(fileName, "w")
+					text_file.write(msg)
+					text_file.close()
+				else:
+					print checkFile
+
+			self.pkgDeps.remove(self.msgPkgName)
 
 			# insert the .msg list in the CMakeLists.txt
 			msgList = ""
-			for tmp in self.msgFiles:
+			for tmp in sorted(self.generatedFiles[self.msgPkgName]):
 				msgList+="\t\"msg/"+tmp+".msg\"\n"
+
+			buildDeps = ""
+			execDeps = ""
+			pkgFind = ""
+			pkgDep = ""
+			for pkgName in self.pkgDeps:
+				buildDeps = buildDeps+("\n\t<build_depend>{}</build_depend>").format(pkgName)
+				execDeps = execDeps+("\n\t<exec_depend>{}</exec_depend>").format(pkgName)
+				pkgFind = pkgFind+("\nfind_package({} REQUIRED)").format(pkgName)
+				pkgDep = pkgDep+("\n\t{}").format(pkgName)
 
 			# insert the package's name and description in CMakeLists.txt's content
 			msgMakeFile = makeFile.replace("%PKGNAME%", self.msgPkgName)
-			msgMakeFile = msgMakeFile.replace("%PKGFIND%", "")
-			msgMakeFile = msgMakeFile.replace("%PKGDEP%", "")
+			msgMakeFile = msgMakeFile.replace("%PKGFIND%", pkgFind)
+			msgMakeFile = msgMakeFile.replace("%PKGDEP%", pkgDep)
 
 			msgMakeFile = msgMakeFile.replace("%PKGFILES%", msgList[:-1])
+
+
+			genPkg = pkg.replace("%PKGNAME%", self.msgPkgName)
+			genPkg = genPkg.replace("%PKGDESC%", "defines the "+package+" HRIM messages used by modules")
+			genPkg = genPkg.replace("%PKGBUILD%", buildDeps)
+			genPkg = genPkg.replace("%PKGEXEC%", execDeps)
 
 			os.chdir("..")
 
@@ -198,15 +212,47 @@ class ModuleCompiler:
 			print "Error while compiling generic package"
 			raise
 
+	def listGenerated(self):
+		cwd = os.getcwd()
+		os.chdir(self.initPath)
+		genList = {}
+		if os.path.exists("generated"):
+			pkgList = os.listdir("generated")
+			for package in pkgList:
+				pkgName = os.path.split(package)[-1]
+				genList["hrim_"+pkgName+"_msgs"] = []
+				genPath = os.path.join(self.initPath,"generated", pkgName, "hrim_"+pkgName+"_msgs", "msg")
+				if os.path.exists(genPath):
+					msgList = os.listdir(genPath)
+					for message in msgList:
+						genList["hrim_"+pkgName+"_msgs"].append(message.split(".")[0])
+		os.chdir(cwd)
+		self.generatedFiles = genList
+		return genList
+
+	def checkGenerated(self, message):
+		res = False
+		genList = self.listGenerated()
+		for key, list in genList.items():
+			if message in list:
+				res = key
+
+		if res != False and res not in self.pkgDeps:
+			self.pkgDeps.append(res)
+
+		return res
+
 	def compileModule(self, module, plat):
 		try:
 			messages = False
 			services = False
 			dependency = False
+			self.pkgDeps = []
 
 			cwd = os.getcwd()
 
 			self.dataTypes = ModuleParser().getDataTypes(plat)
+			self.msgPkgName = "hrim_"+module.type+"_"+module.name+"_msgs"
 
 			# parse the templates necessary for the package
 			os.chdir("templates")
@@ -214,23 +260,11 @@ class ModuleCompiler:
 				pkg=myfile.read()
 
 			# insert the package's name and description in package.xml's content
-			self.msgPkgName = "hrim_"+module.type+"_"+module.name+"_msgs"
-			msgPkg = pkg.replace("%PKGNAME%", self.msgPkgName)
-			msgPkg = msgPkg.replace("%PKGDESC%", module.desc)
-			msgPkg = msgPkg.replace("%PKGBUILD%", "\n\t<build_depend>hrim_generic_msgs</build_depend>")
-			msgPkg = msgPkg.replace("%PKGEXEC%", "\n\t<exec_depend>hrim_generic_msgs</exec_depend>")
-
-			# insert the package's name and description in package.xml's content
 			srvPkg = pkg.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
 			srvPkg = srvPkg.replace("%PKGDESC%", module.desc)
 
 			with open('cmake.txt', 'r') as myfile:
 				makeFile=myfile.read()
-
-			# insert the package's name and description in CMakeLists.txt's content
-			msgMakeFile = makeFile.replace("%PKGNAME%", self.msgPkgName)
-			msgMakeFile = msgMakeFile.replace("%PKGFIND%", "\nfind_package(hrim_generic_msgs REQUIRED)".format(self.msgPkgName))
-			msgMakeFile = msgMakeFile.replace("%PKGDEP%", "\n\thrim_generic_msgs")
 
 			# insert the package's name and description in CMakeLists.txt's content
 			srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
@@ -329,6 +363,27 @@ class ModuleCompiler:
 						text_file.write(srv)
 						text_file.close()
 
+			buildDeps = ""
+			execDeps = ""
+			pkgFind = ""
+			pkgDep = ""
+			for pkgName in self.pkgDeps:
+				buildDeps = buildDeps+("\n\t<build_depend>{}</build_depend>").format(pkgName)
+				execDeps = execDeps+("\n\t<exec_depend>{}</exec_depend>").format(pkgName)
+				pkgFind = pkgFind+("\nfind_package({} REQUIRED)").format(pkgName)
+				pkgDep = pkgDep+("\n\t{}").format(pkgName)
+
+			# insert the package's name and description in package.xml's content
+			msgPkg = pkg.replace("%PKGNAME%", self.msgPkgName)
+			msgPkg = msgPkg.replace("%PKGDESC%", module.desc)
+			msgPkg = msgPkg.replace("%PKGBUILD%", buildDeps)
+			msgPkg = msgPkg.replace("%PKGEXEC%", execDeps)
+
+			# insert the package's name and description in CMakeLists.txt's content
+			msgMakeFile = makeFile.replace("%PKGNAME%", self.msgPkgName)
+			msgMakeFile = msgMakeFile.replace("%PKGFIND%", pkgFind)
+			msgMakeFile = msgMakeFile.replace("%PKGDEP%", pkgDep)
+
 		    # if the package has messages
 			if messages:
 				# reposition ourselves on the package's root
@@ -422,3 +477,6 @@ class ModuleCompiler:
 		self.msgFiles = []
 		self.ownFiles = None
 		self.msgFolderPath = None
+		self.generatedFiles = {}
+		self.initPath = os.getcwd()
+		self.pkgDeps = []
