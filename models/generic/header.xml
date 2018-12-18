@@ -2,7 +2,7 @@
 <root>
   <property name="header" type="header" fileName="Header"
     xmlns:xi="http://www.w3.org/2001/XInclude">
-    <xi:include href="time.xml"/>
+    <xi:include href="timeStamp.xml"/>
     <property name="frame_id" type="string" description="transform frame with which this data is associated">
       <value></value>
     </property>
