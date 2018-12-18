@@ -4,7 +4,7 @@
   <topic name="compass" type="publish" description="magnetometers. The integration of an magnetometer sensor is needed" fileName="Compass">
     <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
     <property name="magnetic_field" type="vector3" fileName="Vector3" unit="micro tesla">
-      <xi:include href="../../../complex/vector3.xml" xpointer="xpointer(//root/property)"/>
+      <xi:include href="../../../geometry/topics/vector3.xml" xpointer="xpointer(//topic/property)"/>
     </property>
     <property name="magnetic_field_covariance" type="float64[9]">
       <value></value>
