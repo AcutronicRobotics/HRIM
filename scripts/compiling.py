@@ -168,6 +168,9 @@ class ModuleCompiler:
 
 			self.pkgDeps.remove(self.msgPkgName)
 
+			# update the list of generated files at self.generatedFiles 
+			self.listGenerated()
+
 			# insert the .msg list in the CMakeLists.txt
 			msgList = ""
 			for tmp in sorted(self.generatedFiles[self.msgPkgName]):
