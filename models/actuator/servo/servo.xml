@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<module name="rotaryservomotor" type="actuator" description="defines the messages to interact with a servomotor"
+<module name="rotaryservo" type="actuator" description="defines the messages to interact with a servo"
   noNamespaceSchemaLocation="../../schemas/module.xsd"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <mandatory>
