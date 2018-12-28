@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="specs" type="publish" description="device features" fileName="SpecsLegged">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="max_legged_velocity" type="float32" unit="" description="maximum vehicle velocity">
+      <value></value>
+    </property>
+    <property name="number_legs" type="uint16" unit="" description="how many legs the base has">
+      <value></value>
+    </property>
+    <property name="number_dof" type="uint16" unit="" description="how many degrees of freedom">
+      <value></value>
+    </property>
+  </topic>
+</root>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="specs" type="publish" description="device features" fileName="SpecsHygrometer">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="resolution" type="float32" unit="rh" description="minimum change the hygrometer detects, example 0.01">
+      <value></value>
+    </property>
+    <property name="max_calibrated_rh" type="float32" unit="rh" description="Maximum relative humidity where the detection accuracy is at it's best">
+      <value></value>
+    </property>
+    <property name="min_calibrated_rh" type="float32" unit="rh" description="Minimum relative humidity where the detection accuracy is at it's best">
+      <value></value>
+    </property>
+    <property name="max_calibrated_temp" type="float32" unit="celsius" description="Maximum temperature where the detection accuracy is at it's best">
+      <value></value>
+    </property>
+    <property name="min_calibrated_temp" type="float32" unit="celsius" description="Minimum temperature where the detection accuracy is at it's best">
+      <value></value>
+    </property>
+    <property name="accuracy_calibrated" type="float32" unit="+- rh" description="average error margin while inside the calibrated ranges">
+      <value></value>
+    </property>
+    <property name="accuracy_other" type="float32" unit="+- rh" description="average error margin while outside the calibrated ranges">
+      <value></value>
+    </property>
+    <property name="max_rh" type="float32" unit="rh" description="maximum operating relative humidity">
+      <value></value>
+    </property>
+    <property name="min_rh" type="float32" unit="rh" description="minimum operating relative humidity">
+      <value></value>
+    </property>
+    <property name="max_temp" type="float32" unit="celsius" description="maximum operating temperature">
+      <value></value>
+    </property>
+    <property name="min_temp" type="float32" unit="celsius" description="minimum operating temperature">
+      <value></value>
+    </property>
+    <property name="max_measure_time" type="float32" unit="second" description="maximum amount of time needed for a measurement">
+      <value></value>
+    </property>
+    <property name="min_measure_time" type="float32" unit="second" description="minimum amount of time needed for a measurement">
+      <value></value>
+    </property>
+    <property name="device_type" type="uint8" unit="enum" enum='{"CAPACITIVE": 0, "RESISTIVE": 1, "THERMAL": 2, "GRAVIMETRIC": 3}' description="the technique the hygrometer detects relative humidity">
+      <value></value>
+    </property>
+  </topic>
+</root>

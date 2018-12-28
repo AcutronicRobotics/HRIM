@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="state" type="publish" description="notify if the gripper is activate or not" fileName="StateGripper">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="on_off" type="boolean" description="true: the gripper is active | false: the gripper is inactive">
+      <value></value>
+    </property>
+  </topic>
+</root>

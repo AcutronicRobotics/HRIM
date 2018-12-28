@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="state" type="publish" description="motor condition and the reason in case of error" fileName="StateRotaryServo">
+    <property name="header" type="header" description="motor state is at this time" fileName="Header">
+      <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property/property)"/>
+    </property>
+    <property name="goal" type="float64" unit="radian" description="commanded position">
+      <value></value>
+    </property>
+    <property name="position" type="float64" unit="radian" description="current position encoder">
+      <value></value>
+    </property>
+    <property name="error" type="float64" unit="radian" description="difference between current and goal positions">
+      <value></value>
+    </property>
+    <property name="velocity" type="float64" unit="radians per second" description="current velocity">
+      <value></value>
+    </property>
+    <property name="effort" type="float64" unit="newtons per metre" description="current effort of the actuator">
+      <value></value>
+    </property>
+    <property name="load" type="float64" unit="radian" description="load imposed on the motor">
+      <value></value>
+    </property>
+    <property name="moving" type="boolean" description="whether the motor is currently in motion">
+      <value></value>
+    </property>
+    <property name="fault" type="uint8" unit="enum" enum='{"FAULT_NONE": 0, "FAULT_CURRENT": 1, "FAULT_TEMPERATURE": 2, "FAULT_BUS_VOLTAGE": 3, "FAULT_BRIDGE_DRIVER": 4}' description="fault cause">
+      <value></value>
+    </property>
+    <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
+      <value></value>
+    </property>
+  </topic>
+</root>

@@ -44,3 +44,121 @@ A preliminary whitepaper about this work is available at https://arxiv.org/abs/1
   year={2018}
 }
 ```
+
+### Install dependencies
+```
+sudo apt-get install python-lxml
+```
+
+Alternatively, the OS-independent `pip` command would be:
+```bash
+pip install lxml
+```
+
+### Script usage
+
+The command structure would be the following:
+```
+python hrim.py [-h] [-p {ros2}] [-e] {show,generate,list,clear} filePath
+```
+Where:
+
+`-h` shows script's help.
+
+`-p/--platform` should be followed by which platform (e.g. ROS 2) to generate the implementation in. Current valid values are:
+* ros2
+
+`-e/--extend` indicates whether already shown definitions should be shown again or not when printing the module's model.
+
+`{show,generate,list,clear}` is mandatory and signifies the action to take:
+* **show**: parses the passed module file and prints it's processed contents.
+* **generate**: parses the passed module file and generates the corresponding packages/files to use with the selected platform (ROS 2 by default). The generated files will be located inside  a *generated* directory on the root of the repository.
+* **list**: provides a list of existing models or implementations.
+* **clear**: deletes generated implementations.
+<!-- * **clear**: deletes the passed module's generated implementation. Looks for the passed path inside the *generated* directory, i.e. `force` would look for *generated/force* for deletion. -->
+
+`filePath` is mandatory and is dependent on the action to take.
+
+If the chosen action is **show** it signifies the path (either absolute or relative from the repository's root) to one of the following files:
+* models/actuator/gripper/gripper.xml
+* models/actuator/gripper/gripper_clean.xml
+* models/actuator/electricmotor/electricmotor.xml
+* models/actuator/electricmotor/electricmotor_clean.xml
+* models/actuator/servo/servo.xml
+* models/actuator/servo/servo_clean.xml
+* models/composite/mobilebase/mobilebase.xml
+* models/composite/mobilebase/mobilebase_clean.xml
+* models/composite/conveyor/conveyor.xml
+* models/composite/conveyor/conveyor_clean.xml
+* models/composite/arm/arm.xml
+* models/composite/arm/arm_clean.xml
+* models/power/battery/battery.xml
+* models/power/battery/battery_clean.xml
+* models/sensor/lidar/lidar.xml
+* models/sensor/lidar/lidar_clean.xml
+* models/sensor/rangefinder/rangefinder.xml
+* models/sensor/rangefinder/rangefinder_clean.xml
+* models/sensor/thermometer/thermometer.xml
+* models/sensor/thermometer/thermometer_clean.xml
+* models/sensor/3dcamera/3dcamera_stereo.xml
+* models/sensor/3dcamera/3dcamera_stereo_clean.xml
+* models/sensor/3dcamera/3dcamera_tof.xml
+* models/sensor/3dcamera/3dcamera_tof_clean.xml
+* models/sensor/3dcamera/3dcamera_depth.xml
+* models/sensor/3dcamera/3dcamera_depth_clean.xml
+* models/sensor/imu/imu.xml
+* models/sensor/imu/imu_clean.xml
+* models/sensor/hygrometer/hygrometer.xml
+* models/sensor/hygrometer/hygrometer_clean.xml
+* models/sensor/forcetorque/forcetorque.xml
+* models/sensor/forcetorque/forcetorque_clean.xml
+* models/sensor/gps/gps.xml
+* models/sensor/gps/gps_clean.xml
+* models/sensor/gasdetector/gasdetector.xml
+* models/sensor/gasdetector/gasdetector_clean.xml
+* models/sensor/torque/torque.xml
+* models/sensor/torque/torque_clean.xml
+* models/sensor/force/force.xml
+* models/sensor/force/force_clean.xml
+* models/sensor/microphone/microphone.xml
+* models/sensor/microphone/microphone_clean.xml
+* models/sensor/camera/camera.xml
+* models/sensor/camera/camera_clean.xml
+* models/sensor/encoder/encoder.xml
+* models/sensor/encoder/encoder_clean.xml
+
+All of the following would be valid paths:
+* `$(pwd)/models/sensor/torque/torque.xml`
+* `./models/sensor/torque/torque.xml`
+* `/models/sensor/torque/torque.xml`
+* `models/sensor/torque/torque.xml`
+
+If the chosen action is **generate** it can either represent one of the models listed above or one of the existing shorthands to generate the files for every existing module:
+* **all**: will generate the files for every existing (non-development) model file.
+* **allClean**: will generate the files for every existing development module file (model xml files ending with *_clean*).
+
+If the chosen action is **list** it signifies what is meant to get listed:
+* **models**: will list all existing models.
+* **implementations**: will list all existing generated implementations.
+
+If the chosen action is **clear** it can either represent a directory name or a shorthand:
+* **{directory}**: will delete that directory inside the generation folder (i.e. *force* would delete `generated/force`)
+* **all**: will delete every implementation of the chosen platform.
+
+### Examples
+
+While positioned at the repository's root all of the following are valid command executions:
+
+* `python hrim.py show $(pwd)/models/sensor/torque/torque.xml`
+* `python hrim.py show ./models/sensor/torque/torque.xml`
+* `python hrim.py -e show /models/sensor/torque/torque.xml`
+* `python hrim.py show --extend models/sensor/torque/torque.xml`
+* `python hrim.py show models/sensor/torque/torque.xml`
+* `python hrim.py generate $(pwd)/models/sensor/torque/torque.xml`
+* `python hrim.py generate ./models/sensor/torque/torque.xml`
+* `python hrim.py -p ros2 generate /models/sensor/torque/torque.xml`
+* `python hrim.py generate models/sensor/torque/torque.xml`
+* `python hrim.py generate --platform ros2 all`
+* `python hrim.py generate allClean`
+* `python hrim.py clear force`
+* `python hrim.py clear all`

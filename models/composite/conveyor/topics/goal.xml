@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="goal" type="publish" description="band 1, goal linear velocity" fileName="GoalConveyor">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="id_number" type="uint16" description="number to identify the band (provided for the manufacturer)">
+      <value></value>
+    </property>
+    <property name="velocity" type="float32" unit="metres per second" description="conveyor velocity">
+      <value></value>
+    </property>
+  </topic>
+</root>

@@ -1,5 +1,0 @@
-string[] joint_names
-hrim_composite_arm_msgs/JointTrajectoryPoint[] points
-
----
-bool success

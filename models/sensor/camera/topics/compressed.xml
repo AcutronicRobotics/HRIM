@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="compressed" type="publish" description="contains a compressed image" fileName="CompressedImage">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="format" type="string" description="specifies the format of the data (jpeg|png)">
+      <value></value>
+    </property>
+    <property name="data" type="uint8[]" description="compressed image buffer">
+      <value></value>
+    </property>
+  </topic>
+</root>

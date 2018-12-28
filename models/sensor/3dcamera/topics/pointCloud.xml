@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+      <topic name="point_cloud" type="publish" description="environment point cloud" fileName="PointCloud">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="height" type="uint32" description="point cloud structure height, if it's unordered height is 1">
+      <value></value>
+    </property>
+    <property name="width" type="uint32" description="point cloud structure width, if it's unordered width is the length of the cloud">
+      <value></value>
+    </property>
+    <property name="fields" type="pointField[]" description="describes the channels and their layout in the binary data blob" fileName="PointField">
+      <xi:include href="pointField.xml" xpointer="xpointer(//root/property/property)"/>
+    </property>
+    <property name="is_bigendian" type="boolean" description="is this data bigendian?">
+      <value></value>
+    </property>
+    <property name="point_step" type="uint32" description="length of a point in bytes">
+      <value></value>
+    </property>
+    <property name="row_step" type="uint32" description="length of a row in bytes">
+      <value></value>
+    </property>
+    <property name="data" type="uint8[]" description="actual point data, size is (row_step * height)">
+      <value></value>
+    </property>
+    <property name="is_dense" type="boolean" description="true if there are no invalid points">
+      <value></value>
+    </property>
+  </topic>
+</root>

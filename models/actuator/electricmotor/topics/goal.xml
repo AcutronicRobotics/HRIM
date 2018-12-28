@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="goal" type="subscribe" description="control the speed" fileName="GoalElectricMotor">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="speed" type="int32" description="negative value indicates reverse rotation">
+      <value></value>
+    </property>
+  </topic>
+</root>

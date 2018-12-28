@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="id.xml"/>
+  <xi:include href="status.xml"/>
+  <xi:include href="power.xml"/>
+  <xi:include href="specs_comm.xml"/>
+  <xi:include href="state_comm.xml"/>
+  <xi:include href="module_3d.xml"/>
+  <xi:include href="module_urdf.xml"/>
+</root>

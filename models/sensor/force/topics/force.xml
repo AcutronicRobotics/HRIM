@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="force" type="publish" description="single measurement from a force sensor" fileName="Force">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="axis_forces" type="forceAxis[3]" description="separate force readings from each measured axis" fileName="ForceAxis">
+      <xi:include href="forceAxis.xml" xpointer="xpointer(//root/property/property)"/>
+    </property>
+  </topic>
+</root>

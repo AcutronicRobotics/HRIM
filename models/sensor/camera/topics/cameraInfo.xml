@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="image_camera_info" type="publish" description="camera meta information" fileName="CameraInfo">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="height" type="uint32" unit="pixel" description="image height, that is, number of rows">
+      <value></value>
+    </property>
+    <property name="width" type="uint32" unit="pixel" description="image width, that is, number of columns">
+      <value></value>
+    </property>
+    <property name="distortion_model" type="string">
+      <value></value>
+    </property>
+    <property name="d" type="float64[]" description="the distortion parameters, size depending on the distortion model">
+      <value></value>
+    </property>
+    <property name="k" type="float64[9]" description="intrinsic camera matrix for the raw (distorted) images">
+      <value></value>
+    </property>
+    <property name="p" type="float64[12]" description="by convention, this matrix specifies the intrinsic (camera) matrix of the processed (rectified) image">
+      <value></value>
+    </property>
+  </topic>
+</root>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<module name="gripper" type="actuator" description="defines the messages to interact with grippers"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specsFinger.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specsMagnetic.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specsVacuum.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/goal.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/state.xml" xpointer="xpointer(//root/topic)"/>
+
+  </mandatory>
+  <optional>
+
+    <xi:include href="topics/goalFinger.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/goalVacuum.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/stateFinger.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/cycle.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/goalPressure.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+
+  </optional>
+</module>

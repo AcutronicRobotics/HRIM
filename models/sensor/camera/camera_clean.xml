@@ -1,0 +1,906 @@
+<?xml version="1.0"?>
+<module name="camera" type="sensor" description="defines the messages to interact with a camera"
+  noNamespaceSchemaLocation="../../schemas/module.xsd">
+
+  <mandatory>
+
+    <topic name="id" type="publish" fileName="ID">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
+        <value></value>
+      </property>
+      <property name="device_name" type="string" description="sub-type">
+        <value></value>
+      </property>
+      <property name="vendor_id" type="uint32" description="vendor identifier">
+        <value></value>
+      </property>
+      <property name="product_id" type="uint32" description="part number">
+        <value></value>
+      </property>
+      <property name="instance_id" type="uint32" description="module unique identifier">
+        <value></value>
+      </property>
+      <property name="hrim_version" type="string" description="used hrim version">
+        <value></value>
+      </property>
+      <property name="hros_version" type="string" description="used h-ros version">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="status" type="publish" fileName="Status">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="instance_id" type="uint32">
+        <value></value>
+      </property>
+      <property name="system_cpu" type="float32" unit="percentage" description="total cpu utilization">
+        <value></value>
+      </property>
+      <property name="core_temperature" type="float32" unit="celsius" description="cpu temperature">
+        <value></value>
+      </property>
+      <property name="system_ram_total" type="uint32" unit="megabyte" description="total ram">
+        <value></value>
+      </property>
+      <property name="system_ram_used" type="uint32" unit="megabyte" description="used ram">
+        <value></value>
+      </property>
+      <property name="system_ram_free" type="uint32" unit="megabyte" description="free ram">
+        <value></value>
+      </property>
+      <property name="system_io_in" type="float32" unit="kilobytes per second" description="disk input speed">
+        <value></value>
+      </property>
+      <property name="system_io_out" type="float32" unit="kilobytes per second" description="disk output speed">
+        <value></value>
+      </property>
+      <property name="system_ipv4_ip" type="string[]" unit="ip" description="ipv4 address">
+        <value></value>
+      </property>
+      <property name="system_ipv4_received" type="float32" unit="kilobytes per second" description="ipv4 received bandwidth">
+        <value></value>
+      </property>
+      <property name="system_ipv4_sent" type="float32" unit="kilobytes per second" description="ipv4 sent bandwidth">
+        <value></value>
+      </property>
+      <property name="ipv4_tcpsock" type="uint16" description="number of tcp active connections">
+        <value></value>
+      </property>
+      <property name="ipv4_tcppackets_received" type="float32" description="number of tcp received packages">
+        <value></value>
+      </property>
+      <property name="ipv4_tcppackets_sent" type="float32" description="number of tcp sent packages">
+        <value></value>
+      </property>
+      <property name="ipv4_tcp_errors" type="float32" description="number of tcp error packages">
+        <value></value>
+      </property>
+      <property name="ipv4_udppackets_received" type="float32" description="number of udp received packages">
+        <value></value>
+      </property>
+      <property name="ipv4_udppackets_sent" type="float32" description="number of udp sent packages">
+        <value></value>
+      </property>
+      <property name="ipv4_udp_errors" type="float32" description="number of udp error packages">
+        <value></value>
+      </property>
+      <property name="cpu_interrupts" type="float32">
+        <value></value>
+      </property>
+      <property name="cpu_context_switches" type="float32">
+        <value></value>
+      </property>
+      <property name="softnet_processed" type="uint32">
+        <value></value>
+      </property>
+      <property name="softnet_dropped" type="uint32">
+        <value></value>
+      </property>
+      <property name="softnet_squeezed" type="uint32">
+        <value></value>
+      </property>
+      <property name="softnet_received_rps" type="uint32">
+        <value></value>
+      </property>
+      <property name="softnet_flow_limit_count" type="uint32">
+        <value></value>
+      </property>
+      <property name="softirqs_hi" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_timer" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_net_tx" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_net_rx" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_block" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_irq_poll" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_tasklet" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_sched" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_hrtimer" type="uint64">
+        <value></value>
+      </property>
+      <property name="softirqs_rcu" type="uint64">
+        <value></value>
+      </property>
+      <property name="load1" type="float32">
+        <value></value>
+      </property>
+      <property name="load5" type="float32">
+        <value></value>
+      </property>
+      <property name="load15" type="float32">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="power" type="publish" fileName="Power">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="voltage" type="float32" unit="volt">
+        <value></value>
+      </property>
+      <property name="current_consumption" type="float32" unit="ampere">
+        <value></value>
+      </property>
+      <property name="current_surplus" type="float32" unit="ampere" description="current injection for the whole system">
+        <value></value>
+      </property>
+      <property name="power_consumption" type="float32" unit="watt">
+        <value></value>
+      </property>
+      <property name="power_surplus" type="float32" unit="watt" description="power injection for the whole system">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="specs_comm" type="publish" fileName="SpecsCommunication">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
+        <value></value>
+      </property>
+      <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
+        <value></value>
+      </property>
+      <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="state_comm" type="publish" fileName="StateCommunication">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="comm_rate" type="double" unit="hertz" description="frequency at which the component is working">
+        <value></value>
+      </property>
+      <property name="size_msgs" type="double" unit="megabit" description="amount of megabits the component is sending">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="module_3d" type="publish" fileName="Simulation3D">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="model_name" type="string" description="identifier name for the passed model">
+        <value></value>
+      </property>
+      <property name="model" type="byte[]" unit="stl" description=".stl of the component">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="module_urdf" type="publish" fileName="SimulationURDF">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="urdf_model" type="string" unit="urdf" description="the urdf corresponding to the component's .stl">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="specs" type="publish" description="defines the most important characteristic of the camera" fileName="SpecsCamera">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="resolution" type="string" unit="pixel" description="example: 752x480, 1280x1024">
+        <value></value>
+      </property>
+      <property name="frame_rate" type="uint32" unit="frames per second" description="maximum value">
+        <value></value>
+      </property>
+      <property name="image_formats" type="string" description="example: mono8, rgb1, bayergrbg8">
+        <value></value>
+      </property>
+      <property name="ptz" type="boolean" description="true: the camera has this extra; false: it does not">
+        <value></value>
+      </property>
+      <property name="pan_vision_range" type="float32" unit="radian" description="example: 360">
+        <value></value>
+      </property>
+      <property name="tilt_vision_range" type="float32" description="example: 135">
+        <value></value>
+      </property>
+      <property name="microphone" type="boolean" description="true: the camera has this extra; false: it does not">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="image" type="publish" description="contains an uncompressed image" fileName="Image">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="height" type="uint32" description="image height, that is, number of rows">
+        <value></value>
+      </property>
+      <property name="width" type="uint32" description="image width, that is, number of columns">
+        <value></value>
+      </property>
+      <property name="encoding" type="string" description="encoding of pixels channel meaning, ordering, size">
+        <value></value>
+      </property>
+      <property name="is_bigendian" type="uint8" description="is this data bigendian?">
+        <value></value>
+      </property>
+      <property name="step" type="uint32" description="full row length in bytes">
+        <value></value>
+      </property>
+      <property name="data" type="uint8[]" description="actual matrix data, size is (step * rows)">
+        <value></value>
+      </property>
+    </topic>
+
+    <param name="frame_id" type="string" description="Sets the TF frame from which the camera is publishing.">
+      <value></value>
+    </param>
+
+    <param name="width" type="int" unit="px" description="  Resolution: width (width x height)">
+      <value></value>
+    </param>
+
+    <param name="height" type="int" unit="px" description="Resolution: height (width x height)">
+      <value></value>
+    </param>
+
+    <param name="frame_rate" type="int" unit="fps" description="Refresh rate.">
+      <value></value>
+    </param>
+
+    <param name="image_format" type="string" description="Possible values are: 'rgb8', 'rgba8', 'rgb16', 'rgba16', 'bgr8', 'bgra8', 'bgr16', 'bgra16', 'mono8', 'mono16', 'bayerrggb8', 'bayerbggr8', 'bayergbrg8', 'bayergrbg8', 'bayerrggb16', 'bayerbggr16', 'bayergbrg16', 'bayergrbg16'.">
+      <value></value>
+    </param>
+
+  </mandatory>
+
+  <optional>
+
+    <topic name="compressed" type="publish" description="contains a compressed image" fileName="CompressedImage">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="format" type="string" description="specifies the format of the data (jpeg|png)">
+        <value></value>
+      </property>
+      <property name="data" type="uint8[]" description="compressed image buffer">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="image_mono" type="publish" description="monochrome, distorted" fileName="Image">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="height" type="uint32" description="image height, that is, number of rows">
+        <value></value>
+      </property>
+      <property name="width" type="uint32" description="image width, that is, number of columns">
+        <value></value>
+      </property>
+      <property name="encoding" type="string" description="encoding of pixels channel meaning, ordering, size">
+        <value></value>
+      </property>
+      <property name="is_bigendian" type="uint8" description="is this data bigendian?">
+        <value></value>
+      </property>
+      <property name="step" type="uint32" description="full row length in bytes">
+        <value></value>
+      </property>
+      <property name="data" type="uint8[]" description="actual matrix data, size is (step * rows)">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="image_color" type="publish" description="color, distorted" fileName="Image">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="height" type="uint32" description="image height, that is, number of rows">
+        <value></value>
+      </property>
+      <property name="width" type="uint32" description="image width, that is, number of columns">
+        <value></value>
+      </property>
+      <property name="encoding" type="string" description="encoding of pixels channel meaning, ordering, size">
+        <value></value>
+      </property>
+      <property name="is_bigendian" type="uint8" description="is this data bigendian?">
+        <value></value>
+      </property>
+      <property name="step" type="uint32" description="full row length in bytes">
+        <value></value>
+      </property>
+      <property name="data" type="uint8[]" description="actual matrix data, size is (step * rows)">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="image_rect" type="publish" description="monochrome, rectified" fileName="Image">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="height" type="uint32" description="image height, that is, number of rows">
+        <value></value>
+      </property>
+      <property name="width" type="uint32" description="image width, that is, number of columns">
+        <value></value>
+      </property>
+      <property name="encoding" type="string" description="encoding of pixels channel meaning, ordering, size">
+        <value></value>
+      </property>
+      <property name="is_bigendian" type="uint8" description="is this data bigendian?">
+        <value></value>
+      </property>
+      <property name="step" type="uint32" description="full row length in bytes">
+        <value></value>
+      </property>
+      <property name="data" type="uint8[]" description="actual matrix data, size is (step * rows)">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="image_rect_color" type="publish" description="color, rectified" fileName="Image">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="height" type="uint32" description="image height, that is, number of rows">
+        <value></value>
+      </property>
+      <property name="width" type="uint32" description="image width, that is, number of columns">
+        <value></value>
+      </property>
+      <property name="encoding" type="string" description="encoding of pixels channel meaning, ordering, size">
+        <value></value>
+      </property>
+      <property name="is_bigendian" type="uint8" description="is this data bigendian?">
+        <value></value>
+      </property>
+      <property name="step" type="uint32" description="full row length in bytes">
+        <value></value>
+      </property>
+      <property name="data" type="uint8[]" description="actual matrix data, size is (step * rows)">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="image_camera_info" type="publish" description="camera meta information" fileName="CameraInfo">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="height" type="uint32" unit="pixel" description="image height, that is, number of rows">
+        <value></value>
+      </property>
+      <property name="width" type="uint32" unit="pixel" description="image width, that is, number of columns">
+        <value></value>
+      </property>
+      <property name="distortion_model" type="string">
+        <value></value>
+      </property>
+      <property name="d" type="float64[]" description="the distortion parameters, size depending on the distortion model">
+        <value></value>
+      </property>
+      <property name="k" type="float64[9]" description="intrinsic camera matrix for the raw (distorted) images">
+        <value></value>
+      </property>
+      <property name="p" type="float64[12]" description="by convention, this matrix specifies the intrinsic (camera) matrix of the processed (rectified) image">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="set_camera_info" type="service" description="set camera calibration" fileName="SetCameraInfo">
+      <property name="camera_info" type="cameraInfo" description="the camera info to store" fileName="CameraInfo">
+        <property name="header" type="header" fileName="Header">
+          <property name="time" type="time" fileName="Time">
+            <property name="sec" type="int32" unit="second">
+              <value></value>
+            </property>
+            <property name="nanosec" type="uint32" unit="nanosecond">
+              <value></value>
+            </property>
+          </property>
+          <property name="frame_id" type="string" description="transform frame with which this data is associated">
+            <value></value>
+          </property>
+        </property>
+        <property name="height" type="uint32" unit="pixel" description="image height, that is, number of rows">
+          <value></value>
+        </property>
+        <property name="width" type="uint32" unit="pixel" description="image width, that is, number of columns">
+          <value></value>
+        </property>
+        <property name="distortion_model" type="string">
+          <value></value>
+        </property>
+        <property name="d" type="float64[]" description="the distortion parameters, size depending on the distortion model">
+          <value></value>
+        </property>
+        <property name="k" type="float64[9]" description="intrinsic camera matrix for the raw (distorted) images">
+          <value></value>
+        </property>
+        <property name="p" type="float64[12]" description="by convention, this matrix specifies the intrinsic (camera) matrix of the processed (rectified) image">
+          <value></value>
+        </property>
+      </property>
+      <response>
+        <property name="success" type="boolean" description="true if the call succeeded">
+          <value></value>
+        </property>
+        <property name="status_message" type="string" description="used to give details about success">
+          <value></value>
+        </property>
+      </response>
+    </topic>
+
+    <topic name="ptz" type="subscribe" description="pan, tilt, zoom" fileName="PTZ">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="pan" type="float32" unit="radian">
+        <value></value>
+      </property>
+      <property name="tilt" type="float32" unit="radian">
+        <value></value>
+      </property>
+      <property name="zoom" type="float32">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="audio_raw" type="publish" description="integrated microphone" fileName="Audio">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="frequency" type="uint16" unit="frequency" description="current frequency of the audio interface">
+        <value></value>
+      </property>
+      <property name="data" type="int16[]" description="interlaced data of the audio buffer">
+        <value></value>
+      </property>
+    </topic>
+
+    <topic name="reconfiguration" type="publish" description="dynamic reconfiguration of H-ROS systems" fileName="Reconfiguration">
+      <property name="header" type="header" fileName="Header">
+        <property name="time" type="time" fileName="Time">
+          <property name="sec" type="int32" unit="second">
+            <value></value>
+          </property>
+          <property name="nanosec" type="uint32" unit="nanosecond">
+            <value></value>
+          </property>
+        </property>
+        <property name="frame_id" type="string" description="transform frame with which this data is associated">
+          <value></value>
+        </property>
+      </property>
+      <property name="orientation" type="quaternion" fileName="Quaternion">
+        <property name="x" type="float64">
+          <value></value>
+        </property>
+        <property name="y" type="float64">
+          <value></value>
+        </property>
+        <property name="z" type="float64">
+          <value></value>
+        </property>
+        <property name="w" type="float64">
+          <value></value>
+        </property>
+      </property>
+      <property name="orientation_covariance" type="float64[9]">
+        <value></value>
+      </property>
+      <property name="angular_velocity" type="vector3" fileName="Vector3">
+        <property name="x" type="float64">
+          <value></value>
+        </property>
+        <property name="y" type="float64">
+          <value></value>
+        </property>
+        <property name="z" type="float64">
+          <value></value>
+        </property>
+      </property>
+      <property name="angular_velocity_covariance" type="float64[9]">
+        <value></value>
+      </property>
+      <property name="linear_acceleration" type="vector3" fileName="Vector3">
+        <property name="x" type="float64">
+          <value></value>
+        </property>
+        <property name="y" type="float64">
+          <value></value>
+        </property>
+        <property name="z" type="float64">
+          <value></value>
+        </property>
+      </property>
+      <property name="linear_acceleration_covariance" type="float64[9]">
+        <value></value>
+      </property>
+    </topic>
+
+    <param name="auto_brightness" type="bool" unit="[0/1]" description="Brightness control state">
+      <value></value>
+    </param>
+
+    <param name="brightness" type="float" unit="%" description="Black level offset">
+      <value></value>
+    </param>
+
+    <param name="auto_binning" type="bool" unit="[0/1]" description="Combines rectangular neighborhoods of pixels into larger 'super-pixels'">
+      <value></value>
+    </param>
+
+    <param name="binning_x" type="float" unit="%" description="Binning width">
+      <value></value>
+    </param>
+
+    <param name="binning_y" type="float" unit="%" description="Binning height">
+      <value></value>
+    </param>
+
+    <param name="auto_contrast" type="bool" unit="[0/1]" description="Black level offset">
+      <value></value>
+    </param>
+
+    <param name="contrast" type="float" unit="%" description="Difference in brightness between light and dark areas">
+      <value></value>
+    </param>
+
+    <param name="auto_exposure" type="bool" unit="[0/1]" description="Combined Iris, Gain and Shutterspeed">
+      <value></value>
+    </param>
+
+    <param name="exposure" type="float" unit="%" description="Exposure time">
+      <value></value>
+    </param>
+
+    <param name="auto_focus" type="bool" unit="[0/1]" description="Focus control state">
+      <value></value>
+    </param>
+
+    <param name="focus" type="float" unit="%" description="Definition of the image">
+      <value></value>
+    </param>
+
+    <param name="auto_gain" type="bool" unit="[0/1]" description="Gain control state">
+      <value></value>
+    </param>
+
+    <param name="gain" type="float" unit="%" description="Relative circuit gain">
+      <value></value>
+    </param>
+
+    <param name="gain_red" type="float" unit="%" description="Gain percentage for red channel">
+      <value></value>
+    </param>
+
+    <param name="gain_green" type="float" unit="%" description="Gain percentage for green channel">
+      <value></value>
+    </param>
+
+    <param name="gain_blue" type="float" unit="%" description="Gain percentage for blue channel">
+      <value></value>
+    </param>
+
+    <param name="auto_gamma" type="bool" unit="[0/1]" description="Gamma expansion exponent">
+      <value></value>
+    </param>
+
+    <param name="gamma" type="float" unit="%" description="Gamma expansion exponent">
+      <value></value>
+    </param>
+
+    <param name="auto_hue" type="bool" unit="[0/1]" description="Hue control state">
+      <value></value>
+    </param>
+
+    <param name="hue" type="float" unit="%" description="Color phase">
+      <value></value>
+    </param>
+
+    <param name="auto_iris" type="bool" unit="[0/1]" description="Iris control state">
+      <value></value>
+    </param>
+
+    <param name="iris" type="float" unit="%" description="Iris control">
+      <value></value>
+    </param>
+
+    <param name="auto_iso" type="bool" unit="[0/1]" description="ISO control state">
+      <value></value>
+    </param>
+
+    <param name="iso" type="float" unit="%" description="	ISO speed: How sensitive the film is to light">
+      <value></value>
+    </param>
+
+    <param name="auto_saturation" type="bool" unit="[0/1]" description="Saturation control state">
+      <value></value>
+    </param>
+
+    <param name="saturation" type="float" unit="%" description="Color saturation">
+      <value></value>
+    </param>
+
+    <param name="auto_sharpness" type="bool" unit="[0/1]" description="Sharpness control state">
+      <value></value>
+    </param>
+
+    <param name="sharpness	" type="float" unit="%" description="Image sharpness">
+      <value></value>
+    </param>
+
+    <param name="auto_shutter" type="bool" unit="[0/1]" description="Shutter control state">
+      <value></value>
+    </param>
+
+    <param name="shutter" type="float" unit="%" description="Shutter speed: duration of the exposure">
+      <value></value>
+    </param>
+
+    <param name="auto_white_balance" type="bool" unit="[0/1]" description="White balance control state">
+      <value></value>
+    </param>
+
+    <param name="white_balance_blue" type="float" unit="%" description="Blue component of white balance">
+      <value></value>
+    </param>
+
+    <param name="white_balance_red" type="float" unit="%" description="Blue component of red balance">
+      <value></value>
+    </param>
+
+    <param name="auto_zoom" type="bool" unit="[0/1]" description="Zoom control state">
+      <value></value>
+    </param>
+
+    <param name="username" type="string" description="Name for camera accessing. The manufacturer will offer a default username.">
+      <value></value>
+    </param>
+
+    <param name="password" type="string" description="Password for camera accessing. The manufacturer will offer a default password. ">
+      <value></value>
+    </param>
+
+    <param name="pan_angle_start" type="double" unit="rad" description="Related to ptz topic: pan range start point. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="pan_angle_end" type="double" unit="rad" description="Related to ptz topic: pan range end point. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="pan_speed" type="float" unit="rad/s" description="Related to ptz topic: pan speed. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="tild_angle_start" type="double" unit="rad" description="Related to ptz topic: tild range start point. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="tild_angle_end" type="double" unit="rad" description="Related to ptz topic: tild range end point. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="tild_speed" type="float" unit="rad/s" description="Related to ptz topic: tild speed. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="frecuency_rate" type="int" unit="Hz/s" description="Related to audio_raw topic: audio sampling frecuency. Mandatory if audio_raw topic is added.">
+      <value></value>
+    </param>
+
+  </optional>
+
+</module>

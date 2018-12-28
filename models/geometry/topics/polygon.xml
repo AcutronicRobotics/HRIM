@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<topic name="polygon" type="publish" fileName="Polygon" description="A specification of a polygon where the first and last points are assumed to be connected."
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="points" type="point32[]" fileName="Point32">
+    <xi:include href="point32.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+</topic>

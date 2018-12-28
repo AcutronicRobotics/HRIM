@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="set_camera_info" type="service" description="set camera calibration" fileName="SetCameraInfo">
+    <property name="camera_info" type="cameraInfo" description="the camera info to store" fileName="CameraInfo">
+      <xi:include href="cameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+    </property>
+    <response>
+      <property name="success" type="boolean" description="true if the call succeeded">
+        <value></value>
+      </property>
+      <property name="status_message" type="string" description="used to give details about success">
+        <value></value>
+      </property>
+    </response>
+  </topic>
+</root>

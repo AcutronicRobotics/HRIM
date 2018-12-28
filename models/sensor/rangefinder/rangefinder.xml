@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<module name="rangefinder" type="sensor" description="defines the messages to interact with a rangefinder"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/distance.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="frame_id" type="string" description="tf frame from which the range_finder is publishing">
+      <value></value>
+    </param>
+
+    <param name="time_measurements" type="double" unit="second" description="time between measurements">
+      <value></value>
+    </param>
+
+    <param name="distance_min" type="double" unit="metre" description="the minimum distance to return">
+      <value></value>
+    </param>
+
+    <param name="distance_max" type="double" unit="metre" description="the maximum distance to return">
+      <value></value>
+    </param>
+
+  </mandatory>
+  <optional>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+
+  </optional>
+</module>

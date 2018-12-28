@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<module name="lidar" type="sensor" description="defines the messages to interact with a lidar"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/scan.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="frame_id" type="string" description="tf frame from which the range_finder is publishing">
+      <value></value>
+    </param>
+
+    <param name="angle_start" type="double" unit="radian" description="start point of scanning angle">
+      <value></value>
+    </param>
+
+    <param name="angle_end" type="double" unit="radian" description="end point of scanning angle">
+      <value></value>
+    </param>
+
+    <param name="angle_increment" type="double" unit="radians per radian" description="resolution of laser scan">
+      <value></value>
+    </param>
+
+    <param name="scan_time" type="double" unit="second" description="time between scans">
+      <value></value>
+    </param>
+
+    <param name="time_increment" type="double" unit="second" description="time between scans">
+      <value></value>
+    </param>
+
+    <param name="distance_min" type="double" unit="metre" description="the minimum distance to return">
+      <value></value>
+    </param>
+
+    <param name="distance_max" type="double" unit="metre" description="the maximum distance to return">
+      <value></value>
+    </param>
+
+  </mandatory>
+  <optional>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="angular_velocity" type="double" unit="radians per second" description="device rotation speed">
+      <value></value>
+    </param>
+
+    <param name="intensity" type="float" unit="percentage" description="lidar intensity value">
+      <value></value>
+    </param>
+
+  </optional>
+</module>

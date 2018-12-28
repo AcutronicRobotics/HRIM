@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="specs" type="publish" description="device features" fileName="SpecsIMU">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="fs_gyro_ranges" type="float32[]" unit="radians per second" description="max gyro readings, most to less precise (+-rad/s)">
+      <value></value>
+    </property>
+    <property name="fs_gyro_resolution" type="float32[]" unit="radians per second" description="resolution of reading in each full scale range (rad/s)">
+      <value></value>
+    </property>
+    <property name="fs_accel_ranges" type="float32[]" unit="meters per second squared" description="max accel readings, most to less precise (+-m/s^2)">
+      <value></value>
+    </property>
+    <property name="fs_accel_resolution" type="float32[]" unit="meters per second squared" description="resolution of reading in each full scale range (m/s^2)">
+      <value></value>
+    </property>
+    <property name="fs_mag_range" type="float32[]" unit="micro tesla" description="+- max mag readings, most to less precise (micro T)">
+      <value></value>
+    </property>
+    <property name="fs_mag_resolution" type="float32[]" unit="micro tesla" description="resolution of reading in each full scale range (micro T)">
+      <value></value>
+    </property>
+    <property name="max_rate" type="uint16[3]" unit="hertz" description="maximum data publishing rate per type [gyro,accel,mag] (Hz)">
+      <value></value>
+    </property>
+    <property name="min_ideal_temp" type="float32" unit="celsius" description="minimum temperature where the sensor's error margin is at it's lowest (C)">
+      <value></value>
+    </property>
+    <property name="max_ideal_temp" type="float32" unit="celsius" description="maximum temperature where the sensor's error margin is at it's lowest (C)">
+      <value></value>
+    </property>
+    <property name="min_operating_temp" type="float32" unit="celsius" description="minimum temperature before breakdown (C)">
+      <value></value>
+    </property>
+    <property name="max_operating_temp" type="float32" unit="celsius" description="maximum temperature before breakdown (C)">
+      <value></value>
+    </property>
+    <property name="min_gyro_error_margin" type="float32" unit="radians per second" description="gyro variability in reading inside ideal temperature ranges, based on first full scale range (+-rad/s)">
+      <value></value>
+    </property>
+    <property name="max_gyro_error_margin" type="float32" unit="radians per second" description="gyro variability in reading outside ideal temperature ranges, based on first full scale range (+-rad/s)">
+      <value></value>
+    </property>
+    <property name="min_accel_error_margin" type="float32" unit="meters per second squared" description="accel variability in reading inside ideal temperature ranges, based on first full scale range (+-m/s^2)">
+      <value></value>
+    </property>
+    <property name="max_accel_error_margin" type="float32" unit="meters per second squared" description="accel variability in reading outside ideal temperature ranges, based on first full scale range (+-m/s^2)">
+      <value></value>
+    </property>
+    <property name="min_mag_error_margin" type="float32" unit="micro tesla" description="mag variability in reading inside ideal temperature ranges, based on first full scale range (+-micro T)">
+      <value></value>
+    </property>
+    <property name="max_mag_error_margin" type="float32" unit="micro tesla" description="mag variability in reading outside ideal temperature ranges, based on first full scale range (+-micro T)">
+      <value></value>
+    </property>
+  </topic>
+</root>

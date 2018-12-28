@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<module name="gps" type="sensor" description="defines the messages to interact with a gps"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/position.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/state.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="frame_id" type="string" description="tf frame from which the range_finder is publishing">
+      <value></value>
+    </param>
+
+    <param name="satellite_min" type="uint" unit="second" description="minimum number of connected satellites to navigate autonomusly">
+      <value></value>
+    </param>
+
+  </mandatory>
+  <optional>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+
+  </optional>
+</module>

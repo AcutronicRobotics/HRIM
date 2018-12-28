@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="axis_force" type="forceAxis" description="separate force readings from each measured axis" fileName="ForceAxis">
+    <property name="axis" type="uint8" unit="enum" description="the axis of the measurement - defined in SpecsForceAxis">
+      <value></value>
+    </property>
+    <property name="force" type="float64" unit="newton" description="reading of the force measuring">
+      <value></value>
+    </property>
+  </property>
+</root>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<module name="torque" type="sensor" description="defines the messages to interact with a torque sensor"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/torque.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="frame_id" type="string" description="tf frame from which the torque sensor is publishing">
+      <value></value>
+    </param>
+
+  </mandatory>
+</module>

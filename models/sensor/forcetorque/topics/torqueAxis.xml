@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="axis_torque" type="torqueAxis" description="separate torque readings from each measured axis" fileName="ForceAxis">
+    <property name="axis" type="uint8" unit="enum" description="the axis of the measurement - defined in SpecsTorqueAxis">
+      <value></value>
+    </property>
+    <property name="torque" type="float64" unit="newtons per metre" description="reading of the torque measuring">
+      <value></value>
+    </property>
+  </property>
+</root>

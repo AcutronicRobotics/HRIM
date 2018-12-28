@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="relative_humidity" type="publish" description="single reading defining the ratio of partial pressure of water vapor to the saturated vapor pressire at a temperature" fileName="RelativeHumidity">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="relative_humidity" type="float64" unit="rh" description="from 0.0 to 1.0, 0 being no partial pressure of water vapor and 1 being partial pressure of saturation">
+      <value></value>
+    </property>
+    <property name="variance" type="float64" description="0 interpreted as variance unknown">
+      <value></value>
+    </property>
+  </topic>
+</root>

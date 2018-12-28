@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<module name="mobilebase" type="composite" description="defines the messages to interact with a composite H-ROS mobile base"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specsWheeled.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specsTracked.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specsLegged.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/goal.xml" xpointer="xpointer(//root/topic)"/>
+
+  </mandatory>
+  <optional>
+
+    <xi:include href="topics/rc.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="rc_max_velocity" type="double" unit="meters per second" description="maximum linear velocity value through joystick control">
+      <value></value>
+    </param>
+
+    <param name="rc_max_yaw" type="double" unit="radians per second" description="maximum vehicle turning angle through joystick control">
+      <value></value>
+    </param>
+  </optional>
+</module>

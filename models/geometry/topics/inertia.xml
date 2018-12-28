@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<topic name="inertia" type="publish" fileName="Inertia"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="m" type="float64" unit="kilogram" description="Mass">
+    <value></value>
+  </property>
+  <property name="com" type="vector3" fileName="Vector3" unit="metre" description="Center of mass">
+    <xi:include href="vector3.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+  <property name="ixx" type="float64" unit="kilogram per squared metre" description="Inertia Tensor">
+    <value></value>
+  </property>
+  <property name="ixy" type="float64" unit="kilogram per squared metre" description="Inertia Tensor">
+    <value></value>
+  </property>
+  <property name="ixz" type="float64" unit="kilogram per squared metre" description="Inertia Tensor">
+    <value></value>
+  </property>
+  <property name="iyy" type="float64" unit="kilogram per squared metre" description="Inertia Tensor">
+    <value></value>
+  </property>
+  <property name="iyz" type="float64" unit="kilogram per squared metre" description="Inertia Tensor">
+    <value></value>
+  </property>
+  <property name="izz" type="float64" unit="kilogram per squared metre" description="Inertia Tensor">
+    <value></value>
+  </property>
+</topic>

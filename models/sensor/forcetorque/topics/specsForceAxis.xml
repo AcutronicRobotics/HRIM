@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="force_axis_spec" type="specsForceAxis" description="specs related to each of the measured axes" fileName="SpecsForceAxis">
+    <property name="axis" type="uint8" unit="enum" enum='{"FORCE_AXIS_X": 0, "FORCE_AXIS_Y": 1, "FORCE_AXIS_Z": 2}' description="the axis the specs describe">
+      <value></value>
+    </property>
+    <property name="max_force" type="uint16" unit="newton" description="maximum measurable force">
+      <value></value>
+    </property>
+    <property name="resolution" type="float32" unit="newton" description="minimum detectable difference">
+      <value></value>
+    </property>
+    <property name="safe_overload" type="uint16" unit="percentage" description="maximum force the sensor withstands safely on this axis, in reference to the max_force value">
+      <value></value>
+    </property>
+    <property name="max_overload" type="uint16" unit="percentage" description="maximum force the sensor withstands before total breakdown on this axis, in reference to the max_force value">
+      <value></value>
+    </property>
+    <property name="min_error_margin" type="float32" unit="+- percentage" description="average error margin while inside the ideal ranges of this axis">
+      <value></value>
+    </property>
+    <property name="max_error_margin" type="float32" unit="+- percentage" description="average error margin while outside the ideal ranges of this axis">
+      <value></value>
+    </property>
+  </property>
+</root>

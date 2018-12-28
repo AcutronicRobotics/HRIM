@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<module name="rotaryservo" type="actuator" description="defines the messages to interact with a servo"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/goal.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="origin" type="float" unit="radian" description="zero/starting point">
+      <value></value>
+    </param>
+
+    <param name="joint_name" type="string" description="name of the joint">
+      <value></value>
+    </param>
+
+  </mandatory>
+  <optional>
+
+    <xi:include href="topics/state.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/temperature.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/acceleration.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="publish_rate" type="int" unit="hertz" description="publishing rate of the state topic">
+      <value></value>
+    </param>
+
+    <param name="min_temperature" type="float" unit="celsius" description="minimum operating temperature">
+      <value></value>
+    </param>
+
+    <param name="max_temperature" type="float" unit="celsius" description="maximum operating temperature">
+      <value></value>
+    </param>
+
+  </optional>
+</module>

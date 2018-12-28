@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+      <topic name="specs" type="publish" description="device features" fileName="SpecsElectricMotor">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="motor_type" type="uint8" unit="enum" enum='{"MOTOR_DC_BRUSHED": 0, "MOTOR_DC_BRUSHLESS": 1, "MOTOR_DC_GEAREDDOWN": 2}' description="motor type">
+      <value></value>
+    </property>
+    <property name="encoder" type="boolean" description="whether the electric motor has movement control capabilities">
+      <value></value>
+    </property>
+    <property name="rated_power" type="float64" unit="watt">
+      <value></value>
+    </property>
+    <property name="rated_voltage" type="float64" unit="volt">
+      <value></value>
+    </property>
+    <property name="rated_current" type="float64" unit="ampere">
+      <value></value>
+    </property>
+    <property name="rated_torque" type="float64" unit="newtons per metre">
+      <value></value>
+    </property>
+    <property name="rated_speed" type="float64" unit="rpm">
+      <value></value>
+    </property>
+    <property name="noload_current" type="float64" unit="ampere" description="current without load">
+      <value></value>
+    </property>
+    <property name="noload_speed" type="float64" unit="rpm" description="speed without load">
+      <value></value>
+    </property>
+    <property name="stall_torque" type="float64" unit="newtons per metre" description="torque without speed">
+      <value></value>
+    </property>
+    <property name="temperature_range_min" type="float64" unit="celsius" description="minimum operational temperature">
+      <value></value>
+    </property>
+    <property name="temperature_range_max" type="float64" unit="celsius" description="maximum operational temperature">
+      <value></value>
+    </property>
+  </topic>
+</root>

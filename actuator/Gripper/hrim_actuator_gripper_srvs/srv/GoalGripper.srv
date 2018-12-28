@@ -1,7 +1,0 @@
-# This service order the gripper to grab or release the object
-
-bool on_off                            # True: grab the object
-                                       # False: release the object
-
----
-bool goal_accepted                     # True if the call succeeded

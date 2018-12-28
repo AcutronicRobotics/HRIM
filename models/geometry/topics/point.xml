@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<topic name="point" type="publish" fileName="Point" description="This contains the position of a point in free space.">
+  <property name="x" type="float64">
+    <value></value>
+  </property>
+  <property name="y" type="float64">
+    <value></value>
+  </property>
+  <property name="z" type="float64">
+    <value></value>
+  </property>
+</topic>

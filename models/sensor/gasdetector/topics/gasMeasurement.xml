@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="measurement" type="gasMeasurement" description="the measurement of each sensor" fileName="GasMeasurement">
+    <property name="gas_name" type="string" description="the name of the gas">
+      <value></value>
+    </property>
+    <property name="value" type="uint8" description="the measurement of the gas in ppm, ppb or % depending on the gas type">
+      <value></value>
+    </property>
+    <property name="unit" type="string" description="ppm (parts per million), ppb (parts per billion) or %">
+      <value></value>
+    </property>
+  </property>
+</root>

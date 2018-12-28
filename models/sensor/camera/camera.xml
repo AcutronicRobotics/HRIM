@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<module name="camera" type="sensor" description="defines the messages to interact with a camera"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  noNamespaceSchemaLocation="../../schemas/module.xsd">
+
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic)"/>
+
+    <param name="frame_id" type="string" description="Sets the TF frame from which the camera is publishing.">
+      <value></value>
+    </param>
+
+    <param name="width" type="int" unit="px" description="  Resolution: width (width x height)">
+      <value></value>
+    </param>
+
+    <param name="height" type="int" unit="px" description="Resolution: height (width x height)">
+      <value></value>
+    </param>
+
+    <param name="frame_rate" type="int" unit="fps" description="Refresh rate.">
+      <value></value>
+    </param>
+
+    <param name="image_format" type="string" description="Possible values are: 'rgb8', 'rgba8', 'rgb16', 'rgba16', 'bgr8', 'bgra8', 'bgr16', 'bgra16', 'mono8', 'mono16', 'bayerrggb8', 'bayerbggr8', 'bayergbrg8', 'bayergrbg8', 'bayerrggb16', 'bayerbggr16', 'bayergbrg16', 'bayergrbg16'.">
+      <value></value>
+    </param>
+
+  </mandatory>
+
+  <optional>
+
+    <xi:include href="topics/compressed.xml" xpointer="xpointer(//root/topic)"/>
+
+    <topic name="image_mono" type="publish" description="monochrome, distorted" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="image_color" type="publish" description="color, distorted" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="image_rect" type="publish" description="monochrome, rectified" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <topic name="image_rect_color" type="publish" description="color, rectified" fileName="Image">
+      <xi:include href="topics/image.xml" xpointer="xpointer(//root/topic/property)"/>
+    </topic>
+
+    <xi:include href="topics/cameraInfo.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/ptz.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/audio.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
+    
+    <param name="auto_brightness" type="bool" unit="[0/1]" description="Brightness control state">
+      <value></value>
+    </param>
+
+    <param name="brightness" type="float" unit="%" description="Black level offset">
+      <value></value>
+    </param>
+
+    <param name="auto_binning" type="bool" unit="[0/1]" description="Combines rectangular neighborhoods of pixels into larger 'super-pixels'">
+      <value></value>
+    </param>
+
+    <param name="binning_x" type="float" unit="%" description="Binning width">
+      <value></value>
+    </param>
+
+    <param name="binning_y" type="float" unit="%" description="Binning height">
+      <value></value>
+    </param>
+
+    <param name="auto_contrast" type="bool" unit="[0/1]" description="Black level offset">
+      <value></value>
+    </param>
+
+    <param name="contrast" type="float" unit="%" description="Difference in brightness between light and dark areas">
+      <value></value>
+    </param>
+
+    <param name="auto_exposure" type="bool" unit="[0/1]" description="Combined Iris, Gain and Shutterspeed">
+      <value></value>
+    </param>
+
+    <param name="exposure" type="float" unit="%" description="Exposure time">
+      <value></value>
+    </param>
+
+    <param name="auto_focus" type="bool" unit="[0/1]" description="Focus control state">
+      <value></value>
+    </param>
+
+    <param name="focus" type="float" unit="%" description="Definition of the image">
+      <value></value>
+    </param>
+
+    <param name="auto_gain" type="bool" unit="[0/1]" description="Gain control state">
+      <value></value>
+    </param>
+
+    <param name="gain" type="float" unit="%" description="Relative circuit gain">
+      <value></value>
+    </param>
+
+    <param name="gain_red" type="float" unit="%" description="Gain percentage for red channel">
+      <value></value>
+    </param>
+
+    <param name="gain_green" type="float" unit="%" description="Gain percentage for green channel">
+      <value></value>
+    </param>
+
+    <param name="gain_blue" type="float" unit="%" description="Gain percentage for blue channel">
+      <value></value>
+    </param>
+
+    <param name="auto_gamma" type="bool" unit="[0/1]" description="Gamma expansion exponent">
+      <value></value>
+    </param>
+
+    <param name="gamma" type="float" unit="%" description="Gamma expansion exponent">
+      <value></value>
+    </param>
+
+    <param name="auto_hue" type="bool" unit="[0/1]" description="Hue control state">
+      <value></value>
+    </param>
+
+    <param name="hue" type="float" unit="%" description="Color phase">
+      <value></value>
+    </param>
+
+    <param name="auto_iris" type="bool" unit="[0/1]" description="Iris control state">
+      <value></value>
+    </param>
+
+    <param name="iris" type="float" unit="%" description="Iris control">
+      <value></value>
+    </param>
+
+    <param name="auto_iso" type="bool" unit="[0/1]" description="ISO control state">
+      <value></value>
+    </param>
+
+    <param name="iso" type="float" unit="%" description="	ISO speed: How sensitive the film is to light">
+      <value></value>
+    </param>
+
+    <param name="auto_saturation" type="bool" unit="[0/1]" description="Saturation control state">
+      <value></value>
+    </param>
+
+    <param name="saturation" type="float" unit="%" description="Color saturation">
+      <value></value>
+    </param>
+
+    <param name="auto_sharpness" type="bool" unit="[0/1]" description="Sharpness control state">
+      <value></value>
+    </param>
+
+    <param name="sharpness	" type="float" unit="%" description="Image sharpness">
+      <value></value>
+    </param>
+
+    <param name="auto_shutter" type="bool" unit="[0/1]" description="Shutter control state">
+      <value></value>
+    </param>
+
+    <param name="shutter" type="float" unit="%" description="Shutter speed: duration of the exposure">
+      <value></value>
+    </param>
+
+    <param name="auto_white_balance" type="bool" unit="[0/1]" description="White balance control state">
+      <value></value>
+    </param>
+
+    <param name="white_balance_blue" type="float" unit="%" description="Blue component of white balance">
+      <value></value>
+    </param>
+
+    <param name="white_balance_red" type="float" unit="%" description="Blue component of red balance">
+      <value></value>
+    </param>
+
+    <param name="auto_zoom" type="bool" unit="[0/1]" description="Zoom control state">
+      <value></value>
+    </param>
+
+    <param name="username" type="string" description="Name for camera accessing. The manufacturer will offer a default username.">
+      <value></value>
+    </param>
+
+    <param name="password" type="string" description="Password for camera accessing. The manufacturer will offer a default password. ">
+      <value></value>
+    </param>
+
+    <param name="pan_angle_start" type="double" unit="rad" description="Related to ptz topic: pan range start point. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="pan_angle_end" type="double" unit="rad" description="Related to ptz topic: pan range end point. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="pan_speed" type="float" unit="rad/s" description="Related to ptz topic: pan speed. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="tild_angle_start" type="double" unit="rad" description="Related to ptz topic: tild range start point. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="tild_angle_end" type="double" unit="rad" description="Related to ptz topic: tild range end point. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="tild_speed" type="float" unit="rad/s" description="Related to ptz topic: tild speed. Mandatory if ptz topic is added.">
+      <value></value>
+    </param>
+
+    <param name="frecuency_rate" type="int" unit="Hz/s" description="Related to audio_raw topic: audio sampling frecuency. Mandatory if audio_raw topic is added.">
+      <value></value>
+    </param>
+
+  </optional>
+
+</module>

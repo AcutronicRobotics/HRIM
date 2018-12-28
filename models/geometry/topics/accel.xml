@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<topic name="accel" type="publish" fileName="Accel" description="This expresses acceleration in free space broken into its linear and angular parts."
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="linear" type="vector3" fileName="Vector3">
+    <xi:include href="vector3.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+  <property name="angular" type="vector3" fileName="Vector3">
+    <xi:include href="vector3.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+</topic>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="characteristic" type="specsConveyorIndependent" fileName="SpecsConveyorIndependent">
+    <property name="max_velocity" type="float32" unit="metres per second" description="maximum conveyor velocity">
+      <value></value>
+    </property>
+    <property name="optimal_velocity" type="float32" unit="metres per second" description="optimal conveyor velocity">
+      <value></value>
+    </property>
+  </property>
+</root>

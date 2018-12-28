@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<topic name="pose2d" type="publish" fileName="Pose2D" description="This expresses a position and orientation on a 2D manifold.">
+  <property name="x" type="float64">
+    <value></value>
+  </property>
+  <property name="y" type="float64">
+    <value></value>
+  </property>
+  <property name="theta" type="float64">
+    <value></value>
+  </property>
+</topic>

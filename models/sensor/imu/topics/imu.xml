@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="imu" type="publish" description="accelerometers and gyroscopes" fileName="IMU">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="orientation" type="quaternion" fileName="Quaternion">
+      <xi:include href="../../../geometry/topics/quaternion.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+    <property name="orientation_covariance" type="float64[9]">
+      <value></value>
+    </property>
+    <property name="angular_velocity" type="vector3" fileName="Vector3">
+      <xi:include href="../../../geometry/topics/vector3.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+    <property name="angular_velocity_covariance" type="float64[9]">
+      <value></value>
+    </property>
+    <property name="linear_acceleration" type="vector3" fileName="Vector3">
+      <xi:include href="../../../geometry/topics/vector3.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+    <property name="linear_acceleration_covariance" type="float64[9]">
+      <value></value>
+    </property>
+  </topic>
+</root>

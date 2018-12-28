@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<topic name="transform" type="publish" fileName="Transform" description="This represents the transform between two coordinate frames in free space."
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="translation" type="vector3" fileName="Vector3">
+    <xi:include href="vector3.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+  <property name="rotation" type="quaternion" fileName="Quaternion">
+    <xi:include href="quaternion.xml" xpointer="xpointer(//topic/property)"/>
+  </property>
+</topic>

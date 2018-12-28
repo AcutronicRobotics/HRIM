@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="goal" type="service" description="orders the gripper to grab or release" fileName="GoalGripper">
+    <property name="on_off" type="boolean" description="true: grab the object | false: release the object">
+      <value></value>
+    </property>
+    <response>
+      <property name="goal_accepted" type="boolean" description="true: the goal is accepted | false: the goal is not accepted">
+        <value></value>
+      </property>
+    </response>
+  </topic>
+</root>

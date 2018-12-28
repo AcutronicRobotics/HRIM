@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="torque_axis_spec" type="specsTorqueAxis" description="specs related to each of the measured axes" fileName="SpecsTorqueAxis">
+    <property name="axis" type="uint8" unit="enum" enum='{"TORQUE_AXIS_X": 0, "TORQUE_AXIS_Y": 1, "TORQUE_AXIS_Z": 2}' description="the axis the specs describe">
+      <value></value>
+    </property>
+    <property name="max_torque" type="uint16" unit="newtons per metre" description="maximum measurable torque">
+      <value></value>
+    </property>
+    <property name="resolution" type="float32" unit="newtons per metre" description="minimum detectable difference">
+      <value></value>
+    </property>
+    <property name="safe_overload" type="uint16" unit="percentage" description="maximum torque the sensor withstands safely on this axis, in reference to the max_torque value">
+      <value></value>
+    </property>
+    <property name="max_overload" type="uint16" unit="percentage" description="maximum torque the sensor withstands before total breakdown on this axis, in reference to the max_torque value">
+      <value></value>
+    </property>
+    <property name="min_error_margin" type="float32" unit="+- percentage" description="average error margin while inside the ideal ranges of this axis">
+      <value></value>
+    </property>
+    <property name="max_error_margin" type="float32" unit="+- percentage" description="average error margin while outside the ideal ranges of this axis">
+      <value></value>
+    </property>
+  </property>
+</root>

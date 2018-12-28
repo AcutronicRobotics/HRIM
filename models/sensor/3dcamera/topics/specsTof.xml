@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="specs" type="publish" description="defines the most important characteristic of the camera" fileName="SpecsToFCamera">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="resolution" type="string" unit="pixel" description="example: 752x480, 1280x1024">
+      <value></value>
+    </property>
+    <property name="frame_rate" type="uint16" unit="frames per second" description="maximum possible frame rate">
+      <value></value>
+    </property>
+    <property name="image_formats" type="string" description="example: mono8, rgb1, bayergrbg8">
+      <value></value>
+    </property>
+    <property name="horizontal_fov" type="float32" unit="radian" description="horizontal field of view">
+      <value></value>
+    </property>
+    <property name="vertical_fov" type="float32" unit="radian" description="vertical field of view">
+      <value></value>
+    </property>
+  </topic>
+</root>

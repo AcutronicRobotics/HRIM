@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<module name="microphone" type="sensor" description="defines the messages to interact with a microphone"
+  noNamespaceSchemaLocation="../../schemas/module.xsd"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <mandatory>
+
+    <xi:include href="../../generic/base.xml" xpointer="xpointer(//root/topic)"/>
+
+
+    <xi:include href="topics/specs.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/audio.xml" xpointer="xpointer(//root/topic)"/>
+
+  </mandatory>
+
+  <optional>
+
+    <param name="polar_pattern" type="int" unit="enumeration" description="Current polar pattern, only applicable to microphones with multi-pattern capabilities. Omnidirectional=0, bidirectional=1, cardioid=2">
+      <value></value>
+    </param>
+
+  </optional>
+</module>
