@@ -15,6 +15,9 @@
     <property name="min_operating_temp" type="float32">
       <value></value>
     </property>
+    <property name="min_range" type="float32">
+      <value></value>
+    </property>
     <property name="max_range" type="float32">
       <value></value>
     </property>
