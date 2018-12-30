@@ -1,8 +1,18 @@
-import lxml.etree as ET
 import sys
 import os
 from utils import getTabs
 from parsing import ModuleParser
+import platform
+try:
+	import lxml.etree as ET
+except ImportError:
+	platform_type = platform.system()
+	if platform_type == "Darwin":
+		print("Install lxml using: pip install lxml")
+		exit()
+	elif platform_type == "Linux":
+		print("Intall lxml using: sudo apt install python-lxml")
+		exit()
 
 class ModuleCompiler:
 	def processSubProperty(self, prop, generic):
@@ -29,7 +39,7 @@ class ModuleCompiler:
 					self.msgFiles.append(prop.fileName)
 				else:
 					self.ownFiles.append(prop.fileName)
-					
+
 				text_file = open(subFileName, "w")
 				text_file.write(subMsg)
 				text_file.close()
@@ -168,7 +178,7 @@ class ModuleCompiler:
 
 			self.pkgDeps.remove(self.msgPkgName)
 
-			# update the list of generated files at self.generatedFiles 
+			# update the list of generated files at self.generatedFiles
 			self.listGenerated()
 
 			# insert the .msg list in the CMakeLists.txt

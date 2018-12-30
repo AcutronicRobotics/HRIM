@@ -1,9 +1,19 @@
-import lxml.etree as ET
 import sys
 import json
 import re
 import os
 from classes import *
+import platform
+try:
+	import lxml.etree as ET
+except ImportError:
+	platform_type = platform.system()
+	if platform_type == "Darwin":
+		print("Install lxml using: pip install lxml")
+		exit()
+	elif platform_type == "Linux":
+		print("Intall lxml using: sudo apt install python-lxml")
+		exit()
 
 class ModuleParser:
 
