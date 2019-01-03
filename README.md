@@ -46,20 +46,15 @@ A preliminary whitepaper about this work is available at https://arxiv.org/abs/1
 ```
 
 ### Install dependencies
-```
-sudo apt-get install python-lxml
-```
-
-Alternatively, the OS-independent `pip` command would be:
 ```bash
-pip install lxml
+pip3 install lxml
 ```
 
 ### Script usage
 
 The command structure would be the following:
 ```
-python hrim.py [-h] [-p {ros2}] [-e] {show,generate,list,clear} filePath
+python3 hrim.py [-h] [-p {ros2}] [-e] {show,generate,list,clear} filePath
 ```
 Where:
 
@@ -149,16 +144,16 @@ If the chosen action is **clear** it can either represent a directory name or a 
 
 While positioned at the repository's root all of the following are valid command executions:
 
-* `python hrim.py show $(pwd)/models/sensor/torque/torque.xml`
-* `python hrim.py show ./models/sensor/torque/torque.xml`
-* `python hrim.py -e show /models/sensor/torque/torque.xml`
-* `python hrim.py show --extend models/sensor/torque/torque.xml`
-* `python hrim.py show models/sensor/torque/torque.xml`
-* `python hrim.py generate $(pwd)/models/sensor/torque/torque.xml`
-* `python hrim.py generate ./models/sensor/torque/torque.xml`
-* `python hrim.py -p ros2 generate /models/sensor/torque/torque.xml`
-* `python hrim.py generate models/sensor/torque/torque.xml`
-* `python hrim.py generate --platform ros2 all`
-* `python hrim.py generate allClean`
-* `python hrim.py clear force`
-* `python hrim.py clear all`
+* `python3 hrim.py show $(pwd)/models/sensor/torque/torque.xml`
+* `python3 hrim.py show ./models/sensor/torque/torque.xml`
+* `python3 hrim.py -e show /models/sensor/torque/torque.xml`
+* `python3 hrim.py show --extend models/sensor/torque/torque.xml`
+* `python3 hrim.py show models/sensor/torque/torque.xml`
+* `python3 hrim.py generate $(pwd)/models/sensor/torque/torque.xml`
+* `python3 hrim.py generate ./models/sensor/torque/torque.xml`
+* `python3 hrim.py -p ros2 generate /models/sensor/torque/torque.xml`
+* `python3 hrim.py generate models/sensor/torque/torque.xml`
+* `python3 hrim.py generate --platform ros2 all`
+* `python3 hrim.py generate allClean`
+* `python3 hrim.py clear force`
+* `python3 hrim.py clear all`
