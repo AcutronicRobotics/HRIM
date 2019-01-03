@@ -1,8 +1,24 @@
-import lxml.etree as ET
 import sys
 import os
 from utils import getTabs
 from parsing import ModuleParser
+import platform
+try:
+	import lxml.etree as ET
+except ImportError:
+	platform_type = platform.system()
+	if platform_type in ["Darwin", "Windows"]:
+		print("Install lxml using:")
+		print("\tpip install lxml")
+		print("\tor")
+		print("\tpip3 install lxml")
+		exit()
+	elif platform_type == "Linux":
+		print("Install lxml using:")
+		print("\tsudo apt install python-lxml")
+		print("\tor")
+		print("\tsudo apt install python3-lxml")
+		exit()
 
 class ModuleCompiler:
     def processSubProperty(self, prop, generic):
