@@ -7,11 +7,11 @@ try:
 	import lxml.etree as ET
 except ImportError:
 	platform_type = platform.system()
-	if platform_type == "Darwin":
+	if platform_type in ["Darwin", "Windows"]:
 		print("Install lxml using: pip install lxml")
 		exit()
 	elif platform_type == "Linux":
-		print("Intall lxml using: sudo apt install python-lxml")
+		print("Install lxml using: sudo apt install python-lxml")
 		exit()
 
 class ModuleCompiler:
