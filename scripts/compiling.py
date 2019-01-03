@@ -236,7 +236,7 @@ class ModuleCompiler:
     def checkGenerated(self, message):
         res = False
         genList = self.listGenerated()
-        for key, list in list(genList.items()):
+        for key, list in genList.items():
             if message in list:
                 res = key
 
