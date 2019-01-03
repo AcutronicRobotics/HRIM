@@ -8,10 +8,16 @@ try:
 except ImportError:
 	platform_type = platform.system()
 	if platform_type in ["Darwin", "Windows"]:
-		print("Install lxml using: pip install lxml")
+		print("Install lxml using:")
+		print("\tpip install lxml")
+		print("\tor")
+		print("\tpip3 install lxml")
 		exit()
 	elif platform_type == "Linux":
-		print("Install lxml using: sudo apt install python-lxml")
+		print("Install lxml using:")
+		print("\tsudo apt install python-lxml")
+		print("\tor")
+		print("\tsudo apt install python3-lxml")
 		exit()
 
 
