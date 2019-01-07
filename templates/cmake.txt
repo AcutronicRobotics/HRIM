@@ -22,8 +22,7 @@ set(msg_files
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  ${msg_files}
-  DEPENDENCIES%PKGDEP%
+  ${msg_files}%PKGDEP%
 )
 
 ament_package()

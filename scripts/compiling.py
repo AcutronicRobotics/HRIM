@@ -200,11 +200,15 @@ class ModuleCompiler:
                 buildDeps = buildDeps+("\n\t<build_depend>{}</build_depend>").format(pkgName)
                 execDeps = execDeps+("\n\t<exec_depend>{}</exec_depend>").format(pkgName)
                 pkgFind = pkgFind+("\nfind_package({} REQUIRED)").format(pkgName)
-                pkgDep = pkgDep+("\n\t{}").format(pkgName)
+                pkgDep = pkgDep+("\n\t\t{}").format(pkgName)
 
             # insert the package's name and description in CMakeLists.txt's content
             msgMakeFile = makeFile.replace("%PKGNAME%", self.msgPkgName)
             msgMakeFile = msgMakeFile.replace("%PKGFIND%", pkgFind)
+
+            if len(pkgDep) > 0:
+                pkgDep = "\n  DEPENDENCIES"+pkgDep
+
             msgMakeFile = msgMakeFile.replace("%PKGDEP%", pkgDep)
 
             msgMakeFile = msgMakeFile.replace("%PKGFILES%", msgList[:-1])
@@ -390,7 +394,7 @@ class ModuleCompiler:
                 buildDeps = buildDeps+("\n\t<build_depend>{}</build_depend>").format(pkgName)
                 execDeps = execDeps+("\n\t<exec_depend>{}</exec_depend>").format(pkgName)
                 pkgFind = pkgFind+("\nfind_package({} REQUIRED)").format(pkgName)
-                pkgDep = pkgDep+("\n\t{}").format(pkgName)
+                pkgDep = pkgDep+("\n\t\t{}").format(pkgName)
 
             # insert the package's name and description in package.xml's content
             msgPkg = pkg.replace("%PKGNAME%", self.msgPkgName)
@@ -401,6 +405,10 @@ class ModuleCompiler:
             # insert the package's name and description in CMakeLists.txt's content
             msgMakeFile = makeFile.replace("%PKGNAME%", self.msgPkgName)
             msgMakeFile = msgMakeFile.replace("%PKGFIND%", pkgFind)
+
+            if len(pkgDep) > 0:
+                pkgDep = "\n\tDEPENDENCIES"+pkgDep
+
             msgMakeFile = msgMakeFile.replace("%PKGDEP%", pkgDep)
 
             # if the package has messages
@@ -432,7 +440,7 @@ class ModuleCompiler:
 
                 if dependency:
                     srvMakeFile = srvMakeFile.replace("%PKGFIND%", "\nfind_package({} REQUIRED)".format(self.msgPkgName))
-                    srvMakeFile = srvMakeFile.replace("%PKGDEP%", "\n\t"+self.msgPkgName)
+                    srvMakeFile = srvMakeFile.replace("%PKGDEP%", "\n  DEPENDENCIES\n\t\t"+self.msgPkgName)
                     srvPkg = srvPkg.replace("%PKGBUILD%", "\n\t<build_depend>{}</build_depend>".format(self.msgPkgName))
                     srvPkg = srvPkg.replace("%PKGEXEC%", "\n\t<exec_depend>{}</exec_depend>".format(self.msgPkgName))
                 else:
