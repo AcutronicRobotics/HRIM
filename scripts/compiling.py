@@ -478,18 +478,26 @@ class ModuleCompiler:
                     optParams+=getTabs(1)+param.name+": "+(str(param.value) if param.value is not None else "")+"\n\n"
 
             if len(manParams)>0:
-                params = open("mandatory_parameters.yaml", "w")
-                params.write(module.name+":\n"+manParams)
-                params.close()
+                self.manParams =  self.manParams+module.name+":\n"+manParams
 
             if len(optParams)>0:
-                params = open("optional_parameters.yaml", "w")
-                params.write(module.name+":\n"+optParams)
-                params.close()
+                self.optParams =  self.optParams+module.name+":\n"+optParams
         except:
             print("Error while processing module: "+module.name)
             raise
 
+    def generateParameters(self):
+        if len(self.manParams)>0:
+            params = open("mandatory_parameters.yaml", "w")
+            params.write(self.manParams)
+            params.close()
+            self.manParams = ""
+        if len(self.optParams)>0:
+            params = open("optional_parameters.yaml", "w")
+            params.write(self.optParams)
+            params.close()
+            self.optParams = ""
+            
     def __init__(self):
         self.dataTypes = {}
         self.msgPkgName = None
@@ -499,3 +507,5 @@ class ModuleCompiler:
         self.generatedFiles = {}
         self.initPath = os.getcwd()
         self.pkgDeps = []
+        self.manParams = ""
+        self.optParams = ""

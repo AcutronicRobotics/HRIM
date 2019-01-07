@@ -69,6 +69,7 @@ def main(args):
                         os.chdir(path)
                         module = parser.parseFile(item)
                         compiler.compileModule(module, args.platform)
+                        compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
             elif args.filePath == "allClean":
                 fileList = findModels(os.path.join(path, "models"))
@@ -78,11 +79,13 @@ def main(args):
                         os.chdir(path)
                         module = parser.parseFile(item)
                         compiler.compileModule(module, args.platform)
+                        compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
             # else try to generate the implementation based on the passed file
             else:
                 module = parser.parseFile(args.filePath)
                 compiler.compileModule(module, args.platform)
+                compiler.generateParameters()
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
         elif args.action == "list":
             if args.filePath == "models":
