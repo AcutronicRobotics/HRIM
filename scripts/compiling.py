@@ -506,6 +506,35 @@ class ModuleCompiler:
             params.close()
             self.optParams = ""
             
+    def composeModule(self, modules, paths):
+        model = open("model.xml", "w")
+        composition = "<?xml version=\"1.0\"?>\n<composition name=\"defaultName\">\n"
+        strContent=""
+        index = 0
+        for module in modules:
+            ownTopics = []
+            ownParams = []
+            strTopics = getTabs(1)+"<model type=\"{}\" subtype=\"{}\">\n".format(module.type, module.name)
+            strParams = ""
+            for topic in module.topics:
+                if not topic.mandatory:
+                    ownTopics.append(topic)
+            for param in module.params:
+                if not param.mandatory:
+                    ownParams.append(param)
+            ownTopics.sort(key=lambda topic: topic.name)
+            ownParams.sort(key=lambda param: param.name)
+            for topic in ownTopics:
+                strTopics = strTopics+(getTabs(2)+"<topic name=\"{}\"/>\n").format(topic.name)
+            for param in ownParams:
+                strParams = strParams+(getTabs(2)+"<param name=\"{}\"/>\n").format(param.name)
+            strTopics = strTopics+strParams+getTabs(1)+"</model>"
+            strContent = strContent+strTopics+"\n"
+            index = index+1
+        composition = composition+strContent[:-1]+"\n</composition>"
+        model.write(composition)
+        model.close()
+
     def __init__(self):
         self.dataTypes = {}
         self.msgPkgName = None

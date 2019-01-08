@@ -97,6 +97,32 @@ def main(args):
                 compiler.compileModule(module, args.platform)
                 compiler.generateParameters()
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+        elif args.action == "compose":
+            modules=[]
+            for eachPath in args.filePath:
+                fullPath = os.path.join(os.getcwd(), "models", eachPath)
+                if os.path.exists(fullPath):
+                    modelList = findModels(fullPath)
+                    properList = []
+                    for model in modelList:
+                        if not bool(re.search('.*_clean.xml$', model)):
+                            properList.append(model)
+                    if len(properList)==1:
+                        module = parser.parseFile(properList[0])
+                        modules.append(module)
+                        print("Adding {}/{} to the composition.".format(module.type, module.name))
+                    else:
+                        print("More than one model found by handle '{}':".format(eachPath))
+                        for model in properList:
+                            print("\t"+model)
+                        exit()
+                else:
+                    print("No model found by handle '{}'.".format(eachPath))
+                    print("Module composition cancelled.")
+                    exit()
+            compiler = ModuleCompiler()
+            compiler.composeModule(modules, args.filePath)
+            print("Composition generated: model.xml")
         elif args.action == "list":
             if uniquePath == "models":
                 modelList = findModels(os.path.join(os.getcwd(), "models"))
@@ -142,11 +168,13 @@ if __name__ == '__main__':
     parser=argparse.ArgumentParser(
         description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
         formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('action', choices=['show','generate', 'list', 'clear'], help='''Action to take:
+    parser.add_argument('action', choices=['show','generate', 'compose', 'list', 'clear'], help='''Action to take:
 show:
     print a representation of the passed valid XML module's model structure and values.
 generate:
     generate the platform-specific implementation of the passed valid XML model.
+compose:
+    generate a composition of modules.
 list:
     list available models or generated implementations.
 clear:
