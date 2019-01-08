@@ -59,9 +59,10 @@ def genBase(parser, compiler):
 def main(args):
     try:
         parser = ModuleParser()
+        uniquePath = args.filePath[0]
         if args.action == "show":
             extend = args.extend
-            module = parser.parseFile(args.filePath)
+            module = parser.parseFile(uniquePath)
             ModulePrinter().printModule(module, args.platform, extend)
         elif args.action == "generate":
             path = os.getcwd()
@@ -70,7 +71,7 @@ def main(args):
             genBase(parser, compiler)
 
             # check for file generation shorthands
-            if args.filePath == "all":
+            if uniquePath == "all":
                 fileList = findModels(os.path.join(path, "models"))
                 for item in fileList:
                     # if the model isn't a development file process it
@@ -80,7 +81,7 @@ def main(args):
                         compiler.compileModule(module, args.platform)
                         compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
-            elif args.filePath == "allClean":
+            elif uniquePath == "allClean":
                 fileList = findModels(os.path.join(path, "models"))
                 for item in fileList:
                     # if the model is a development file process it
@@ -92,18 +93,18 @@ def main(args):
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
             # else try to generate the implementation based on the passed file
             else:
-                module = parser.parseFile(args.filePath)
+                module = parser.parseFile(uniquePath)
                 compiler.compileModule(module, args.platform)
                 compiler.generateParameters()
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
         elif args.action == "list":
-            if args.filePath == "models":
+            if uniquePath == "models":
                 modelList = findModels(os.path.join(os.getcwd(), "models"))
                 for model in sorted(modelList):
                     if not bool(re.search('.*_clean.xml$', model)):
                         pathList = model.split(os.sep)
                         print(pathList[-3]+"/"+pathList[-2]+"/"+pathList[-1].replace('.xml',""))
-            elif args.filePath == "implementations":
+            elif uniquePath == "implementations":
                 impList = os.listdir("generated")
                 if len(impList) > 0:
                     for implementation in sorted(impList):
@@ -112,14 +113,14 @@ def main(args):
                     print("There's no generated implementations.")
         elif args.action == "clear":
             if len(os.listdir("generated")) > 0:
-                if args.filePath == "all":
+                if uniquePath == "all":
                     delDirs = os.listdir("generated")
                     for delPath in sorted(delDirs):
                         fullPath = os.path.join(os.getcwd(), "generated", delPath)
                         shutil.rmtree(fullPath)
                         print("Deleted "+fullPath)
                 else:
-                    fullPath = os.path.join(os.getcwd(), "generated", args.filePath)
+                    fullPath = os.path.join(os.getcwd(), "generated", uniquePath)
                     if os.path.exists(fullPath):
                         shutil.rmtree(fullPath)
                         print("Deleted "+fullPath)
@@ -151,7 +152,7 @@ list:
 clear:
     delete the passed generated implementation.
         ''')
-    parser.add_argument('filePath', help='''The path to a valid xml model file.
+    parser.add_argument('filePath', nargs="+" , help='''The path to a valid xml model file.
 Alternatively, either a shorthand for the generate command:
     all:
         generates the implementation of every existent model
