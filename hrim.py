@@ -68,6 +68,7 @@ def main(args):
             path = os.getcwd()
 
             compiler = ModuleCompiler()
+            compiler.dataTypes = parser.getDataTypes(args.platform)
             genBase(parser, compiler)
 
             # check for file generation shorthands
