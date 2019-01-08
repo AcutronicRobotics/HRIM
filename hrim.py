@@ -32,6 +32,30 @@ def findModels(dirName):
                 modelFiles.append(fullPath)
     return modelFiles
 
+
+def genBase(parser, compiler):
+    path = os.getcwd()
+
+    # if generic package exists we delete it
+    if os.path.exists(os.path.join(path, "generated", "generic")):
+        shutil.rmtree(os.path.join(path, "generated", "generic"))
+
+    generic = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
+
+    compiler.compileGeneric(generic, args.platform, "generic")
+    print("Succesfully generated "+args.platform+" implementation of HRIM's generic package.")
+    os.chdir(path)
+
+    # if geometry package exists we delete it
+    if os.path.exists(os.path.join(path, "generated", "geometry")):
+        shutil.rmtree(os.path.join(path, "generated", "geometry"))
+
+    geometry = parser.parseBase(os.path.join(path, "models", "geometry", "geometry.xml"))
+
+    compiler.compileGeneric(geometry, args.platform, "geometry")
+    print("Succesfully generated "+args.platform+" implementation of HRIM's geometry package.")
+    os.chdir(path)
+
 def main(args):
     try:
         parser = ModuleParser()
@@ -42,24 +66,9 @@ def main(args):
         elif args.action == "generate":
             path = os.getcwd()
 
-            # if generic package exists we delete it
-            if os.path.exists(os.path.join(os.getcwd(), "generated", "generic")):
-                shutil.rmtree(os.path.join(os.getcwd(), "generated", "generic"))
-
-            generic = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
             compiler = ModuleCompiler()
-            compiler.compileGeneric(generic, args.platform)
-            print("Succesfully generated "+args.platform+" implementation of HRIM's generic package.")
-            os.chdir(path)
-            geometry = parser.parseBase(os.path.join(path, "models", "geometry", "geometry.xml"))
+            genBase(parser, compiler)
 
-            # if geometry package exists we delete it
-            if os.path.exists(os.path.join(os.getcwd(), "generated", "geometry")):
-                shutil.rmtree(os.path.join(os.getcwd(), "generated", "geometry"))
-                
-            compiler.compileGeneric(geometry, args.platform, "geometry")
-            print("Succesfully generated "+args.platform+" implementation of HRIM's geometry package.")
-            os.chdir(path)
             # check for file generation shorthands
             if args.filePath == "all":
                 fileList = findModels(os.path.join(path, "models"))
