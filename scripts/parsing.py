@@ -196,6 +196,26 @@ class ModuleParser:
             sys.exit(1)
         return genericTopics
 
+    def parseComposition(self, path):
+        compTree = ET.parse(path)
+        compRoot=compTree.getroot()
+        composition = Composition(compRoot.attrib.get("name"))
+        for model in compRoot:
+            topicList = []
+            for topic in model.findall("topic"):
+                topicList.append(topic.attrib.get("name"))
+            paramList = []
+            for param in model.findall("param"):
+                paramList.append(param.attrib.get("name"))
+            modelPath = os.path.join(os.getcwd(), model.attrib.get("path"))
+            module = self.parseFile(modelPath)
+            for topic in module.topics:
+                if not topic.mandatory and topic.name not in topicList: module.topics.remove(topic)
+            for param in module.params:
+                if not param.mandatory and param.name not in paramList: module.params.remove(param)
+            composition.modules.append(module)
+        return composition
+
     # main parse method
     def parseFile(self, filePath):
 

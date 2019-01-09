@@ -138,6 +138,24 @@ def main(args):
             compiler = ModuleCompiler()
             compiler.composeModule(modules, paths)
             print("Composition generated: model.xml")
+        elif args.action == "compile":
+            path = os.getcwd()
+            composition = parser.parseComposition(os.path.join(os.getcwd(),uniquePath))
+            if os.path.exists(os.path.join(path, "composition", composition.name)):
+                shutil.rmtree(os.path.join(path, "composition", composition.name))
+            compiler = ModuleCompiler()
+            compiler.genPath = "composition/"+composition.name
+            compiler.dataTypes = ModuleParser().getDataTypes(args.platform)
+            compiler.composition = True
+            genBase(parser, compiler)
+            # for module in modules:
+            for module in composition.modules:
+                os.chdir(path)
+                compiler.compileModule(module, False)
+            compiler.generateParameters()
+
+            shutil.copyfile(os.path.join(path, uniquePath), uniquePath)
+
         elif args.action == "list":
             if uniquePath == "models":
                 modelList = findModels(os.path.join(os.getcwd(), "models"))
@@ -183,13 +201,15 @@ if __name__ == '__main__':
     parser=argparse.ArgumentParser(
         description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
         formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('action', choices=['show','generate', 'compose', 'list', 'clear'], help='''Action to take:
+    parser.add_argument('action', choices=['show','generate', 'compose', 'compile', 'list', 'clear'], help='''Action to take:
 show:
     print a representation of the passed valid XML module's model structure and values.
 generate:
     generate the platform-specific implementation of the passed valid XML model.
 compose:
     generate a composition of modules.
+compile:
+    generate the platform-specific implementation of the passed composition.
 list:
     list available models or generated implementations.
 clear:
