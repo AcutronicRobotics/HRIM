@@ -37,8 +37,8 @@ def genBase(parser, compiler):
     path = os.getcwd()
 
     # if generic package exists we delete it
-    if os.path.exists(os.path.join(path, "generated", "generic")):
-        shutil.rmtree(os.path.join(path, "generated", "generic"))
+    if os.path.exists(os.path.join(path, compiler.genPath, "generic")):
+        shutil.rmtree(os.path.join(path, compiler.genPath, "generic"))
 
     generic = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
 
@@ -47,8 +47,8 @@ def genBase(parser, compiler):
     os.chdir(path)
 
     # if geometry package exists we delete it
-    if os.path.exists(os.path.join(path, "generated", "geometry")):
-        shutil.rmtree(os.path.join(path, "generated", "geometry"))
+    if os.path.exists(os.path.join(path, compiler.genPath, "geometry")):
+        shutil.rmtree(os.path.join(path, compiler.genPath, "geometry"))
 
     geometry = parser.parseBase(os.path.join(path, "models", "geometry", "geometry.xml"))
 
@@ -69,6 +69,7 @@ def main(args):
 
             compiler = ModuleCompiler()
             compiler.dataTypes = parser.getDataTypes(args.platform)
+            compiler.genPath="generated"
             genBase(parser, compiler)
 
             # check for file generation shorthands

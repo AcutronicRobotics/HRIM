@@ -113,7 +113,7 @@ class ModuleCompiler:
 
             os.chdir(cwd)
 
-            genPath = os.path.join(cwd, "generated", package, self.msgPkgName, "msg")
+            genPath = os.path.join(cwd, self.genPath, package, self.msgPkgName, "msg")
 
             # if the generic package directory doesn't exist, create it
             if not os.path.exists(genPath):
@@ -219,12 +219,12 @@ class ModuleCompiler:
         cwd = os.getcwd()
         os.chdir(self.initPath)
         genList = {}
-        if os.path.exists("generated"):
-            pkgList = os.listdir("generated")
+        if os.path.exists(self.genPath):
+            pkgList = os.listdir(self.genPath)
             for package in pkgList:
                 pkgName = os.path.split(package)[-1]
                 genList["hrim_"+pkgName+"_msgs"] = []
-                genPath = os.path.join(self.initPath,"generated", pkgName, "hrim_"+pkgName+"_msgs", "msg")
+                genPath = os.path.join(self.initPath,self.genPath, pkgName, "hrim_"+pkgName+"_msgs", "msg")
                 if os.path.exists(genPath):
                     msgList = os.listdir(genPath)
                     for message in msgList:
@@ -274,9 +274,9 @@ class ModuleCompiler:
             os.chdir(cwd)
 
             # if the container directory for the generated module doesn't exist, create it
-            if not os.path.exists(cwd+"/generated"):
-                    os.mkdir("generated")
-            os.chdir("generated")
+            if not os.path.exists(os.path.join(cwd,self.genPath)):
+                    os.mkdir(self.genPath)
+            os.chdir(self.genPath)
             cwd = os.getcwd()
 
             # if the module directory for the generated files doesn't exist, create it
@@ -522,6 +522,7 @@ class ModuleCompiler:
         self.msgFolderPath = None
         self.generatedFiles = {}
         self.initPath = os.getcwd()
+        self.genPath = None
         self.pkgDeps = []
         self.manParams = ""
         self.optParams = ""
