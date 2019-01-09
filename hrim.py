@@ -40,9 +40,10 @@ def genBase(parser, compiler):
     if os.path.exists(os.path.join(path, compiler.genPath, "generic")):
         shutil.rmtree(os.path.join(path, compiler.genPath, "generic"))
 
-    generic = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
+    generic = Module("generic", "base", "defines the generic HRIM messages used by modules")
+    generic.topics = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
 
-    compiler.compileGeneric(generic, args.platform, "generic")
+    compiler.compileModule(generic, True)
     print("Succesfully generated "+args.platform+" implementation of HRIM's generic package.")
     os.chdir(path)
 
@@ -50,9 +51,10 @@ def genBase(parser, compiler):
     if os.path.exists(os.path.join(path, compiler.genPath, "geometry")):
         shutil.rmtree(os.path.join(path, compiler.genPath, "geometry"))
 
-    geometry = parser.parseBase(os.path.join(path, "models", "geometry", "geometry.xml"))
+    geometry = Module("geometry", "base", "defines the geometry HRIM messages used by modules")
+    geometry.topics = parser.parseBase(os.path.join(path, "models", "geometry", "geometry.xml"))
 
-    compiler.compileGeneric(geometry, args.platform, "geometry")
+    compiler.compileModule(geometry, True)
     print("Succesfully generated "+args.platform+" implementation of HRIM's geometry package.")
     os.chdir(path)
 
@@ -80,7 +82,7 @@ def main(args):
                     if not bool(re.search('.*_clean.xml$', item)):
                         os.chdir(path)
                         module = parser.parseFile(item)
-                        compiler.compileModule(module, args.platform)
+                        compiler.compileModule(module, False)
                         compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
             elif uniquePath == "allClean":
@@ -90,13 +92,13 @@ def main(args):
                     if bool(re.search('.*_clean.xml$', item)):
                         os.chdir(path)
                         module = parser.parseFile(item)
-                        compiler.compileModule(module, args.platform)
+                        compiler.compileModule(module, False)
                         compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
             # else try to generate the implementation based on the passed file
             else:
                 module = parser.parseFile(uniquePath)
-                compiler.compileModule(module, args.platform)
+                compiler.compileModule(module, False)
                 compiler.generateParameters()
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
         elif args.action == "compose":
