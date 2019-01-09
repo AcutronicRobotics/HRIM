@@ -101,6 +101,7 @@ def main(args):
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
         elif args.action == "compose":
             modules=[]
+            paths=[]
             for eachPath in args.filePath:
                 fullPath = os.path.join(os.getcwd(), "models", eachPath)
                 if os.path.exists(fullPath):
@@ -112,18 +113,28 @@ def main(args):
                     if len(properList)==1:
                         module = parser.parseFile(properList[0])
                         modules.append(module)
-                        print("Adding {}/{} to the composition.".format(module.type, module.name))
+                        path = properList[0].replace(os.getcwd()+"/","")
+                        paths.append(path)
+                        print("Adding {} defined at {} to the composition.".format(module.name, path))
                     else:
                         print("More than one model found by handle '{}':".format(eachPath))
                         for model in properList:
                             print("\t"+model)
                         exit()
                 else:
-                    print("No model found by handle '{}'.".format(eachPath))
-                    print("Module composition cancelled.")
-                    exit()
+                    fullPath = os.path.join(os.getcwd(), "models", eachPath+".xml")
+                    if os.path.exists(fullPath):
+                        module = parser.parseFile(fullPath)
+                        modules.append(module)
+                        path = fullPath.replace(os.getcwd()+"/","")
+                        paths.append(path)
+                        print("Adding {} defined at {} to the composition.".format(module.name, path))
+                    else:
+                        print("No model found by handle '{}'.".format(eachPath))
+                        print("Module composition cancelled.")
+                        exit()
             compiler = ModuleCompiler()
-            compiler.composeModule(modules, args.filePath)
+            compiler.composeModule(modules, paths)
             print("Composition generated: model.xml")
         elif args.action == "list":
             if uniquePath == "models":

@@ -493,7 +493,7 @@ class ModuleCompiler:
         for module in modules:
             ownTopics = []
             ownParams = []
-            strTopics = getTabs(1)+"<model type=\"{}\" subtype=\"{}\">\n".format(module.type, module.name)
+            strTopics = getTabs(1)+"<model type=\"{}\" subtype=\"{}\" path=\"{}\">\n".format(module.type, module.name, paths[index])
             strParams = ""
             for topic in module.topics:
                 if not topic.mandatory:
