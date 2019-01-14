@@ -209,9 +209,9 @@ class ModuleParser:
                 paramList.append(param.attrib.get("name"))
             modelPath = os.path.join(os.getcwd(), model.attrib.get("path"))
             module = self.parseFile(modelPath)
-            for topic in module.topics:
+            for topic in list(module.topics):
                 if not topic.mandatory and topic.name not in topicList: module.topics.remove(topic)
-            for param in module.params:
+            for param in list(module.params):
                 if not param.mandatory and param.name not in paramList: module.params.remove(param)
             composition.modules.append(module)
         return composition
