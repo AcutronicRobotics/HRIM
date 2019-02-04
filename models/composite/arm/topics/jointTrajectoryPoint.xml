@@ -14,8 +14,8 @@
     <property name="effort" type="float64[]" unit="newtons per metre">
       <value></value>
     </property>
-    <property name="time" type="float32" unit="second">
-      <value></value>
+    <property name="time_from_start" type="duration" fileName="Duration">
+      <xi:include href="../../../generic/duration.xml" xpointer="xpointer(//topic/property)"/>
     </property>
   </property>
 </root>

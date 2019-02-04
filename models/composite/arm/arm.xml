@@ -16,6 +16,8 @@
 
     <xi:include href="topics/jointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
 
+    <xi:include href="topics/goalJointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
+
     <param name="arm_name" type="string" description="The name of the arm.">
       <value></value>
     </param>
@@ -58,6 +60,12 @@
 
   </mandatory>
   <optional>
+
+    <xi:include href="topics/multiJointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/goalMultiJointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/multiJointStates.xml" xpointer="xpointer(//root/topic)"/>
 
     <xi:include href="topics/rc.xml" xpointer="xpointer(//root/topic)"/>
 

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="multi_joint_states" type="publish" description="state of the multiple DOF joints" fileName="MultiDOFJointStates">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="control_type" type="uint8" unit="enum" description="arm control type - defined in JointStates">
+      <value></value>
+    </property>
+    <property name="joint_names" type="string[]" description="parameter that each servomotor has">
+      <value></value>
+    </property>
+    <property name="transforms" type="transform[]" fileName="Transform">
+      <xi:include href="../../../geometry/topics/vector3.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+    <property name="twist" type="twist[]" fileName="Twist">
+      <xi:include href="../../../geometry/topics/vector3.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+    <property name="wrench" type="wrench[]" fileName="Wrench">
+      <xi:include href="../../../geometry/topics/vector3.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+  </topic>
+</root>

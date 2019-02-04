@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="multi_points" type="multiJointTrajectoryPoint[]" fileName="MultiDOFJointTrajectoryPoint">
+    <property name="transforms" type="transform[]" fileName="Transform">
+      <xi:include href="../../../geometry/topics/vector3.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+    <property name="velocities" type="twist[]" fileName="Twist">
+      <xi:include href="../../../geometry/topics/vector3.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+    <property name="accelerations" type="twist[]" fileName="Twist">
+      <xi:include href="../../../geometry/topics/vector3.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+    <property name="time_from_start" type="duration" fileName="Duration">
+      <xi:include href="../../../generic/duration.xml" xpointer="xpointer(//topic/property)"/>
+    </property>
+  </property>
+</root>

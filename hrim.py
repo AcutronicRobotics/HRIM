@@ -73,7 +73,7 @@ def main(args):
             compiler.dataTypes = parser.getDataTypes(args.platform)
             compiler.genPath="generated"
             genBase(parser, compiler)
-
+            
             # check for file generation shorthands
             if uniquePath == "all":
                 fileList = findModels(os.path.join(path, "models"))
@@ -189,6 +189,9 @@ def main(args):
                 print("There is no implementation to delete (generated directory is empty).")
         else:
             print("Unknown command")
+    except UnicodeDecodeError:
+        print("Unicode exception, check your locales\nUseful command: export LC_ALL=C.UTF-8")
+        sys.exit(1)
     except:
         print("An error occurred during command execution")
         sys.exit(1)
