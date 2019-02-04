@@ -71,36 +71,120 @@ def main(args):
 
             compiler = ModuleCompiler()
             compiler.dataTypes = parser.getDataTypes(args.platform)
-            compiler.genPath="generated"
-            genBase(parser, compiler)
-            
-            # check for file generation shorthands
-            if uniquePath == "all":
-                fileList = findModels(os.path.join(path, "models"))
-                for item in fileList:
-                    # if the model isn't a development file process it
-                    if not bool(re.search('.*_clean.xml$', item)):
-                        os.chdir(path)
-                        module = parser.parseFile(item)
-                        compiler.compileModule(module, False)
-                        compiler.generateParameters()
-                        print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
-            elif uniquePath == "allClean":
-                fileList = findModels(os.path.join(path, "models"))
-                for item in fileList:
-                    # if the model is a development file process it
-                    if bool(re.search('.*_clean.xml$', item)):
-                        os.chdir(path)
-                        module = parser.parseFile(item)
-                        compiler.compileModule(module, False)
-                        compiler.generateParameters()
-                        print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
-            # else try to generate the implementation based on the passed file
-            else:
-                module = parser.parseFile(uniquePath)
+
+            if uniquePath == "moveit":
+                compiler.genPath="moveit"
+                genBase(parser, compiler)
+
+                module = parser.parseFile(os.path.join(path, "models", "sensor", "3dcamera", "3dcamera_tof.xml"))
                 compiler.compileModule(module, False)
                 compiler.generateParameters()
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                os.chdir(path)
+
+                module = parser.parseFile(os.path.join(path, "models", "composite", "arm", "arm.xml"))
+                compiler.compileModule(module, False)
+                compiler.generateParameters()
+                print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                os.chdir(path)
+
+                # if shape package exists we delete it
+                if os.path.exists(os.path.join(path, compiler.genPath, "shape")):
+                    shutil.rmtree(os.path.join(path, compiler.genPath, "shape"))
+
+                shape = Module("shape", "base", "defines the shape HRIM messages used by modules")
+                shape.topics = parser.parseBase(os.path.join(path, "models", "shape", "shape.xml"))
+
+                compiler.compileModule(shape, True)
+                print("Succesfully generated "+args.platform+" implementation of HRIM's shape package.")
+                os.chdir(path)
+
+                # if object_recognition package exists we delete it
+                if os.path.exists(os.path.join(path, compiler.genPath, "object_recognition")):
+                    shutil.rmtree(os.path.join(path, compiler.genPath, "object_recognition"))
+
+                object_recognition = Module("object_recognition", "base", "defines the object_recognition HRIM messages used by modules")
+                object_recognition.topics = parser.parseBase(os.path.join(path, "models", "object_recognition", "object_recognition.xml"))
+
+                compiler.compileModule(object_recognition, True)
+                print("Succesfully generated "+args.platform+" implementation of HRIM's object_recognition package.")
+                os.chdir(path)
+
+                # if octomap package exists we delete it
+                if os.path.exists(os.path.join(path, compiler.genPath, "octomap")):
+                    shutil.rmtree(os.path.join(path, compiler.genPath, "octomap"))
+
+                octomap = Module("octomap", "base", "defines the octomap HRIM messages used by modules")
+                octomap.topics = parser.parseBase(os.path.join(path, "models", "octomap", "octomap.xml"))
+
+                compiler.compileModule(octomap, True)
+                print("Succesfully generated "+args.platform+" implementation of HRIM's octomap package.")
+                os.chdir(path)
+
+                # if moveit package exists we delete it
+                if os.path.exists(os.path.join(path, compiler.genPath, "moveit")):
+                    shutil.rmtree(os.path.join(path, compiler.genPath, "moveit"))
+
+                moveit = Module("moveit", "base", "defines the moveit HRIM messages used by modules")
+                moveit.topics = parser.parseBase(os.path.join(path, "models", "moveit", "moveit.xml"))
+
+                compiler.compileModule(moveit, True)
+                print("Succesfully generated "+args.platform+" implementation of HRIM's moveit package.")
+                os.chdir(path)
+
+            elif uniquePath == "control":
+                compiler.genPath="control"
+                genBase(parser, compiler)
+
+                module = parser.parseFile(os.path.join(path, "models", "composite", "arm", "arm.xml"))
+                compiler.compileModule(module, False)
+                compiler.generateParameters()
+                print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                os.chdir(path)
+
+                # if control package exists we delete it
+                if os.path.exists(os.path.join(path, compiler.genPath, "control")):
+                    shutil.rmtree(os.path.join(path, compiler.genPath, "control"))
+
+                control = Module("control", "base", "defines the control HRIM messages used by modules")
+                control.topics = parser.parseBase(os.path.join(path, "models", "control", "control.xml"))
+
+                compiler.compileModule(control, True)
+                print("Succesfully generated "+args.platform+" implementation of HRIM's control package.")
+                os.chdir(path)
+
+            else:
+                compiler.genPath="generated"
+                genBase(parser, compiler)
+
+                # check for file generation shorthands
+                if uniquePath == "all":
+                    fileList = findModels(os.path.join(path, "models"))
+                    for item in fileList:
+                        # if the model isn't a development file process it
+                        if not bool(re.search('.*_clean.xml$', item)):
+                            os.chdir(path)
+                            module = parser.parseFile(item)
+                            compiler.compileModule(module, False)
+                            compiler.generateParameters()
+                            print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                elif uniquePath == "allClean":
+                    fileList = findModels(os.path.join(path, "models"))
+                    for item in fileList:
+                        # if the model is a development file process it
+                        if bool(re.search('.*_clean.xml$', item)):
+                            os.chdir(path)
+                            module = parser.parseFile(item)
+                            compiler.compileModule(module, False)
+                            compiler.generateParameters()
+                            print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                # else try to generate the implementation based on the passed file
+                else:
+                    module = parser.parseFile(uniquePath)
+                    compiler.compileModule(module, False)
+                    compiler.generateParameters()
+                    print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+
         elif args.action == "compose":
             modules=[]
             paths=[]
