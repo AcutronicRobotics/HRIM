@@ -1,3 +1,7 @@
+class Composition:
+    def __init__(self, name, modules=[]):
+        self.name = name
+        self.modules = modules
 # Main data structure, contains both topics and parameters
 # Defines a node's structure
 class Module:
