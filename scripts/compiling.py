@@ -21,14 +21,15 @@ class ModuleCompiler:
                     subMsg+=self.formatProperty(subProp)
                 subFileName = prop.fileName+".msg"
 
-                if self.base:
-                    self.baseFiles[self.msgPkgName].append(prop.fileName)
+                if len(subMsg) > 0:
+                    if self.base:
+                        self.baseFiles[self.msgPkgName].append(prop.fileName)
 
-                self.ownFiles.append(prop.fileName)
+                    self.ownFiles.append(prop.fileName)
 
-                text_file = open(subFileName, "w")
-                text_file.write(subMsg)
-                text_file.close()
+                    text_file = open(subFileName, "w")
+                    text_file.write(subMsg)
+                    text_file.close()
         except:
             print("Error while processing subproperty message: "+prop.fileName)
             raise
@@ -79,9 +80,10 @@ class ModuleCompiler:
                     fileName = topic.fileName+".msg"
                     self.ownFiles.append(topic.fileName)
 
-                text_file = open(fileName, "w")
-                text_file.write(msg)
-                text_file.close()
+                if len(msg) > 0:
+                    text_file = open(fileName, "w")
+                    text_file.write(msg)
+                    text_file.close()
         except:
             print("Error while processing topic message: "+topic.fileName)
             raise
