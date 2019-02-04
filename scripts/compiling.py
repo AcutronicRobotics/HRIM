@@ -124,10 +124,16 @@ class ModuleCompiler:
         self.base = base
         messages = False
         services = False
+        actions = False
         self.msgDeps = []
         self.srvDeps = []
+        self.actionDeps = []
         self.ownFiles = []
         srvFiles = []
+        actionFiles = []
+
+        # Actions will always depend on action_msgs
+        self.actionDeps.append("action_msgs")
 
         cwd = os.getcwd()
 
@@ -163,47 +169,63 @@ class ModuleCompiler:
                 self.processMessage(module, topic)
                 if self.base:
                     self.baseFiles[self.msgPkgName].append(topic.fileName)
-            elif topic.type == "service":
-                services = True
+            else:
+                if topic.type == "service":
+                    myDep = self.srvDeps
+                    myFiles = srvFiles
+                    services = True
+                    shortType = "srv"
+                    if self.base:
+                        srvFolderPath = os.path.join(os.getcwd(),("hrim_"+module.name+"_"+shortType+"s"), shortType)
+                    else:
+                        srvFolderPath = os.path.join(os.getcwd(),("hrim_"+module.type+"_"+module.name+"_"+shortType+"s"), shortType)
+                    folderPath = srvFolderPath
+                if topic.type == "action":
+                    myDep = self.actionDeps
+                    myFiles = actionFiles
+                    actions = True
+                    shortType = "action"
+                    if self.base:
+                        actionFolderPath = os.path.join(os.getcwd(),("hrim_"+module.name+"_"+shortType+"s"), shortType)
+                    else:
+                        actionFolderPath = os.path.join(os.getcwd(),("hrim_"+module.type+"_"+module.name+"_"+shortType+"s"), shortType)
+                    folderPath = actionFolderPath
                 # check if file has already been generated
-                if topic.fileName not in srvFiles:
-
-                    # package folder naming
-                    srvFolderPath = os.path.join(os.getcwd(),("hrim_"+module.type+"_"+module.name+"_srvs"), "srv")
+                if topic.fileName not in myFiles:
 
                     # if the package directories don't exist, create them
-                    if not os.path.exists(srvFolderPath):
-                        os.makedirs(srvFolderPath)
+                    if not os.path.exists(folderPath):
+                        os.makedirs(folderPath)
 
-                    # position ourselves on the package's srv folder
-                    os.chdir(srvFolderPath)
-                    srv = ""
+                    # position ourselves on the package's action folder
+                    os.chdir(folderPath)
+                    fileContent = ""
 
-                    # check for an overall service description
+                    # check for an overall file description
                     if topic.desc is not None and len(topic.desc)>0:
-                        srv+="# "+topic.desc+"\n\n"
+                        fileContent+="# "+topic.desc+"\n\n"
 
                     for prop in topic.properties:
 
                         if prop.fileName is not None:
                             os.chdir(cwd)
                             self.processMessage(module, prop)
-                            os.chdir(srvFolderPath)
+                            os.chdir(folderPath)
                         # check for enumeration types
                         if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
 
                             # sort enumeration values for readability
                             for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
-                                srv+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+                                fileContent+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
                         # process each property, checking if it's value is an array and if it has any description
-                        srv+=self.formatProperty(prop, topic.type)
+                        fileContent+=self.formatProperty(prop, topic.type)
 
                         if prop.package is not None:
-                            if prop.package not in self.srvDeps:
-                                self.srvDeps.append(prop.package)
+                            if prop.package not in myDep:
+                                myDep.append(prop.package)
 
-                    srv+="---\n"
+                    fileContent+="---\n"
 
                     for prop in topic.response:
                         # check for enumeration types
@@ -211,21 +233,43 @@ class ModuleCompiler:
 
                             # sort enumeration values for readability
                             for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
-                                srv+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+                                fileContent+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
                         # process each property, checking if it's value is an array and if it has any description
-                        srv+=self.formatProperty(prop, topic.type)
+                        fileContent+=self.formatProperty(prop, topic.type)
 
-                    # generate each .srv file and add it to the list
+                        if prop.package is not None:
+                            if prop.package not in myDep:
+                                myDep.append(prop.package)
+
+                    if topic.type == "action":
+                        fileContent+="---\n"
+
+                        for prop in topic.feedback:
+                            # check for enumeration types
+                            if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
+
+                                # sort enumeration values for readability
+                                for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
+                                    fileContent+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+
+                            # process each property, checking if it's value is an array and if it has any description
+                            fileContent+=self.formatProperty(prop, topic.type)
+
+                            if prop.package is not None:
+                                if prop.package not in myDep:
+                                    myDep.append(prop.package)
+
+                    # generate each .action file and add it to the list
                     if topic.fileName is None:
-                        fileName = topic.name.title()+".srv"
-                        srvFiles.append(topic.name.title())
+                        fileName = topic.name.title()+"."+shortType
+                        myFiles.append(topic.name.title())
                     else:
-                        fileName = topic.fileName+".srv"
-                        srvFiles.append(topic.fileName)
+                        fileName = topic.fileName+"."+shortType
+                        myFiles.append(topic.fileName)
 
                     text_file = open(fileName, "w")
-                    text_file.write(srv)
+                    text_file.write(fileContent)
                     text_file.close()
 
         if self.msgPkgName in self.msgDeps:
@@ -331,6 +375,58 @@ class ModuleCompiler:
             cmake.write(srvMakeFile)
             cmake.close()
 
+        # if the package has actions
+        if actions:
+            actionFiles = os.listdir(actionFolderPath)
+            # reposition ourselves on the package's root
+            os.chdir(actionFolderPath[:-7])
+
+            if self.base:
+                actionMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.name+"_actions")
+                actionPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.name+"_actions")
+            else:
+                actionMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_actions")
+                actionPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_actions")
+
+            actionPkg = actionPkg.replace("%PKGDESC%", module.desc)
+
+            if len(self.actionDeps)>0:
+                buildDeps = ""
+                execDeps = ""
+                pkgFind = ""
+                pkgDep = ""
+                for dependency in self.actionDeps:
+                    buildDeps = buildDeps+("\n\t<build_depend>{}</build_depend>").format(dependency)
+                    execDeps = execDeps+("\n\t<exec_depend>{}</exec_depend>").format(dependency)
+                    pkgFind = pkgFind+("\nfind_package({} REQUIRED)").format(dependency)
+                    pkgDep = pkgDep+("\n\t\t{}").format(dependency)
+                actionMakeFile = actionMakeFile.replace("%PKGFIND%", pkgFind)
+                actionMakeFile = actionMakeFile.replace("%PKGDEP%", "\n  DEPENDENCIES"+pkgDep)
+                actionPkg = actionPkg.replace("%PKGBUILD%", buildDeps)
+                actionPkg = actionPkg.replace("%PKGEXEC%", execDeps)
+            else:
+                actionMakeFile = actionMakeFile.replace("%PKGFIND%", "")
+                actionMakeFile = actionMakeFile.replace("%PKGDEP%", "")
+                actionPkg = actionPkg.replace("%PKGBUILD%", "")
+                actionPkg = actionPkg.replace("%PKGEXEC%", "")
+
+            # generate the package.xml file
+            package = open("package.xml", "w")
+            package.write(actionPkg)
+            package.close()
+
+            # insert the .action list in the CMakeLists.txt
+            actionList = ""
+            for tmp in sorted(actionFiles):
+                actionList+="\t\"action/"+tmp+"\"\n"
+
+            actionMakeFile = actionMakeFile.replace("%PKGFILES%", actionList[:-1])
+
+            # generate the CMakeLists.txt file
+            cmake = open("CMakeLists.txt", "w")
+            cmake.write(actionMakeFile)
+            cmake.close()
+
         manParams = ""
         optParams = ""
 
@@ -409,6 +505,7 @@ class ModuleCompiler:
         self.genPath = None
         self.msgDeps = []
         self.srvDeps = []
+        self.actionDeps = []
         self.manParams = ""
         self.optParams = ""
         self.base = False
