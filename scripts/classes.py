@@ -46,6 +46,7 @@ class Property:
         self.unit=None  # the unit the property represents (i.e. hertz), optional
         self.desc=None  # short description of the property, optional
         self.fileName=None  # name of the artifact to be generted from the property (no use if the property's type is a base data type)
+        self.package=None
     def addProp(self, property):
         self.properties.append(property)
 

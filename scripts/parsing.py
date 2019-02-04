@@ -117,6 +117,9 @@ class ModuleParser:
         if "fileName" in property.attrib:
             prop.fileName = property.attrib.get("fileName")
 
+        if "package" in property.attrib:
+            prop.package = property.attrib.get("package")
+
         # check for subproperties
         if any(x.tag == "property" for x in property):
 
