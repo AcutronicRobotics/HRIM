@@ -81,7 +81,7 @@ class ModuleCompiler:
                     else:
 
                         # check for enumeration types
-                        if prop.unit is not None and prop.unit == "enum":
+                        if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
 
                             # sort enumeration values for readability
                             for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
@@ -348,7 +348,7 @@ class ModuleCompiler:
                                 self.processMessage(module, prop)
                                 os.chdir(srvFolderPath)
                             # check for enumeration types
-                            if prop.unit is not None and prop.unit == "enum":
+                            if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
 
                                 # sort enumeration values for readability
                                 for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
