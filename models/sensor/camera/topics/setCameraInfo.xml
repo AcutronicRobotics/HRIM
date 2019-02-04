@@ -2,7 +2,7 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="set_camera_info" type="service" description="set camera calibration" fileName="SetCameraInfo">
-    <property name="camera_info" type="cameraInfo" description="the camera info to store" fileName="CameraInfo">
+    <property name="camera_info" type="cameraInfo" description="the camera info to store" fileName="CameraInfo" package="hrim_sensor_camera_msgs">
       <xi:include href="cameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
     </property>
     <response>
