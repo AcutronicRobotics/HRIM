@@ -219,11 +219,6 @@ class ModuleCompiler:
         if self.msgPkgName in self.pkgDeps:
             self.pkgDeps.remove(self.msgPkgName)
 
-        # insert the .msg list in the CMakeLists.txt
-        msgList = ""
-        for tmp in sorted(self.ownFiles):
-            msgList+="\t\"msg/"+tmp+".msg\"\n"
-
         buildDeps = ""
         execDeps = ""
         pkgFind = ""
@@ -251,6 +246,7 @@ class ModuleCompiler:
 
         # if the package has messages
         if messages:
+            self.ownFiles = os.listdir(self.msgFolderPath)
             # reposition ourselves on the package's root
             os.chdir(self.msgFolderPath[:-4])
 
@@ -262,7 +258,7 @@ class ModuleCompiler:
             # insert the .msg list in the CMakeLists.txt
             msgList = ""
             for tmp in sorted(self.ownFiles):
-                msgList+="\t\"msg/"+tmp+".msg\"\n"
+                msgList+="\t\"msg/"+tmp+"\"\n"
 
             msgMakeFile = msgMakeFile.replace("%PKGFILES%", msgList[:-1])
 
@@ -273,6 +269,7 @@ class ModuleCompiler:
 
         # if the package has services
         if services:
+            srvFiles = os.listdir(srvFolderPath)
             # reposition ourselves on the package's root
             os.chdir(srvFolderPath[:-4])
 
@@ -299,8 +296,8 @@ class ModuleCompiler:
 
             # insert the .srv list in the CMakeLists.txt
             srvList = ""
-            for tmp in srvFiles:
-                srvList+="\t\"srv/"+tmp+".srv\"\n"
+            for tmp in sorted(srvFiles):
+                srvList+="\t\"srv/"+tmp+"\"\n"
 
             srvMakeFile = srvMakeFile.replace("%PKGFILES%", srvList[:-1])
 
