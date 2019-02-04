@@ -56,7 +56,7 @@ def main(args):
             # if geometry package exists we delete it
             if os.path.exists(os.path.join(os.getcwd(), "generated", "geometry")):
                 shutil.rmtree(os.path.join(os.getcwd(), "generated", "geometry"))
-                
+
             compiler.compileGeneric(geometry, args.platform, "geometry")
             print("Succesfully generated "+args.platform+" implementation of HRIM's geometry package.")
             os.chdir(path)
@@ -117,6 +117,9 @@ def main(args):
                 print("There is no implementation to delete (generated directory is empty).")
         else:
             print("Unknown command")
+    except UnicodeDecodeError:
+        print("Unicode exception, check your locales\nUseful command: export LC_ALL=C.UTF-8")
+        sys.exit(1)
     except:
         print("An error occurred during command execution")
         sys.exit(1)
