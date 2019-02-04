@@ -285,9 +285,13 @@ class ModuleCompiler:
             # reposition ourselves on the package's root
             os.chdir(srvFolderPath[:-4])
 
-            srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
+            if self.base:
+                srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.name+"_srvs")
+                srvPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.name+"_srvs")
+            else:
+                srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
+                srvPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
 
-            srvPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
             srvPkg = srvPkg.replace("%PKGDESC%", module.desc)
 
             if len(self.srvDeps)>0:
