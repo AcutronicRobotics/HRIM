@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<topic name="color_rgba" type="publish" fileName="ColorRGBA">
+  <property name="r" type="float32">
+    <value></value>
+  </property>
+  <property name="g" type="float32">
+    <value></value>
+  </property>
+  <property name="b" type="float32">
+    <value></value>
+  </property>
+  <property name="a" type="float32">
+    <value></value>
+  </property>
+</topic>
