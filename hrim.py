@@ -161,23 +161,11 @@ def main(args):
                 if uniquePath == "all":
                     fileList = findModels(os.path.join(path, "models"))
                     for item in fileList:
-                        # if the model isn't a development file process it
-                        if not bool(re.search('.*_clean.xml$', item)):
-                            os.chdir(path)
-                            module = parser.parseFile(item)
-                            compiler.compileModule(module, False)
-                            compiler.generateParameters()
-                            print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
-                elif uniquePath == "allClean":
-                    fileList = findModels(os.path.join(path, "models"))
-                    for item in fileList:
-                        # if the model is a development file process it
-                        if bool(re.search('.*_clean.xml$', item)):
-                            os.chdir(path)
-                            module = parser.parseFile(item)
-                            compiler.compileModule(module, False)
-                            compiler.generateParameters()
-                            print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                        os.chdir(path)
+                        module = parser.parseFile(item)
+                        compiler.compileModule(module, False)
+                        compiler.generateParameters()
+                        print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                 # else try to generate the implementation based on the passed file
                 else:
                     module = parser.parseFile(uniquePath)
@@ -194,8 +182,7 @@ def main(args):
                     modelList = findModels(fullPath)
                     properList = []
                     for model in modelList:
-                        if not bool(re.search('.*_clean.xml$', model)):
-                            properList.append(model)
+                        properList.append(model)
                     if len(properList)==1:
                         module = parser.parseFile(properList[0])
                         modules.append(module)
@@ -244,9 +231,8 @@ def main(args):
             if uniquePath == "models":
                 modelList = findModels(os.path.join(os.getcwd(), "models"))
                 for model in sorted(modelList):
-                    if not bool(re.search('.*_clean.xml$', model)):
-                        pathList = model.split(os.sep)
-                        print(pathList[-3]+"/"+pathList[-2]+"/"+pathList[-1].replace('.xml',""))
+                    pathList = model.split(os.sep)
+                    print(pathList[-3]+"/"+pathList[-2]+"/"+pathList[-1].replace('.xml',""))
             elif uniquePath == "implementations":
                 impList = os.listdir("generated")
                 if len(impList) > 0:
@@ -306,8 +292,6 @@ clear:
 Alternatively, either a shorthand for the generate command:
     all:
         generates the implementation of every existent model
-    allClean:
-        same as all, but taking into account the development models (file name ends in _clean)
 What the list command will look for:
     models:
         will list all available models.
