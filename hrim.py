@@ -131,6 +131,27 @@ def main(args):
                 compiler.compileModule(moveit, True)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's moveit package.")
                 os.chdir(path)
+                
+            elif uniquePath == "control":
+                compiler.genPath="control"
+                genBase(parser, compiler)
+
+                module = parser.parseFile(os.path.join(path, "models", "composite", "arm", "arm.xml"))
+                compiler.compileModule(module, False)
+                compiler.generateParameters()
+                print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                os.chdir(path)
+
+                # if control package exists we delete it
+                if os.path.exists(os.path.join(path, compiler.genPath, "control")):
+                    shutil.rmtree(os.path.join(path, compiler.genPath, "control"))
+
+                control = Module("control", "base", "defines the control HRIM messages used by modules")
+                control.topics = parser.parseBase(os.path.join(path, "models", "control", "control.xml"))
+
+                compiler.compileModule(control, True)
+                print("Succesfully generated "+args.platform+" implementation of HRIM's control package.")
+                os.chdir(path)
 
             else:
                 compiler.genPath="generated"
