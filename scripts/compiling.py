@@ -3,14 +3,14 @@ import os
 from utils import getTabs
 
 class ModuleCompiler:
-    def processSubProperty(self, prop):
+    def processSubProperty(self, prop, type):
         try:
-            if self.checkGenerated(prop.fileName) == False:
+            if self.checkGenerated(prop.fileName, type) == False:
                 subMsg = ""
                 for subProp in prop.properties:
                     if subProp.fileName is not None:
                         try:
-                            self.processSubProperty(subProp)
+                            self.processSubProperty(subProp, type)
                         except:
                             raise
                     else:
@@ -18,7 +18,7 @@ class ModuleCompiler:
                             # sort enumeration values for readability
                             for value in sorted( ((v,k) for k,v in subProp.enumeration.items())):
                                 subMsg+=subProp.type+" "+value[1]+"="+str(value[0])+"\n"
-                    subMsg+=self.formatProperty(subProp)
+                    subMsg+=self.formatProperty(subProp, type)
                 subFileName = prop.fileName+".msg"
 
                 if len(subMsg) > 0:
@@ -38,7 +38,7 @@ class ModuleCompiler:
     def processMessage(self, module, topic):
         try:
             # check if file has already been generated
-            res = self.checkGenerated(topic.fileName)
+            res = self.checkGenerated(topic.fileName, topic.type)
             if res == False:
 
                 # package folder naming
@@ -58,8 +58,8 @@ class ModuleCompiler:
 
                 for prop in topic.properties:
 
-                    if prop.fileName is not None:
-                        self.processSubProperty(prop)
+                    if prop.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
+                        self.processSubProperty(prop, topic.type)
                     else:
 
                         # check for enumeration types
@@ -70,7 +70,11 @@ class ModuleCompiler:
                                 msg+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
                     # process each property, checking if it's value is an array and if it has any description
-                    msg+=self.formatProperty(prop)
+                    msg+=self.formatProperty(prop, topic.type)
+
+                    if prop.package is not None:
+                        if prop.package not in self.msgDeps:
+                            self.msgDeps.append(prop.package)
 
                 # generate each .msg file and add it to the list
                 if topic.fileName is None:
@@ -88,18 +92,21 @@ class ModuleCompiler:
             print("Error while processing topic message: "+topic.fileName)
             raise
 
-    def formatProperty(self, prop):
+    def formatProperty(self, prop, type):
         if prop.fileName is None:
             type = self.dataTypes[prop.type]
         else:
-            found = self.checkGenerated(prop.fileName)
-            if found != False:
-                type = found+"/"+prop.fileName
+            if prop.package is not None:
+                type = prop.package+"/"+prop.fileName
             else:
-                type = self.msgPkgName+"/"+prop.fileName
+                found = self.checkGenerated(prop.fileName, type)
+                if found != False:
+                    type = found+"/"+prop.fileName
+                else:
+                    type = self.msgPkgName+"/"+prop.fileName
         return type+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
 
-    def checkGenerated(self, message):
+    def checkGenerated(self, message, type):
         res = False
         for key, list in self.baseFiles.items():
             if message in list:
@@ -108,8 +115,8 @@ class ModuleCompiler:
             if message in self.ownFiles:
                 res=self.msgPkgName
 
-        if res != False and res != self.msgPkgName and res not in self.pkgDeps:
-            self.pkgDeps.append(res)
+        if res != False and res != self.msgPkgName and type in ["publish","subscribe"] and res not in self.msgDeps:
+            self.msgDeps.append(res)
 
         return res
 
@@ -117,10 +124,16 @@ class ModuleCompiler:
         self.base = base
         messages = False
         services = False
-        dependency = False
-        self.pkgDeps = []
+        actions = False
+        self.msgDeps = []
+        self.srvDeps = []
+        self.actionDeps = []
         self.ownFiles = []
         srvFiles = []
+        actionFiles = []
+
+        # Actions will always depend on action_msgs
+        self.actionDeps.append("action_msgs")
 
         cwd = os.getcwd()
 
@@ -156,44 +169,63 @@ class ModuleCompiler:
                 self.processMessage(module, topic)
                 if self.base:
                     self.baseFiles[self.msgPkgName].append(topic.fileName)
-            elif topic.type == "service":
-                services = True
+            else:
+                if topic.type == "service":
+                    myDep = self.srvDeps
+                    myFiles = srvFiles
+                    services = True
+                    shortType = "srv"
+                    if self.base:
+                        srvFolderPath = os.path.join(os.getcwd(),("hrim_"+module.name+"_"+shortType+"s"), shortType)
+                    else:
+                        srvFolderPath = os.path.join(os.getcwd(),("hrim_"+module.type+"_"+module.name+"_"+shortType+"s"), shortType)
+                    folderPath = srvFolderPath
+                if topic.type == "action":
+                    myDep = self.actionDeps
+                    myFiles = actionFiles
+                    actions = True
+                    shortType = "action"
+                    if self.base:
+                        actionFolderPath = os.path.join(os.getcwd(),("hrim_"+module.name+"_"+shortType+"s"), shortType)
+                    else:
+                        actionFolderPath = os.path.join(os.getcwd(),("hrim_"+module.type+"_"+module.name+"_"+shortType+"s"), shortType)
+                    folderPath = actionFolderPath
                 # check if file has already been generated
-                if topic.fileName not in srvFiles:
-
-                    # package folder naming
-                    srvFolderPath = os.path.join(os.getcwd(),("hrim_"+module.type+"_"+module.name+"_srvs"), "srv")
+                if topic.fileName not in myFiles:
 
                     # if the package directories don't exist, create them
-                    if not os.path.exists(srvFolderPath):
-                        os.makedirs(srvFolderPath)
+                    if not os.path.exists(folderPath):
+                        os.makedirs(folderPath)
 
-                    # position ourselves on the package's srv folder
-                    os.chdir(srvFolderPath)
-                    srv = ""
+                    # position ourselves on the package's action folder
+                    os.chdir(folderPath)
+                    fileContent = ""
 
-                    # check for an overall service description
+                    # check for an overall file description
                     if topic.desc is not None and len(topic.desc)>0:
-                        srv+="# "+topic.desc+"\n\n"
+                        fileContent+="# "+topic.desc+"\n\n"
 
                     for prop in topic.properties:
 
                         if prop.fileName is not None:
-                            dependency = True
                             os.chdir(cwd)
                             self.processMessage(module, prop)
-                            os.chdir(srvFolderPath)
+                            os.chdir(folderPath)
                         # check for enumeration types
                         if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
 
                             # sort enumeration values for readability
                             for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
-                                srv+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+                                fileContent+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
                         # process each property, checking if it's value is an array and if it has any description
-                        srv+=self.formatProperty(prop)
+                        fileContent+=self.formatProperty(prop, topic.type)
 
-                    srv+="---\n"
+                        if prop.package is not None:
+                            if prop.package not in myDep:
+                                myDep.append(prop.package)
+
+                    fileContent+="---\n"
 
                     for prop in topic.response:
                         # check for enumeration types
@@ -201,31 +233,53 @@ class ModuleCompiler:
 
                             # sort enumeration values for readability
                             for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
-                                srv+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+                                fileContent+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
                         # process each property, checking if it's value is an array and if it has any description
-                        srv+=self.formatProperty(prop)
+                        fileContent+=self.formatProperty(prop, topic.type)
 
-                    # generate each .srv file and add it to the list
+                        if prop.package is not None:
+                            if prop.package not in myDep:
+                                myDep.append(prop.package)
+
+                    if topic.type == "action":
+                        fileContent+="---\n"
+
+                        for prop in topic.feedback:
+                            # check for enumeration types
+                            if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
+
+                                # sort enumeration values for readability
+                                for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
+                                    fileContent+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+
+                            # process each property, checking if it's value is an array and if it has any description
+                            fileContent+=self.formatProperty(prop, topic.type)
+
+                            if prop.package is not None:
+                                if prop.package not in myDep:
+                                    myDep.append(prop.package)
+
+                    # generate each .action file and add it to the list
                     if topic.fileName is None:
-                        fileName = topic.name.title()+".srv"
-                        srvFiles.append(topic.name.title())
+                        fileName = topic.name.title()+"."+shortType
+                        myFiles.append(topic.name.title())
                     else:
-                        fileName = topic.fileName+".srv"
-                        srvFiles.append(topic.fileName)
+                        fileName = topic.fileName+"."+shortType
+                        myFiles.append(topic.fileName)
 
                     text_file = open(fileName, "w")
-                    text_file.write(srv)
+                    text_file.write(fileContent)
                     text_file.close()
 
-        if self.msgPkgName in self.pkgDeps:
-            self.pkgDeps.remove(self.msgPkgName)
+        if self.msgPkgName in self.msgDeps:
+            self.msgDeps.remove(self.msgPkgName)
 
         buildDeps = ""
         execDeps = ""
         pkgFind = ""
         pkgDep = ""
-        for pkgName in self.pkgDeps:
+        for pkgName in self.msgDeps:
             buildDeps = buildDeps+("\n\t<build_depend>{}</build_depend>").format(pkgName)
             execDeps = execDeps+("\n\t<exec_depend>{}</exec_depend>").format(pkgName)
             pkgFind = pkgFind+("\nfind_package({} REQUIRED)").format(pkgName)
@@ -275,16 +329,29 @@ class ModuleCompiler:
             # reposition ourselves on the package's root
             os.chdir(srvFolderPath[:-4])
 
-            srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
+            if self.base:
+                srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.name+"_srvs")
+                srvPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.name+"_srvs")
+            else:
+                srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
+                srvPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
 
-            srvPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
             srvPkg = srvPkg.replace("%PKGDESC%", module.desc)
 
-            if dependency:
-                srvMakeFile = srvMakeFile.replace("%PKGFIND%", "\nfind_package({} REQUIRED)".format(self.msgPkgName))
-                srvMakeFile = srvMakeFile.replace("%PKGDEP%", "\n  DEPENDENCIES\n\t\t"+self.msgPkgName)
-                srvPkg = srvPkg.replace("%PKGBUILD%", "\n\t<build_depend>{}</build_depend>".format(self.msgPkgName))
-                srvPkg = srvPkg.replace("%PKGEXEC%", "\n\t<exec_depend>{}</exec_depend>".format(self.msgPkgName))
+            if len(self.srvDeps)>0:
+                buildDeps = ""
+                execDeps = ""
+                pkgFind = ""
+                pkgDep = ""
+                for dependency in self.srvDeps:
+                    buildDeps = buildDeps+("\n\t<build_depend>{}</build_depend>").format(dependency)
+                    execDeps = execDeps+("\n\t<exec_depend>{}</exec_depend>").format(dependency)
+                    pkgFind = pkgFind+("\nfind_package({} REQUIRED)").format(dependency)
+                    pkgDep = pkgDep+("\n\t\t{}").format(dependency)
+                srvMakeFile = srvMakeFile.replace("%PKGFIND%", pkgFind)
+                srvMakeFile = srvMakeFile.replace("%PKGDEP%", "\n  DEPENDENCIES"+pkgDep)
+                srvPkg = srvPkg.replace("%PKGBUILD%", buildDeps)
+                srvPkg = srvPkg.replace("%PKGEXEC%", execDeps)
             else:
                 srvMakeFile = srvMakeFile.replace("%PKGFIND%", "")
                 srvMakeFile = srvMakeFile.replace("%PKGDEP%", "")
@@ -306,6 +373,58 @@ class ModuleCompiler:
             # generate the CMakeLists.txt file
             cmake = open("CMakeLists.txt", "w")
             cmake.write(srvMakeFile)
+            cmake.close()
+
+        # if the package has actions
+        if actions:
+            actionFiles = os.listdir(actionFolderPath)
+            # reposition ourselves on the package's root
+            os.chdir(actionFolderPath[:-7])
+
+            if self.base:
+                actionMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.name+"_actions")
+                actionPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.name+"_actions")
+            else:
+                actionMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_actions")
+                actionPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_actions")
+
+            actionPkg = actionPkg.replace("%PKGDESC%", module.desc)
+
+            if len(self.actionDeps)>0:
+                buildDeps = ""
+                execDeps = ""
+                pkgFind = ""
+                pkgDep = ""
+                for dependency in self.actionDeps:
+                    buildDeps = buildDeps+("\n\t<build_depend>{}</build_depend>").format(dependency)
+                    execDeps = execDeps+("\n\t<exec_depend>{}</exec_depend>").format(dependency)
+                    pkgFind = pkgFind+("\nfind_package({} REQUIRED)").format(dependency)
+                    pkgDep = pkgDep+("\n\t\t{}").format(dependency)
+                actionMakeFile = actionMakeFile.replace("%PKGFIND%", pkgFind)
+                actionMakeFile = actionMakeFile.replace("%PKGDEP%", "\n  DEPENDENCIES"+pkgDep)
+                actionPkg = actionPkg.replace("%PKGBUILD%", buildDeps)
+                actionPkg = actionPkg.replace("%PKGEXEC%", execDeps)
+            else:
+                actionMakeFile = actionMakeFile.replace("%PKGFIND%", "")
+                actionMakeFile = actionMakeFile.replace("%PKGDEP%", "")
+                actionPkg = actionPkg.replace("%PKGBUILD%", "")
+                actionPkg = actionPkg.replace("%PKGEXEC%", "")
+
+            # generate the package.xml file
+            package = open("package.xml", "w")
+            package.write(actionPkg)
+            package.close()
+
+            # insert the .action list in the CMakeLists.txt
+            actionList = ""
+            for tmp in sorted(actionFiles):
+                actionList+="\t\"action/"+tmp+"\"\n"
+
+            actionMakeFile = actionMakeFile.replace("%PKGFILES%", actionList[:-1])
+
+            # generate the CMakeLists.txt file
+            cmake = open("CMakeLists.txt", "w")
+            cmake.write(actionMakeFile)
             cmake.close()
 
         manParams = ""
@@ -384,7 +503,9 @@ class ModuleCompiler:
         self.generatedFiles = {}
         self.initPath = os.getcwd()
         self.genPath = None
-        self.pkgDeps = []
+        self.msgDeps = []
+        self.srvDeps = []
+        self.actionDeps = []
         self.manParams = ""
         self.optParams = ""
         self.base = False

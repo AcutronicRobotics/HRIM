@@ -85,6 +85,9 @@ class ModuleParser:
             if prop.tag == "response":
                 for res in prop:
                     top.addRes(self.processProperty(res))
+            if prop.tag == "feedback":
+                for res in prop:
+                    top.addFeed(self.processProperty(res))
         return top
 
     # property and subproperty recursive parsing and processing
