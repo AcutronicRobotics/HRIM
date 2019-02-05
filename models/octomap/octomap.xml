@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<root>
+  <topic name="octomap" type="publish" fileName="Octomap">
+    <property name="header" type="header" fileName="Header" package="hrim_generic_msgs">
+      <value></value>
+    </property>
+    <property name="binary" type="boolean">
+      <value></value>
+    </property>
+    <property name="id" type="string">
+      <value></value>
+    </property>
+    <property name="resolution" type="float64">
+      <value></value>
+    </property>
+    <property name="data" type="int8[]">
+      <value></value>
+    </property>
+  </topic>
+  <topic name="octomap_with_pose" type="publish" fileName="OctomapWithPose">
+    <property name="header" type="header" fileName="Header">
+      <value></value>
+    </property>
+    <property name="origin" type="pose" fileName="Pose" package="hrim_geometry_msgs">
+      <value></value>
+    </property>
+    <property name="octomap" type="octomap" fileName="Octomap" package="hrim_octomap_msgs">
+      <value></value>
+    </property>
+  </topic>
+  <topic name="bounding_box_query" type="service" fileName="BoundingBoxQuery">
+    <property name="min" type="point" fileName="Point" package="hrim_geometry_msgs">
+      <value></value>
+    </property>
+    <property name="max" type="point" fileName="Point" package="hrim_geometry_msgs">
+      <value></value>
+    </property>
+  </topic>
+  <topic name="get_octomap" type="service" fileName="GetOctomap">
+    <response>
+      <property name="map" type="octomap" fileName="Octomap" package="hrim_octomap_msgs">
+        <value></value>
+      </property>
+    </response>
+  </topic>
+</root>
