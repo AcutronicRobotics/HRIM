@@ -161,11 +161,41 @@ def main(args):
                 if uniquePath == "all":
                     fileList = findModels(os.path.join(path, "models"))
                     for item in fileList:
-                        os.chdir(path)
                         module = parser.parseFile(item)
                         compiler.compileModule(module, False)
                         compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                        os.chdir(path)
+
+                    module = Module("shape", "base", "defines the shape HRIM messages used by modules")
+                    module.topics = parser.parseBase(os.path.join(path, "models", "shape", "shape.xml"))
+                    compiler.compileModule(module, True)
+                    print("Succesfully generated "+args.platform+" implementation of HRIM's shape package.")
+                    os.chdir(path)
+
+                    module = Module("object_recognition", "base", "defines the object_recognition HRIM messages used by modules")
+                    module.topics = parser.parseBase(os.path.join(path, "models", "object_recognition", "object_recognition.xml"))
+                    compiler.compileModule(module, True)
+                    print("Succesfully generated "+args.platform+" implementation of HRIM's object_recognition package.")
+                    os.chdir(path)
+
+                    module = Module("octomap", "base", "defines the octomap HRIM messages used by modules")
+                    module.topics = parser.parseBase(os.path.join(path, "models", "octomap", "octomap.xml"))
+                    compiler.compileModule(module, True)
+                    print("Succesfully generated "+args.platform+" implementation of HRIM's octomap package.")
+                    os.chdir(path)
+
+                    module = Module("moveit", "base", "defines the moveit HRIM messages used by modules")
+                    module.topics = parser.parseBase(os.path.join(path, "models", "moveit", "moveit.xml"))
+                    compiler.compileModule(module, True)
+                    print("Succesfully generated "+args.platform+" implementation of HRIM's moveit package.")
+                    os.chdir(path)
+
+                    module = Module("control", "base", "defines the control HRIM messages used by modules")
+                    module.topics = parser.parseBase(os.path.join(path, "models", "control", "control.xml"))
+                    compiler.compileModule(module, True)
+                    print("Succesfully generated "+args.platform+" implementation of HRIM's control package.")
+
                 # else try to generate the implementation based on the passed file
                 else:
                     module = parser.parseFile(uniquePath)
