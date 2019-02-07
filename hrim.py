@@ -36,22 +36,14 @@ def findModels(dirName):
 def genBase(parser, compiler):
     path = os.getcwd()
 
-    # if generic package exists we delete it
-    if os.path.exists(os.path.join(path, compiler.genPath, "generic")):
-        shutil.rmtree(os.path.join(path, compiler.genPath, "generic"))
-
-    generic = Module("generic", "base", "defines the generic HRIM messages used by modules")
+    generic = Module("generic", "generic", "defines the generic HRIM messages used by modules")
     generic.topics = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
 
     compiler.compileModule(generic, True)
     print("Succesfully generated "+args.platform+" implementation of HRIM's generic package.")
     os.chdir(path)
 
-    # if geometry package exists we delete it
-    if os.path.exists(os.path.join(path, compiler.genPath, "geometry")):
-        shutil.rmtree(os.path.join(path, compiler.genPath, "geometry"))
-
-    geometry = Module("geometry", "base", "defines the geometry HRIM messages used by modules")
+    geometry = Module("geometry", "geometry", "defines the geometry HRIM messages used by modules")
     geometry.topics = parser.parseBase(os.path.join(path, "models", "geometry", "geometry.xml"))
 
     compiler.compileModule(geometry, True)
@@ -72,9 +64,10 @@ def main(args):
             compiler = ModuleCompiler()
             compiler.dataTypes = parser.getDataTypes(args.platform)
 
+            compiler.genPath="generated"
+            genBase(parser, compiler)
+
             if uniquePath == "moveit":
-                compiler.genPath="moveit"
-                genBase(parser, compiler)
 
                 module = parser.parseFile(os.path.join(path, "models", "sensor", "3dcamera", "3dcamera_tof.xml"))
                 compiler.compileModule(module, False)
@@ -88,53 +81,31 @@ def main(args):
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                 os.chdir(path)
 
-                # if shape package exists we delete it
-                if os.path.exists(os.path.join(path, compiler.genPath, "shape")):
-                    shutil.rmtree(os.path.join(path, compiler.genPath, "shape"))
-
-                shape = Module("shape", "base", "defines the shape HRIM messages used by modules")
+                shape = Module("shape", "moveit", "defines the shape HRIM messages used by modules")
                 shape.topics = parser.parseBase(os.path.join(path, "models", "shape", "shape.xml"))
-
                 compiler.compileModule(shape, True)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's shape package.")
                 os.chdir(path)
 
-                # if object_recognition package exists we delete it
-                if os.path.exists(os.path.join(path, compiler.genPath, "object_recognition")):
-                    shutil.rmtree(os.path.join(path, compiler.genPath, "object_recognition"))
-
-                object_recognition = Module("object_recognition", "base", "defines the object_recognition HRIM messages used by modules")
+                object_recognition = Module("object_recognition", "moveit", "defines the object_recognition HRIM messages used by modules")
                 object_recognition.topics = parser.parseBase(os.path.join(path, "models", "object_recognition", "object_recognition.xml"))
-
                 compiler.compileModule(object_recognition, True)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's object_recognition package.")
                 os.chdir(path)
 
-                # if octomap package exists we delete it
-                if os.path.exists(os.path.join(path, compiler.genPath, "octomap")):
-                    shutil.rmtree(os.path.join(path, compiler.genPath, "octomap"))
-
-                octomap = Module("octomap", "base", "defines the octomap HRIM messages used by modules")
+                octomap = Module("octomap", "moveit", "defines the octomap HRIM messages used by modules")
                 octomap.topics = parser.parseBase(os.path.join(path, "models", "octomap", "octomap.xml"))
-
                 compiler.compileModule(octomap, True)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's octomap package.")
                 os.chdir(path)
 
-                # if moveit package exists we delete it
-                if os.path.exists(os.path.join(path, compiler.genPath, "moveit")):
-                    shutil.rmtree(os.path.join(path, compiler.genPath, "moveit"))
-
-                moveit = Module("moveit", "base", "defines the moveit HRIM messages used by modules")
+                moveit = Module("moveit", "moveit", "defines the moveit HRIM messages used by modules")
                 moveit.topics = parser.parseBase(os.path.join(path, "models", "moveit", "moveit.xml"))
-
                 compiler.compileModule(moveit, True)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's moveit package.")
                 os.chdir(path)
                 
             elif uniquePath == "control":
-                compiler.genPath="control"
-                genBase(parser, compiler)
 
                 module = parser.parseFile(os.path.join(path, "models", "composite", "arm", "arm.xml"))
                 compiler.compileModule(module, False)
@@ -142,20 +113,13 @@ def main(args):
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                 os.chdir(path)
 
-                # if control package exists we delete it
-                if os.path.exists(os.path.join(path, compiler.genPath, "control")):
-                    shutil.rmtree(os.path.join(path, compiler.genPath, "control"))
-
-                control = Module("control", "base", "defines the control HRIM messages used by modules")
+                control = Module("control", "control", "defines the control HRIM messages used by modules")
                 control.topics = parser.parseBase(os.path.join(path, "models", "control", "control.xml"))
-
                 compiler.compileModule(control, True)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's control package.")
                 os.chdir(path)
 
             else:
-                compiler.genPath="generated"
-                genBase(parser, compiler)
 
                 # check for file generation shorthands
                 if uniquePath == "all":
@@ -167,31 +131,31 @@ def main(args):
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                         os.chdir(path)
 
-                    module = Module("shape", "base", "defines the shape HRIM messages used by modules")
+                    module = Module("shape", "moveit", "defines the shape HRIM messages used by modules")
                     module.topics = parser.parseBase(os.path.join(path, "models", "shape", "shape.xml"))
                     compiler.compileModule(module, True)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's shape package.")
                     os.chdir(path)
 
-                    module = Module("object_recognition", "base", "defines the object_recognition HRIM messages used by modules")
+                    module = Module("object_recognition", "moveit", "defines the object_recognition HRIM messages used by modules")
                     module.topics = parser.parseBase(os.path.join(path, "models", "object_recognition", "object_recognition.xml"))
                     compiler.compileModule(module, True)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's object_recognition package.")
                     os.chdir(path)
 
-                    module = Module("octomap", "base", "defines the octomap HRIM messages used by modules")
+                    module = Module("octomap", "moveit", "defines the octomap HRIM messages used by modules")
                     module.topics = parser.parseBase(os.path.join(path, "models", "octomap", "octomap.xml"))
                     compiler.compileModule(module, True)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's octomap package.")
                     os.chdir(path)
 
-                    module = Module("moveit", "base", "defines the moveit HRIM messages used by modules")
+                    module = Module("moveit", "moveit", "defines the moveit HRIM messages used by modules")
                     module.topics = parser.parseBase(os.path.join(path, "models", "moveit", "moveit.xml"))
                     compiler.compileModule(module, True)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's moveit package.")
                     os.chdir(path)
 
-                    module = Module("control", "base", "defines the control HRIM messages used by modules")
+                    module = Module("control", "control", "defines the control HRIM messages used by modules")
                     module.topics = parser.parseBase(os.path.join(path, "models", "control", "control.xml"))
                     compiler.compileModule(module, True)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's control package.")
