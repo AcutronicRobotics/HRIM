@@ -253,6 +253,8 @@ def main(args):
             for module in composition.modules:
                 os.chdir(path)
                 compiler.compileModule(module)
+
+            os.chdir(os.path.join(path, compiler.genPath))
             compiler.generateParameters()
 
             shutil.copyfile(os.path.join(path, uniquePath), uniquePath)
