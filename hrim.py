@@ -196,6 +196,42 @@ def main(args):
                     compiler.compileModule(module, True)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's control package.")
 
+                elif uniquePath == "actuators":
+                    fileList = findModels(os.path.join(path, "models", "actuator"))
+                    for item in fileList:
+                        module = parser.parseFile(item)
+                        compiler.compileModule(module, False)
+                        compiler.generateParameters()
+                        print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                        os.chdir(path)
+
+                elif uniquePath == "composites":
+                    fileList = findModels(os.path.join(path, "models", "composite"))
+                    for item in fileList:
+                        module = parser.parseFile(item)
+                        compiler.compileModule(module, False)
+                        compiler.generateParameters()
+                        print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                        os.chdir(path)
+
+                elif uniquePath == "powers":
+                    fileList = findModels(os.path.join(path, "models", "power"))
+                    for item in fileList:
+                        module = parser.parseFile(item)
+                        compiler.compileModule(module, False)
+                        compiler.generateParameters()
+                        print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                        os.chdir(path)
+
+                elif uniquePath == "sensors":
+                    fileList = findModels(os.path.join(path, "models", "sensor"))
+                    for item in fileList:
+                        module = parser.parseFile(item)
+                        compiler.compileModule(module, False)
+                        compiler.generateParameters()
+                        print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
+                        os.chdir(path)
+
                 # else try to generate the implementation based on the passed file
                 else:
                     module = parser.parseFile(uniquePath)
