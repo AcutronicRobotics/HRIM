@@ -120,7 +120,7 @@ class ModuleCompiler:
 
         return res
 
-    def compileModule(self, module, base):
+    def compileModule(self, module, base=False):
         self.base = base
         messages = False
         services = False
@@ -141,7 +141,10 @@ class ModuleCompiler:
             self.msgPkgName = "hrim_"+module.name+"_msgs"
             self.baseFiles[self.msgPkgName] = []
         else:
-            self.msgPkgName = "hrim_"+module.type+"_"+module.name+"_msgs"
+            if module.type in ["actuator", "sensor", "communication", "cognition", "ui", "power", "composite"]:
+                self.msgPkgName = "hrim_"+module.type+"_"+module.name+"_msgs"
+            else:
+                self.msgPkgName = "hrim_"+module.name+"_msgs"
 
         os.chdir("templates")
         with open('package.txt', 'r') as myfile:
@@ -149,10 +152,10 @@ class ModuleCompiler:
         with open('cmake.txt', 'r') as myfile:
             makeFile=myfile.read()
 
-        if self.composition:
-            cwd = os.path.join(cwd, self.genPath)
+        if self.composition or self.base:
+            cwd = os.path.join(cwd, self.genPath, module.type)
         else:
-            cwd = os.path.join(cwd, self.genPath, module.name)
+            cwd = os.path.join(cwd, self.genPath, module.type, module.name)
 
         pkgPath = os.path.join(cwd, self.msgPkgName)
 
@@ -175,20 +178,22 @@ class ModuleCompiler:
                     myFiles = srvFiles
                     services = True
                     shortType = "srv"
-                    if self.base:
-                        srvFolderPath = os.path.join(os.getcwd(),("hrim_"+module.name+"_"+shortType+"s"), shortType)
+                    if self.base or module.type not in ["actuator", "sensor", "communication", "cognition", "ui", "power", "composite"]:
+                        srvPkgName = "hrim_"+module.name+"_"+shortType+"s"
                     else:
-                        srvFolderPath = os.path.join(os.getcwd(),("hrim_"+module.type+"_"+module.name+"_"+shortType+"s"), shortType)
+                        srvPkgName = "hrim_"+module.type+"_"+module.name+"_"+shortType+"s"
+                    srvFolderPath = os.path.join(os.getcwd(), srvPkgName, shortType)
                     folderPath = srvFolderPath
                 if topic.type == "action":
                     myDep = self.actionDeps
                     myFiles = actionFiles
                     actions = True
                     shortType = "action"
-                    if self.base:
-                        actionFolderPath = os.path.join(os.getcwd(),("hrim_"+module.name+"_"+shortType+"s"), shortType)
+                    if self.base or module.type not in ["actuator", "sensor", "communication", "cognition", "ui", "power", "composite"]:
+                        actionPkgName = "hrim_"+module.name+"_"+shortType+"s"
                     else:
-                        actionFolderPath = os.path.join(os.getcwd(),("hrim_"+module.type+"_"+module.name+"_"+shortType+"s"), shortType)
+                        actionPkgName = "hrim_"+module.type+"_"+module.name+"_"+shortType+"s"
+                    actionFolderPath = os.path.join(os.getcwd(), actionPkgName, shortType)
                     folderPath = actionFolderPath
                 # check if file has already been generated
                 if topic.fileName not in myFiles:
@@ -329,12 +334,8 @@ class ModuleCompiler:
             # reposition ourselves on the package's root
             os.chdir(srvFolderPath[:-4])
 
-            if self.base:
-                srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.name+"_srvs")
-                srvPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.name+"_srvs")
-            else:
-                srvMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
-                srvPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_srvs")
+            srvMakeFile = makeFile.replace("%PKGNAME%", srvPkgName)
+            srvPkg = pkgFile.replace("%PKGNAME%", srvPkgName)
 
             srvPkg = srvPkg.replace("%PKGDESC%", module.desc)
 
@@ -381,12 +382,8 @@ class ModuleCompiler:
             # reposition ourselves on the package's root
             os.chdir(actionFolderPath[:-7])
 
-            if self.base:
-                actionMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.name+"_actions")
-                actionPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.name+"_actions")
-            else:
-                actionMakeFile = makeFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_actions")
-                actionPkg = pkgFile.replace("%PKGNAME%", "hrim_"+module.type+"_"+module.name+"_actions")
+            actionMakeFile = makeFile.replace("%PKGNAME%", actionPkgName)
+            actionPkg = pkgFile.replace("%PKGNAME%", actionPkgName)
 
             actionPkg = actionPkg.replace("%PKGDESC%", module.desc)
 
