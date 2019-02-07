@@ -81,7 +81,6 @@ Where:
 * **show**: path to the xml model file to show a definition of.
 * **generate**: path to the xml model to generate an implementation from. Alternatively, one of the following shorthands:
   * ***all***: generates the implementation of all models.
-  * ***allClean***: generates the implementation of all *development* models.
   * ***moveit***: generates the implementation of **hrim_moveit_msgs** bundled with all it's dependencies.
   * ***control***: generates the implementation of **hrim_control_msgs** bundled with all it's dependencies.
 * **compose**: one or more models to make a composition from, in a `type/subtype` or `type/subtype/model` (without the file extension) format. You can get a list of all valid models making use of the **list** function.
@@ -90,12 +89,6 @@ Where:
   * ***models***: lists all existing models.
   * ***implementations***: lists all existing generated implementations.
 * **clear**: name of the implementation to delete from the `generated` directory (i.e. `imu` will delete `generated/imu`). Alternatively, use **all** to delete all generated implementations (doesn't include compositions).
-
-##### Shorthands
-
-Alternatively, shorthands are provided to **generate** the files for every existing module:
-* **all**: will generate the files for every existing (non-development) module file.
-* **allClean**: will generate the files for every existing development module file (module xml files ending with *_clean*).
 
 ### Examples
 
@@ -111,7 +104,6 @@ While positioned at the repository's root all of the following are valid command
 * `python3 hrim.py -p ros2 generate /models/sensor/torque/torque.xml`
 * `python3 hrim.py generate models/sensor/torque/torque.xml`
 * `python3 hrim.py generate --platform ros2 all`
-* `python3 hrim.py generate allClean`
 * `python3 hrim.py list models`
 * `python3 hrim.py clear all`
 * `python3 hrim.py clear imu`
