@@ -120,7 +120,7 @@ class ModuleCompiler:
 
         return res
 
-    def compileModule(self, module, base):
+    def compileModule(self, module, base=False):
         self.base = base
         messages = False
         services = False

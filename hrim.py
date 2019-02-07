@@ -70,45 +70,45 @@ def main(args):
             if uniquePath == "moveit":
 
                 module = parser.parseFile(os.path.join(path, "models", "sensor", "3dcamera", "3dcamera_tof.xml"))
-                compiler.compileModule(module, False)
+                compiler.compileModule(module)
                 compiler.generateParameters()
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                 os.chdir(path)
 
                 module = parser.parseFile(os.path.join(path, "models", "composite", "arm", "arm.xml"))
-                compiler.compileModule(module, False)
+                compiler.compileModule(module)
                 compiler.generateParameters()
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                 os.chdir(path)
 
                 shape = Module("shape", "moveit", "defines the shape HRIM messages used by modules")
                 shape.topics = parser.parseBase(os.path.join(path, "models", "shape", "shape.xml"))
-                compiler.compileModule(shape, True)
+                compiler.compileModule(shape)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's shape package.")
                 os.chdir(path)
 
                 object_recognition = Module("object_recognition", "moveit", "defines the object_recognition HRIM messages used by modules")
                 object_recognition.topics = parser.parseBase(os.path.join(path, "models", "object_recognition", "object_recognition.xml"))
-                compiler.compileModule(object_recognition, True)
+                compiler.compileModule(object_recognition)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's object_recognition package.")
                 os.chdir(path)
 
                 octomap = Module("octomap", "moveit", "defines the octomap HRIM messages used by modules")
                 octomap.topics = parser.parseBase(os.path.join(path, "models", "octomap", "octomap.xml"))
-                compiler.compileModule(octomap, True)
+                compiler.compileModule(octomap)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's octomap package.")
                 os.chdir(path)
 
                 moveit = Module("moveit", "moveit", "defines the moveit HRIM messages used by modules")
                 moveit.topics = parser.parseBase(os.path.join(path, "models", "moveit", "moveit.xml"))
-                compiler.compileModule(moveit, True)
+                compiler.compileModule(moveit)
                 print("Succesfully generated "+args.platform+" implementation of HRIM's moveit package.")
                 os.chdir(path)
                 
             elif uniquePath == "control":
 
                 module = parser.parseFile(os.path.join(path, "models", "composite", "arm", "arm.xml"))
-                compiler.compileModule(module, False)
+                compiler.compileModule(module)
                 compiler.generateParameters()
                 print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                 os.chdir(path)
@@ -126,32 +126,32 @@ def main(args):
                     fileList = findModels(os.path.join(path, "models"))
                     for item in fileList:
                         module = parser.parseFile(item)
-                        compiler.compileModule(module, False)
+                        compiler.compileModule(module)
                         compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                         os.chdir(path)
 
                     module = Module("shape", "moveit", "defines the shape HRIM messages used by modules")
                     module.topics = parser.parseBase(os.path.join(path, "models", "shape", "shape.xml"))
-                    compiler.compileModule(module, True)
+                    compiler.compileModule(module)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's shape package.")
                     os.chdir(path)
 
                     module = Module("object_recognition", "moveit", "defines the object_recognition HRIM messages used by modules")
                     module.topics = parser.parseBase(os.path.join(path, "models", "object_recognition", "object_recognition.xml"))
-                    compiler.compileModule(module, True)
+                    compiler.compileModule(module)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's object_recognition package.")
                     os.chdir(path)
 
                     module = Module("octomap", "moveit", "defines the octomap HRIM messages used by modules")
                     module.topics = parser.parseBase(os.path.join(path, "models", "octomap", "octomap.xml"))
-                    compiler.compileModule(module, True)
+                    compiler.compileModule(module)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's octomap package.")
                     os.chdir(path)
 
                     module = Module("moveit", "moveit", "defines the moveit HRIM messages used by modules")
                     module.topics = parser.parseBase(os.path.join(path, "models", "moveit", "moveit.xml"))
-                    compiler.compileModule(module, True)
+                    compiler.compileModule(module)
                     print("Succesfully generated "+args.platform+" implementation of HRIM's moveit package.")
                     os.chdir(path)
 
@@ -164,7 +164,7 @@ def main(args):
                     fileList = findModels(os.path.join(path, "models", "actuator"))
                     for item in fileList:
                         module = parser.parseFile(item)
-                        compiler.compileModule(module, False)
+                        compiler.compileModule(module)
                         compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                         os.chdir(path)
@@ -173,7 +173,7 @@ def main(args):
                     fileList = findModels(os.path.join(path, "models", "composite"))
                     for item in fileList:
                         module = parser.parseFile(item)
-                        compiler.compileModule(module, False)
+                        compiler.compileModule(module)
                         compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                         os.chdir(path)
@@ -182,7 +182,7 @@ def main(args):
                     fileList = findModels(os.path.join(path, "models", "power"))
                     for item in fileList:
                         module = parser.parseFile(item)
-                        compiler.compileModule(module, False)
+                        compiler.compileModule(module)
                         compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                         os.chdir(path)
@@ -191,7 +191,7 @@ def main(args):
                     fileList = findModels(os.path.join(path, "models", "sensor"))
                     for item in fileList:
                         module = parser.parseFile(item)
-                        compiler.compileModule(module, False)
+                        compiler.compileModule(module)
                         compiler.generateParameters()
                         print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
                         os.chdir(path)
@@ -199,7 +199,7 @@ def main(args):
                 # else try to generate the implementation based on the passed file
                 else:
                     module = parser.parseFile(uniquePath)
-                    compiler.compileModule(module, False)
+                    compiler.compileModule(module)
                     compiler.generateParameters()
                     print("Succesfully generated "+args.platform+" implementation of "+module.name+" module.")
 
@@ -252,7 +252,7 @@ def main(args):
             # for module in modules:
             for module in composition.modules:
                 os.chdir(path)
-                compiler.compileModule(module, False)
+                compiler.compileModule(module)
             compiler.generateParameters()
 
             shutil.copyfile(os.path.join(path, uniquePath), uniquePath)
