@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <topic name="module_urdf" type="publish" fileName="SimulationURDF"
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="header" type="header" fileName="Header" package="std_msgs">
+    <value></value>
+  </property>
   <property name="urdf_model" type="string" unit="urdf" description="the urdf corresponding to the component's .stl">
     <value></value>
   </property>

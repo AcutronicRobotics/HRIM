@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="state" type="publish" description="motor condition and the reason in case of error" fileName="StateElectricMotor">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="current_speed" type="float64" description="current motor speed">
       <value></value>
     </property>

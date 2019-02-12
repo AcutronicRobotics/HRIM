@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<topic name="vector3_stamped" type="publish" fileName="Vector3Stamped" description="This represents a Vector3 with reference coordinate frame and timestamp."
-  xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-  <property name="vector" type="vector3" fileName="Vector3">
-    <xi:include href="vector.xml" xpointer="xpointer(//topic/property)"/>
-  </property>
-</topic>

@@ -8,7 +8,7 @@ class ModuleCompiler:
             if self.checkGenerated(prop.fileName, type) == False:
                 subMsg = ""
                 for subProp in prop.properties:
-                    if subProp.fileName is not None:
+                    if subProp.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
                         try:
                             self.processSubProperty(subProp, type)
                         except:
@@ -212,7 +212,7 @@ class ModuleCompiler:
 
                     for prop in topic.properties:
 
-                        if prop.fileName is not None:
+                        if prop.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
                             os.chdir(cwd)
                             self.processMessage(module, prop)
                             os.chdir(folderPath)
@@ -233,6 +233,11 @@ class ModuleCompiler:
                     fileContent+="---\n"
 
                     for prop in topic.response:
+                        if prop.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
+                            os.chdir(cwd)
+                            self.processMessage(module, prop)
+                            os.chdir(folderPath)
+
                         # check for enumeration types
                         if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
 
@@ -251,6 +256,11 @@ class ModuleCompiler:
                         fileContent+="---\n"
 
                         for prop in topic.feedback:
+                            if prop.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
+                                os.chdir(cwd)
+                                self.processMessage(module, prop)
+                                os.chdir(folderPath)
+
                             # check for enumeration types
                             if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
 
@@ -279,6 +289,8 @@ class ModuleCompiler:
 
         if self.msgPkgName in self.msgDeps:
             self.msgDeps.remove(self.msgPkgName)
+        if "hrim_generic_msgs" in self.msgDeps:
+            self.msgDeps.remove("hrim_generic_msgs")
 
         buildDeps = ""
         execDeps = ""

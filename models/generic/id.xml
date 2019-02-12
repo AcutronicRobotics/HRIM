@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <topic name="id" type="publish" fileName="ID"
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="header" type="header" fileName="Header" package="std_msgs">
+    <value></value>
+  </property>
   <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
     <value></value>
   </property>

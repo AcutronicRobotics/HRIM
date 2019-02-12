@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<topic name="quaternion_stamped" type="publish" fileName="QuaternionStamped" description="This represents an orientation with reference coordinate frame and timestamp."
-  xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-  <property name="quaternion" type="quaternion" fileName="Quaternion">
-    <xi:include href="quaternion.xml" xpointer="xpointer(//topic/property)"/>
-  </property>
-</topic>

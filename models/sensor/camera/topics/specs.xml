@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="specs" type="publish" description="defines the most important characteristic of the camera" fileName="SpecsCamera">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="resolution" type="string" unit="pixel" description="example: 752x480, 1280x1024">
       <value></value>
     </property>

@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="joint_states" type="publish" description="state of the joints" fileName="JointStates">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE" : 0 , "CONTROL_TYPE_POSITION" : 1 , "CONTROL_TYPE_VELOCITY" : 2 , "CONTROL_TYPE_EFFORT" : 3 , "CONTROL_TYPE_POSITION_VELOCITY" : 4 , "CONTROL_TYPE_POSITION_EFFORT" : 5 , "CONTROL_TYPE_VELOCITY_EFFORT" : 6 , "CONTROL_TYPE_POSITION_VELOCITY_EFFORT" : 7}' description="arm control type">
       <value></value>
     </property>

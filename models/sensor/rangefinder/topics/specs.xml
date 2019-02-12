@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="specs" type="publish" description="device features" fileName="SpecsRangefinder">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="radiation_type" type="uint8" unit="enum" enum='{"ULTRASOUND": 0, "INFRARED": 1}'>
       <value></value>
     </property>

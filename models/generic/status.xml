@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <topic name="status" type="publish" fileName="Status"
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="header" type="header" fileName="Header" package="std_msgs">
+    <value></value>
+  </property>
   <property name="instance_id" type="uint32">
     <value></value>
   </property>

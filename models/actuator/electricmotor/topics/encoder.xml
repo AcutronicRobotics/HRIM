@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="encoder" type="publish" description="check the position, velocity or/and acceleration of the electric motor" fileName="Encoder">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="moving" type="boolean" description="whether the motor is currently in motion">
       <value></value>
     </property>

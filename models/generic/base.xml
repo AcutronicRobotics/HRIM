@@ -8,6 +8,4 @@
   <xi:include href="state_comm.xml"/>
   <xi:include href="module_3d.xml"/>
   <xi:include href="module_urdf.xml"/>
-  <xi:include href="duration.xml"/>
-  <xi:include href="color.xml"/>
 </root>
