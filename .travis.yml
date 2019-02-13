@@ -1,4 +1,4 @@
-dist: xenial
+dist: bionic
 before_script:
   - mkdir /tmp/hrim
   - mv * /tmp/hrim
