@@ -2,7 +2,7 @@ import sys
 import json
 import re
 import os
-from classes import *
+from .classes import *
 import platform
 try:
 	import lxml.etree as ET

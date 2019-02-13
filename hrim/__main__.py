@@ -1,11 +1,11 @@
 import sys
 import os
-os.chdir(os.path.abspath(os.path.dirname(__file__)))
-sys.path.insert(0, 'scripts')
-from printing import ModulePrinter
-from parsing import ModuleParser
-from compiling import ModuleCompiler
-from classes import *
+#os.chdir(os.path.abspath(os.path.dirname(__file__)))
+#sys.path.insert(0, 'scripts')
+from hrim.scripts import ModulePrinter
+from hrim.scripts import ModuleParser
+from hrim.scripts import ModuleCompiler
+from hrim.scripts import *
 import argparse
 import re
 import shutil
@@ -32,7 +32,50 @@ def findModels(dirName):
                 modelFiles.append(fullPath)
     return modelFiles
 
-def main(args):
+def main(args=None):
+    # Add usage messages
+
+    parser=argparse.ArgumentParser(
+        description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
+        formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('action', choices=['show','generate', 'list', 'clear'], help='''Action to take:
+show:
+    print a representation of the passed valid XML module's model structure and values.
+generate:
+    generate the platform-specific implementation of the passed valid XML model.
+list:
+    list available models or generated implementations.
+clear:
+    delete the passed generated implementation.
+        ''')
+    parser.add_argument('filePath', help='''The path to a valid xml model file.
+Alternatively, either a shorthand for the generate command:
+    all:
+        generates the implementation of every existent model
+    allClean:
+        same as all, but taking into account the development models (file name ends in _clean)
+What the list command will look for:
+    models:
+        will list all available models.
+    implementations:
+        will list all generated module implementations.
+Or the implementation to be deleted by the clear command:
+    all:
+        all implementations on the generation folder.
+    {module name}:
+        deletes the files related to said module (i.e. "force" would delete generated/force).
+                     ''')
+    parser.add_argument('-p', '--platform', default='ros2', choices=['ros2'], help='The platform for the generated model, ros2 by default.')
+    parser.add_argument('-e', '--extend', action='store_true', default=False, help='Whether to expand topic definitions when "show"-ing.')
+
+    # If no argument is provided, show usage
+    if len(sys.argv) == 1:
+        parser.print_help()
+        sys.exit(0)
+
+    args=parser.parse_args()
+
+
     try:
         parser = ModuleParser()
         if args.action == "show":
@@ -56,7 +99,7 @@ def main(args):
             # if geometry package exists we delete it
             if os.path.exists(os.path.join(os.getcwd(), "generated", "geometry")):
                 shutil.rmtree(os.path.join(os.getcwd(), "generated", "geometry"))
-                
+
             compiler.compileGeneric(geometry, args.platform, "geometry")
             print("Succesfully generated "+args.platform+" implementation of HRIM's geometry package.")
             os.chdir(path)
@@ -124,46 +167,4 @@ def main(args):
 
 if __name__ == '__main__':
 
-    # Add usage messages
-
-    parser=argparse.ArgumentParser(
-        description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
-        formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('action', choices=['show','generate', 'list', 'clear'], help='''Action to take:
-show:
-    print a representation of the passed valid XML module's model structure and values.
-generate:
-    generate the platform-specific implementation of the passed valid XML model.
-list:
-    list available models or generated implementations.
-clear:
-    delete the passed generated implementation.
-        ''')
-    parser.add_argument('filePath', help='''The path to a valid xml model file.
-Alternatively, either a shorthand for the generate command:
-    all:
-        generates the implementation of every existent model
-    allClean:
-        same as all, but taking into account the development models (file name ends in _clean)
-What the list command will look for:
-    models:
-        will list all available models.
-    implementations:
-        will list all generated module implementations.
-Or the implementation to be deleted by the clear command:
-    all:
-        all implementations on the generation folder.
-    {module name}:
-        deletes the files related to said module (i.e. "force" would delete generated/force).
-                     ''')
-    parser.add_argument('-p', '--platform', default='ros2', choices=['ros2'], help='The platform for the generated model, ros2 by default.')
-    parser.add_argument('-e', '--extend', action='store_true', default=False, help='Whether to expand topic definitions when "show"-ing.')
-
-    # If no argument is provided, show usage
-    if len(sys.argv) == 1:
-        parser.print_help()
-        sys.exit(0)
-
-    args=parser.parse_args()
-
-    main(args)
+    main()

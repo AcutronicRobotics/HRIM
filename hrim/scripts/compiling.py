@@ -1,7 +1,7 @@
 import sys
 import os
-from utils import getTabs
-from parsing import ModuleParser
+from .utils import getTabs
+from .parsing import ModuleParser
 import platform
 try:
 	import lxml.etree as ET
@@ -45,7 +45,7 @@ class ModuleCompiler:
                     self.msgFiles.append(prop.fileName)
                 else:
                     self.ownFiles.append(prop.fileName)
-                    
+
                 text_file = open(subFileName, "w")
                 text_file.write(subMsg)
                 text_file.close()
@@ -184,7 +184,7 @@ class ModuleCompiler:
 
             self.pkgDeps.remove(self.msgPkgName)
 
-            # update the list of generated files at self.generatedFiles 
+            # update the list of generated files at self.generatedFiles
             self.listGenerated()
 
             # insert the .msg list in the CMakeLists.txt
