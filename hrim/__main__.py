@@ -1,7 +1,5 @@
 import sys
 import os
-#os.chdir(os.path.abspath(os.path.dirname(__file__)))
-# #sys.path.insert(0, 'scripts')
 from hrim.scripts import ModulePrinter
 from hrim.scripts import ModuleParser
 from hrim.scripts import ModuleCompiler
@@ -342,5 +340,4 @@ Or the implementation to be deleted by the clear command:
          sys.exit(1)
 
 if __name__ == '__main__':
-
     main()
