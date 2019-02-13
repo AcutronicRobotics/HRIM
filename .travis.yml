@@ -14,7 +14,7 @@ before_script:
   - sudo -H python3 -m pip install -U pytest pytest-cov pytest-runner setuptools
   - sudo apt-get install libasio-dev libtinyxml2-dev grep
   - mkdir -p ~/ros2_ws/src
-  - export ROS_DISTRO=ardent
+  - export ROS_DISTRO=crystal
   - sudo apt-get install ros-$ROS_DISTRO-*
   - cp -R /tmp/hrim /home/travis/ros2_ws/src/hrim
 script:
