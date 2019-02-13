@@ -33,8 +33,8 @@ class ModuleParser:
             basePath = os.path.abspath(os.getcwd())
 
             # look for the main script to assure the repository root path
-            while not os.path.exists(os.path.join(os.getcwd(), "hrim.py")):
-                os.chdir("..")
+            #while not os.path.exists(os.path.join(os.getcwd(), "__main__.py")):
+            #    os.chdir("..")
 
             # parse the mapping file
             dataTree = ET.parse(os.path.join(os.getcwd(), "models", "dataMapping.xml"))
@@ -85,6 +85,9 @@ class ModuleParser:
             if prop.tag == "response":
                 for res in prop:
                     top.addRes(self.processProperty(res))
+            if prop.tag == "feedback":
+                for res in prop:
+                    top.addFeed(self.processProperty(res))
         return top
 
     # property and subproperty recursive parsing and processing
@@ -116,6 +119,9 @@ class ModuleParser:
 
         if "fileName" in property.attrib:
             prop.fileName = property.attrib.get("fileName")
+
+        if "package" in property.attrib:
+            prop.package = property.attrib.get("package")
 
         # check for subproperties
         if any(x.tag == "property" for x in property):
@@ -195,6 +201,26 @@ class ModuleParser:
             print("Problem parsing generic topics")
             sys.exit(1)
         return genericTopics
+
+    def parseComposition(self, path):
+        compTree = ET.parse(path)
+        compRoot=compTree.getroot()
+        composition = Composition(compRoot.attrib.get("name"))
+        for model in compRoot:
+            topicList = []
+            for topic in model.findall("topic"):
+                topicList.append(topic.attrib.get("name"))
+            paramList = []
+            for param in model.findall("param"):
+                paramList.append(param.attrib.get("name"))
+            modelPath = os.path.join(os.getcwd(), model.attrib.get("path"))
+            module = self.parseFile(modelPath)
+            for topic in list(module.topics):
+                if not topic.mandatory and topic.name not in topicList: module.topics.remove(topic)
+            for param in list(module.params):
+                if not param.mandatory and param.name not in paramList: module.params.remove(param)
+            composition.modules.append(module)
+        return composition
 
     # main parse method
     def parseFile(self, filePath):

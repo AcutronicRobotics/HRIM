@@ -1,3 +1,7 @@
+class Composition:
+    def __init__(self, name, modules=[]):
+        self.name = name
+        self.modules = modules
 # Main data structure, contains both topics and parameters
 # Defines a node's structure
 class Module:
@@ -21,12 +25,15 @@ class Topic:
         self.mandatory = mandatory  # whether the topic must exist on the module
         self.properties = []    # a list of each of the topic's values
         self.response = []  # a list of each of the topic's response values (requires type to be a service)
+        self.feedback = []  # a list of each of the topics's feedback values (requires type to be an action)
         self.desc=None  # topic short description, optional
         self.fileName=None  # the name of the artifact to be generated from the topic
     def addProp(self, property):
         self.properties.append(property)
     def addRes(self, response):
         self.response.append(response)
+    def addFeed(self, feedback):
+        self.feedback.append(feedback)
 
 # Data structure for topic properties, can contain subproperties (property referencing an artifact)
 # Defines each value inside a topic/artifact property (property containing other properties)
@@ -42,6 +49,7 @@ class Property:
         self.unit=None  # the unit the property represents (i.e. hertz), optional
         self.desc=None  # short description of the property, optional
         self.fileName=None  # name of the artifact to be generted from the property (no use if the property's type is a base data type)
+        self.package=None
     def addProp(self, property):
         self.properties.append(property)
 
