@@ -72,17 +72,23 @@
     </topic>
 
     <topic name="set_camera_info" type="service" description="set camera calibration" fileName="SetCameraInfo">
-      <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+      <property name="camera_info" type="cameraInfo" description="the camera info to store" fileName="CameraInfo" package="hrim_sensor_3dcameradepth_msgs">
+        <xi:include href="topics/cameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+      </property>
       <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/response)"/>
     </topic>
 
     <topic name="rgb_set_camera_info" type="service" description="set rgb camera calibration" fileName="SetCameraInfo">
-      <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+      <property name="camera_info" type="cameraInfo" description="the camera info to store" fileName="CameraInfo" package="hrim_sensor_3dcameradepth_msgs">
+        <xi:include href="topics/cameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+      </property>
       <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/response)"/>
     </topic>
 
     <topic name="ir_set_camera_info" type="service" description="set ir camera calibration" fileName="SetCameraInfo">
-      <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+      <property name="camera_info" type="cameraInfo" description="the camera info to store" fileName="CameraInfo" package="hrim_sensor_3dcameradepth_msgs">
+        <xi:include href="topics/cameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+      </property>
       <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/response)"/>
     </topic>
 

@@ -54,7 +54,9 @@
       <xi:include href="topics/distance.xml" xpointer="xpointer(//root/topic)"/>
 
       <topic name="set_camera_info" type="service" description="set camera calibration" fileName="SetCameraInfo">
-        <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+        <property name="camera_info" type="cameraInfo" description="the camera info to store" fileName="CameraInfo" package="hrim_sensor_3dcameratof_msgs">
+          <xi:include href="topics/cameraInfo.xml" xpointer="xpointer(//root/topic/property)"/>
+        </property>
         <xi:include href="topics/setCameraInfo.xml" xpointer="xpointer(//root/topic/response)"/>
       </topic>
 

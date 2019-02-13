@@ -32,21 +32,21 @@ def findModels(dirName):
                 modelFiles.append(fullPath)
     return modelFiles
 
-def genBase(parser, compiler):
+def genBase(parser, compiler, platform):
     path = os.getcwd()
 
     generic = Module("generic", "generic", "defines the generic HRIM messages used by modules")
     generic.topics = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
 
     compiler.compileModule(generic, True)
-    print("Succesfully generated "+args.platform+" implementation of HRIM's generic package.")
+    print("Succesfully generated "+platform+" implementation of HRIM's generic package.")
     os.chdir(path)
 
     geometry = Module("geometry", "geometry", "defines the geometry HRIM messages used by modules")
     geometry.topics = parser.parseBase(os.path.join(path, "models", "geometry", "geometry.xml"))
 
     compiler.compileModule(geometry, True)
-    print("Succesfully generated "+args.platform+" implementation of HRIM's geometry package.")
+    print("Succesfully generated "+platform+" implementation of HRIM's geometry package.")
     os.chdir(path)
 
 def main(args=None):
@@ -55,22 +55,24 @@ def main(args=None):
     parser=argparse.ArgumentParser(
         description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
         formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('action', choices=['show','generate', 'list', 'clear'], help='''Action to take:
+    parser.add_argument('action', choices=['show','generate', 'compose', 'compile', 'list', 'clear'], help='''Action to take:
 show:
     print a representation of the passed valid XML module's model structure and values.
 generate:
     generate the platform-specific implementation of the passed valid XML model.
+compose:
+    generate a composition of modules.
+compile:
+    generate the platform-specific implementation of the passed composition.
 list:
     list available models or generated implementations.
 clear:
     delete the passed generated implementation.
         ''')
-    parser.add_argument('filePath', help='''The path to a valid xml model file.
+    parser.add_argument('filePath', nargs="+" , help='''The path to a valid xml model file.
 Alternatively, either a shorthand for the generate command:
     all:
         generates the implementation of every existent model
-    allClean:
-        same as all, but taking into account the development models (file name ends in _clean)
 What the list command will look for:
     models:
         will list all available models.
@@ -84,7 +86,6 @@ Or the implementation to be deleted by the clear command:
                      ''')
     parser.add_argument('-p', '--platform', default='ros2', choices=['ros2'], help='The platform for the generated model, ros2 by default.')
     parser.add_argument('-e', '--extend', action='store_true', default=False, help='Whether to expand topic definitions when "show"-ing.')
-
     # If no argument is provided, show usage
     if len(sys.argv) == 1:
         parser.print_help()
@@ -107,7 +108,7 @@ Or the implementation to be deleted by the clear command:
             compiler.dataTypes = parser.getDataTypes(args.platform)
 
             compiler.genPath="generated"
-            genBase(parser, compiler)
+            genBase(parser, compiler, args.platform)
 
             if uniquePath == "moveit":
 
@@ -290,7 +291,7 @@ Or the implementation to be deleted by the clear command:
             compiler.genPath = "composition/"+composition.name
             compiler.dataTypes = ModuleParser().getDataTypes(args.platform)
             compiler.composition = True
-            genBase(parser, compiler)
+            genBase(parser, compiler, args.platform)
             # for module in modules:
             for module in composition.modules:
                 os.chdir(path)

@@ -1,17 +1,13 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="joint_trajectory" type="service" description="create a joint trajectory" fileName="GoalJointTrajectory">
+  <topic name="joint_trajectory" type="publish" description="a joint trajectory" fileName="JointTrajectory">
+    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
     <property name="joint_names" type="string[]">
       <value></value>
     </property>
     <property name="points" type="jointTrajectoryPoint[]" fileName="JointTrajectoryPoint">
       <xi:include href="jointTrajectoryPoint.xml" xpointer="xpointer(//root/property/property)"/>
     </property>
-    <response>
-      <property name="success" type="boolean">
-        <value></value>
-      </property>
-    </response>
   </topic>
 </root>
