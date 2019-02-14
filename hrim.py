@@ -234,6 +234,14 @@ clear:
 Alternatively, either a shorthand for the generate command:
     all:
         generates the implementation of every existent model
+    actuators:
+        generates the implementation of every existent actuator models
+    composites:
+        generates the implementation of every existent composite models
+    powers:
+        generates the implementation of every existent power models
+    sensors:
+        generates the implementation of every existent sensor models
 What the list command will look for:
     models:
         will list all available models.
