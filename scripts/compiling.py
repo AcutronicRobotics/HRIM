@@ -8,7 +8,7 @@ class ModuleCompiler:
             if self.checkGenerated(prop.fileName, type) == False:
                 subMsg = ""
                 for subProp in prop.properties:
-                    if subProp.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
+                    if subProp.fileName is not None and (subProp.package is None or subProp.package == self.msgPkgName):
                         try:
                             self.processSubProperty(subProp, type)
                         except:
