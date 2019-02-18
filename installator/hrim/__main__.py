@@ -244,7 +244,7 @@ Or the implementation to be deleted by the clear command:
                         shutil.rmtree(fullPath)
                         print("Deleted "+fullPath)
                     else:
-                        print("Couldn't find pasargssed directory for deletion.")
+                        print("Couldn't find passed directory for deletion.")
             else:
                 print("There is no implementation to delete (generated directory is empty).")
         else:
