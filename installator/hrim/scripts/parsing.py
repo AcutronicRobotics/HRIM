@@ -32,10 +32,6 @@ class ModuleParser:
             # save the current path
             basePath = os.path.abspath(os.getcwd())
 
-            # look for the main script to assure the repository root path
-            #while not os.path.exists(os.path.join(os.getcwd(), "__main__.py")):
-            #    os.chdir("..")
-
             # parse the mapping file
             dataTree = ET.parse(os.path.join(os.getcwd(), "models", "dataMapping.xml"))
             dataRoot = dataTree.getroot()
