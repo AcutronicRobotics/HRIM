@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="distance" type="publish" description="distance from the object" fileName="Distance">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="range_min" type="float32" unit="metre" description="minimum range value">
       <value></value>
     </property>

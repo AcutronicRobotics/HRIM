@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="specs" type="publish" description="device features" fileName="SpecsForceTorque">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="force_axis_specs" type="specsForceAxis[3]" description="specs related to each of the measured force axes" fileName="SpecsForceAxis">
       <xi:include href="specsForceAxis.xml" xpointer="xpointer(//root/property/property)"/>
     </property>

@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="specs" type="publish" description="device features" fileName="SpecsArm">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="arm_type" type="uint8" unit="enum" enum='{"ARM_TYPE_CARTESIAN": 0, "ARM_TYPE_CYLIDRICAL": 1, "ARM_TYPE_SPHERICAL": 2, "ARM_TYPE_SCARA": 3, "ARM_TYPE_ARTICULATED": 4, "ARM_TYPE_PARALLEL": 5}' description="robotic arm type">
       <value></value>
     </property>

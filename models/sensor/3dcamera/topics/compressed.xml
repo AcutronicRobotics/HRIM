@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="compressed" type="publish" description="contains a compressed image" fileName="CompressedImage">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="format" type="string" description="specifies the format of the data (jpeg|png)">
       <value></value>
     </property>

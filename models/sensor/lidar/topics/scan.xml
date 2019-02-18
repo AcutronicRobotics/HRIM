@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="laser_scan" type="publish" description="environment information" fileName="LidarScan">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="angle_start" type="float32" unit="radian" description="start angle of the scan">
       <value></value>
     </property>

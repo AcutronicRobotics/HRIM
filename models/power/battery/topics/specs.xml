@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="specs" type="publish" description="device features" fileName="SpecsBattery">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="battery_type" type="uint8" unit="enum" enum='{"BATTERY_NICD" : 1, "BATTERY_NIMH" : 2, "BATTERY_LIFEPO" : 3, "BATTERY_LIPO" : 4, "BATTERY_LIION" : 5}'>
       <value></value>
     </property>

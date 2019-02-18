@@ -14,8 +14,13 @@
     <property name="effort" type="float64[]" unit="newtons per metre">
       <value></value>
     </property>
-    <property name="time_from_start" type="duration" fileName="Duration">
-      <xi:include href="../../../generic/duration.xml" xpointer="xpointer(//topic/property)"/>
+    <property name="time_from_start" type="duration" fileName="Duration" package="builtin_interfaces">
+      <property name="sec" type="int32" unit="second">
+        <value></value>
+      </property>
+      <property name="nanosec" type="uint32" unit="nanosecond">
+        <value></value>
+      </property>
     </property>
   </property>
 </root>

@@ -81,8 +81,10 @@ Where:
 * **show**: path to the xml model file to show a definition of.
 * **generate**: path to the xml model to generate an implementation from. Alternatively, one of the following shorthands:
   * ***all***: generates the implementation of all models.
-  * ***moveit***: generates the implementation of **hrim_moveit_msgs** bundled with all it's dependencies.
-  * ***control***: generates the implementation of **hrim_control_msgs** bundled with all it's dependencies.
+  * ***actuators***: generates the implementation of every existent actuator models.
+  * ***composites***: generates the implementation of every existent composite models.
+  * ***powers***: generates the implementation of every existent power models.
+  * ***sensors***: generates the implementation of every existent sensor models.
 * **compose**: one or more models to make a composition from, in a `type/subtype` or `type/subtype/model` (without the file extension) format. You can get a list of all valid models making use of the **list** function.
 * **compile**: the path to the model composition xml file (by default **model.xml**)
 * **list**: what you want to list:
