@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 cd /home/root/ros2_ws/src/hrim
 pip3 install -r requirements.txt
 python3 setup.py install
