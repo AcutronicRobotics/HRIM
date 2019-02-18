@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<topic name="polygon_stamped" type="publish" fileName="PolygonStamped" description="This represents a Polygon with reference coordinate frame and timestamp."
-  xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="../../generic/header.xml" xpointer="xpointer(//root/property)"/>
-  <property name="polygon" type="polygon" fileName="Polygon">
-    <xi:include href="polygon.xml" xpointer="xpointer(//topic/property)"/>
-  </property>
-</topic>

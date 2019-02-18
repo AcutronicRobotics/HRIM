@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <topic name="specs_comm" type="publish" fileName="SpecsCommunication"
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="header" type="header" fileName="Header" package="std_msgs">
+    <value></value>
+  </property>
   <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
     <value></value>
   </property>

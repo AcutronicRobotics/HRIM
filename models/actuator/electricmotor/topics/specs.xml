@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
       <topic name="specs" type="publish" description="device features" fileName="SpecsElectricMotor">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="motor_type" type="uint8" unit="enum" enum='{"MOTOR_DC_BRUSHED": 0, "MOTOR_DC_BRUSHLESS": 1, "MOTOR_DC_GEAREDDOWN": 2}' description="motor type">
       <value></value>
     </property>

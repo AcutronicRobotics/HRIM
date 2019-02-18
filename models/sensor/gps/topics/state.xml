@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="state" type="publish" description="notify the state, navigation satellite fix" fileName="StateGPS">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="status" type="int8" unit="enum" enum='{"STATUS_NO_FIX" : -1, "STATUS_FIX" : 0, "STATUS_SBAS_FIX" : 1, "STATUS_GBAS_FIX" : 2}'>
       <value></value>
     </property>

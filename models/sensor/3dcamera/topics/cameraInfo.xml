@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="image_camera_info" type="publish" description="camera meta information" fileName="CameraInfo">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="height" type="uint32" unit="pixel" description="image height, that is, number of rows">
       <value></value>
     </property>

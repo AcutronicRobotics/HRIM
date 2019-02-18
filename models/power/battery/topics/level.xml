@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="level" type="publish" description="report about the ramaining battery percentage" fileName="BatteryLevel">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="battery_level" type="float32" unit="percentage" description="remaining battery capacity">
       <value></value>
     </property>

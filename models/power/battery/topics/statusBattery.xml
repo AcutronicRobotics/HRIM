@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="status_battery" type="publish" description="status of the battery" fileName="BatteryStatus">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="battery_status" type="uint8" unit="enum" enum='{"CHARGE_COMPLETED" : 0 , "BATTERY_LOW" : 1 , "BATTERY_CRITICAL" : 2}' description="status of the battery">
       <value></value>
     </property>

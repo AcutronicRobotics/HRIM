@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <topic name="power" type="publish" fileName="Power"
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <xi:include href="header.xml" xpointer="xpointer(//root/property)"/>
+  <property name="header" type="header" fileName="Header" package="std_msgs">
+    <value></value>
+  </property>
   <property name="voltage" type="float32" unit="volt">
     <value></value>
   </property>

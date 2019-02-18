@@ -2,7 +2,9 @@
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="position" type="publish" description="robot position" fileName="Position">
-    <xi:include href="../../../generic/header.xml" xpointer="xpointer(//root/property)"/>
+    <property name="header" type="header" fileName="Header" package="std_msgs">
+      <value></value>
+    </property>
     <property name="latitude" type="float64" unit="degree" description="positive is north of equator; negative is south">
       <value></value>
     </property>
