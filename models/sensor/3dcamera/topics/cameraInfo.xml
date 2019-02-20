@@ -20,6 +20,9 @@
     <property name="k" type="float64[9]" description="intrinsic camera matrix for the raw (distorted) images">
       <value></value>
     </property>
+    <property name="r" type="float64[9]" description="rectification matrix">
+      <value></value>
+    </property>
     <property name="p" type="float64[12]" description="by convention, this matrix specifies the intrinsic (camera) matrix of the processed (rectified) image">
       <value></value>
     </property>
