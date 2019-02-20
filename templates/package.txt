@@ -5,26 +5,24 @@
   <description>
      %PKGNAME% %PKGDESC%
   </description>
-  <maintainer email="alex@erlerobotics.com">Alejandro Hernández Cordero</maintainer>
-  <maintainer email="irati@erlerobotics.com">Irati Zamalloa</maintainer>
-  <maintainer email="ibai@erlerobotics.com">Ibai Apellaniz</maintainer>
-  <license>All rights reserved</license>
+  <license>Apache License 2.0</license>
 
-  <url></url>
   <author>alex@erlerobotics.com</author>
   <author>irati@erlerobotics.com</author>
   <author>ibai@erlerobotics.com</author>
 
-  <buildtool_depend version_gte="0.5.78">catkin</buildtool_depend>
+  <maintainer email="ibai@erlerobotics.com">Ibai Apellaniz</maintainer>
 
-  <build_depend>ament_cmake</build_depend>
-  <build_depend>message_generation</build_depend>
-  <build_depend>rosidl_default_generators</build_depend>%PKGBUILD%
+  <url type="website">https://acutronicrobotics.com/technology/hrim/</url>
+  <url type="repository">https://github.com/AcutronicRobotics/HRIM</url>
 
-  <exec_depend>message_generation</exec_depend> <!-- provide message generation to downstream packages -->
-  <exec_depend>message_runtime</exec_depend>%PKGEXEC%
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>rosidl_default_generators</buildtool_depend>
+  %PKGBUILD%
 
-  <member_of_group>rosidl_interface_packages</member_of_group>'
+  <exec_depend>rosidl_default_runtime</exec_depend>%PKGEXEC%
+
+  <member_of_group>rosidl_interface_packages</member_of_group>
 
   <export>
     <build_type>ament_cmake</build_type>
