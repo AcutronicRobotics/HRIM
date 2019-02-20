@@ -1,6 +1,6 @@
 import sys
 import os
-from utils import getTabs
+from .utils import getTabs
 
 class ModuleCompiler:
     def processSubProperty(self, prop, type):

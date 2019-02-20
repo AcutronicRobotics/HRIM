@@ -1,7 +1,7 @@
 import sys
 import os
-from utils import getTabs
-from parsing import ModuleParser
+from .utils import getTabs
+from .parsing import ModuleParser
 import platform
 try:
 	import lxml.etree as ET
