@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from .classes import *
-from .compiling import *
-from .parsing import *
-from .printing import *
-from .utils import *
+from .classes import Composition, Module, Topic, Property, Parameter
+from .compiling import ModuleCompiler
+from .parsing import ModuleParser
+from .printing import ModulePrinter
+from .utils import getTabs

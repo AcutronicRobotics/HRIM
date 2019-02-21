@@ -5,6 +5,13 @@ pip3 install -r requirements.txt
 python3 setup.py install
 cd ..
 
+pylint --rcfile linter/.pylintrc installator/hrim/
+result=$?
+if [ $result -ne 0 ]; then
+  echo "lint error!!"
+  exit 123
+fi
+
 hrim generate --platform ros2 all
 cd generated
 ls
