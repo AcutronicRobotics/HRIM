@@ -1,24 +1,27 @@
-import sys
 import os
 from .utils import getTabs
 
 class ModuleCompiler:
     def processSubProperty(self, prop, type):
         try:
-            if self.checkGenerated(prop.fileName, type) == False:
+            if self.checkGenerated(prop.fileName, type) is False:
                 subMsg = ""
                 for subProp in prop.properties:
-                    if subProp.fileName is not None and (subProp.package is None or subProp.package == self.msgPkgName):
+                    if(subProp.fileName is not None
+                       and (subProp.package is None or subProp.package == self.msgPkgName)
+                      ):
                         try:
                             self.processSubProperty(subProp, type)
                         except:
                             raise
                     else:
-                        if subProp.unit is not None and subProp.unit == "enum" and len(subProp.enumeration) > 0:
+                        if(subProp.unit is not None and subProp.unit == "enum"
+                           and len(subProp.enumeration) > 0
+                          ):
                             # sort enumeration values for readability
-                            for value in sorted( ((v,k) for k,v in subProp.enumeration.items())):
-                                subMsg+=subProp.type+" "+value[1]+"="+str(value[0])+"\n"
-                    subMsg+=self.formatProperty(subProp, type)
+                            for value in sorted(((v, k) for k, v in subProp.enumeration.items())):
+                                subMsg += subProp.type+" "+value[1]+"="+str(value[0])+"\n"
+                    subMsg += self.formatProperty(subProp, type)
                 subFileName = prop.fileName+".msg"
 
                 if len(subMsg) > 0:
@@ -27,22 +30,22 @@ class ModuleCompiler:
 
                     self.ownFiles.append(prop.fileName)
 
-                    text_file = open(subFileName, "w")
-                    text_file.write(subMsg)
-                    text_file.close()
+                    textFile = open(subFileName, "w")
+                    textFile.write(subMsg)
+                    textFile.close()
         except:
             print("Error while processing subproperty message: "+prop.fileName)
             raise
 
     # separate the message generation for messages declared inside services
-    def processMessage(self, module, topic):
+    def processMessage(self, topic):
         try:
             # check if file has already been generated
             res = self.checkGenerated(topic.fileName, topic.type)
-            if res == False:
+            if res is False:
 
                 # package folder naming
-                self.msgFolderPath = os.path.join(os.getcwd(),self.msgPkgName,"msg")
+                self.msgFolderPath = os.path.join(os.getcwd(), self.msgPkgName, "msg")
 
                 # if the package directories don't exist, create them
                 if not os.path.exists(self.msgFolderPath):
@@ -53,24 +56,29 @@ class ModuleCompiler:
                 msg = ""
 
                 # check for an overall message description
-                if topic.desc is not None and len(topic.desc)>0:
-                    msg+="# "+topic.desc+"\n\n"
+                if topic.desc is not None and len(topic.desc) > 0:
+                    msg += "# "+topic.desc+"\n\n"
 
                 for prop in topic.properties:
 
-                    if prop.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
+                    if prop.fileName is not None and (
+                            prop.package is None or prop.package == self.msgPkgName
+                    ):
                         self.processSubProperty(prop, topic.type)
                     else:
 
                         # check for enumeration types
-                        if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
+                        if(prop.unit is not None and prop.unit == "enum"
+                           and len(prop.enumeration) > 0
+                          ):
 
                             # sort enumeration values for readability
-                            for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
-                                msg+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+                            for value in sorted(((v, k) for k, v in prop.enumeration.items())):
+                                msg += prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
-                    # process each property, checking if it's value is an array and if it has any description
-                    msg+=self.formatProperty(prop, topic.type)
+                    # process each property, checking if it's value is an array
+                    # and if it has any description
+                    msg += self.formatProperty(prop, topic.type)
 
                     if prop.package is not None:
                         if prop.package not in self.msgDeps:
@@ -85,9 +93,9 @@ class ModuleCompiler:
                     self.ownFiles.append(topic.fileName)
 
                 if len(msg) > 0:
-                    text_file = open(fileName, "w")
-                    text_file.write(msg)
-                    text_file.close()
+                    textFile = open(fileName, "w")
+                    textFile.write(msg)
+                    textFile.close()
         except:
             print("Error while processing topic message: "+topic.fileName)
             raise
@@ -104,18 +112,24 @@ class ModuleCompiler:
                     type = found+"/"+prop.fileName
                 else:
                     type = self.msgPkgName+"/"+prop.fileName
-        return type+("[{}] ".format(prop.length if prop.length is not None else "") if prop.array else " ")+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
+        length = prop.length if prop.length is not None else ""
+        ret = type
+        ret += ("[{}]".format(length) if prop.array else "")
+        ret += " "+prop.name+((" # "+prop.desc) if prop.desc is not None else "")+"\n\n"
+        return ret
 
     def checkGenerated(self, message, type):
         res = False
         for key, list in self.baseFiles.items():
             if message in list:
-                    res = key
-        if res == False:
+                res = key
+        if res is False:
             if message in self.ownFiles:
-                res=self.msgPkgName
+                res = self.msgPkgName
 
-        if res != False and res != self.msgPkgName and type in ["publish","subscribe"] and res not in self.msgDeps:
+        if(res != False and res != self.msgPkgName
+           and type in ["publish", "subscribe"] and res not in self.msgDeps
+          ):
             self.msgDeps.append(res)
 
         return res
@@ -141,16 +155,18 @@ class ModuleCompiler:
             self.msgPkgName = "hrim_"+module.name+"_msgs"
             self.baseFiles[self.msgPkgName] = []
         else:
-            if module.type in ["actuator", "sensor", "communication", "cognition", "ui", "power", "composite"]:
+            if(module.type in
+               ["actuator", "sensor", "communication", "cognition", "ui", "power", "composite"]
+              ):
                 self.msgPkgName = "hrim_"+module.type+"_"+module.name+"_msgs"
             else:
                 self.msgPkgName = "hrim_"+module.name+"_msgs"
 
         os.chdir("templates")
         with open('package.txt', 'r') as myfile:
-            pkgFile=myfile.read()
+            pkgFile = myfile.read()
         with open('cmake.txt', 'r') as myfile:
-            makeFile=myfile.read()
+            makeFile = myfile.read()
 
         if self.composition or self.base:
             cwd = os.path.join(cwd, self.genPath, module.type)
@@ -169,7 +185,7 @@ class ModuleCompiler:
 
             if topic.type == "publish" or topic.type == "subscribe":
                 messages = True
-                self.processMessage(module, topic)
+                self.processMessage(topic)
                 if self.base:
                     self.baseFiles[self.msgPkgName].append(topic.fileName)
             else:
@@ -178,7 +194,11 @@ class ModuleCompiler:
                     myFiles = srvFiles
                     services = True
                     shortType = "srv"
-                    if self.base or module.type not in ["actuator", "sensor", "communication", "cognition", "ui", "power", "composite"]:
+                    if(self.base or module.type not in
+                       ["actuator", "sensor", "communication",
+                        "cognition", "ui", "power", "composite"
+                       ]
+                      ):
                         srvPkgName = "hrim_"+module.name+"_"+shortType+"s"
                     else:
                         srvPkgName = "hrim_"+module.type+"_"+module.name+"_"+shortType+"s"
@@ -189,7 +209,11 @@ class ModuleCompiler:
                     myFiles = actionFiles
                     actions = True
                     shortType = "action"
-                    if self.base or module.type not in ["actuator", "sensor", "communication", "cognition", "ui", "power", "composite"]:
+                    if(self.base or module.type not in
+                       ["actuator", "sensor", "communication",
+                        "cognition", "ui", "power", "composite"
+                       ]
+                      ):
                         actionPkgName = "hrim_"+module.name+"_"+shortType+"s"
                     else:
                         actionPkgName = "hrim_"+module.type+"_"+module.name+"_"+shortType+"s"
@@ -207,69 +231,84 @@ class ModuleCompiler:
                     fileContent = ""
 
                     # check for an overall file description
-                    if topic.desc is not None and len(topic.desc)>0:
-                        fileContent+="# "+topic.desc+"\n\n"
+                    if topic.desc is not None and len(topic.desc) > 0:
+                        fileContent += "# "+topic.desc+"\n\n"
 
                     for prop in topic.properties:
 
-                        if prop.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
+                        if(prop.fileName is not None and
+                           (prop.package is None or prop.package == self.msgPkgName)
+                          ):
                             os.chdir(cwd)
-                            self.processMessage(module, prop)
+                            self.processMessage(prop)
                             os.chdir(folderPath)
                         # check for enumeration types
-                        if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
+                        if(prop.unit is not None and prop.unit == "enum"
+                           and len(prop.enumeration) > 0
+                          ):
 
                             # sort enumeration values for readability
-                            for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
-                                fileContent+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+                            for value in sorted(((v, k) for k, v in prop.enumeration.items())):
+                                fileContent += prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
-                        # process each property, checking if it's value is an array and if it has any description
-                        fileContent+=self.formatProperty(prop, topic.type)
+                        # process each property, checking if it's value is an array
+                        # and if it has any description
+                        fileContent += self.formatProperty(prop, topic.type)
 
                         if prop.package is not None:
                             if prop.package not in myDep:
                                 myDep.append(prop.package)
 
-                    fileContent+="---\n"
+                    fileContent += "---\n"
 
                     for prop in topic.response:
-                        if prop.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
+                        if(prop.fileName is not None
+                           and (prop.package is None or prop.package == self.msgPkgName)
+                          ):
                             os.chdir(cwd)
-                            self.processMessage(module, prop)
+                            self.processMessage(prop)
                             os.chdir(folderPath)
 
                         # check for enumeration types
-                        if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
+                        if(prop.unit is not None and prop.unit == "enum"
+                           and len(prop.enumeration) > 0
+                          ):
 
                             # sort enumeration values for readability
-                            for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
-                                fileContent+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+                            for value in sorted(((v, k) for k, v in prop.enumeration.items())):
+                                fileContent += prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
-                        # process each property, checking if it's value is an array and if it has any description
-                        fileContent+=self.formatProperty(prop, topic.type)
+                        # process each property, checking if it's value is an array
+                        # and if it has any description
+                        fileContent += self.formatProperty(prop, topic.type)
 
                         if prop.package is not None:
                             if prop.package not in myDep:
                                 myDep.append(prop.package)
 
                     if topic.type == "action":
-                        fileContent+="---\n"
+                        fileContent += "---\n"
 
                         for prop in topic.feedback:
-                            if prop.fileName is not None and (prop.package is None or prop.package == self.msgPkgName):
+                            if(prop.fileName is not None
+                               and (prop.package is None or prop.package == self.msgPkgName)
+                              ):
                                 os.chdir(cwd)
-                                self.processMessage(module, prop)
+                                self.processMessage(prop)
                                 os.chdir(folderPath)
 
                             # check for enumeration types
-                            if prop.unit is not None and prop.unit == "enum" and len(prop.enumeration) > 0:
+                            if(prop.unit is not None and prop.unit == "enum"
+                               and len(prop.enumeration) > 0
+                              ):
 
                                 # sort enumeration values for readability
-                                for value in sorted( ((v,k) for k,v in prop.enumeration.items())):
-                                    fileContent+=prop.type+" "+value[1]+"="+str(value[0])+"\n"
+                                for value in sorted(((v, k) for k, v in prop.enumeration.items())):
+                                    fileContent += prop.type+" "+value[1]+"="+str(value[0])+"\n"
 
-                            # process each property, checking if it's value is an array and if it has any description
-                            fileContent+=self.formatProperty(prop, topic.type)
+                            # process each property, checking if it's value is an array
+                            # and if it has any description
+                            fileContent += self.formatProperty(prop, topic.type)
 
                             if prop.package is not None:
                                 if prop.package not in myDep:
@@ -283,9 +322,9 @@ class ModuleCompiler:
                         fileName = topic.fileName+"."+shortType
                         myFiles.append(topic.fileName)
 
-                    text_file = open(fileName, "w")
-                    text_file.write(fileContent)
-                    text_file.close()
+                    textFile = open(fileName, "w")
+                    textFile.write(fileContent)
+                    textFile.close()
 
         if self.msgPkgName in self.msgDeps:
             self.msgDeps.remove(self.msgPkgName)
@@ -331,7 +370,7 @@ class ModuleCompiler:
             # insert the .msg list in the CMakeLists.txt
             msgList = ""
             for tmp in sorted(self.ownFiles):
-                msgList+="\t\"msg/"+tmp+"\"\n"
+                msgList += "\t\"msg/"+tmp+"\"\n"
 
             msgMakeFile = msgMakeFile.replace("%PKGFILES%", msgList[:-1])
 
@@ -351,7 +390,7 @@ class ModuleCompiler:
 
             srvPkg = srvPkg.replace("%PKGDESC%", module.desc)
 
-            if len(self.srvDeps)>0:
+            if len(self.srvDeps) > 0:
                 buildDeps = ""
                 execDeps = ""
                 pkgFind = ""
@@ -379,7 +418,7 @@ class ModuleCompiler:
             # insert the .srv list in the CMakeLists.txt
             srvList = ""
             for tmp in sorted(srvFiles):
-                srvList+="\t\"srv/"+tmp+"\"\n"
+                srvList += "\t\"srv/"+tmp+"\"\n"
 
             srvMakeFile = srvMakeFile.replace("%PKGFILES%", srvList[:-1])
 
@@ -399,7 +438,7 @@ class ModuleCompiler:
 
             actionPkg = actionPkg.replace("%PKGDESC%", module.desc)
 
-            if len(self.actionDeps)>0:
+            if len(self.actionDeps) > 0:
                 buildDeps = ""
                 execDeps = ""
                 pkgFind = ""
@@ -427,7 +466,7 @@ class ModuleCompiler:
             # insert the .action list in the CMakeLists.txt
             actionList = ""
             for tmp in sorted(actionFiles):
-                actionList+="\t\"action/"+tmp+"\"\n"
+                actionList += "\t\"action/"+tmp+"\"\n"
 
             actionMakeFile = actionMakeFile.replace("%PKGFILES%", actionList[:-1])
 
@@ -441,33 +480,35 @@ class ModuleCompiler:
 
         for param in module.params:
 
-          # mandatory parameters parsing
-          if param.mandatory:
-              if param.desc is not None:
-                  manParams+=getTabs(1)+"# "+param.desc+"\n"
-              manParams+=getTabs(1)+param.name+": "+(str(param.value) if param.value is not None else "")+"\n\n"
+            # mandatory parameters parsing
+            if param.mandatory:
+                if param.desc is not None:
+                    manParams += getTabs(1)+"# "+param.desc+"\n"
+                manParams += getTabs(1)+param.name+": "
+                manParams += (str(param.value) if param.value is not None else "")+"\n\n"
 
-          # optional parameters parsing
-          else:
-              if param.desc is not None:
-                  optParams+=getTabs(1)+"# "+param.desc+"\n"
-              optParams+=getTabs(1)+param.name+": "+(str(param.value) if param.value is not None else "")+"\n\n"
+            # optional parameters parsing
+            else:
+                if param.desc is not None:
+                    optParams += getTabs(1)+"# "+param.desc+"\n"
+                optParams += getTabs(1)+param.name+": "
+                optParams += (str(param.value) if param.value is not None else "")+"\n\n"
 
-        if len(manParams)>0:
-            self.manParams =  self.manParams+module.name+":\n"+manParams
+        if len(manParams) > 0:
+            self.manParams = self.manParams+module.name+":\n"+manParams
 
-        if len(optParams)>0:
-            self.optParams =  self.optParams+module.name+":\n"+optParams
+        if len(optParams) > 0:
+            self.optParams = self.optParams+module.name+":\n"+optParams
 
         os.chdir(cwd)
 
     def generateParameters(self):
-        if len(self.manParams)>0:
+        if len(self.manParams) > 0:
             params = open("mandatory_parameters.yaml", "w")
             params.write(self.manParams)
             params.close()
             self.manParams = ""
-        if len(self.optParams)>0:
+        if len(self.optParams) > 0:
             params = open("optional_parameters.yaml", "w")
             params.write(self.optParams)
             params.close()
@@ -476,12 +517,14 @@ class ModuleCompiler:
     def composeModule(self, modules, paths):
         model = open("model.xml", "w")
         composition = "<?xml version=\"1.0\"?>\n<composition name=\"defaultName\">\n"
-        strContent=""
+        strContent = ""
         index = 0
         for module in modules:
             ownTopics = []
             ownParams = []
-            strTopics = getTabs(1)+"<model type=\"{}\" subtype=\"{}\" path=\"{}\">\n".format(module.type, module.name, paths[index])
+            strTopics = getTabs(1)+"<model type=\"{}\" subtype=\"{}\" path=\"{}\">\n".format(
+                module.type, module.name, paths[index]
+            )
             strParams = ""
             for topic in module.topics:
                 if not topic.mandatory:
