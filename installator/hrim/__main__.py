@@ -3,7 +3,7 @@ import os
 import argparse
 import re
 import shutil
-from hrim.scripts import  ModuleCompiler, ModuleParser, ModulePrinter
+from hrim.scripts import  ModuleCompiler, ModuleParser
 from hrim.scripts.classes import Module
 
 # locate all module models of the repository and return a list with their full path
@@ -47,10 +47,8 @@ def main(args=None):
         description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
         formatter_class=argparse.RawTextHelpFormatter)
     argParser.add_argument(
-        'action', choices=['show', 'generate', 'compose', 'compile', 'list', 'clear'],
+        'action', choices=['generate', 'compose', 'compile', 'list', 'clear'],
         help='''Action to take:
-show:
-    print a representation of the passed valid XML module's model structure and values.
 generate:
     generate the platform-specific implementation of the passed valid XML model.
 compose:
@@ -93,10 +91,6 @@ Or the implementation to be deleted by the clear command:
         '-p', '--platform', default='ros2', choices=['ros2'],
         help='The platform for the generated model, ros2 by default.'
     )
-    argParser.add_argument(
-        '-e', '--extend', action='store_true', default=False,
-        help='Whether to expand topic definitions when "show"-ing.'
-    )
 
     # If no argument is provided, show usage
     if len(sys.argv) == 1:
@@ -108,11 +102,7 @@ Or the implementation to be deleted by the clear command:
     try:
         parser = ModuleParser()
         uniquePath = args.filePath[0]
-        if args.action == "show":
-            extend = args.extend
-            module = parser.parseFile(uniquePath)
-            ModulePrinter().printModule(module, args.platform, extend)
-        elif args.action == "generate":
+        if args.action == "generate":
             path = os.getcwd()
 
             compiler = ModuleCompiler()
