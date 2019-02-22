@@ -58,6 +58,8 @@ class ModuleParser:
         top = Topic(topic.attrib.get("name"), topic.attrib.get("type"), mandatory)
         if "description" in topic.attrib:
             top.desc = topic.attrib.get("description")
+        if "package" in topic.attrib:
+            top.package = topic.attrib.get("package")
         top.fileName = topic.attrib.get("fileName")
         for prop in topic:
             if prop.tag == "property":
