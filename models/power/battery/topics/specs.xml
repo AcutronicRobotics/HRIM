@@ -1,42 +1,41 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="specs" type="publish" description="device features" fileName="SpecsBattery">
-    <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
-    </property>
-    <property name="battery_type" type="uint8" unit="enum" enum='{"BATTERY_NICD" : 1, "BATTERY_NIMH" : 2, "BATTERY_LIFEPO" : 3, "BATTERY_LIPO" : 4, "BATTERY_LIION" : 5}'>
-      <value></value>
-    </property>
-    <property name="voltage" type="float32" unit="volt">
-      <value></value>
-    </property>
-    <property name="current" type="float32" unit="ampere">
-      <value></value>
-    </property>
-    <property name="capacity" type="int32" unit="milliampere per hour">
-      <value></value>
-    </property>
-    <property name="working_temp" type="int32[]" unit="celsius" description="working temperature range">
-      <value></value>
-    </property>
-    <property name="cells" type="uint8" description="number of cells">
-      <value></value>
-    </property>
-    <property name="cell_voltage" type="float32" unit="volt" description="voltage per cell">
-      <value></value>
-    </property>
-    <property name="charge_voltage" type="float32" unit="volt" description="charge cut-off voltage">
-      <value></value>
-    </property>
-    <property name="charge_current" type="float32" unit="ampere" description="charge cut-off current">
-      <value></value>
-    </property>
-    <property name="discharge_voltage" type="float32" unit="volt" description="discharge cut-off voltage">
-      <value></value>
-    </property>
-    <property name="impedance" type="int32" unit="milliohm">
-      <value></value>
-    </property>
+  <topic name="specs" type="service" description="device features" fileName="SpecsBattery">
+    <response>
+      <property name="battery_type" type="uint8" unit="enum" enum='{"BATTERY_NICD" : 1, "BATTERY_NIMH" : 2, "BATTERY_LIFEPO" : 3, "BATTERY_LIPO" : 4, "BATTERY_LIION" : 5}'>
+        <value></value>
+      </property>
+      <property name="voltage" type="float32" unit="volt">
+        <value></value>
+      </property>
+      <property name="current" type="float32" unit="ampere">
+        <value></value>
+      </property>
+      <property name="capacity" type="int32" unit="milliampere per hour">
+        <value></value>
+      </property>
+      <property name="working_temp" type="int32[]" unit="celsius" description="working temperature range">
+        <value></value>
+      </property>
+      <property name="cells" type="uint8" description="number of cells">
+        <value></value>
+      </property>
+      <property name="cell_voltage" type="float32" unit="volt" description="voltage per cell">
+        <value></value>
+      </property>
+      <property name="charge_voltage" type="float32" unit="volt" description="charge cut-off voltage">
+        <value></value>
+      </property>
+      <property name="charge_current" type="float32" unit="ampere" description="charge cut-off current">
+        <value></value>
+      </property>
+      <property name="discharge_voltage" type="float32" unit="volt" description="discharge cut-off voltage">
+        <value></value>
+      </property>
+      <property name="impedance" type="int32" unit="milliohm">
+        <value></value>
+      </property>
+    </response>
   </topic>
 </root>

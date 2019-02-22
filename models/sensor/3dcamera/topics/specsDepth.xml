@@ -1,39 +1,38 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="specs" type="publish" description="defines the most important characteristic of the camera" fileName="SpecsDepthCamera">
-    <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
-    </property>
-    <property name="resolution" type="string" unit="pixel" description="example: 752x480, 1280x1024">
-      <value></value>
-    </property>
-    <property name="horizontal_fov" type="float32" unit="radian" description="horizontal field of view">
-      <value></value>
-    </property>
-    <property name="vertical_fov" type="float32" unit="radian" description="vertical field of view">
-      <value></value>
-    </property>
-    <property name="frame_rate" type="uint16" unit="frames per second" description="maximum possible frame rate">
-      <value></value>
-    </property>
-    <property name="accuracy" type="float32" unit="metre" description="minimum possible accuracy value">
-      <value></value>
-    </property>
-    <property name="operation_range" type="uint16[]" unit="metre" description="working distance (min-max)">
-      <value></value>
-    </property>
-    <property name="image_formats" type="string" description="example: mono8, rgb1, bayergrbg8">
-      <value></value>
-    </property>
-    <property name="rgb" type="boolean" description="true: image in RGB (color); false: image in grayscale">
-      <value></value>
-    </property>
-    <property name="voltage" type="float32" unit="volt">
-      <value></value>
-    </property>
-    <property name="max_power_consumption" type="float32" unit="watt" description="maximum power consumption">
-      <value></value>
-    </property>
+  <topic name="specs" type="service" description="defines the most important characteristic of the camera" fileName="SpecsDepthCamera">
+    <response>
+      <property name="resolution" type="string" unit="pixel" description="example: 752x480, 1280x1024">
+        <value></value>
+      </property>
+      <property name="horizontal_fov" type="float32" unit="radian" description="horizontal field of view">
+        <value></value>
+      </property>
+      <property name="vertical_fov" type="float32" unit="radian" description="vertical field of view">
+        <value></value>
+      </property>
+      <property name="frame_rate" type="uint16" unit="frames per second" description="maximum possible frame rate">
+        <value></value>
+      </property>
+      <property name="accuracy" type="float32" unit="metre" description="minimum possible accuracy value">
+        <value></value>
+      </property>
+      <property name="operation_range" type="uint16[]" unit="metre" description="working distance (min-max)">
+        <value></value>
+      </property>
+      <property name="image_formats" type="string" description="example: mono8, rgb1, bayergrbg8">
+        <value></value>
+      </property>
+      <property name="rgb" type="boolean" description="true: image in RGB (color); false: image in grayscale">
+        <value></value>
+      </property>
+      <property name="voltage" type="float32" unit="volt">
+        <value></value>
+      </property>
+      <property name="max_power_consumption" type="float32" unit="watt" description="maximum power consumption">
+        <value></value>
+      </property>
+    </response>
   </topic>
 </root>

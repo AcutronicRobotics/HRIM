@@ -1,15 +1,14 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="specs" type="publish" description="device features" fileName="SpecsTracked">
-    <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
-    </property>
-    <property name="max_tracked_velocity" type="float32" unit="" description="maximum vehicle velocity">
-      <value></value>
-    </property>
-    <property name="flipper_stabilizer" type="boolean" unit="" description="True: it contains this characteristic/False: do not">
-      <value></value>
-    </property>
+  <topic name="specs" type="service" description="device features" fileName="SpecsTracked">
+    <response>
+      <property name="max_tracked_velocity" type="float32" unit="" description="maximum vehicle velocity">
+        <value></value>
+      </property>
+      <property name="flipper_stabilizer" type="boolean" unit="" description="True: it contains this characteristic/False: do not">
+        <value></value>
+      </property>
+    </response>
   </topic>
 </root>
