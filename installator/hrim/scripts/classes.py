@@ -41,6 +41,8 @@ class Topic:
         self.desc = None
         # the name of the artifact to be generated from the topic
         self.fileName = None
+        # the name of the interface's package of origin
+        self.package = None
     def addProp(self, property):
         self.properties.append(property)
     def addRes(self, response):

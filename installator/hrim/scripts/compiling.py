@@ -192,7 +192,6 @@ class ModuleCompiler:
                 if topic.type == "service":
                     myDep = self.srvDeps
                     myFiles = srvFiles
-                    services = True
                     shortType = "srv"
                     if(self.base or module.type not in
                        ["actuator", "sensor", "communication",
@@ -202,12 +201,12 @@ class ModuleCompiler:
                         srvPkgName = "hrim_"+module.name+"_"+shortType+"s"
                     else:
                         srvPkgName = "hrim_"+module.type+"_"+module.name+"_"+shortType+"s"
+                    pkgName = srvPkgName
                     srvFolderPath = os.path.join(os.getcwd(), srvPkgName, shortType)
                     folderPath = srvFolderPath
                 if topic.type == "action":
                     myDep = self.actionDeps
                     myFiles = actionFiles
-                    actions = True
                     shortType = "action"
                     if(self.base or module.type not in
                        ["actuator", "sensor", "communication",
@@ -217,10 +216,13 @@ class ModuleCompiler:
                         actionPkgName = "hrim_"+module.name+"_"+shortType+"s"
                     else:
                         actionPkgName = "hrim_"+module.type+"_"+module.name+"_"+shortType+"s"
+                    pkgName = actionPkgName
                     actionFolderPath = os.path.join(os.getcwd(), actionPkgName, shortType)
                     folderPath = actionFolderPath
                 # check if file has already been generated
-                if topic.fileName not in myFiles:
+                if(topic.fileName not in myFiles
+                   and (topic.package is None or topic.package == pkgName)
+                  ):
 
                     # if the package directories don't exist, create them
                     if not os.path.exists(folderPath):
@@ -325,6 +327,11 @@ class ModuleCompiler:
                     textFile = open(fileName, "w")
                     textFile.write(fileContent)
                     textFile.close()
+
+                    if topic.type == "service":
+                        services = True
+                    if topic.type == "action":
+                        actions = True
 
         if self.msgPkgName in self.msgDeps:
             self.msgDeps.remove(self.msgPkgName)

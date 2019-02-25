@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
-<topic name="module_urdf" type="publish" fileName="SimulationURDF"
+<topic name="module_urdf" type="service" fileName="SimulationURDF" package="hrim_generic_srvs"
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <property name="header" type="header" fileName="Header" package="std_msgs">
-    <value></value>
-  </property>
-  <property name="urdf_model" type="string" unit="urdf" description="the urdf corresponding to the component's .stl">
-    <value></value>
-  </property>
+  <response>
+    <property name="urdf_model" type="string" unit="urdf" description="the urdf corresponding to the component's .stl">
+      <value></value>
+    </property>
+  </response>
 </topic>

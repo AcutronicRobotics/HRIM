@@ -1,16 +1,15 @@
 <?xml version="1.0"?>
-<topic name="specs_comm" type="publish" fileName="SpecsCommunication"
+<topic name="specs_comm" type="service" fileName="SpecsCommunication" package="hrim_generic_srvs"
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <property name="header" type="header" fileName="Header" package="std_msgs">
-    <value></value>
-  </property>
-  <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
-    <value></value>
-  </property>
-  <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
-    <value></value>
-  </property>
-  <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
-    <value></value>
-  </property>
+  <response>
+    <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
+      <value></value>
+    </property>
+    <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
+      <value></value>
+    </property>
+    <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
+      <value></value>
+    </property>
+  </response>
 </topic>

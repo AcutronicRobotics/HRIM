@@ -1,36 +1,35 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="specs" type="publish" description="device features" fileName="SpecsArm">
-    <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
-    </property>
-    <property name="arm_type" type="uint8" unit="enum" enum='{"ARM_TYPE_CARTESIAN": 0, "ARM_TYPE_CYLIDRICAL": 1, "ARM_TYPE_SPHERICAL": 2, "ARM_TYPE_SCARA": 3, "ARM_TYPE_ARTICULATED": 4, "ARM_TYPE_PARALLEL": 5}' description="robotic arm type">
-      <value></value>
-    </property>
-    <property name="dof" type="uint32" description="amount of degrees of freedom">
-      <value></value>
-    </property>
-    <property name="max_payload" type="float32" unit="kilogram" description="maximum payload">
-      <value></value>
-    </property>
-    <property name="x_axis" type="boolean" description="whether the robot can move in the x axis">
-      <value></value>
-    </property>
-    <property name="y_axis" type="boolean" description="whether the robot can move in the y axis">
-      <value></value>
-    </property>
-    <property name="z_axis" type="boolean" description="whether the robot can move in the z axis">
-      <value></value>
-    </property>
-    <property name="max_x_reach" type="float32" unit="metre" description="x maximum position relative to the origin">
-      <value></value>
-    </property>
-    <property name="max_y_reach" type="float32" unit="metre" description="y maximum position relative to the origin">
-      <value></value>
-    </property>
-    <property name="max_z_reach" type="float32" unit="metre" description="z maximum position relative to the origin">
-      <value></value>
-    </property>
+  <topic name="specs" type="service" description="device features" fileName="SpecsArm">
+    <response>
+      <property name="arm_type" type="uint8" unit="enum" enum='{"ARM_TYPE_CARTESIAN": 0, "ARM_TYPE_CYLIDRICAL": 1, "ARM_TYPE_SPHERICAL": 2, "ARM_TYPE_SCARA": 3, "ARM_TYPE_ARTICULATED": 4, "ARM_TYPE_PARALLEL": 5}' description="robotic arm type">
+        <value></value>
+      </property>
+      <property name="dof" type="uint32" description="amount of degrees of freedom">
+        <value></value>
+      </property>
+      <property name="max_payload" type="float32" unit="kilogram" description="maximum payload">
+        <value></value>
+      </property>
+      <property name="x_axis" type="boolean" description="whether the robot can move in the x axis">
+        <value></value>
+      </property>
+      <property name="y_axis" type="boolean" description="whether the robot can move in the y axis">
+        <value></value>
+      </property>
+      <property name="z_axis" type="boolean" description="whether the robot can move in the z axis">
+        <value></value>
+      </property>
+      <property name="max_x_reach" type="float32" unit="metre" description="x maximum position relative to the origin">
+        <value></value>
+      </property>
+      <property name="max_y_reach" type="float32" unit="metre" description="y maximum position relative to the origin">
+        <value></value>
+      </property>
+      <property name="max_z_reach" type="float32" unit="metre" description="z maximum position relative to the origin">
+        <value></value>
+      </property>
+    </response>
   </topic>
 </root>

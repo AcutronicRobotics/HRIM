@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<topic name="power" type="publish" fileName="Power"
+<topic name="power" type="publish" fileName="Power" package="hrim_generic_msgs"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <property name="header" type="header" fileName="Header" package="std_msgs">
     <value></value>

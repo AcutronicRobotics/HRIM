@@ -1,27 +1,26 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="specs" type="publish" description="device features" fileName="SpecsForceTorque">
-    <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
-    </property>
-    <property name="force_axis_specs" type="specsForceAxis[3]" description="specs related to each of the measured force axes" fileName="SpecsForceAxis">
-      <xi:include href="specsForceAxis.xml" xpointer="xpointer(//root/property/property)"/>
-    </property>
-    <property name="torque_axis_specs" type="specsTorqueAxis[3]" description="specs related to each of the measured torque axes" fileName="SpecsTorqueAxis">
-      <xi:include href="specsTorqueAxis.xml" xpointer="xpointer(//root/property/property)"/>
-    </property>
-    <property name="min_ideal_temp" type="float32" unit="celsius" description="minimum temperature where the error margin is at it's lowest">
-      <value></value>
-    </property>
-    <property name="max_ideal_temp" type="float32" unit="celsius" description="maximum temperature where the error margin is at it's lowest">
-      <value></value>
-    </property>
-    <property name="min_operating_temp" type="float32" unit="celsius" description="minimum operating temperature">
-      <value></value>
-    </property>
-    <property name="max_operating_temp" type="float32" unit="celsius" description="maximum operating temperature">
-      <value></value>
-    </property>
+  <topic name="specs" type="service" description="device features" fileName="SpecsForceTorque">
+    <response>
+      <property name="force_axis_specs" type="specsForceAxis[3]" description="specs related to each of the measured force axes" fileName="SpecsForceAxis" package="hrim_sensor_forcetorque_msgs">
+        <xi:include href="specsForceAxis.xml" xpointer="xpointer(//root/property/property)"/>
+      </property>
+      <property name="torque_axis_specs" type="specsTorqueAxis[3]" description="specs related to each of the measured torque axes" fileName="SpecsTorqueAxis" package="hrim_sensor_forcetorque_msgs">
+        <xi:include href="specsTorqueAxis.xml" xpointer="xpointer(//root/property/property)"/>
+      </property>
+      <property name="min_ideal_temp" type="float32" unit="celsius" description="minimum temperature where the error margin is at it's lowest">
+        <value></value>
+      </property>
+      <property name="max_ideal_temp" type="float32" unit="celsius" description="maximum temperature where the error margin is at it's lowest">
+        <value></value>
+      </property>
+      <property name="min_operating_temp" type="float32" unit="celsius" description="minimum operating temperature">
+        <value></value>
+      </property>
+      <property name="max_operating_temp" type="float32" unit="celsius" description="maximum operating temperature">
+        <value></value>
+      </property>
+    </response>
   </topic>
 </root>
