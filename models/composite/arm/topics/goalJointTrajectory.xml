@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="joint_trajectory_goal" type="service" description="create a joint trajectory" fileName="GoalJointTrajectory">
+  <topic name="joint_trajectory_goal" type="action" description="create a joint trajectory" fileName="GoalJointTrajectory">
     <property name="joint_names" type="string[]">
       <value></value>
     </property>
