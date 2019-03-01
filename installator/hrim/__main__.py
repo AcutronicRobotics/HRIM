@@ -83,8 +83,9 @@ What the list command will look for:
 Or the implementation to be deleted by the clear command:
     all:
         all implementations on the generation folder.
-    {module name}:
-        deletes the files related to said module (i.e. "force" would delete generated/force).'''
+    {path}:
+        deletes the files related to said module (i.e. `sensor/imu` will delete
+        `generated/sensor/imu`, `sensor` will delete all generated sensor implementations).'''
     )
 
     argParser.add_argument(
