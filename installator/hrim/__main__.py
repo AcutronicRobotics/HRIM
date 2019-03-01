@@ -251,10 +251,18 @@ Or the implementation to be deleted by the clear command:
                     pathList = model.split(os.sep)
                     print(pathList[-3]+"/"+pathList[-2]+"/"+pathList[-1].replace('.xml', ""))
             elif uniquePath == "implementations":
-                impList = os.listdir("generated")
-                if len(impList) > 0:
-                    for implementation in sorted(impList):
-                        print(implementation)
+                pathList = os.listdir("generated")
+                if len(pathList) > 0:
+                    for path in sorted(pathList):
+                        if(path in
+                           ["actuator", "sensor", "communication",
+                            "cognition", "ui", "power", "composite"]
+                          ):
+                            subPathList = os.listdir(os.path.join("generated", path))
+                            for subPath in sorted(subPathList):
+                                print(path+"/"+subPath)
+                        else:
+                            print(path)
                 else:
                     print("There's no generated implementations.")
         elif args.action == "clear":
