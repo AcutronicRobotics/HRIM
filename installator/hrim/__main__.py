@@ -3,6 +3,7 @@ import os
 import argparse
 import re
 import shutil
+import pkg_resources
 from hrim.scripts import  ModuleCompiler, ModuleParser
 from hrim.scripts.classes import Module
 
@@ -88,6 +89,10 @@ Or the implementation to be deleted by the clear command:
     )
 
     argParser.add_argument(
+        '-v', '--version', action='store_true', default=False,
+        help='print the tooling version'
+    )
+    argParser.add_argument(
         '-p', '--platform', default='ros2', choices=['ros2'],
         help='The platform for the generated model, ros2 by default.'
     )
@@ -95,6 +100,9 @@ Or the implementation to be deleted by the clear command:
     # If no argument is provided, show usage
     if len(sys.argv) == 1:
         argParser.print_help()
+        sys.exit(0)
+    elif any(arg in sys.argv for arg in ["-v", "--version"]):
+        print(pkg_resources.require("hrim")[0].version)
         sys.exit(0)
 
     args = argParser.parse_args()
