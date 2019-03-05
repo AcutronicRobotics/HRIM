@@ -8,7 +8,7 @@
     <property name="joint_names" type="string[]">
       <value></value>
     </property>
-    <property name="points" type="jointTrajectoryPoint[]" fileName="JointTrajectoryPoint">
+    <property name="points" type="jointTrajectoryPoint[]" fileName="JointTrajectoryPoint" package="hrim_composite_arm_msgs">
       <xi:include href="jointTrajectoryPoint.xml" xpointer="xpointer(//root/property/property)"/>
     </property>
   </topic>

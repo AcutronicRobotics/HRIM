@@ -5,10 +5,10 @@
     <property name="header" type="header" fileName="Header" package="std_msgs">
       <value></value>
     </property>
-    <property name="axis_forces" type="forceAxis[3]" description="separate force readings from each measured axis" fileName="ForceAxis">
+    <property name="axis_forces" type="forceAxis[3]" description="separate force readings from each measured axis" fileName="ForceAxis" package="hrim_sensor_forcetorque_msgs">
       <xi:include href="forceAxis.xml" xpointer="xpointer(//root/property/property)"/>
     </property>
-    <property name="axis_torques" type="torqueAxis[3]" description="separate torque readings from each measured axis" fileName="TorqueAxis">
+    <property name="axis_torques" type="torqueAxis[3]" description="separate torque readings from each measured axis" fileName="TorqueAxis" package="hrim_sensor_forcetorque_msgs">
       <xi:include href="torqueAxis.xml" xpointer="xpointer(//root/property/property)"/>
     </property>
   </topic>
