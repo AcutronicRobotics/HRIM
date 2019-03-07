@@ -18,6 +18,8 @@
       <value></value>
     </param>
 
+    <xi:include href="topics/goalJointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
+
   </mandatory>
   <optional>
 
