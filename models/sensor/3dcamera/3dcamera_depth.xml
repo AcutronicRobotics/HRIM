@@ -43,6 +43,8 @@
 
   <optional>
 
+    <xi:include href="../../generic/topics/updown.xml" xpointer="xpointer(//topic)"/>
+
     <xi:include href="topics/audio.xml" xpointer="xpointer(//root/topic)"/>
 
     <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>

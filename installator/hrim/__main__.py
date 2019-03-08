@@ -33,7 +33,7 @@ def genBase(parser, compiler, args):
     path = os.getcwd()
 
     generic = Module("generic", "generic", "defines the generic HRIM messages used by modules")
-    generic.topics = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
+    generic.topics = parser.parseBase(os.path.join(path, "models", "generic", "generic.xml"))
 
     compiler.compileModule(generic, True)
     print("Succesfully generated "+args.platform+" implementation of HRIM's generic package.")

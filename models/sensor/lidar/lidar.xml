@@ -45,6 +45,8 @@
   </mandatory>
   <optional>
 
+    <xi:include href="../../generic/topics/updown.xml" xpointer="xpointer(//topic)"/>
+
     <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="angular_velocity" type="double" unit="radians per second" description="device rotation speed">

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<topic name="updown" type="service" fileName="UpDown" package="hrim_generic_srvs"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="power_on" type="boolean" description="whether the device should be powered on or not">
+    <value></value>
+  </property>
+  <response>
+    <property name="result" type="boolean" description="whether the order was successfully carried out or not">
+      <value></value>
+    </property>
+    <property name="error_message" type="string" description="text message describing issues when carrying out the power on/off order">
+      <value></value>
+    </property>
+  </response>
+</topic>

@@ -13,6 +13,8 @@
   </mandatory>
   <optional>
 
+    <xi:include href="../../generic/topics/updown.xml" xpointer="xpointer(//topic)"/>
+
     <xi:include href="topics/statusBattery.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="battery_low" type="int" unit="percentage" description="capacity percentage at first warning">

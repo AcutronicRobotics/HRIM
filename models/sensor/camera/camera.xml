@@ -35,6 +35,8 @@
 
   <optional>
 
+    <xi:include href="../../generic/topics/updown.xml" xpointer="xpointer(//topic)"/>
+
     <xi:include href="topics/compressed.xml" xpointer="xpointer(//root/topic)"/>
 
     <topic name="image_mono" type="publish" description="monochrome, distorted" fileName="Image">
