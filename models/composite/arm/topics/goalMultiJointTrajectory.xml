@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root
   xmlns:xi="http://www.w3.org/2001/XInclude">
-  <topic name="multi_joint_trajectory_goal" type="service" description="create a multiple DOF joint trajectory" fileName="GoalMultiDOFJointTrajectory">
+  <topic name="multi_joint_trajectory_goal" type="action" description="create a multiple DOF joint trajectory" fileName="GoalMultiDOFJointTrajectory">
     <property name="joint_names" type="string[]">
       <value></value>
     </property>

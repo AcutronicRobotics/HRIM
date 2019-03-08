@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<root
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <topic name="joint_trajectory_goal" type="action" description="create a joint trajectory" fileName="GoalJointTrajectory">
+    <property name="joint_name" type="string">
+      <value></value>
+    </property>
+    <property name="trajectory" type="JointTrajectory" fileName="JointTrajectory" package="trajectory_msgs">
+      <value></value>
+    </property>
+    <response>
+      <property name="error" type="int32" unit="enum" enum='{"SUCCESSFUL": 0, "INVALID_GOAL": -1, "INVALID_JOINTS": -2, "OLD_HEADER_TIMESTAMP": -3, "PATH_TOLERANCE_VIOLATED": -4, "GOAL_TOLERANCE_VIOLATED": -5}' description="Error code">
+        <value></value>
+      </property>
+      <property name="error_string" type="string">
+        <value></value>
+      </property>
+    </response>
+    <feedback>
+      <property name="header" type="header" fileName="Header" package="std_msgs">
+        <value></value>
+      </property>
+      <property name="joint_name" type="string">
+        <value></value>
+      </property>
+      <property name="desired" type="jointTrajectoryPoint" fileName="JointTrajectoryPoint" package="trajectory_msgs">
+        <value></value>
+      </property>
+      <property name="actual" type="jointTrajectoryPoint" fileName="JointTrajectoryPoint" package="trajectory_msgs">
+        <value></value>
+      </property>
+      <property name="error" type="jointTrajectoryPoint" fileName="JointTrajectoryPoint" package="trajectory_msgs">
+        <value></value>
+      </property>
+    </feedback>
+  </topic>
+</root>
