@@ -15,5 +15,5 @@ before_script:
   - cd .docker/ci
 
 script:
-  - docker build -t acutronicbotics/hrim .
-  - docker run -v /tmp/hrim:/home/root/ros2_ws/src/hrim acutronicbotics/hrim
+  - docker build -t acutronicrobotics/hrim .
+  - docker run -v /tmp/hrim:/home/root/ros2_ws/src/hrim acutronicrobotics/hrim
