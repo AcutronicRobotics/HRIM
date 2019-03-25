@@ -14,6 +14,9 @@
     <property name="velocity" type="float32" unit="radians per second" description="movement velocity">
       <value></value>
     </property>
+    <property name="acceleration" type="float32" unit="radians per second squared" description="movement acceleration">
+      <value></value>
+    </property>
     <property name="effort" type="float32" unit="newtons per metre" description="movement torque">
       <value></value>
     </property>
