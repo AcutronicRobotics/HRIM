@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <topic name="stop" type="service" fileName="Stop" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <response>
+      <property name="success" type="boolean">
+        <value></value>
+      </property>
+      <property name="message" type="string">
+        <value></value>
+      </property>
+    </response>
+  </topic>
+</root>

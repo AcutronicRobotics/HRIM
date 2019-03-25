@@ -23,6 +23,10 @@
   </mandatory>
   <optional>
 
+    <xi:include href="topics/openclosebrake.xml" xpointer="xpointer(//root/topic)"/>
+
+    <xi:include href="topics/stop.xml" xpointer="xpointer(//root/topic)"/>
+
     <xi:include href="topics/state.xml" xpointer="xpointer(//root/topic)"/>
 
     <xi:include href="topics/temperature.xml" xpointer="xpointer(//root/topic)"/>
