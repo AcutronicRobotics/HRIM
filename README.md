@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/AcutronicRobotics/HRIM.svg?branch=master)](https://travis-ci.org/AcutronicRobotics/HRIM)
+[![Build Status](https://travis-ci.org/AcutronicRobotics/HRIM.svg?branch=master)](https://travis-ci.org/AcutronicRobotics/HRIM) [![PyPI version](https://badge.fury.io/py/hrim.svg)](https://badge.fury.io/py/hrim)
 
 # Hardware Robot Information Model (HRIM)
 
