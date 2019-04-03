@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-MAINTAINER Asier Bilbao <asier@erlerobotics.com>
+LABEL maintainer="Asier Bilbao <asier at erlerobotics dot com>"
 
 # setup environment
 ENV LANG C.UTF-8
