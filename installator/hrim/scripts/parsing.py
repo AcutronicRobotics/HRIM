@@ -4,6 +4,7 @@ import re
 import os
 import lxml.etree as ET
 from .classes import Composition, Module, Topic, Property, Parameter
+from .utils import checkModule, checkModuleFile, checkDependencies
 
 class ModuleParser:
 
@@ -201,21 +202,25 @@ class ModuleParser:
         compRoot = compTree.getroot()
         composition = Composition(compRoot.attrib.get("name"))
         for model in compRoot:
-            topicList = []
-            for topic in model.findall("topic"):
-                topicList.append(topic.attrib.get("name"))
+            # topicList = []
+            # for topic in model.findall("topic"):
+            #     topicList.append(topic.attrib.get("name"))
             paramList = []
             for param in model.findall("param"):
                 paramList.append(param.attrib.get("name"))
             modelPath = os.path.join(os.getcwd(), model.attrib.get("path"))
             module = self.parseFile(modelPath)
-            for topic in list(module.topics):
-                if not topic.mandatory and topic.name not in topicList:
-                    module.topics.remove(topic)
+
+            withDeps = checkModule(self, module, [])
+            # for topic in list(module.topics):
+            #     if not topic.mandatory and topic.name not in topicList:
+            #         module.topics.remove(topic)
             for param in list(module.params):
                 if not param.mandatory and param.name not in paramList:
                     module.params.remove(param)
-            composition.modules.append(module)
+
+            for module in withDeps:
+                composition.modules.append(module)
         return composition
 
     # main parse method

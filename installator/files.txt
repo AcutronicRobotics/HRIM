@@ -1,0 +1,2 @@
+/usr/local/lib/python3.5/dist-packages/hrim-0.3.1-py3.5.egg
+/usr/local/bin/hrim

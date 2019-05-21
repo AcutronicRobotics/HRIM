@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<topic name="power" type="publish" fileName="Power" package="hrim_generic_msgs"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="header" type="header" fileName="Header" package="std_msgs">
+    <value></value>
+  </property>
+  <property name="voltage" type="float32" unit="volt">
+    <value></value>
+  </property>
+  <property name="current_consumption" type="float32" unit="ampere">
+    <value></value>
+  </property>
+  <property name="current_surplus" type="float32" unit="ampere" description="current injection for the whole system">
+    <value></value>
+  </property>
+  <property name="power_consumption" type="float32" unit="watt">
+    <value></value>
+  </property>
+  <property name="power_surplus" type="float32" unit="watt" description="power injection for the whole system">
+    <value></value>
+  </property>
+</topic>

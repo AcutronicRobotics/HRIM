@@ -2,7 +2,7 @@ build
 install
 log
 generated
+generated_bak
 *.pyc
 dist
 *.egg-info/
-

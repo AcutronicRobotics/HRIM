@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<topic name="id" type="service" fileName="ID" package="hrim_generic_srvs"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <response>
+    <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
+      <value></value>
+    </property>
+    <property name="device_name" type="string" description="sub-type">
+      <value></value>
+    </property>
+    <property name="vendor_id" type="uint32" description="vendor identifier">
+      <value></value>
+    </property>
+    <property name="product_id" type="uint32" description="part number">
+      <value></value>
+    </property>
+    <property name="instance_id" type="uint32" description="module unique identifier">
+      <value></value>
+    </property>
+    <property name="hrim_version" type="string" description="used hrim version">
+      <value></value>
+    </property>
+    <property name="hros_version" type="string" description="used h-ros version">
+      <value></value>
+    </property>
+  </response>
+</topic>

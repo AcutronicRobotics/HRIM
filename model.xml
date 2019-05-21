@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<composition name="defaultName">
+	<model type="sensor" subtype="lidar" path="models/sensor/lidar/lidar.xml">
+		<topic name="reconfiguration"/>
+		<param name="angular_velocity"/>
+		<param name="intensity"/>
+	</model>
+	<model type="sensor" subtype="camera" path="models/sensor/camera/camera.xml">
+		<topic name="audio_raw"/>
+		<topic name="compressed"/>
+	</model>
+</composition>

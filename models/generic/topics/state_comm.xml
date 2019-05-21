@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<topic name="state_comm" type="publish" fileName="StateCommunication" package="hrim_generic_msgs"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="header" type="header" fileName="Header" package="std_msgs">
+    <value></value>
+  </property>
+  <property name="comm_rate" type="double" unit="hertz" description="frequency at which the component is working">
+    <value></value>
+  </property>
+  <property name="size_msgs" type="double" unit="megabit" description="amount of megabits the component is sending">
+    <value></value>
+  </property>
+</topic>

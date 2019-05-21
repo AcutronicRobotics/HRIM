@@ -6,6 +6,7 @@ import shutil
 import pkg_resources
 from hrim.scripts import  ModuleCompiler, ModuleParser
 from hrim.scripts.classes import Module
+from hrim.scripts.utils import checkModuleFile, checkDependencies
 
 # locate all module models of the repository and return a list with their full path
 def findModels(dirName):
@@ -48,7 +49,7 @@ def main(args=None):
         description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
         formatter_class=argparse.RawTextHelpFormatter)
     argParser.add_argument(
-        'action', choices=['generate', 'compose', 'compile', 'list', 'clear'],
+        'action', choices=['generate', 'compose', 'compile', 'list', 'clear', 'check'],
         help='''Action to take:
 generate:
     generate the platform-specific implementation of the passed valid XML model.
@@ -183,13 +184,24 @@ Or the implementation to be deleted by the clear command:
 
             # else try to generate the implementation based on the passed file
             else:
-                module = parser.parseFile(uniquePath)
-                compiler.compileModule(module)
-                compiler.generateParameters()
-                print(
-                    "Succesfully generated "+args.platform+
-                    " implementation of "+module.name+" module."
-                )
+                # module = parser.parseFile(uniquePath)
+                # compiler.compileModule(module)
+                # compiler.generateParameters()
+                # print(
+                #     "Succesfully generated "+args.platform+
+                #     " implementation of "+module.name+" module."
+                # )
+
+                modules = checkModuleFile(parser, uniquePath, [])
+
+                for module in modules:
+                    compiler.compileModule(module)
+                    compiler.generateParameters()
+                    print(
+                        "Succesfully generated "+args.platform+
+                        " implementation of "+module.name+" module."
+                    )
+                    os.chdir(path)
 
         elif args.action == "compose":
             modules = []
@@ -291,6 +303,44 @@ Or the implementation to be deleted by the clear command:
                         print("Couldn't find passed directory for deletion.")
             else:
                 print("There is no implementation to delete (generated directory is empty).")
+        elif args.action == "check":
+            path = os.getcwd()
+            compiler = ModuleCompiler()
+            compiler.dataTypes = parser.getDataTypes(args.platform)
+            compiler.genPath = "generated"
+            genBase(parser, compiler, args)
+
+
+            fileList = findModels(os.path.join(path, "models"))
+
+            moduleList = []
+            for item in fileList:
+                moduleList = checkModuleFile(parser, item, moduleList)
+
+            for module in moduleList:
+                compiler.compileModule(module)
+                compiler.generateParameters()
+                print(
+                    "Succesfully generated "+args.platform+
+                    " implementation of "+module.name+" module."
+                )
+                os.chdir(path)
+            # path = os.getcwd()
+            # compiler = ModuleCompiler()
+            # compiler.dataTypes = parser.getDataTypes(args.platform)
+            # compiler.genPath = "generated"
+            # genBase(parser, compiler, args)
+            # modules = checkModuleFile(parser, uniquePath, [])
+            #
+            # for module in modules:
+            #     compiler.compileModule(module)
+            #     compiler.generateParameters()
+            #     print(
+            #         "Succesfully generated "+args.platform+
+            #         " implementation of "+module.name+" module."
+            #     )
+            #     os.chdir(path)
+
         else:
             print("Unknown command")
     except UnicodeDecodeError as ex:
@@ -299,7 +349,6 @@ Or the implementation to be deleted by the clear command:
     except Exception as ex:
         print("An error occurred during command execution")
         raise ex
-
 
 if __name__ == '__main__':
 

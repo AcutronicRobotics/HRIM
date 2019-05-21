@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<topic name="status" type="publish" fileName="Status" package="hrim_generic_msgs"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <property name="header" type="header" fileName="Header" package="std_msgs">
+    <value></value>
+  </property>
+  <property name="instance_id" type="uint32">
+    <value></value>
+  </property>
+  <property name="system_cpu" type="float32" unit="percentage" description="total cpu utilization">
+    <value></value>
+  </property>
+  <property name="core_temperature" type="float32" unit="celsius" description="cpu temperature">
+    <value></value>
+  </property>
+  <property name="system_ram_total" type="uint32" unit="megabyte" description="total ram">
+    <value></value>
+  </property>
+  <property name="system_ram_used" type="uint32" unit="megabyte" description="used ram">
+    <value></value>
+  </property>
+  <property name="system_ram_free" type="uint32" unit="megabyte" description="free ram">
+    <value></value>
+  </property>
+  <property name="system_io_in" type="float32" unit="kilobytes per second" description="disk input speed">
+    <value></value>
+  </property>
+  <property name="system_io_out" type="float32" unit="kilobytes per second" description="disk output speed">
+    <value></value>
+  </property>
+  <property name="system_ipv4_ip" type="string[]" unit="ip" description="ipv4 address">
+    <value></value>
+  </property>
+  <property name="system_ipv4_received" type="float32" unit="kilobytes per second" description="ipv4 received bandwidth">
+    <value></value>
+  </property>
+  <property name="system_ipv4_sent" type="float32" unit="kilobytes per second" description="ipv4 sent bandwidth">
+    <value></value>
+  </property>
+  <property name="ipv4_tcpsock" type="uint16" description="number of tcp active connections">
+    <value></value>
+  </property>
+  <property name="ipv4_tcppackets_received" type="float32" description="number of tcp received packages">
+    <value></value>
+  </property>
+  <property name="ipv4_tcppackets_sent" type="float32" description="number of tcp sent packages">
+    <value></value>
+  </property>
+  <property name="ipv4_tcp_errors" type="float32" description="number of tcp error packages">
+    <value></value>
+  </property>
+  <property name="ipv4_udppackets_received" type="float32" description="number of udp received packages">
+    <value></value>
+  </property>
+  <property name="ipv4_udppackets_sent" type="float32" description="number of udp sent packages">
+    <value></value>
+  </property>
+  <property name="ipv4_udp_errors" type="float32" description="number of udp error packages">
+    <value></value>
+  </property>
+  <property name="cpu_interrupts" type="float32">
+    <value></value>
+  </property>
+  <property name="cpu_context_switches" type="float32">
+    <value></value>
+  </property>
+  <property name="softnet_processed" type="uint32">
+    <value></value>
+  </property>
+  <property name="softnet_dropped" type="uint32">
+    <value></value>
+  </property>
+  <property name="softnet_squeezed" type="uint32">
+    <value></value>
+  </property>
+  <property name="softnet_received_rps" type="uint32">
+    <value></value>
+  </property>
+  <property name="softnet_flow_limit_count" type="uint32">
+    <value></value>
+  </property>
+  <property name="softirqs_hi" type="uint64">
+    <value></value>
+  </property>
+  <property name="softirqs_timer" type="uint64">
+    <value></value>
+  </property>
+  <property name="softirqs_net_tx" type="uint64">
+    <value></value>
+  </property>
+  <property name="softirqs_net_rx" type="uint64">
+    <value></value>
+  </property>
+  <property name="softirqs_block" type="uint64">
+    <value></value>
+  </property>
+  <property name="softirqs_irq_poll" type="uint64">
+    <value></value>
+  </property>
+  <property name="softirqs_tasklet" type="uint64">
+    <value></value>
+  </property>
+  <property name="softirqs_sched" type="uint64">
+    <value></value>
+  </property>
+  <property name="softirqs_hrtimer" type="uint64">
+    <value></value>
+  </property>
+  <property name="softirqs_rcu" type="uint64">
+    <value></value>
+  </property>
+  <property name="load1" type="float32">
+    <value></value>
+  </property>
+  <property name="load5" type="float32">
+    <value></value>
+  </property>
+  <property name="load15" type="float32">
+    <value></value>
+  </property>
+</topic>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<topic name="module_3d" type="service" fileName="Simulation3D" package="hrim_generic_srvs"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <response>
+    <property name="model_name" type="string" description="identifier name for the passed model">
+      <value></value>
+    </property>
+    <property name="model" type="byte[]" unit="stl" description=".stl of the component">
+      <value></value>
+    </property>
+  </response>
+</topic>

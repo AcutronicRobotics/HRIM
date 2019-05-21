@@ -185,9 +185,10 @@ class ModuleCompiler:
 
             if topic.type == "publish" or topic.type == "subscribe":
                 messages = True
-                self.processMessage(topic)
-                if self.base:
-                    self.baseFiles[self.msgPkgName].append(topic.fileName)
+                if topic.package is None or topic.package == self.msgPkgName:
+                    self.processMessage(topic)
+                    if self.base:
+                        self.baseFiles[self.msgPkgName].append(topic.fileName)
             else:
                 if topic.type == "service":
                     myDep = self.srvDeps
