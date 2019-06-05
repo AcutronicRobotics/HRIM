@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+
 cd /home/root/ros2_ws/src/hrim/installator
 pip3 install -r requirements.txt
 python3 setup.py install
@@ -15,4 +16,4 @@ fi
 hrim generate --platform ros2 all
 cd generated
 
-/bin/bash -c "source /opt/ros/crystal/setup.bash && colcon build --merge-install"
+/bin/bash -c "source /opt/ros/$ROS2_DISTRO/setup.bash && colcon build --merge-install"
