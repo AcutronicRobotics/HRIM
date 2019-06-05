@@ -5,7 +5,7 @@ LABEL maintainer="Asier Bilbao <asier at erlerobotics dot com>"
 # setup environment
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
-ENV ROS2_DISTRO crystal
+ENV ROS2_DISTRO dashing
 WORKDIR /home/root/ros2_ws
 COPY ./docker-entrypoint.sh /
 
@@ -27,7 +27,6 @@ RUN \
          wget \
          libopensplice69 \
          ros-$ROS2_DISTRO-ros-base \
-         ros-$ROS2_DISTRO-action-msgs \
          && rm -rf /var/lib/apt/lists/* \
          && pip3 install astroid==1.4.4 pylint==1.5.2 \
          && mkdir -p ros2_ws/src
