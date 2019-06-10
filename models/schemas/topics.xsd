@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="value" type="xs:string"/>
+  <xs:element name="property">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="value"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+      <xs:attribute type="xs:string" name="type" use="optional"/>
+      <xs:attribute type="xs:string" name="fileName" use="optional"/>
+      <xs:attribute type="xs:string" name="package" use="optional"/>
+      <xs:attribute type="xs:string" name="unit" use="optional"/>
+      <xs:attribute type="xs:string" name="description" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="topic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="property" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="name"/>
+      <xs:attribute type="xs:string" name="type"/>
+      <xs:attribute type="xs:string" name="description"/>
+      <xs:attribute type="xs:string" name="fileName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="topic"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
