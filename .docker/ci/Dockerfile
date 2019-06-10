@@ -1,34 +1,13 @@
-FROM ubuntu:bionic
+FROM ros:dashing
 
 LABEL maintainer="Asier Bilbao <asier at erlerobotics dot com>"
 
-# setup environment
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
 ENV ROS2_DISTRO dashing
 WORKDIR /home/root/ros2_ws
 COPY ./docker-entrypoint.sh /
 
 RUN \
-      echo 'Etc/UTC' > /etc/timezone \
-      && ln -s /usr/share/zoneinfo/Etc/UTC /etc/localtime \
-      && apt-get update -qq && apt-get install -qq -y tzdata dirmngr gnupg2 lsb-release curl \
-      # setup ros2 keys
-      && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
-      # setup sources.list
-      && echo "deb [arch=amd64,arm64] http://packages.ros.org/ros2/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list \
-      && apt-get update -qq && apt-get install -qq -y \
-         build-essential \
-         cmake \
-         git \
-         python3-colcon-common-extensions \
-         python3-pip \
-         python3-vcstool \
-         wget \
-         libopensplice69 \
-         ros-$ROS2_DISTRO-ros-base \
-         && rm -rf /var/lib/apt/lists/* \
-         && pip3 install astroid==1.4.4 pylint==1.5.2 \
-         && mkdir -p ros2_ws/src
+      pip3 install astroid==1.4.4 pylint==1.5.2 \
+      && mkdir -p ros2_ws/src
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
