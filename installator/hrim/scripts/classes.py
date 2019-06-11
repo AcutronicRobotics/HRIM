@@ -19,10 +19,10 @@ class Module:
         # list of the module's parameters
         self.params = []
 
-    def addTopic(self, topic):
+    def add_topic(self, topic):
         self.topics.append(topic)
 
-    def addParam(self, param):
+    def add_param(self, param):
         self.params.append(param)
 
 
@@ -51,13 +51,13 @@ class Topic:
         # the name of the interface's package of origin
         self.package = None
 
-    def addProp(self, property_to_add):
+    def add_prop(self, property_to_add):
         self.properties.append(property_to_add)
 
-    def addRes(self, response_to_add):
+    def add_res(self, response_to_add):
         self.response.append(response_to_add)
 
-    def addFeed(self, feedback_to_add):
+    def add_feed(self, feedback_to_add):
         self.feedback.append(feedback_to_add)
 
 
@@ -93,7 +93,7 @@ class Property:
         self.fileName = None
         self.package = None
 
-    def addProp(self, property_to_add):
+    def add_prop(self, property_to_add):
         self.properties.append(property_to_add)
 
 

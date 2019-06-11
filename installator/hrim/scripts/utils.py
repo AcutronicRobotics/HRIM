@@ -1,5 +1,5 @@
 # shorthand for tabulation
-def getTabs(num):
+def get_tabs(num):
     ret = ""
     for _ in range(num):
         ret += "\t"
