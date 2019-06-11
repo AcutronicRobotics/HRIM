@@ -344,10 +344,10 @@ class ModuleCompiler:
         pkgFind = ""
         pkgDep = ""
         for pkgName in self.msgDeps:
-            buildDeps = buildDeps + ("\n\t<build_depend>{}</build_depend>").format(pkgName)
-            execDeps = execDeps + ("\n\t<exec_depend>{}</exec_depend>").format(pkgName)
-            pkgFind = pkgFind + ("\nfind_package({} REQUIRED)").format(pkgName)
-            pkgDep = pkgDep + ("\n\t\t{}").format(pkgName)
+            buildDeps = buildDeps + "\n\t<build_depend>{}</build_depend>".format(pkgName)
+            execDeps = execDeps + "\n\t<exec_depend>{}</exec_depend>".format(pkgName)
+            pkgFind = pkgFind + "\nfind_package({} REQUIRED)".format(pkgName)
+            pkgDep = pkgDep + "\n\t\t{}".format(pkgName)
 
         # insert the package's name and description in package.xml's content
         msgPkg = pkgFile.replace("%PKGNAME%", self.msgPkgName)
@@ -404,10 +404,10 @@ class ModuleCompiler:
                 pkgFind = ""
                 pkgDep = ""
                 for dependency in self.srvDeps:
-                    buildDeps = buildDeps + ("\n\t<build_depend>{}</build_depend>").format(dependency)
-                    execDeps = execDeps + ("\n\t<exec_depend>{}</exec_depend>").format(dependency)
-                    pkgFind = pkgFind + ("\nfind_package({} REQUIRED)").format(dependency)
-                    pkgDep = pkgDep + ("\n\t\t{}").format(dependency)
+                    buildDeps = buildDeps + "\n\t<build_depend>{}</build_depend>".format(dependency)
+                    execDeps = execDeps + "\n\t<exec_depend>{}</exec_depend>".format(dependency)
+                    pkgFind = pkgFind + "\nfind_package({} REQUIRED)".format(dependency)
+                    pkgDep = pkgDep + "\n\t\t{}".format(dependency)
                 srvMakeFile = srvMakeFile.replace("%PKGFIND%", pkgFind)
                 srvMakeFile = srvMakeFile.replace("%PKGDEP%", "\n  DEPENDENCIES" + pkgDep)
                 srvPkg = srvPkg.replace("%PKGBUILD%", buildDeps)
@@ -452,10 +452,10 @@ class ModuleCompiler:
                 pkgFind = ""
                 pkgDep = ""
                 for dependency in self.actionDeps:
-                    buildDeps = buildDeps + ("\n\t<build_depend>{}</build_depend>").format(dependency)
-                    execDeps = execDeps + ("\n\t<exec_depend>{}</exec_depend>").format(dependency)
-                    pkgFind = pkgFind + ("\nfind_package({} REQUIRED)").format(dependency)
-                    pkgDep = pkgDep + ("\n\t\t{}").format(dependency)
+                    buildDeps = buildDeps + "\n\t<build_depend>{}</build_depend>".format(dependency)
+                    execDeps = execDeps + "\n\t<exec_depend>{}</exec_depend>".format(dependency)
+                    pkgFind = pkgFind + "\nfind_package({} REQUIRED)".format(dependency)
+                    pkgDep = pkgDep + "\n\t\t{}".format(dependency)
                 actionMakeFile = actionMakeFile.replace("%PKGFIND%", pkgFind)
                 actionMakeFile = actionMakeFile.replace("%PKGDEP%", "\n  DEPENDENCIES" + pkgDep)
                 actionPkg = actionPkg.replace("%PKGBUILD%", buildDeps)
