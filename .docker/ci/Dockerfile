@@ -8,6 +8,7 @@ COPY ./docker-entrypoint.sh /
 
 RUN \
       apt update -qq && apt install pep8 -y \
+      && pip3 install dfusexml \
       && mkdir -p ros2_ws/src
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
