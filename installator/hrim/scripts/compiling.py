@@ -9,16 +9,14 @@ class ModuleCompiler:
                 subMsg = ""
                 for subProp in prop.properties:
                     if (subProp.fileName is not None
-                            and (subProp.package is None or subProp.package == self.msgPkgName)
-                    ):
+                            and (subProp.package is None or subProp.package == self.msgPkgName)):
                         try:
                             self.processSubProperty(subProp, type)
-                        except:
-                            raise
+                        except Exception as e:
+                            raise e
                     else:
                         if (subProp.unit is not None and subProp.unit == "enum"
-                                and len(subProp.enumeration) > 0
-                        ):
+                                and len(subProp.enumeration) > 0):
                             # sort enumeration values for readability
                             for value in sorted(((v, k) for k, v in subProp.enumeration.items())):
                                 subMsg += subProp.type + " " + value[1] + "=" + str(value[0]) + "\n"
@@ -34,9 +32,9 @@ class ModuleCompiler:
                     textFile = open(subFileName, "w")
                     textFile.write(subMsg)
                     textFile.close()
-        except:
+        except Exception as e:
             print("Error while processing subproperty message: " + prop.fileName)
-            raise
+            raise e
 
     # separate the message generation for messages declared inside services
     def processMessage(self, topic):
@@ -70,8 +68,7 @@ class ModuleCompiler:
 
                         # check for enumeration types
                         if (prop.unit is not None and prop.unit == "enum"
-                                and len(prop.enumeration) > 0
-                        ):
+                                and len(prop.enumeration) > 0):
 
                             # sort enumeration values for readability
                             for value in sorted(((v, k) for k, v in prop.enumeration.items())):
@@ -97,9 +94,9 @@ class ModuleCompiler:
                     textFile = open(fileName, "w")
                     textFile.write(msg)
                     textFile.close()
-        except:
+        except Exception as e:
             print("Error while processing topic message: " + topic.fileName)
-            raise
+            raise e
 
     def formatProperty(self, prop, type):
         if prop.fileName is None:
@@ -110,7 +107,7 @@ class ModuleCompiler:
             else:
                 found = self.checkGenerated(prop.fileName, type)
                 if found:
-                    type = found + "/" + prop.fileName
+                    type = str(found) + "/" + prop.fileName
                 else:
                     type = self.msgPkgName + "/" + prop.fileName
         length = prop.length if prop.length is not None else ""
@@ -128,15 +125,15 @@ class ModuleCompiler:
             if message in self.ownFiles:
                 res = self.msgPkgName
 
-        if (res != False and res != self.msgPkgName
-                and type in ["publish", "subscribe"] and res not in self.msgDeps
-        ):
+        if (res and res != self.msgPkgName
+                and type in ["publish", "subscribe"] and res not in self.msgDeps):
             self.msgDeps.append(res)
 
         return res
 
     def compileModule(self, module, base=False):
-        global actionPkgName, actionFolderPath, srvPkgName, srvFolderPath, shortType, myDep, folderPath, pkgName, myFiles
+        global actionPkgName, actionFolderPath, srvPkgName, srvFolderPath, shortType, myDep, folderPath, pkgName, \
+            myFiles
         self.base = base
         messages = False
         services = False
@@ -158,8 +155,7 @@ class ModuleCompiler:
             self.baseFiles[self.msgPkgName] = []
         else:
             if (module.type in
-                    ["actuator", "sensor", "communication", "cognition", "ui", "power", "composite"]
-            ):
+                    ["actuator", "sensor", "communication", "cognition", "ui", "power", "composite"]):
                 self.msgPkgName = "hrim_" + module.type + "_" + module.name + "_msgs"
             else:
                 self.msgPkgName = "hrim_" + module.name + "_msgs"
@@ -198,8 +194,7 @@ class ModuleCompiler:
                     if (self.base or module.type not in
                             ["actuator", "sensor", "communication",
                              "cognition", "ui", "power", "composite"
-                             ]
-                    ):
+                             ]):
                         srvPkgName = "hrim_" + module.name + "_" + shortType + "s"
                     else:
                         srvPkgName = "hrim_" + module.type + "_" + module.name + "_" + shortType + "s"
@@ -213,8 +208,7 @@ class ModuleCompiler:
                     if (self.base or module.type not in
                             ["actuator", "sensor", "communication",
                              "cognition", "ui", "power", "composite"
-                             ]
-                    ):
+                             ]):
                         actionPkgName = "hrim_" + module.name + "_" + shortType + "s"
                     else:
                         actionPkgName = "hrim_" + module.type + "_" + module.name + "_" + shortType + "s"
@@ -223,8 +217,7 @@ class ModuleCompiler:
                     folderPath = actionFolderPath
                 # check if file has already been generated
                 if (topic.fileName not in myFiles
-                        and (topic.package is None or topic.package == pkgName)
-                ):
+                        and (topic.package is None or topic.package == pkgName)):
 
                     # if the package directories don't exist, create them
                     if not os.path.exists(folderPath):
@@ -241,15 +234,13 @@ class ModuleCompiler:
                     for prop in topic.properties:
 
                         if (prop.fileName is not None and
-                                (prop.package is None or prop.package == self.msgPkgName)
-                        ):
+                                (prop.package is None or prop.package == self.msgPkgName)):
                             os.chdir(cwd)
                             self.processMessage(prop)
                             os.chdir(folderPath)
                         # check for enumeration types
                         if (prop.unit is not None and prop.unit == "enum"
-                                and len(prop.enumeration) > 0
-                        ):
+                                and len(prop.enumeration) > 0):
 
                             # sort enumeration values for readability
                             for value in sorted(((v, k) for k, v in prop.enumeration.items())):
@@ -267,16 +258,14 @@ class ModuleCompiler:
 
                     for prop in topic.response:
                         if (prop.fileName is not None
-                                and (prop.package is None or prop.package == self.msgPkgName)
-                        ):
+                                and (prop.package is None or prop.package == self.msgPkgName)):
                             os.chdir(cwd)
                             self.processMessage(prop)
                             os.chdir(folderPath)
 
                         # check for enumeration types
                         if (prop.unit is not None and prop.unit == "enum"
-                                and len(prop.enumeration) > 0
-                        ):
+                                and len(prop.enumeration) > 0):
 
                             # sort enumeration values for readability
                             for value in sorted(((v, k) for k, v in prop.enumeration.items())):
@@ -295,16 +284,14 @@ class ModuleCompiler:
 
                         for prop in topic.feedback:
                             if (prop.fileName is not None
-                                    and (prop.package is None or prop.package == self.msgPkgName)
-                            ):
+                                    and (prop.package is None or prop.package == self.msgPkgName)):
                                 os.chdir(cwd)
                                 self.processMessage(prop)
                                 os.chdir(folderPath)
 
                             # check for enumeration types
                             if (prop.unit is not None and prop.unit == "enum"
-                                    and len(prop.enumeration) > 0
-                            ):
+                                    and len(prop.enumeration) > 0):
 
                                 # sort enumeration values for readability
                                 for value in sorted(((v, k) for k, v in prop.enumeration.items())):

@@ -129,8 +129,8 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                            "Succesfully generated " + args.platform +
-                            " implementation of " + module.name + " module."
+                        "Succesfully generated " + args.platform +
+                        " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
 
@@ -141,8 +141,8 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                            "Succesfully generated " + args.platform +
-                            " implementation of " + module.name + " module."
+                        "Succesfully generated " + args.platform +
+                        " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
 
@@ -153,8 +153,8 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                            "Succesfully generated " + args.platform +
-                            " implementation of " + module.name + " module."
+                        "Succesfully generated " + args.platform +
+                        " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
 
@@ -165,8 +165,8 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                            "Succesfully generated " + args.platform +
-                            " implementation of " + module.name + " module."
+                        "Succesfully generated " + args.platform +
+                        " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
 
@@ -177,8 +177,8 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                            "Succesfully generated " + args.platform +
-                            " implementation of " + module.name + " module."
+                        "Succesfully generated " + args.platform +
+                        " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
 
@@ -188,8 +188,8 @@ Or the implementation to be deleted by the clear command:
                 compiler.compileModule(module)
                 compiler.generateParameters()
                 print(
-                        "Succesfully generated " + args.platform +
-                        " implementation of " + module.name + " module."
+                    "Succesfully generated " + args.platform +
+                    " implementation of " + module.name + " module."
                 )
 
         elif args.action == "compose":
@@ -208,8 +208,7 @@ Or the implementation to be deleted by the clear command:
                         path = properList[0].replace(os.getcwd() + "/", "")
                         paths.append(path)
                         print(
-                            "Adding {} defined at {} to the composition.".
-                                format(module.name, path)
+                            "Adding {} defined at {} to the composition.".format(module.name, path)
                         )
                     else:
                         print("More than one model found by handle '{}':".format(eachPath))
@@ -223,10 +222,7 @@ Or the implementation to be deleted by the clear command:
                         modules.append(module)
                         path = fullPath.replace(os.getcwd() + "/", "")
                         paths.append(path)
-                        print(
-                            "Adding {} defined at {} to the composition.".
-                                format(module.name, path)
-                        )
+                        print("Adding {} defined at {} to the composition.".format(module.name, path))
                     else:
                         print("No model found by handle '{}'.".format(eachPath))
                         print("Module composition cancelled.")
@@ -266,8 +262,7 @@ Or the implementation to be deleted by the clear command:
                     for path in sorted(pathList):
                         if (path in
                                 ["actuator", "sensor", "communication",
-                                 "cognition", "ui", "power", "composite"]
-                        ):
+                                 "cognition", "ui", "power", "composite"]):
                             subPathList = os.listdir(os.path.join("generated", path))
                             for subPath in sorted(subPathList):
                                 print(path + "/" + subPath)
