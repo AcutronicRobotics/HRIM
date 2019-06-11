@@ -21,11 +21,9 @@ class ModuleParser:
             base_path = os.path.abspath(os.getcwd())
 
             # parse the mapping file
-            print(os.path.join(os.getcwd(), "models", "dataMapping.xml"))
             data_tree = parse_xml((os.path.join(os.getcwd(), "models",
                                                 "dataMapping.xml")))
 
-            print(data_tree)
             data_root = data_tree.getroot()
 
             # return to the previous path
