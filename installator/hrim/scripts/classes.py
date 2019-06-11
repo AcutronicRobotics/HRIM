@@ -7,11 +7,11 @@ class Composition:
 # Main data structure, contains both topics and parameters
 # Defines a node's structure
 class Module:
-    def __init__(self, name, type, description):
+    def __init__(self, name, module_type, description):
         # module name (i.e. camera)
         self.name = name
         # module categorization (i.e. sensor)
-        self.type = type
+        self.type = module_type
         # module short description
         self.desc = description
         # list of the module's topics
@@ -29,11 +29,11 @@ class Module:
 # Data structure for node topics, contains properties
 # Defines the first-level communication artifacts of a module
 class Topic:
-    def __init__(self, name="", type="", mandatory=""):
+    def __init__(self, name="", topic_type="", mandatory=""):
         # topic name (i.e. status)
         self.name = name
         # topic type (publish, subscribe, service...)
-        self.type = type
+        self.type = topic_type
         # whether the topic must exist on the module
         self.mandatory = mandatory
         # a list of each of the topic's values
@@ -51,14 +51,14 @@ class Topic:
         # the name of the interface's package of origin
         self.package = None
 
-    def addProp(self, property):
-        self.properties.append(property)
+    def addProp(self, property_to_add):
+        self.properties.append(property_to_add)
 
-    def addRes(self, response):
-        self.response.append(response)
+    def addRes(self, response_to_add):
+        self.response.append(response_to_add)
 
-    def addFeed(self, feedback):
-        self.feedback.append(feedback)
+    def addFeed(self, feedback_to_add):
+        self.feedback.append(feedback_to_add)
 
 
 # Data structure for topic properties, can contain subproperties
@@ -66,11 +66,11 @@ class Topic:
 # Defines each value inside a topic/artifact property
 # (property containing other properties)
 class Property:
-    def __init__(self, name="", type=None):
+    def __init__(self, name="", property_type=None):
         # property name (i.e. device_name)
         self.name = name
         # property data type (i.e. float64)
-        self.type = type
+        self.type = property_type
         # an artifact property's own property list
         # (no use if the property's type is a base data type)
         self.properties = []
@@ -93,17 +93,17 @@ class Property:
         self.fileName = None
         self.package = None
 
-    def addProp(self, property):
-        self.properties.append(property)
+    def addProp(self, property_to_add):
+        self.properties.append(property_to_add)
 
 
 # Data structure for node parameters
 class Parameter:
-    def __init__(self, name, type, mandatory, unit=None):
+    def __init__(self, name, parameter_type, mandatory, unit=None):
         # parameter name (i.e. frame_id)
         self.name = name
         # parameter data type (i.e. string)
-        self.type = type
+        self.type = parameter_type
         # whether the parameter must exist on the module
         self.mandatory = mandatory
         # the unit the parameter represents (i.e. radian), optional

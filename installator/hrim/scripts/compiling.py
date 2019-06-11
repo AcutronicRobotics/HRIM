@@ -3,16 +3,16 @@ from .utils import getTabs
 
 
 class ModuleCompiler:
-    def processSubProperty(self, prop, type):
+    def processSubProperty(self, prop, sub_type):
         try:
-            if self.checkGenerated(prop.fileName, type) is False:
+            if self.checkGenerated(prop.fileName, sub_type) is False:
                 subMsg = ""
                 for subProp in prop.properties:
                     if (subProp.fileName is not None and
                             (subProp.package is None or
                              subProp.package == self.msgPkgName)):
                         try:
-                            self.processSubProperty(subProp, type)
+                            self.processSubProperty(subProp, sub_type)
                         except Exception as e:
                             raise e
                     else:
@@ -24,7 +24,7 @@ class ModuleCompiler:
                                                  subProp.enumeration.items())):
                                 subMsg += subProp.type + " " + value[1] + "=" \
                                           + str(value[0]) + "\n"
-                    subMsg += self.formatProperty(subProp, type)
+                    subMsg += self.formatProperty(subProp, sub_type)
                 subFileName = prop.fileName + ".msg"
 
                 if len(subMsg) > 0:
@@ -107,36 +107,36 @@ class ModuleCompiler:
             print("Error while processing topic message: " + topic.fileName)
             raise e
 
-    def formatProperty(self, prop, type):
+    def formatProperty(self, prop, format_type):
         if prop.fileName is None:
-            type = self.dataTypes[prop.type]
+            format_type = self.dataTypes[prop.type]
         else:
             if prop.package is not None:
-                type = prop.package + "/" + prop.fileName
+                format_type = prop.package + "/" + prop.fileName
             else:
-                found = self.checkGenerated(prop.fileName, type)
+                found = self.checkGenerated(prop.fileName, format_type)
                 if found:
-                    type = str(found) + "/" + prop.fileName
+                    format_type = str(found) + "/" + prop.fileName
                 else:
-                    type = self.msgPkgName + "/" + prop.fileName
+                    format_type = self.msgPkgName + "/" + prop.fileName
         length = prop.length if prop.length is not None else ""
-        ret = type
+        ret = format_type
         ret += ("[{}]".format(length) if prop.array else "")
         ret += " " + prop.name + ((" # " + prop.desc) if prop.desc is not None
                                   else "") + "\n\n"
         return ret
 
-    def checkGenerated(self, message, type):
+    def checkGenerated(self, message, check_type):
         res = False
-        for key, list in self.baseFiles.items():
-            if message in list:
+        for key, items_list in self.baseFiles.items():
+            if message in items_list:
                 res = key
         if res is False:
             if message in self.ownFiles:
                 res = self.msgPkgName
 
         if (res and res != self.msgPkgName and
-                type in ["publish", "subscribe"] and
+                check_type in ["publish", "subscribe"] and
                 res not in self.msgDeps):
             self.msgDeps.append(res)
 
@@ -583,8 +583,8 @@ class ModuleCompiler:
             for param in module.params:
                 if not param.mandatory:
                     ownParams.append(param)
-            ownTopics.sort(key=lambda topic: topic.name)
-            ownParams.sort(key=lambda param: param.name)
+            ownTopics.sort(key=lambda topic_name: topic_name.name)
+            ownParams.sort(key=lambda param_name: param_name.name)
             for topic in ownTopics:
                 strTopics = strTopics + (getTabs(2)+"<topic name=\"{}\"/>\n") \
                     .format(topic.name)

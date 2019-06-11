@@ -46,14 +46,14 @@ class ModuleParser:
 
     # check for value type, else all values'll be strings
     @staticmethod
-    def processValue(value, type):
+    def processValue(value, pocess_value_type):
         if value is None or len(value) == 0:
             return None
         # if numeric with no decimals (bool would either be 0 or 1)
-        if type in ["int", "uint", "bool"]:
+        if pocess_value_type in ["int", "uint", "bool"]:
             return int(value)
         # if numeric with decimals
-        elif type in ["float", "double"]:
+        elif pocess_value_type in ["float", "double"]:
             return float(value)
         # else return the value without modifying, it's treated as a string
         else:
@@ -80,44 +80,45 @@ class ModuleParser:
         return top
 
     # property and subproperty recursive parsing and processing
-    def processProperty(self, property):
-        if "type" in property.attrib:
-            type = property.attrib.get("type")
+    def processProperty(self, process_property):
+        if "type" in process_property.attrib:
+            type_list = process_property.attrib.get("type")
 
             # check for array declaration in type
-            if re.search(r"\[.*\]", type):
-                prop = Property(property.attrib.get("name"), re.sub(r"\[.*\]",
-                                                                    "", type))
+            if re.search(r"\[.*\]", type_list):
+                prop = Property(process_property.attrib.get("name"),
+                                re.sub(r"\[.*\]", "", type_list))
                 prop.array = True
 
                 # check for array length if specified
-                matches = re.finditer(r"\[\D*(\d+)\]", type)
+                matches = re.finditer(r"\[\D*(\d+)\]", type_list)
                 for i, match in enumerate(matches):
                     prop.length = int(match.group(1))
             else:
-                prop = Property(property.attrib.get("name"), type)
+                prop = Property(process_property.attrib.get("name"), type_list)
         else:
-            prop = Property(property.attrib.get("name"))
-        if "unit" in property.attrib:
-            prop.unit = property.attrib.get("unit")
+            prop = Property(process_property.attrib.get("name"))
+        if "unit" in process_property.attrib:
+            prop.unit = process_property.attrib.get("unit")
 
             # check for enumeration values
-            if prop.unit == "enum" and "enum" in property.attrib:
-                prop.enumeration = json.loads(property.attrib.get("enum"))
-        if "description" in property.attrib:
-            prop.desc = property.attrib.get("description")
+            if prop.unit == "enum" and "enum" in process_property.attrib:
+                prop.enumeration = json.loads(process_property.attrib
+                                              .get("enum"))
+        if "description" in process_property.attrib:
+            prop.desc = process_property.attrib.get("description")
 
-        if "fileName" in property.attrib:
-            prop.fileName = property.attrib.get("fileName")
+        if "fileName" in process_property.attrib:
+            prop.fileName = process_property.attrib.get("fileName")
 
-        if "package" in property.attrib:
-            prop.package = property.attrib.get("package")
+        if "package" in process_property.attrib:
+            prop.package = process_property.attrib.get("package")
 
         # check for subproperties
-        if any(x.tag == "property" for x in property):
+        if any(x.tag == "property" for x in process_property):
 
             # process subproperties
-            for subProp in property:
+            for subProp in process_property:
                 if subProp.tag == "property":
                     prop.addProp(self.processProperty(subProp))
 
@@ -132,7 +133,7 @@ class ModuleParser:
                 if prop.length is not None:
                     value = [None] * prop.length
                     i = 0
-                    for tag in property:
+                    for tag in process_property:
                         if tag.tag == "value" and i < prop.length:
                             value[i] = tag.text
                             i += 1
@@ -140,13 +141,13 @@ class ModuleParser:
                 # else simply append value to the array
                 else:
                     value = []
-                    for tag in property:
+                    for tag in process_property:
                         if tag.tag == "value":
                             value.append(tag.text)
 
             # else process a single value
             else:
-                value = property[0].text
+                value = process_property[0].text
             prop.value = value
         return prop
 
