@@ -3,6 +3,16 @@ from .utils import get_tabs
 
 
 class ModuleCompiler:
+    actionPkgName = None
+    actionFolderPath = None
+    srv_pkg_name = None
+    srv_folder_path = None
+    short_type = None
+    my_dep = None
+    folderPath = None
+    pkg_name = None
+    my_files = None
+
     def process_sub_property(self, prop, sub_type):
         try:
             if self.check_generated(prop.fileName, sub_type) is False:
@@ -143,8 +153,8 @@ class ModuleCompiler:
         return res
 
     def compile_module(self, module, base=False):
-        global actionPkgName, actionFolderPath, srvPkgName, srvFolderPath, \
-            shortType, myDep, folderPath, pkgName, myFiles
+        global my_files, actionPkgName, actionFolderPath, srv_pkg_name, \
+            srv_folder_path, short_type, my_dep, folderPath, pkg_name, my_files
         self.base = base
         messages = False
         services = False
@@ -201,42 +211,42 @@ class ModuleCompiler:
                     self.baseFiles[self.msgPkgName].append(topic.fileName)
             else:
                 if topic.type == "service":
-                    myDep = self.srvDeps
-                    myFiles = srv_files
-                    shortType = "srv"
+                    my_dep = self.srvDeps
+                    my_files = srv_files
+                    short_type = "srv"
                     if (self.base or module.type not in
                             ["actuator", "sensor", "communication",
                              "cognition", "ui", "power", "composite"
                              ]):
-                        srvPkgName = "hrim_" + module.name + "_" + shortType \
-                                     + "s"
+                        srv_pkg_name = "hrim_" + module.name + "_" + \
+                                       short_type + "s"
                     else:
-                        srvPkgName = "hrim_" + module.type + "_" \
-                                     + module.name + "_" + shortType + "s"
-                    pkgName = srvPkgName
-                    srvFolderPath = os.path.join(os.getcwd(), srvPkgName,
-                                                 shortType)
-                    folderPath = srvFolderPath
+                        srv_pkg_name = "hrim_" + module.type + "_" \
+                                       + module.name + "_" + short_type + "s"
+                    pkg_name = srv_pkg_name
+                    srv_folder_path = os.path.join(os.getcwd(), srv_pkg_name,
+                                                   short_type)
+                    folderPath = srv_folder_path
                 if topic.type == "action":
-                    myDep = self.actionDeps
-                    myFiles = action_files
-                    shortType = "action"
+                    my_dep = self.actionDeps
+                    my_files = action_files
+                    short_type = "action"
                     if (self.base or module.type not in
                             ["actuator", "sensor", "communication",
                              "cognition", "ui", "power", "composite"
                              ]):
                         actionPkgName = "hrim_" + module.name + "_" \
-                                        + shortType + "s"
+                                        + short_type + "s"
                     else:
                         actionPkgName = "hrim_" + module.type + "_" \
-                                        + module.name + "_" + shortType + "s"
-                    pkgName = actionPkgName
+                                        + module.name + "_" + short_type + "s"
+                    pkg_name = actionPkgName
                     actionFolderPath = os.path.join(os.getcwd(), actionPkgName,
-                                                    shortType)
+                                                    short_type)
                     folderPath = actionFolderPath
                 # check if file has already been generated
-                if (topic.fileName not in myFiles and
-                        (topic.package is None or topic.package == pkgName)):
+                if (topic.fileName not in my_files and
+                        (topic.package is None or topic.package == pkg_name)):
 
                     # if the package directories don't exist, create them
                     if not os.path.exists(folderPath):
@@ -273,8 +283,8 @@ class ModuleCompiler:
                         file_content += self.format_property(prop, topic.type)
 
                         if prop.package is not None:
-                            if prop.package not in myDep:
-                                myDep.append(prop.package)
+                            if prop.package not in my_dep:
+                                my_dep.append(prop.package)
 
                     file_content += "---\n"
 
@@ -301,8 +311,8 @@ class ModuleCompiler:
                         file_content += self.format_property(prop, topic.type)
 
                         if prop.package is not None:
-                            if prop.package not in myDep:
-                                myDep.append(prop.package)
+                            if prop.package not in my_dep:
+                                my_dep.append(prop.package)
 
                     if topic.type == "action":
                         file_content += "---\n"
@@ -334,16 +344,16 @@ class ModuleCompiler:
                                                                  topic.type)
 
                             if prop.package is not None:
-                                if prop.package not in myDep:
-                                    myDep.append(prop.package)
+                                if prop.package not in my_dep:
+                                    my_dep.append(prop.package)
 
                     # generate each .action file and add it to the list
                     if topic.fileName is None:
-                        file_name = topic.name.title() + "." + shortType
-                        myFiles.append(topic.name.title())
+                        file_name = topic.name.title() + "." + short_type
+                        my_files.append(topic.name.title())
                     else:
-                        file_name = topic.fileName + "." + shortType
-                        myFiles.append(topic.fileName)
+                        file_name = topic.fileName + "." + short_type
+                        my_files.append(topic.fileName)
 
                     text_file = open(file_name, "w")
                     text_file.write(file_content)
@@ -363,15 +373,15 @@ class ModuleCompiler:
         exec_deps = ""
         pkg_find = ""
         pkg_dep = ""
-        for pkgName in self.msgDeps:
+        for pkg_name in self.msgDeps:
             build_deps = build_deps + "\n\t<build_depend>{}</build_depend>" \
-                .format(pkgName)
+                .format(pkg_name)
             exec_deps = exec_deps + "\n\t<exec_depend>{}</exec_depend>" \
-                .format(pkgName)
+                .format(pkg_name)
             pkg_find = pkg_find + "\nfind_package({} REQUIRED)" \
-                .format(pkgName)
+                .format(pkg_name)
             pkg_dep = pkg_dep + "\n\t\t{}" \
-                .format(pkgName)
+                .format(pkg_name)
 
         # insert the package's name and description in package.xml's content
         msg_pkg = pkg_file.replace("%PKGNAME%", self.msgPkgName)
@@ -413,12 +423,12 @@ class ModuleCompiler:
 
         # if the package has services
         if services:
-            srv_files = os.listdir(srvFolderPath)
+            srv_files = os.listdir(srv_folder_path)
             # reposition ourselves on the package's root
-            os.chdir(srvFolderPath[:-4])
+            os.chdir(srv_folder_path[:-4])
 
-            srv_make_file = make_file.replace("%PKGNAME%", srvPkgName)
-            srv_pkg = pkg_file.replace("%PKGNAME%", srvPkgName)
+            srv_make_file = make_file.replace("%PKGNAME%", srv_pkg_name)
+            srv_pkg = pkg_file.replace("%PKGNAME%", srv_pkg_name)
 
             srv_pkg = srv_pkg.replace("%PKGDESC%", module.desc)
 
