@@ -30,6 +30,8 @@ function validateSchemas()
     done
     echo -e "${RED}Number of fails: ${#ERROR_XML[@]}${RESET}"
     exit 1
+  else
+    echo -e "${CYAN}All xml files validated!${RESET}"
   fi
 }
 
