@@ -3,7 +3,7 @@
 export RESET="\e[0m"
 export CYAN="\e[36m"
 export RED="\e[31m"
-export BOLD"\e[1m"
+export BOLD"=\e[1m"
 WS_PATH="/home/root/ros2_ws"
 HRIM_FULL_PATH="/home/root/ros2_ws/src/hrim"
 INSTALLATOR_PATH="${HRIM_FULL_PATH}/installator"
@@ -38,7 +38,7 @@ function validateSchemas()
 
 function qaCode()
 {
-  echo -e "${CYAN}Linter checks for python code, using: pep8 ${BOLD}`pep8 --version`${reset}"
+  echo -e "${CYAN}Linter checks for python code, using: pep8 ${BOLD}`pep8 --version`${RESET}"
   pep8 ${INSTALLATOR_PATH}/hrim/
   result=$?
   if [ $result -ne 0 ]; then
@@ -77,7 +77,7 @@ function generatePackages()
 
 function compileWS()
 {
-  echo -e "${CYAN}Compiling the work space for HRIM!{RESET}"
+  echo -e "${CYAN}Compiling the work space for HRIM!${RESET}"
   source ${ROS2_SOURCE}
   cd ${WS_PATH}
   colcon build --merge-install
