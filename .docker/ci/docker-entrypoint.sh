@@ -38,7 +38,7 @@ function validateSchemas()
 
 function qaCode()
 {
-  echo -e "${CYAN}Linter checks for python code, using: pep8 ${BOLD}`pep8 --version`${RESET}"
+  echo -e "${CYAN}Linter checks for python code, using: pep8 ${BOLD}$(pep8 --version)${RESET}"
   pep8 ${INSTALLATOR_PATH}/hrim/
   result=$?
   if [ $result -ne 0 ]; then
