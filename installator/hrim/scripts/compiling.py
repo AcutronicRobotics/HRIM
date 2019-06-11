@@ -18,7 +18,7 @@ class ModuleCompiler:
                     else:
                         if (subProp.unit is not None and
                                 subProp.unit == "enum" and
-                                len(subProp.enumeration) > 0):
+                                subProp.enumeration):
                             # sort enumeration values for readability
                             for value in sorted(((v, k) for k, v in
                                                  subProp.enumeration.items())):
@@ -27,7 +27,7 @@ class ModuleCompiler:
                     sub_msg += self.format_property(subProp, sub_type)
                 sub_file_name = prop.fileName + ".msg"
 
-                if len(sub_msg) > 0:
+                if sub_msg:
                     if self.base:
                         self.baseFiles[self.msgPkgName].append(prop.fileName)
 
@@ -61,7 +61,7 @@ class ModuleCompiler:
                 msg = ""
 
                 # check for an overall message description
-                if topic.desc is not None and len(topic.desc) > 0:
+                if topic.desc is not None and topic.desc:
                     msg += "# " + topic.desc + "\n\n"
 
                 for prop in topic.properties:
@@ -75,7 +75,7 @@ class ModuleCompiler:
 
                         # check for enumeration types
                         if (prop.unit is not None and prop.unit == "enum" and
-                                len(prop.enumeration) > 0):
+                                prop.enumeration):
 
                             # sort enumeration values for readability
                             for value in sorted(((v, k) for k, v
@@ -99,7 +99,7 @@ class ModuleCompiler:
                     file_name = topic.fileName + ".msg"
                     self.ownFiles.append(topic.fileName)
 
-                if len(msg) > 0:
+                if msg:
                     text_file = open(file_name, "w")
                     text_file.write(msg)
                     text_file.close()
@@ -247,7 +247,7 @@ class ModuleCompiler:
                     file_content = ""
 
                     # check for an overall file description
-                    if topic.desc is not None and len(topic.desc) > 0:
+                    if topic.desc is not None and topic.desc:
                         file_content += "# " + topic.desc + "\n\n"
 
                     for prop in topic.properties:
@@ -260,7 +260,7 @@ class ModuleCompiler:
                             os.chdir(folderPath)
                         # check for enumeration types
                         if (prop.unit is not None and prop.unit == "enum" and
-                                len(prop.enumeration) > 0):
+                                prop.enumeration):
 
                             # sort enumeration values for readability
                             for value in sorted(((v, k) for k, v
@@ -288,7 +288,7 @@ class ModuleCompiler:
 
                         # check for enumeration types
                         if (prop.unit is not None and prop.unit == "enum" and
-                                len(prop.enumeration) > 0):
+                                prop.enumeration):
 
                             # sort enumeration values for readability
                             for value in sorted(((v, k) for k, v
@@ -318,7 +318,7 @@ class ModuleCompiler:
                             # check for enumeration types
                             if (prop.unit is not None and
                                     prop.unit == "enum" and
-                                    len(prop.enumeration) > 0):
+                                    prop.enumeration):
 
                                 # sort enumeration values for readability
                                 for value in sorted(((v, k) for k, v
@@ -383,7 +383,7 @@ class ModuleCompiler:
         msg_make_file = make_file.replace("%PKGNAME%", self.msgPkgName)
         msg_make_file = msg_make_file.replace("%PKGFIND%", pkg_find)
 
-        if len(pkg_dep) > 0:
+        if pkg_dep:
             pkg_dep = "\n\tDEPENDENCIES" + pkg_dep
 
         msg_make_file = msg_make_file.replace("%PKGDEP%", pkg_dep)
@@ -422,7 +422,7 @@ class ModuleCompiler:
 
             srv_pkg = srv_pkg.replace("%PKGDESC%", module.desc)
 
-            if len(self.srvDeps) > 0:
+            if self.srvDeps:
                 build_deps = ""
                 exec_deps = ""
                 pkg_find = ""
@@ -476,7 +476,7 @@ class ModuleCompiler:
 
             action_pkg = action_pkg.replace("%PKGDESC%", module.desc)
 
-            if len(self.actionDeps) > 0:
+            if self.actionDeps:
                 build_deps = ""
                 exec_deps = ""
                 pkg_find = ""
@@ -544,21 +544,21 @@ class ModuleCompiler:
                 opt_params += (str(param.value) if param.value is not None else
                                "") + "\n\n"
 
-        if len(man_params) > 0:
+        if man_params:
             self.manParams = self.manParams + module.name + ":\n" + man_params
 
-        if len(opt_params) > 0:
+        if opt_params:
             self.optParams = self.optParams + module.name + ":\n" + opt_params
 
         os.chdir(cwd)
 
     def generate_parameters(self):
-        if len(self.manParams) > 0:
+        if self.manParams:
             params = open("mandatory_parameters.yaml", "w")
             params.write(self.manParams)
             params.close()
             self.manParams = ""
-        if len(self.optParams) > 0:
+        if self.optParams:
             params = open("optional_parameters.yaml", "w")
             params.write(self.optParams)
             params.close()

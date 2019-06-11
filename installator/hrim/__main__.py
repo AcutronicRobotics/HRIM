@@ -276,7 +276,7 @@ Or the implementation to be deleted by the clear command:
                           path_list[-1].replace('.xml', ""))
             elif unique_path == "implementations":
                 path_list = os.listdir("generated")
-                if len(path_list) > 0:
+                if path_list:
                     for path in sorted(path_list):
                         if (path in
                                 ["actuator", "sensor", "communication",
@@ -290,7 +290,7 @@ Or the implementation to be deleted by the clear command:
                 else:
                     print("There's no generated implementations.")
         elif args.action == "clear":
-            if len(os.listdir("generated")) > 0:
+            if os.listdir("generated"):
                 if unique_path == "all":
                     del_dirs = os.listdir("generated")
                     for delPath in sorted(del_dirs):

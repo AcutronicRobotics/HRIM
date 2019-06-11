@@ -47,7 +47,7 @@ class ModuleParser:
     # check for value type, else all values'll be strings
     @staticmethod
     def process_value(value, process_value_type):
-        if value is None or len(value) == 0:
+        if value is None or not value:
             return None
         # if numeric with no decimals (bool would either be 0 or 1)
         if process_value_type in ["int", "uint", "bool"]:
