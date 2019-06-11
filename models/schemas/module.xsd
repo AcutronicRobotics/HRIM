@@ -42,10 +42,10 @@
    </xsd:complexType>
 
   <xsd:complexType name="topicType">
-    <xsd:choice>
-      <xsd:element name="property" type="propertyType" maxOccurs="unbounded"/>
-      <xsd:element name="response" type="responseType"/>
-    </xsd:choice>
+    <xsd:sequence>
+      <xsd:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="response" type="responseType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
     <xsd:attribute name="name" type="xsd:string" use="required"/>
     <xsd:attribute name="type" type="topicTypeType" use="required"/>
     <xsd:attribute name="description" type="xsd:string"/>
@@ -69,9 +69,10 @@
   </xsd:complexType>
 
   <xsd:complexType name="responseType">
-    <xsd:choice>
+    <xsd:sequence>
       <xsd:element name="property" type="propertyType" maxOccurs="unbounded"/>
-    </xsd:choice>
+      <xsd:element name="response" type="responseType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
   </xsd:complexType>
 
   <xsd:simpleType name="moduleTypeType">
