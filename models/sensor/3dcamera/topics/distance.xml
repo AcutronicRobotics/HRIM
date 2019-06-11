@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="distance" type="publish" description="distance from the object" fileName="Distance">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="range_min" type="float32" unit="metre" description="minimum range value">
-      <value></value>
+        <value/>
     </property>
     <property name="range_max" type="float32" unit="metre" description="maximum range value">
-      <value></value>
+        <value/>
     </property>
     <property name="time_measurements" type="float32" unit="second" description="time between measurements">
-      <value></value>
+        <value/>
     </property>
     <property name="distance" type="float32" unit="metre" description="range data">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="status_battery" type="publish" description="status of the battery" fileName="BatteryStatus">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="battery_status" type="uint8" unit="enum" enum='{"CHARGE_COMPLETED" : 0 , "BATTERY_LOW" : 1 , "BATTERY_CRITICAL" : 2}' description="status of the battery">
-      <value></value>
+        <value/>
     </property>
     <property name="power_consumption" type="float32" description="can only be calculated if not charging">
-      <value></value>
+        <value/>
     </property>
     <property name="relative_remaining_capacity" type="float32" unit="percentage" description="percent of maximum capacity">
-      <value></value>
+        <value/>
     </property>
     <property name="remaining_capacity" type="float32" unit="ampere per hour">
-      <value></value>
+        <value/>
     </property>
     <property name="charging" type="boolean" description="flag if robot is connected to external power or NOT">
-      <value></value>
+        <value/>
     </property>
     <property name="time_remaining_charging" type="float32" unit="hour" description="estimated time to empty or fully charged">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

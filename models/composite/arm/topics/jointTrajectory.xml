@@ -3,10 +3,10 @@
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="joint_trajectory" type="publish" description="a joint trajectory" fileName="JointTrajectory">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="joint_names" type="string[]">
-      <value></value>
+        <value/>
     </property>
     <property name="points" type="jointTrajectoryPoint[]" fileName="JointTrajectoryPoint" package="hrim_composite_arm_msgs">
       <xi:include href="jointTrajectoryPoint.xml" xpointer="xpointer(//root/property/property)"/>

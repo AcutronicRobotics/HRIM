@@ -26,11 +26,11 @@
     <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="min_temperature" type="float" unit="celsius" description="minimum operating temperature">
-      <value></value>
+        <value/>
     </param>
 
     <param name="max_temperature" type="float" unit="celsius" description="maximum operating temperature">
-      <value></value>
+        <value/>
     </param>
 
   </optional>

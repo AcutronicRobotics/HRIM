@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="state_finger_gripper" type="publish" description="finger gripper state is at this time" fileName="StateFingerGripper">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="angular_position" type="float32">
-      <value></value>
+        <value/>
     </property>
     <property name="linear_position" type="float32">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

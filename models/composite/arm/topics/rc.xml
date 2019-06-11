@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="rc" type="subscribe" description="remote control" fileName="RC">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="axes" type="float32[]" description="axis measurements from a joystick">
-      <value></value>
+        <value/>
     </property>
     <property name="buttons" type="int32[]" description="buttons from a controller">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

@@ -12,7 +12,7 @@
     <xi:include href="topics/torque.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="frame_id" type="string" description="tf frame from which the torque sensor is publishing">
-      <value></value>
+      <value/>
     </param>
 
   </mandatory>

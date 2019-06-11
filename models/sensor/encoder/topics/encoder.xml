@@ -1,48 +1,48 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="encoder" type="publish" description="check the position, velocity or/and acceleration of the electric motor" fileName="Encoder">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="moving" type="boolean" description="whether the motor is currently in motion">
-      <value></value>
+        <value/>
     </property>
     <property name="encoder" type="uint8">
-      <value></value>
+        <value/>
     </property>
     <property name="encoder_type" type="uint8">
-      <value></value>
+        <value/>
     </property>
     <property name="encoder_output" type="uint8">
-      <value></value>
+        <value/>
     </property>
     <property name="goal_position" type="int32" unit="radian" description="commanded position">
-      <value></value>
+        <value/>
     </property>
     <property name="current_position" type="int32" unit="radian" description="current position">
-      <value></value>
+        <value/>
     </property>
     <property name="error_position" type="int32" unit="radian" description="difference between current and goal positions">
-      <value></value>
+        <value/>
     </property>
     <property name="goal_speed" type="int32" unit="rpm" description="commanded position">
-      <value></value>
+        <value/>
     </property>
     <property name="current_speed" type="int32" unit="rpm" description="current position">
-      <value></value>
+        <value/>
     </property>
     <property name="error_speed" type="int32" unit="rpm" description="difference between current and goal speed">
-      <value></value>
+        <value/>
     </property>
     <property name="goal_acceleration" type="int32" unit="rpm squared" description="commanded position">
-      <value></value>
+        <value/>
     </property>
     <property name="current_acceleration" type="int32" unit="rpm squared" description="current position">
-      <value></value>
+        <value/>
     </property>
     <property name="error_acceleration" type="int32" unit="rpm squared" description="difference between current and goal acceleration">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

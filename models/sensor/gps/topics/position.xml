@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="position" type="publish" description="robot position" fileName="Position">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="latitude" type="float64" unit="degree" description="positive is north of equator; negative is south">
-      <value></value>
+        <value/>
     </property>
     <property name="longitude" type="float64" unit="degree" description="positive is east of prime meridian; negative is west">
-      <value></value>
+        <value/>
     </property>
     <property name="altitude" type="float64" unit="metres" description="positive is above the WGS 84 ellipsoid (empty value if no altitude is available)">
-      <value></value>
+        <value/>
     </property>
     <property name="position_covariance" type="float64[9]" unit="metres squared" description="defined relative to a tangential plane through the reported position. The components are East, North, and Up (ENU), in row-major order">
-      <value></value>
+        <value/>
     </property>
     <property name="position_covariance_type" type="uint8" unit="enum" enum='{"COVARIANCE_TYPE_UNKNOWN" : 0, "COVARIANCE_TYPE_APPROXIMATED" : 1, "COVARIANCE_TYPE_DIAGONAL_KNOWN" : 2, "COVARIANCE_TYPE_KNOWN" : 3}'>
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

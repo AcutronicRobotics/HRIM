@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs_encoder" type="service" description="encoder features" fileName="SpecsEncoder">
     <response>
       <property name="encoder_type" type="uint8" unit="enum" enum='{"ENCODER_ROTARY" : 0, "ENCODER_LINEAR" : 1}'>
-        <value></value>
+          <value/>
       </property>
       <property name="encoder_information" type="uint8" unit="enum" enum='{"INCREMENTAL" : 0, "ABSOLUTE" : 1, "ABSOLUTE_MULTI_TURN" : 2}'>
-        <value></value>
+          <value/>
       </property>
       <property name="max_speed" type="int32" description="rotary encoder (rpm) // linear encoder (m)">
-        <value></value>
+          <value/>
       </property>
       <property name="max_torque" type="int32" unit="newtons per metre">
-        <value></value>
+          <value/>
       </property>
       <property name="resolution" type="int32" unit="ppr/metre" description="rotary encoder in pulses per revolution (PPR) // linear encoder (m)">
-        <value></value>
+          <value/>
       </property>
       <property name="accuracy" type="boolean" description="true: the pulses are identical / false: not identical pulses">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

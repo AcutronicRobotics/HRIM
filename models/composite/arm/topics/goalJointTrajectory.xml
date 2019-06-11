@@ -3,14 +3,14 @@
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="joint_trajectory_goal" type="action" description="create a joint trajectory" fileName="GoalJointTrajectory">
     <property name="joint_names" type="string[]">
-      <value></value>
+        <value/>
     </property>
     <property name="points" type="jointTrajectoryPoint[]" fileName="JointTrajectoryPoint" package="hrim_composite_arm_msgs">
       <xi:include href="jointTrajectoryPoint.xml" xpointer="xpointer(//root/property/property)"/>
     </property>
     <response>
       <property name="success" type="boolean">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

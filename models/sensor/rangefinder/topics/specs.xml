@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="device features" fileName="SpecsRangefinder">
     <response>
       <property name="radiation_type" type="uint8" unit="enum" enum='{"ULTRASOUND": 0, "INFRARED": 1}'>
-        <value></value>
+          <value/>
       </property>
       <property name="field_of_view" type="float32">
-        <value></value>
+          <value/>
       </property>
       <property name="min_time_measuremets" type="float32">
-        <value></value>
+          <value/>
       </property>
       <property name="min_operating_temp" type="float32">
-        <value></value>
+          <value/>
       </property>
       <property name="min_range" type="float32">
-        <value></value>
+          <value/>
       </property>
       <property name="max_range" type="float32">
-        <value></value>
+          <value/>
       </property>
       <property name="accuracy" type="float32">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>
