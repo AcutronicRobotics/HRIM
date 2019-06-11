@@ -53,11 +53,10 @@ class ModuleParser:
         if process_value_type in ["int", "uint", "bool"]:
             return int(value)
         # if numeric with decimals
-        elif process_value_type in ["float", "double"]:
+        if process_value_type in ["float", "double"]:
             return float(value)
         # else return the value without modifying, it's treated as a string
-        else:
-            return value
+        return value
 
     # topic parsing and processing
     def process_topic(self, topic, mandatory):
@@ -187,14 +186,13 @@ class ModuleParser:
                         value.append(self.process_value(tag.text, param.type))
             param.value = value
             return param
-        else:
-            param = Parameter(
-                parameter.attrib.get("name"), parameter.attrib.get("type"),
-                mandatory, parameter.attrib.get("unit")
-            )
-            param.desc = parameter.attrib.get("description")
-            param.value = self.process_value(parameter[0].text, param.type)
-            return param
+        param = Parameter(
+            parameter.attrib.get("name"), parameter.attrib.get("type"),
+            mandatory, parameter.attrib.get("unit")
+        )
+        param.desc = parameter.attrib.get("description")
+        param.value = self.process_value(parameter[0].text, param.type)
+        return param
 
     def parse_base(self, path):
         generic_topics = []
