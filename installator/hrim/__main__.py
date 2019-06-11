@@ -42,8 +42,9 @@ def genBase(parser, compiler, args):
                                                    "base.xml"))
 
     compiler.compileModule(generic, True)
-    print("Succesfully generated " + args.platform + " implementation of "
-                                                     "HRIM's generic package.")
+    print("Successfully generated " + args.platform + " implementation of "
+                                                      "HRIM's generic package."
+          )
     os.chdir(path)
 
 
@@ -137,7 +138,7 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                        "Succesfully generated " + args.platform +
+                        "Successfully generated " + args.platform +
                         " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
@@ -149,7 +150,7 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                        "Succesfully generated " + args.platform +
+                        "Successfully generated " + args.platform +
                         " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
@@ -162,7 +163,7 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                        "Succesfully generated " + args.platform +
+                        "Successfully generated " + args.platform +
                         " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
@@ -174,7 +175,7 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                        "Succesfully generated " + args.platform +
+                        "Successfully generated " + args.platform +
                         " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
@@ -186,7 +187,7 @@ Or the implementation to be deleted by the clear command:
                     compiler.compileModule(module)
                     compiler.generateParameters()
                     print(
-                        "Succesfully generated " + args.platform +
+                        "Successfully generated " + args.platform +
                         " implementation of " + module.name + " module."
                     )
                     os.chdir(path)
@@ -197,7 +198,7 @@ Or the implementation to be deleted by the clear command:
                 compiler.compileModule(module)
                 compiler.generateParameters()
                 print(
-                    "Succesfully generated " + args.platform +
+                    "Successfully generated " + args.platform +
                     " implementation of " + module.name + " module."
                 )
 
