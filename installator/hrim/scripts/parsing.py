@@ -19,18 +19,21 @@ class ModuleParser:
             basePath = os.path.abspath(os.getcwd())
 
             # parse the mapping file
-            dataTree = ET.parse(os.path.join(os.getcwd(), "models", "dataMapping.xml"))
+            dataTree = ET.parse(os.path.join(os.getcwd(), "models",
+                                             "dataMapping.xml"))
             dataRoot = dataTree.getroot()
 
             # return to the previous path
             os.chdir(basePath)
 
             # map the data types
-            if any(platform.attrib.get("name") == plat for platform in dataRoot):
+            if any(platform.attrib.get("name") == plat for platform
+                   in dataRoot):
                 for platform in dataRoot.iter("platform"):
                     if platform.attrib.get("name") == plat:
                         for dataType in platform.iter("type"):
-                            dataTypes[dataType.attrib.get("name")] = dataType.attrib.get("value")
+                            dataTypes[dataType.attrib.get("name")] = dataType.\
+                                attrib.get("value")
             else:
                 print("Chosen platform doesn't exist")
                 sys.exit(1)
@@ -58,7 +61,8 @@ class ModuleParser:
 
     # topic parsing and processing
     def processTopic(self, topic, mandatory):
-        top = Topic(topic.attrib.get("name"), topic.attrib.get("type"), mandatory)
+        top = Topic(topic.attrib.get("name"), topic.attrib.get("type"),
+                    mandatory)
         if "description" in topic.attrib:
             top.desc = topic.attrib.get("description")
         if "package" in topic.attrib:
@@ -82,7 +86,8 @@ class ModuleParser:
 
             # check for array declaration in type
             if re.search(r"\[.*\]", type):
-                prop = Property(property.attrib.get("name"), re.sub(r"\[.*\]", "", type))
+                prop = Property(property.attrib.get("name"), re.sub(r"\[.*\]",
+                                                                    "", type))
                 prop.array = True
 
                 # check for array length if specified
@@ -122,7 +127,8 @@ class ModuleParser:
             # if array assume multiple values
             if prop.array:
 
-                # if length is specified fill every entry before appending value
+                # if length is specified fill every entry before appending
+                # value
                 if prop.length is not None:
                     value = [None] * prop.length
                     i = 0
@@ -150,7 +156,10 @@ class ModuleParser:
         if re.search(r"\[.*\]", parameter.attrib.get("type")):
 
             param = Parameter(
-                parameter.attrib.get("name"), re.sub(r"\[.*\]", "", parameter.attrib.get("type")),
+                parameter.attrib.get("name"), re.sub(r"\[.*\]",
+                                                     "",
+                                                     parameter.attrib.get(
+                                                         "type")),
                 mandatory, parameter.attrib.get("unit")
             )
             param.desc = parameter.attrib.get("description")
@@ -158,7 +167,8 @@ class ModuleParser:
             param.array = True
 
             # check for array length if specified
-            matches = re.finditer(r"\[\D*(\d+)\]", parameter.attrib.get("type"))
+            matches = re.finditer(r"\[\D*(\d+)\]",
+                                  parameter.attrib.get("type"))
             for i, match in enumerate(matches):
                 param.length = int(match.group(1))
 
@@ -240,7 +250,8 @@ class ModuleParser:
 
         # instantiate module
         module = Module(
-            root.attrib.get("name"), root.attrib.get("type"), root.attrib.get("description")
+            root.attrib.get("name"), root.attrib.get("type"),
+            root.attrib.get("description")
         )
 
         # loop through mandatory topics and parameters

@@ -38,9 +38,11 @@ class Topic:
         self.mandatory = mandatory
         # a list of each of the topic's values
         self.properties = []
-        # a list of each of the topic's response values (requires type to be a service)
+        # a list of each of the topic's response values
+        # (requires type to be a service)
         self.response = []
-        # a list of each of the topics's feedback values (requires type to be an action)
+        # a list of each of the topics's feedback values
+        # (requires type to be an action)
         self.feedback = []
         # topic short description, optional
         self.desc = None
@@ -59,8 +61,10 @@ class Topic:
         self.feedback.append(feedback)
 
 
-# Data structure for topic properties, can contain subproperties (property referencing an artifact)
-# Defines each value inside a topic/artifact property (property containing other properties)
+# Data structure for topic properties, can contain subproperties
+# (property referencing an artifact)
+# Defines each value inside a topic/artifact property
+# (property containing other properties)
 class Property:
     def __init__(self, name="", type=None):
         # property name (i.e. device_name)
@@ -75,7 +79,8 @@ class Property:
         self.enumeration = []
         # whether the property holds a list of values
         self.array = False
-        # the length of said list (no use if the property isn't a list), optional
+        # the length of said list
+        # (no use if the property isn't a list), optional
         self.length = None
         # the property's value, can be a list, optional
         self.value = None
@@ -109,5 +114,6 @@ class Parameter:
         self.value = None
         # whether the parameter holds a list of values
         self.array = False
-        # the length of said list (no use if the parameter isn't a list), optional
+        # the length of said list
+        # (no use if the parameter isn't a list), optional
         self.length = None
