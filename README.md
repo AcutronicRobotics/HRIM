@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/AcutronicRobotics/HRIM.svg?branch=master)](https://travis-ci.org/AcutronicRobotics/HRIM) [![PyPI version](https://badge.fury.io/py/hrim.svg)](https://badge.fury.io/py/hrim) [![CodeFactor](https://www.codefactor.io/repository/github/acutronicrobotics/hrim/badge/xsd-schema)](https://www.codefactor.io/repository/github/acutronicrobotics/hrim/overview/xsd-schema)
+[![Build Status](https://travis-ci.org/AcutronicRobotics/HRIM.svg?branch=master)](https://travis-ci.org/AcutronicRobotics/HRIM) [![PyPI version](https://badge.fury.io/py/hrim.svg)](https://badge.fury.io/py/hrim) [![CodeFactor](https://www.codefactor.io/repository/github/acutronicrobotics/hrim/badge/master)](https://www.codefactor.io/repository/github/acutronicrobotics/hrim/overview/master)
 
 # Hardware Robot Information Model (HRIM)
 
