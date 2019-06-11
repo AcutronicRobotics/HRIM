@@ -8,7 +8,8 @@ from hrim.scripts import ModuleCompiler, ModuleParser
 from hrim.scripts.classes import Module
 
 
-# locate all module models of the repository and return a list with their full path
+# locate all module models of the repository and return a list with their full
+# path
 def findModels(dirName):
     # list given directory's files and subdirectories
     dirContents = os.listdir(dirName)
@@ -22,10 +23,11 @@ def findModels(dirName):
             modelFiles = modelFiles + findModels(fullPath)
         elif (
                 re.search(
-                    r'models.(actuator|sensor|communication|cognition|ui|power|composite).*\.xml$',
+                    r'models.(actuator|sensor|communication|cognition|ui|'
+                    r'power|composite).*\.xml$',
                     fullPath
-                )
-                and not bool(re.search('.*models.*topics', fullPath))
+                ) and
+                not bool(re.search('.*models.*topics', fullPath))
         ):
             modelFiles.append(fullPath)
     return modelFiles
@@ -34,11 +36,14 @@ def findModels(dirName):
 def genBase(parser, compiler, args):
     path = os.getcwd()
 
-    generic = Module("generic", "generic", "defines the generic HRIM messages used by modules")
-    generic.topics = parser.parseBase(os.path.join(path, "models", "generic", "base.xml"))
+    generic = Module("generic", "generic", "defines the generic HRIM messages "
+                                           "used by modules")
+    generic.topics = parser.parseBase(os.path.join(path, "models", "generic",
+                                                   "base.xml"))
 
     compiler.compileModule(generic, True)
-    print("Succesfully generated " + args.platform + " implementation of HRIM's generic package.")
+    print("Succesfully generated " + args.platform + " implementation of "
+                                                     "HRIM's generic package.")
     os.chdir(path)
 
 
@@ -46,13 +51,15 @@ def main(args=None):
     # Add usage messages
 
     argParser = argparse.ArgumentParser(
-        description='''Hardware Robot Information Model (HRIM) implementation generation tool.''',
+        description='''Hardware Robot Information Model (HRIM) implementation
+         generation tool.''',
         formatter_class=argparse.RawTextHelpFormatter)
     argParser.add_argument(
         'action', choices=['generate', 'compose', 'compile', 'list', 'clear'],
         help='''Action to take:
 generate:
-    generate the platform-specific implementation of the passed valid XML model.
+    generate the platform-specific implementation of the passed valid XML
+    model.
 compose:
     generate a composition of modules.
 compile:
@@ -87,7 +94,8 @@ Or the implementation to be deleted by the clear command:
         all implementations on the generation folder.
     {path}:
         deletes the files related to said module (i.e. `sensor/imu` will delete
-        `generated/sensor/imu`, `sensor` will delete all generated sensor implementations).'''
+        `generated/sensor/imu`, `sensor` will delete all generated sensor
+         implementations).'''
     )
 
     argParser.add_argument(
@@ -147,7 +155,8 @@ Or the implementation to be deleted by the clear command:
                     os.chdir(path)
 
             elif uniquePath == "composites":
-                fileList = findModels(os.path.join(path, "models", "composite"))
+                fileList = findModels(os.path.join(path, "models",
+                                                   "composite"))
                 for item in fileList:
                     module = parser.parseFile(item)
                     compiler.compileModule(module)
@@ -207,24 +216,27 @@ Or the implementation to be deleted by the clear command:
                         modules.append(module)
                         path = properList[0].replace(os.getcwd() + "/", "")
                         paths.append(path)
-                        print(
-                            "Adding {} defined at {} to the composition.".format(module.name, path)
-                        )
+                        print("Adding {} defined at {} to the composition."
+                              .format(module.name, path))
                     else:
-                        print("More than one model found by handle '{}':".format(eachPath))
+                        print("More than one model found by handle '{}':"
+                              .format(eachPath))
                         for model in properList:
                             print("\t" + model)
                         exit()
                 else:
-                    fullPath = os.path.join(os.getcwd(), "models", eachPath + ".xml")
+                    fullPath = os.path.join(os.getcwd(), "models", eachPath +
+                                            ".xml")
                     if os.path.exists(fullPath):
                         module = parser.parseFile(fullPath)
                         modules.append(module)
                         path = fullPath.replace(os.getcwd() + "/", "")
                         paths.append(path)
-                        print("Adding {} defined at {} to the composition.".format(module.name, path))
+                        print("Adding {} defined at {} to the composition.".
+                              format(module.name, path))
                     else:
-                        print("No model found by handle '{}'.".format(eachPath))
+                        print("No model found by handle '{}'.".
+                              format(eachPath))
                         print("Module composition cancelled.")
                         exit()
             compiler = ModuleCompiler()
@@ -232,9 +244,12 @@ Or the implementation to be deleted by the clear command:
             print("Composition generated: model.xml")
         elif args.action == "compile":
             path = os.getcwd()
-            composition = parser.parseComposition(os.path.join(os.getcwd(), uniquePath))
-            if os.path.exists(os.path.join(path, "composition", composition.name)):
-                shutil.rmtree(os.path.join(path, "composition", composition.name))
+            composition = parser.parseComposition(os.path.join(os.getcwd(),
+                                                               uniquePath))
+            if os.path.exists(os.path.join(path, "composition",
+                                           composition.name)):
+                shutil.rmtree(os.path.join(path, "composition",
+                                           composition.name))
             compiler = ModuleCompiler()
             compiler.genPath = "composition/" + composition.name
             compiler.dataTypes = ModuleParser().getDataTypes(args.platform)
@@ -255,7 +270,8 @@ Or the implementation to be deleted by the clear command:
                 modelList = findModels(os.path.join(os.getcwd(), "models"))
                 for model in sorted(modelList):
                     pathList = model.split(os.sep)
-                    print(pathList[-3] + "/" + pathList[-2] + "/" + pathList[-1].replace('.xml', ""))
+                    print(pathList[-3] + "/" + pathList[-2] + "/" +
+                          pathList[-1].replace('.xml', ""))
             elif uniquePath == "implementations":
                 pathList = os.listdir("generated")
                 if len(pathList) > 0:
@@ -263,7 +279,8 @@ Or the implementation to be deleted by the clear command:
                         if (path in
                                 ["actuator", "sensor", "communication",
                                  "cognition", "ui", "power", "composite"]):
-                            subPathList = os.listdir(os.path.join("generated", path))
+                            subPathList = os.listdir(os.path.join("generated",
+                                                                  path))
                             for subPath in sorted(subPathList):
                                 print(path + "/" + subPath)
                         else:
@@ -275,22 +292,26 @@ Or the implementation to be deleted by the clear command:
                 if uniquePath == "all":
                     delDirs = os.listdir("generated")
                     for delPath in sorted(delDirs):
-                        fullPath = os.path.join(os.getcwd(), "generated", delPath)
+                        fullPath = os.path.join(os.getcwd(), "generated",
+                                                delPath)
                         shutil.rmtree(fullPath)
                         print("Deleted " + fullPath)
                 else:
-                    fullPath = os.path.join(os.getcwd(), "generated", uniquePath)
+                    fullPath = os.path.join(os.getcwd(), "generated",
+                                            uniquePath)
                     if os.path.exists(fullPath):
                         shutil.rmtree(fullPath)
                         print("Deleted " + fullPath)
                     else:
                         print("Couldn't find passed directory for deletion.")
             else:
-                print("There is no implementation to delete (generated directory is empty).")
+                print("There is no implementation to delete (generated "
+                      "directory is empty).")
         else:
             print("Unknown command")
     except UnicodeDecodeError as ex:
-        print("Unicode exception, check your locales\nUseful command: export LC_ALL=C.UTF-8")
+        print("Unicode exception, check your locales\nUseful command: "
+              "export LC_ALL=C.UTF-8")
         raise ex
     except Exception as ex:
         print("An error occurred during command execution")
