@@ -7,7 +7,7 @@ WS_PATH="/home/root/ros2_ws"
 HRIM_FULL_PATH="/home/root/ros2_ws/src/hrim"
 INSTALLATOR_PATH="${HRIM_FULL_PATH}/installator"
 ROS2_SOURCE="/opt/ros/${ROS2_DISTRO}/setup.bash"
-MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/models.xsd"
+MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/module.xsd"
 
 function validateSchemas()
 {
