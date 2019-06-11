@@ -109,7 +109,7 @@ class ModuleCompiler:
                 type = prop.package + "/" + prop.fileName
             else:
                 found = self.checkGenerated(prop.fileName, type)
-                if found != False:
+                if found:
                     type = found + "/" + prop.fileName
                 else:
                     type = self.msgPkgName + "/" + prop.fileName
