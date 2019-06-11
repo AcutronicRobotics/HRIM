@@ -3,7 +3,7 @@
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <response>
     <property name="urdf_model" type="string" unit="urdf" description="the urdf corresponding to the component's .stl">
-      <value></value>
+        <value/>
     </property>
   </response>
 </topic>

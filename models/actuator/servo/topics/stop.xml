@@ -3,10 +3,10 @@
   <topic name="stop" type="service" fileName="Stop" xmlns:xi="http://www.w3.org/2001/XInclude">
     <response>
       <property name="success" type="boolean">
-        <value></value>
+          <value/>
       </property>
       <property name="message" type="string">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

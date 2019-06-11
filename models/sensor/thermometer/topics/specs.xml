@@ -4,25 +4,25 @@
   <topic name="specs" type="service" description="device features" fileName="SpecsThermometer">
     <response>
       <property name="min_temp" type="int32[]" unit="celsius" description="minimum measurable temperature, multiple entries imply differences in error margin depending on the temperature">
-        <value></value>
+          <value/>
       </property>
       <property name="max_temp" type="int32[]" unit="celsius" description="maximum measurable temperature, multiple entries imply differences in error margin depending on the temperature">
-        <value></value>
+          <value/>
       </property>
       <property name="error_margin" type="float32[]" unit="celsius" description="error margin in reading, can have multiple depending on current temperature range, first error_margin entry being appliable when between first entry of min_temp and max_temp, and so on">
-        <value></value>
+          <value/>
       </property>
       <property name="resolution" type="float32" unit="celsius" description="minimum measurable temperature change">
-        <value></value>
+          <value/>
       </property>
       <property name="min_operating_temp" type="int32" unit="celsius" description="minimum temperature before the thermometer stops working">
-        <value></value>
+          <value/>
       </property>
       <property name="max_operating_temp" type="int32" unit="celsius" description="maximum temperature before the thermometer stops working">
-        <value></value>
+          <value/>
       </property>
       <property name="measuring" type="uint8" unit="enum" enum='{"AMBIENT_GAS": 0, "AMBIENT_LIQUID": 1, "COMPONENT": 2}' description="what the thermometer measures the temperature from">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

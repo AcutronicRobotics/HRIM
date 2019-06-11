@@ -3,34 +3,34 @@
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="laser_scan" type="publish" description="environment information" fileName="LidarScan">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="angle_start" type="float32" unit="radian" description="start angle of the scan">
-      <value></value>
+        <value/>
     </property>
     <property name="angle_end" type="float32" unit="radian" description="end angle of the scan">
-      <value></value>
+        <value/>
     </property>
     <property name="angle_increment" type="float32" unit="radian" description="angular distance between measurements">
-      <value></value>
+        <value/>
     </property>
     <property name="time_increment" type="float32" unit="second" description="time between scans. If your scanner is moving, this will be used in interpolating position of 3d points">
-      <value></value>
+        <value/>
     </property>
     <property name="time_scan" type="float32" unit="second" description="time between scans">
-      <value></value>
+        <value/>
     </property>
     <property name="range_min" type="float32" unit="metre" description="actual minimum range value">
-      <value></value>
+        <value/>
     </property>
     <property name="range_max" type="float32" unit="metre" description="actual maximum range value">
-      <value></value>
+        <value/>
     </property>
     <property name="ranges" type="float32[]" unit="" description="range data. Values below range_min or over range_max should be discarded">
-      <value></value>
+        <value/>
     </property>
     <property name="intensities" type="float32[]" unit="" description="intensity data. If your device does not provide intensities, please leave the array empty">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

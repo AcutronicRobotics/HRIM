@@ -19,43 +19,43 @@
     <xi:include href="topics/goalJointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="arm_name" type="string" description="The name of the arm.">
-      <value></value>
+        <value/>
     </param>
 
     <param name="joint_names" type="string[]" description="Names of the joint of the arm.">
-      <value></value>
+        <value/>
     </param>
 
     <param name="x_angle_y_direction" type="float64" unit="rad" description="Related to fix the origin: Turn the X axis in the direction where the Y axis is">
-      <value></value>
+        <value/>
     </param>
 
     <param name="x_angle_z_direction" type="float64" unit="rad" description="Related to fix the origin: Turn the X axis in the direction where the Z axis is">
-      <value></value>
+        <value/>
     </param>
 
     <param name="y_angle_x_direction" type="float64" unit="rad" description="Related to fix the origin: Turn the Y axis in the direction where the X axis is">
-      <value></value>
+        <value/>
     </param>
 
     <param name="y_angle_z_direction" type="float64" unit="rad" description="Related to fix the origin: Turn the Y axis in the direction where the Z axis is">
-      <value></value>
+        <value/>
     </param>
 
     <param name="z_direction" type="bool" unit="[0/1]" description="Related to fix the origin: True: the z-axis direction is okey/ False: reverse direction">
-      <value></value>
+        <value/>
     </param>
 
     <param name="x_position" type="double" unit="m" description="Related to fix the origin: X axis position according to the marked origin">
-      <value></value>
+        <value/>
     </param>
 
     <param name="y_position" type="double" unit="m" description="Related to fix the origin: Y axis position according to the marked origin">
-      <value></value>
+        <value/>
     </param>
 
     <param name="z_position" type="double" unit="m" description="Related to fix the origin: Z axis position according to the marked origin">
-      <value></value>
+        <value/>
     </param>
 
   </mandatory>
@@ -72,11 +72,11 @@
     <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
     
     <param name="rc_max_velocity" type="double" unit="radians per second" description="maximum angular velocity value through joystick control">
-      <value></value>
+        <value/>
     </param>
 
     <param name="rc_max_yaw" type="double" unit="radians per second" description="maximum turning angle through joystick control">
-      <value></value>
+        <value/>
     </param>
 
   </optional>

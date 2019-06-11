@@ -4,10 +4,10 @@
   <topic name="specs" type="service" description="main characteristics of the magnetic gripper" fileName="SpecsMagneticGripper">
     <response>
       <property name="magnetic_force" type="float32" unit="newton" description="the magnet's force">
-        <value></value>
+          <value/>
       </property>
       <property name="max_payload" type="float32" unit="kilogram" description="maximum payload">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

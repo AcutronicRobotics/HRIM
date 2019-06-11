@@ -4,25 +4,25 @@
   <topic name="specs" type="service" description="defines the most important characteristic of the camera" fileName="SpecsCamera">
     <response>
       <property name="resolution" type="string" unit="pixel" description="example: 752x480, 1280x1024">
-        <value></value>
+          <value/>
       </property>
       <property name="frame_rate" type="uint32" unit="frames per second" description="maximum value">
-        <value></value>
+          <value/>
       </property>
       <property name="image_formats" type="string" description="example: mono8, rgb1, bayergrbg8">
-        <value></value>
+          <value/>
       </property>
       <property name="ptz" type="boolean" description="true: the camera has this extra; false: it does not">
-        <value></value>
+          <value/>
       </property>
       <property name="pan_vision_range" type="float32" unit="radian" description="example: 360">
-        <value></value>
+          <value/>
       </property>
       <property name="tilt_vision_range" type="float32" description="example: 135">
-        <value></value>
+          <value/>
       </property>
       <property name="microphone" type="boolean" description="true: the camera has this extra; false: it does not">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

@@ -3,10 +3,10 @@
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <response>
     <property name="model_name" type="string" description="identifier name for the passed model">
-      <value></value>
+        <value/>
     </property>
     <property name="model" type="byte[]" unit="stl" description=".stl of the component">
-      <value></value>
+        <value/>
     </property>
   </response>
 </topic>

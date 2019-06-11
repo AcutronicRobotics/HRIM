@@ -4,31 +4,31 @@
   <topic name="specs" type="service" description="device features" fileName="SpecsGPS">
     <response>
       <property name="channels" type="uint8" description="ammount of channels">
-        <value></value>
+          <value/>
       </property>
       <property name="frecuency" type="string" description="L1 or L2">
-        <value></value>
+          <value/>
       </property>
       <property name="min_update_rate" type="int32" unit="hertz" description="minimum update rate in Hertz">
-        <value></value>
+          <value/>
       </property>
       <property name="max_update_rate" type="int32" unit="hertz" description="maximum update rate in Hertz">
-        <value></value>
+          <value/>
       </property>
       <property name="max_altitude" type="float32" unit="metre" description="operational limit, maximum altitude in meters">
-        <value></value>
+          <value/>
       </property>
       <property name="max_velocity" type="int32" unit="metres per second" description="operational limit, maximum velocity in meters per second">
-        <value></value>
+          <value/>
       </property>
       <property name="gps_accuracy" type="float32" unit="metre" description="horizontal position accurary in meters">
-        <value></value>
+          <value/>
       </property>
       <property name="sbas_system" type="string[]" description="list of supported Satellite Based Augmentation System">
-        <value></value>
+          <value/>
       </property>
       <property name="sbas_accuracy" type="float32" unit="metre" description="accuracy with SBAS in meters">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

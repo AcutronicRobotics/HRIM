@@ -4,13 +4,13 @@
   <topic name="specs" type="service" description="main characteristics of the vacuum gripper" fileName="SpecsVacuumGripper">
     <response>
       <property name="cycle_time" type="float32" unit="second" description="needed time for one cycle">
-        <value></value>
+          <value/>
       </property>
       <property name="max_force" type="float32" unit="newton" description="taking into account 100% vacuum and with non-porous material">
-        <value></value>
+          <value/>
       </property>
       <property name="max_payload" type="float32" unit="kilogram" description="maximum recommended payload">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

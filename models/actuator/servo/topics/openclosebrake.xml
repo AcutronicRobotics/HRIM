@@ -2,14 +2,14 @@
 <root>
   <topic name="openclosebrake" type="service" fileName="OpenCloseBrake" xmlns:xi="http://www.w3.org/2001/XInclude">
     <property name="open" type="boolean" description="if 1 you will request to open the brake">
-      <value></value>
+        <value/>
     </property>
     <response>
       <property name="success" type="boolean">
-        <value></value>
+          <value/>
       </property>
       <property name="message" type="string">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

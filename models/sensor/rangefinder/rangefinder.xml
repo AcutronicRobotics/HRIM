@@ -11,19 +11,19 @@
     <xi:include href="topics/distance.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="frame_id" type="string" description="tf frame from which the range_finder is publishing">
-      <value></value>
+        <value/>
     </param>
 
     <param name="time_measurements" type="double" unit="second" description="time between measurements">
-      <value></value>
+        <value/>
     </param>
 
     <param name="distance_min" type="double" unit="metre" description="the minimum distance to return">
-      <value></value>
+        <value/>
     </param>
 
     <param name="distance_max" type="double" unit="metre" description="the maximum distance to return">
-      <value></value>
+        <value/>
     </param>
 
   </mandatory>

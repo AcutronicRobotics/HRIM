@@ -3,10 +3,10 @@
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="cycle_time" type="publish" description="time that the gripper must take to complete the cycle: the time between catching the object and leaving it" fileName="CycleTime">
     <property name="header" type="header" description="the acquisition time of the completed cycle" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="cycle_time" type="float32" unit="second" description="pick and place cycle time">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

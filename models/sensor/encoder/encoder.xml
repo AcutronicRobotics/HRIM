@@ -11,7 +11,7 @@
     <xi:include href="topics/encoder.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="origin" type="float" unit="radian" description="zero/started point">
-      <value></value>
+      <value/>
     </param>
 
   </mandatory>
