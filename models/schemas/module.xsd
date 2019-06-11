@@ -45,6 +45,7 @@
     <xsd:sequence>
       <xsd:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="response" type="responseType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="feedback" type="responseType" minOccurs="0" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:attribute name="name" type="xsd:string" use="required"/>
     <xsd:attribute name="type" type="topicTypeType" use="required"/>
@@ -66,13 +67,16 @@
     <xsd:attribute name="description" type="xsd:string"/>
     <xsd:attribute name="fileName" type="xsd:string"/>
     <xsd:attribute name="package" type="xsd:string"/>
+    <xsd:attribute ref="xml:base"/>
   </xsd:complexType>
 
   <xsd:complexType name="responseType">
     <xsd:sequence>
       <xsd:element name="property" type="propertyType" maxOccurs="unbounded"/>
       <xsd:element name="response" type="responseType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="feedback" type="responseType" minOccurs="0" maxOccurs="unbounded"/>
     </xsd:sequence>
+    <xsd:attribute ref="xml:base"/>
   </xsd:complexType>
 
   <xsd:simpleType name="moduleTypeType">
@@ -92,6 +96,7 @@
       <xsd:enumeration value="publish"/>
       <xsd:enumeration value="subscribe"/>
       <xsd:enumeration value="service"/>
+      <xsd:enumeration value="action"/>
     </xsd:restriction>
   </xsd:simpleType>
 
