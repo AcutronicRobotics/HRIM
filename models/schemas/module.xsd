@@ -17,6 +17,16 @@
    </xsd:complexType>
   </xsd:element>
 
+  <xsd:element name="root">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="topic" type="topicType" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="topic" type="topicType"/>
+
   <xsd:complexType name="mandatoryType">
     <xsd:sequence>
       <xsd:element name="topic" type="topicType" minOccurs="8" maxOccurs="unbounded"/>
