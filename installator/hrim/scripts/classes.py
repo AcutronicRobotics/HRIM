@@ -88,7 +88,7 @@ class Property:
         self.unit = None
         # short description of the property, optional
         self.desc = None
-        # name of the artifact to be generted from the property
+        # name of the artifact to be generated from the property
         # (no use if the property's type is a base data type)
         self.fileName = None
         self.package = None

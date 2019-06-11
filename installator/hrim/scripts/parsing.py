@@ -46,14 +46,14 @@ class ModuleParser:
 
     # check for value type, else all values'll be strings
     @staticmethod
-    def processValue(value, pocess_value_type):
+    def processValue(value, process_value_type):
         if value is None or len(value) == 0:
             return None
         # if numeric with no decimals (bool would either be 0 or 1)
-        if pocess_value_type in ["int", "uint", "bool"]:
+        if process_value_type in ["int", "uint", "bool"]:
             return int(value)
         # if numeric with decimals
-        elif pocess_value_type in ["float", "double"]:
+        elif process_value_type in ["float", "double"]:
             return float(value)
         # else return the value without modifying, it's treated as a string
         else:
@@ -79,7 +79,7 @@ class ModuleParser:
                     top.addFeed(self.processProperty(res))
         return top
 
-    # property and subproperty recursive parsing and processing
+    # property and sub property recursive parsing and processing
     def processProperty(self, process_property):
         if "type" in process_property.attrib:
             type_list = process_property.attrib.get("type")
@@ -114,10 +114,10 @@ class ModuleParser:
         if "package" in process_property.attrib:
             prop.package = process_property.attrib.get("package")
 
-        # check for subproperties
+        # check for sub properties
         if any(x.tag == "property" for x in process_property):
 
-            # process subproperties
+            # process sub properties
             for subProp in process_property:
                 if subProp.tag == "property":
                     prop.addProp(self.processProperty(subProp))
