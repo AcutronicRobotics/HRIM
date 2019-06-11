@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="compass" type="publish" description="magnetometers. The integration of an magnetometer sensor is needed" fileName="Compass">
     <property name="header" type="header" fileName="Header" package="std_msgs">
         <value/>

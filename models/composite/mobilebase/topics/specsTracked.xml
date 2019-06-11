@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="device features" fileName="SpecsTracked">
     <response>
       <property name="max_tracked_velocity" type="float32" unit="" description="maximum vehicle velocity">

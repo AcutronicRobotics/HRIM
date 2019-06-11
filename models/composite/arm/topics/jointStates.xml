@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="joint_states" type="publish" description="state of the joints" fileName="JointStates">
     <property name="header" type="header" fileName="Header" package="std_msgs">
         <value/>

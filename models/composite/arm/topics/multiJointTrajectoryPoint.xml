@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <property name="multi_points" type="multiJointTrajectoryPoint[]" fileName="MultiDOFJointTrajectoryPoint">
     <property name="transforms" type="transform[]" fileName="Transform" package="geometry_msgs">
         <value/>

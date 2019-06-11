@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <topic name="state_comm" type="publish" fileName="StateCommunication" package="hrim_generic_msgs"
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <property name="header" type="header" fileName="Header" package="std_msgs">
     <value/>
   </property>

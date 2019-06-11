@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="goal_position" type="publish" description="movement orders" fileName="GoalMobileBase">
     <property name="header" type="header" fileName="Header" package="std_msgs">
         <value/>

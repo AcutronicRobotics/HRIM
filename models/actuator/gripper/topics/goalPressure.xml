@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="goal_pressure" type="publish" description="maximum pressure that the gripper will make on the object" fileName="GoalTactilePressure">
     <property name="header" type="header" description="pressure is at this time" fileName="Header" package="std_msgs">
         <value/>

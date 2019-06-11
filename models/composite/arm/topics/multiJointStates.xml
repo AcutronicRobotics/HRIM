@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="multi_joint_states" type="publish" description="state of the multiple DOF joints" fileName="MultiDOFJointStates">
     <property name="header" type="header" fileName="Header" package="std_msgs">
         <value/>

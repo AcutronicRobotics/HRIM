@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="imu" type="publish" description="accelerometers and gyroscopes" fileName="IMU">
     <property name="header" type="header" fileName="Header" package="std_msgs">
         <value/>

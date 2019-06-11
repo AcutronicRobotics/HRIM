@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="device features" fileName="SpecsBattery">
     <response>
       <property name="battery_type" type="uint8" unit="enum" enum='{"BATTERY_NICD" : 1, "BATTERY_NIMH" : 2, "BATTERY_LIFEPO" : 3, "BATTERY_LIPO" : 4, "BATTERY_LIION" : 5}'>

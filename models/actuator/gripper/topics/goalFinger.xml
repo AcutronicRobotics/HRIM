@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="goalpro" type="service" description="allows the user to work with different values" fileName="ControlFinger">
     <property name="goal_linearposition" type="float32" unit="metre" description="distance between fingers">
         <value/>

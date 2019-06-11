@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <topic name="stop" type="service" fileName="Stop" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <topic name="stop" type="service" fileName="Stop">
     <response>
       <property name="success" type="boolean">
           <value/>

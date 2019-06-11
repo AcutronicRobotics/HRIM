@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <property name="torque_axis_spec" type="specsTorqueAxis" description="specs related to each of the measured axes" fileName="SpecsTorqueAxis">
     <property name="axis" type="uint8" unit="enum" enum='{"TORQUE_AXIS_X": 0, "TORQUE_AXIS_Y": 1, "TORQUE_AXIS_Z": 2}' description="the axis the specs describe">
         <value/>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="device features" fileName="SpecsThermometer">
     <response>
       <property name="min_temp" type="int32[]" unit="celsius" description="minimum measurable temperature, multiple entries imply differences in error margin depending on the temperature">

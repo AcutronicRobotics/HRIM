@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="device features" fileName="SpecsLidar">
     <response>
       <property name="horizontal_fov" type="float32" unit="radian" description="horizontal field of view">

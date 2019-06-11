@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <property name="particular_specs" type="gasType" description="specs of each gas the sensor detects" fileName="GasType">
     <property name="detect_gas_name" type="string" description="the gases that the sensor can detect">
         <value/>

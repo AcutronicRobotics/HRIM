@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="device features" fileName="SpecsTorque">
     <response>
       <property name="max_torque" type="uint16" unit="newtons per metre" description="maximum measurable torque">

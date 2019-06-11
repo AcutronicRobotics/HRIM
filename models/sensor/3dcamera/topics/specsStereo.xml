@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="defines the most important characteristic of the camera" fileName="SpecsStereoCamera">
     <response>
       <property name="resolution" type="string" unit="pixel" description="example: 752x480, 1280x1024">

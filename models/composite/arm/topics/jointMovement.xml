@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="joint_movement" type="service" description="move the joints" fileName="GoalJointMovement">
     <property name="control_type" type="uint8" unit="enum" description="arm control type - defined in hrim_composite_arm_msgs/JointStates">
         <value/>

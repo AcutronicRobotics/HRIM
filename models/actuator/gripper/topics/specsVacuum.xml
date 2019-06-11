@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="main characteristics of the vacuum gripper" fileName="SpecsVacuumGripper">
     <response>
       <property name="cycle_time" type="float32" unit="second" description="needed time for one cycle">

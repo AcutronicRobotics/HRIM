@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="device features" fileName="SpecsEncoder">
     <response>
       <property name="encoder_type" type="uint8" unit="enum" enum='{"ENCODER_ROTARY" : 0, "ENCODER_LINEAR" : 1}'>

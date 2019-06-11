@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <topic name="specs_comm" type="service" fileName="SpecsCommunication" package="hrim_generic_srvs"
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <response>
     <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
         <value/>
