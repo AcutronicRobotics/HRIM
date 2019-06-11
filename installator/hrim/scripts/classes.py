@@ -2,6 +2,8 @@ class Composition:
     def __init__(self, name):
         self.name = name
         self.modules = []
+
+
 # Main data structure, contains both topics and parameters
 # Defines a node's structure
 class Module:
@@ -16,10 +18,13 @@ class Module:
         self.topics = []
         # list of the module's parameters
         self.params = []
+
     def addTopic(self, topic):
         self.topics.append(topic)
+
     def addParam(self, param):
         self.params.append(param)
+
 
 # Data structure for node topics, contains properties
 # Defines the first-level communication artifacts of a module
@@ -43,12 +48,16 @@ class Topic:
         self.fileName = None
         # the name of the interface's package of origin
         self.package = None
+
     def addProp(self, property):
         self.properties.append(property)
+
     def addRes(self, response):
         self.response.append(response)
+
     def addFeed(self, feedback):
         self.feedback.append(feedback)
+
 
 # Data structure for topic properties, can contain subproperties (property referencing an artifact)
 # Defines each value inside a topic/artifact property (property containing other properties)
@@ -78,8 +87,10 @@ class Property:
         # (no use if the property's type is a base data type)
         self.fileName = None
         self.package = None
+
     def addProp(self, property):
         self.properties.append(property)
+
 
 # Data structure for node parameters
 class Parameter:
@@ -98,5 +109,5 @@ class Parameter:
         self.value = None
         # whether the parameter holds a list of values
         self.array = False
-        #the length of said list (no use if the parameter isn't a list), optional
+        # the length of said list (no use if the parameter isn't a list), optional
         self.length = None

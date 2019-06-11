@@ -1,4 +1,3 @@
-
 # shorthand for tabulation
 def getTabs(num):
     ret = ""

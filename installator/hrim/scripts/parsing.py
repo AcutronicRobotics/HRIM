@@ -5,6 +5,7 @@ import os
 import lxml.etree as ET
 from .classes import Composition, Module, Topic, Property, Parameter
 
+
 class ModuleParser:
 
     # calling-path independent method to get a platforms data type mapping
@@ -121,7 +122,7 @@ class ModuleParser:
 
                 # if length is specified fill every entry before appending value
                 if prop.length is not None:
-                    value = [None]*prop.length
+                    value = [None] * prop.length
                     i = 0
                     for tag in property:
                         if tag.tag == "value" and i < prop.length:
@@ -147,7 +148,7 @@ class ModuleParser:
         if re.search(r"\[.*\]", parameter.attrib.get("type")):
 
             param = Parameter(
-                parameter.attrib.get("name"), re .sub(r"\[.*\]", "", parameter.attrib.get("type")),
+                parameter.attrib.get("name"), re.sub(r"\[.*\]", "", parameter.attrib.get("type")),
                 mandatory, parameter.attrib.get("unit")
             )
             param.desc = parameter.attrib.get("description")
@@ -160,7 +161,7 @@ class ModuleParser:
                 param.length = int(match.group(1))
 
             if param.length is not None:
-                value = [None]*param.length
+                value = [None] * param.length
                 i = 0
                 for tag in parameter:
                     if tag.tag == "value" and i < param.length:
@@ -226,10 +227,10 @@ class ModuleParser:
             if os.path.exists(filePath):
                 path = filePath
             else:
-                path = os.getcwd()+filePath
+                path = os.getcwd() + filePath
             tree = ET.parse(path)
         except Exception as ex:
-            print("Problem parsing "+filePath)
+            print("Problem parsing " + filePath)
             raise ex
 
         tree.xinclude()
