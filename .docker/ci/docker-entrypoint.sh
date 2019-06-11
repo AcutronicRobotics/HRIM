@@ -82,6 +82,7 @@ function compileWS()
   else
     echo -e "${RED}Failed to build ROS2 ws, please review it!{RESET}"
     exit 5
+  fi
 }
 
 validateSchemas
