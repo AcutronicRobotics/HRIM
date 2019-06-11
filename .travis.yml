@@ -2,7 +2,7 @@ sudo: required
 dist: xenial
 services:
   - docker
- 
+
 notifications:
   email:
     recipients:
