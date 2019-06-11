@@ -3,6 +3,8 @@ import json
 import re
 import os
 import lxml.etree as et
+from defusedxml.lxml import parse as parse_xml
+
 from .classes import Composition, Module, Topic, Property, Parameter
 
 
@@ -19,8 +21,11 @@ class ModuleParser:
             base_path = os.path.abspath(os.getcwd())
 
             # parse the mapping file
-            data_tree = et.parse(os.path.join(os.getcwd(), "models",
-                                              "dataMapping.xml"))
+            print(os.path.join(os.getcwd(), "models", "dataMapping.xml"))
+            data_tree = parse_xml((os.path.join(os.getcwd(), "models",
+                                                "dataMapping.xml")))
+
+            print(data_tree)
             data_root = data_tree.getroot()
 
             # return to the previous path
@@ -198,7 +203,7 @@ class ModuleParser:
         generic_topics = []
 
         try:
-            gen_tree = et.parse(path)
+            gen_tree = parse_xml(path)
             gen_tree.xinclude()
             gen_root = gen_tree.getroot()
             for topic in gen_root:
@@ -209,7 +214,7 @@ class ModuleParser:
         return generic_topics
 
     def parse_composition(self, path):
-        comp_tree = et.parse(path)
+        comp_tree = parse_xml(path)
         comp_root = comp_tree.getroot()
         composition = Composition(comp_root.attrib.get("name"))
         for model in comp_root:
