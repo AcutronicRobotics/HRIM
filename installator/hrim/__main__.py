@@ -47,7 +47,7 @@ def genBase(parser, compiler, args):
     os.chdir(path)
 
 
-def main(args=None):
+def main():
     # Add usage messages
 
     argParser = argparse.ArgumentParser(
