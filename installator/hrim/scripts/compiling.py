@@ -3,15 +3,6 @@ from .utils import get_tabs
 
 
 class ModuleCompiler:
-    actionPkgName = None
-    actionFolderPath = None
-    srv_pkg_name = None
-    srv_folder_path = None
-    short_type = None
-    my_dep = None
-    folderPath = None
-    pkg_name = None
-    my_files = None
 
     def process_sub_property(self, prop, sub_type):
         try:
@@ -153,8 +144,15 @@ class ModuleCompiler:
         return res
 
     def compile_module(self, module, base=False):
-        global my_files, actionPkgName, actionFolderPath, srv_pkg_name, \
-            srv_folder_path, short_type, my_dep, folderPath, pkg_name, my_files
+        actionFolderPath = None
+        srv_pkg_name = None
+        srv_folder_path = None
+        short_type = None
+        my_dep = None
+        folder_path = None
+        pkg_name = None
+        my_files = None
+
         self.base = base
         messages = False
         services = False
@@ -226,7 +224,7 @@ class ModuleCompiler:
                     pkg_name = srv_pkg_name
                     srv_folder_path = os.path.join(os.getcwd(), srv_pkg_name,
                                                    short_type)
-                    folderPath = srv_folder_path
+                    folder_path = srv_folder_path
                 if topic.type == "action":
                     my_dep = self.actionDeps
                     my_files = action_files
@@ -243,17 +241,17 @@ class ModuleCompiler:
                     pkg_name = actionPkgName
                     actionFolderPath = os.path.join(os.getcwd(), actionPkgName,
                                                     short_type)
-                    folderPath = actionFolderPath
+                    folder_path = actionFolderPath
                 # check if file has already been generated
                 if (topic.fileName not in my_files and
                         (topic.package is None or topic.package == pkg_name)):
 
                     # if the package directories don't exist, create them
-                    if not os.path.exists(folderPath):
-                        os.makedirs(folderPath)
+                    if not os.path.exists(folder_path):
+                        os.makedirs(folder_path)
 
                     # position ourselves on the package's action folder
-                    os.chdir(folderPath)
+                    os.chdir(folder_path)
                     file_content = ""
 
                     # check for an overall file description
@@ -267,7 +265,7 @@ class ModuleCompiler:
                                  prop.package == self.msgPkgName)):
                             os.chdir(cwd)
                             self.process_message(prop)
-                            os.chdir(folderPath)
+                            os.chdir(folder_path)
                         # check for enumeration types
                         if (prop.unit is not None and prop.unit == "enum" and
                                 prop.enumeration):
@@ -294,7 +292,7 @@ class ModuleCompiler:
                                  self.msgPkgName)):
                             os.chdir(cwd)
                             self.process_message(prop)
-                            os.chdir(folderPath)
+                            os.chdir(folder_path)
 
                         # check for enumeration types
                         if (prop.unit is not None and prop.unit == "enum" and
@@ -323,7 +321,7 @@ class ModuleCompiler:
                                      self.msgPkgName)):
                                 os.chdir(cwd)
                                 self.process_message(prop)
-                                os.chdir(folderPath)
+                                os.chdir(folder_path)
 
                             # check for enumeration types
                             if (prop.unit is not None and
