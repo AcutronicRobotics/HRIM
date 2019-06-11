@@ -9,7 +9,8 @@ from .classes import Composition, Module, Topic, Property, Parameter
 class ModuleParser:
 
     # calling-path independent method to get a platforms data type mapping
-    def getDataTypes(self, plat):
+    @staticmethod
+    def getDataTypes(plat):
         try:
 
             dataTypes = {}
@@ -41,7 +42,8 @@ class ModuleParser:
         return dataTypes
 
     # check for value type, else all values'll be strings
-    def processValue(self, value, type):
+    @staticmethod
+    def processValue(value, type):
         if value is None or len(value) == 0:
             return None
         # if numeric with no decimals (bool would either be 0 or 1)

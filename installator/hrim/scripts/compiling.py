@@ -522,7 +522,8 @@ class ModuleCompiler:
             params.close()
             self.optParams = ""
 
-    def composeModule(self, modules, paths):
+    @staticmethod
+    def composeModule(modules, paths):
         model = open("model.xml", "w")
         composition = "<?xml version=\"1.0\"?>\n<composition name=\"defaultName\">\n"
         strContent = ""
