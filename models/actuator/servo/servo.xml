@@ -10,6 +10,8 @@
 
     <xi:include href="topics/goal.xml" xpointer="xpointer(//root/topic)"/>
 
+    <xi:include href="topics/goalJointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
+
     <param name="origin" type="float" unit="radian" description="zero/starting point">
         <value/>
     </param>
@@ -18,7 +20,6 @@
         <value/>
     </param>
 
-    <xi:include href="topics/goalJointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
 
   </mandatory>
   <optional>

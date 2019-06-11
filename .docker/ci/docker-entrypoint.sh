@@ -3,11 +3,12 @@
 export RESET="\e[0m"
 export CYAN="\e[36m"
 export RED="\e[31m"
+export BOLD"\e[1m"
 WS_PATH="/home/root/ros2_ws"
 HRIM_FULL_PATH="/home/root/ros2_ws/src/hrim"
 INSTALLATOR_PATH="${HRIM_FULL_PATH}/installator"
 ROS2_SOURCE="/opt/ros/${ROS2_DISTRO}/setup.bash"
-MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/models.xsd"
+MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/module.xsd"
 
 function validateSchemas()
 {
@@ -30,12 +31,15 @@ function validateSchemas()
     done
     echo -e "${RED}Number of fails: ${#ERROR_XML[@]}${RESET}"
     exit 1
+  else
+    echo -e "${CYAN}All xml files validated!${RESET}"
   fi
 }
 
 function qaCode()
 {
-  pylint --rcfile ${HRIM_FULL_PATH}/linter/.pylintrc ${INSTALLATOR_PATH}/hrim/
+  echo -e "${CYAN}Linter checks for python code, using: pep8 ${BOLD}`pep8 --version`${reset}"
+  pep8 ${INSTALLATOR_PATH}/hrim/
   result=$?
   if [ $result -ne 0 ]; then
     echo "${RED}Linter error please review it!${RESET}"
