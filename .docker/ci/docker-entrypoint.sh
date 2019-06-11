@@ -42,8 +42,10 @@ function qaCode()
   pep8 ${INSTALLATOR_PATH}/hrim/
   result=$?
   if [ $result -ne 0 ]; then
-    echo "${RED}Linter error please review it!${RESET}"
+    echo "${RED}pep8 error/s found, please review it!${RESET}"
     exit 2
+  else
+    echo -e "${CYAN}No pep8 errors found!${RESET}"
   fi
 }
 
@@ -55,7 +57,7 @@ function installHRIM()
   python3 setup.py install
   result=$?
   if [ $result -eq 0 ]; then
-    echo -e "${CYAN}HRIM tool succsesfully installed!${RESET}"
+    echo -e "${CYAN}HRIM tool successfully installed!${RESET}"
   else
     echo -e "${RED}Failed to install HRIM tool!${RESET}"
     exit 3
@@ -68,7 +70,7 @@ function generatePackages()
   hrim generate --platform ros2 all
   result=$?
   if [ $result -eq 0 ]; then
-    echo -e "${CYAN}All packages generated succsesfully!${RESET}"
+    echo -e "${CYAN}All packages generated successfully!${RESET}"
   else
     echo -e "${RED} Error creating the packages, please review it!${RESET}"
     exit 4
@@ -83,7 +85,7 @@ function compileWS()
   colcon build --merge-install
   result=$?
   if [ $result -eq 0 ]; then
-    echo -e "${CYAN}ROS2 ws compile it!${RESET}"
+    echo -e "${CYAN}ROS2 ws compiled successfully!${RESET}"
   else
     echo -e "${RED}Failed to build ROS2 ws, please review it!{RESET}"
     exit 5
