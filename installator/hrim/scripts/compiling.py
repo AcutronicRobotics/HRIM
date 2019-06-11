@@ -136,6 +136,7 @@ class ModuleCompiler:
         return res
 
     def compileModule(self, module, base=False):
+        global actionPkgName, actionFolderPath, srvPkgName, srvFolderPath, shortType, myDep, folderPath, pkgName, myFiles
         self.base = base
         messages = False
         services = False
