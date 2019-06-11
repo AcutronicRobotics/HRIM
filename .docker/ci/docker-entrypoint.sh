@@ -77,6 +77,7 @@ function generatePackages()
 
 function compileWS()
 {
+  echo -e "${CYAN}Compiling the work space for HRIM!{RESET}"
   source ${ROS2_SOURCE}
   cd ${WS_PATH}
   colcon build --merge-install
