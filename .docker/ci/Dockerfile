@@ -7,7 +7,7 @@ WORKDIR /home/root/ros2_ws
 COPY ./docker-entrypoint.sh /
 
 RUN \
-      apt update -qq && apt install pep8 \
+      apt update -qq && apt install pep8 -y \
       && mkdir -p ros2_ws/src
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
