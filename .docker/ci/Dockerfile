@@ -7,7 +7,7 @@ WORKDIR /home/root/ros2_ws
 COPY ./docker-entrypoint.sh /
 
 RUN \
-      pip3 install astroid==1.4.4 pylint==1.5.2 \
+      apt update -qq && apt install pep8 \
       && mkdir -p ros2_ws/src
 
 ENTRYPOINT ["/docker-entrypoint.sh"]

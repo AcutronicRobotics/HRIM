@@ -3,6 +3,7 @@
 export RESET="\e[0m"
 export CYAN="\e[36m"
 export RED="\e[31m"
+export BOLD"\e[1m"
 WS_PATH="/home/root/ros2_ws"
 HRIM_FULL_PATH="/home/root/ros2_ws/src/hrim"
 INSTALLATOR_PATH="${HRIM_FULL_PATH}/installator"
@@ -37,7 +38,8 @@ function validateSchemas()
 
 function qaCode()
 {
-  pylint --rcfile ${HRIM_FULL_PATH}/linter/.pylintrc ${INSTALLATOR_PATH}/hrim/
+  echo -e "${CYAN}Linter checks for python code, using: pep8 ${BOLD}`pep8 --version`${reset}"
+  pep8 ${INSTALLATOR_PATH}/hrim/
   result=$?
   if [ $result -ne 0 ]; then
     echo "${RED}Linter error please review it!${RESET}"
