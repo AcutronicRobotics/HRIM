@@ -110,7 +110,7 @@ function testWorkspace()
   cd ${WS_PATH}
   colcon test --merge-install --packages-select hrim_qa
   TEST_FAILURES=$(grep -HiRE '\(FAILED\)' ${TEST_LOG_PATH} | cut -d '(' -f 2 | cut -d '-' -f 2 | grep -v 'Failed)')
-
+  count=0
   if [ -z ${TEST_FAILURES} ]; then
     echo -e "${CYAN}All tests passed!${RESET}"
     exit 0
@@ -118,7 +118,9 @@ function testWorkspace()
     echo -e "${YELLOW}Detected failures in the test/s${RESET}"
     for i in ${TEST_FAILURES}; do
       echo -e "${RED}${i}${RESET}"
+      count=$((count+1))
     done
+    echo -e "${YELLOW}Total failure result${RESET}"
     exit 6
   fi
 }
