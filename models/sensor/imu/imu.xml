@@ -11,15 +11,15 @@
     <xi:include href="topics/imu.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="frame_id" type="string" description="tf frame from which the torque sensor is publishing">
-      <value></value>
+        <value/>
     </param>
 
     <param name="gyro_fs" type="uint8" description="gyroscope full scale to use (defined in specs topic)">
-      <value></value>
+        <value/>
     </param>
 
     <param name="accel_fs" type="uint8" description="accelerometer full scale to use (defined in specs topic)">
-      <value></value>
+        <value/>
     </param>
 
   </mandatory>
@@ -30,7 +30,7 @@
     <xi:include href="topics/reconfiguration.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="mag_fs" type="uint8" description="magnetometer full scale to use (defined in specs topic)">
-      <value></value>
+        <value/>
     </param>
 
   </optional>

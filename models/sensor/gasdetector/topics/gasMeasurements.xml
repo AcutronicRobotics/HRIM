@@ -3,7 +3,7 @@
   xmlns:xi="http://www.w3.org/2001/XInclude">
   <topic name="gas_measurements" type="publish" description="detected gas value" fileName="GasMeasurements">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="measurements" type="gasMeasurement[]" description="the measurement of each sensor" fileName="GasMeasurement" package="hrim_sensor_gasdetector_msgs">
       <xi:include href="gasMeasurement.xml" xpointer="xpointer(//root/property/property)"/>

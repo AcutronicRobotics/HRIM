@@ -20,23 +20,23 @@
     </topic>
 
     <param name="frame_id" type="string" description="Sets the TF frame from which the camera is publishing.">
-      <value></value>
+      <value/>
     </param>
 
     <param name="width" type="int" unit="px" description="Resolution: width (width x height)">
-      <value></value>
+      <value/>
     </param>
 
     <param name="height" type="int" unit="px" description="Resolution: height (width x height)">
-      <value></value>
+      <value/>
     </param>
 
     <param name="frame_rate" type="int" unit="fps" description="Refresh rate.">
-      <value></value>
+      <value/>
     </param>
 
     <param name="image_format" type="string" description="Possible values are: 'rgb8', 'rgba8', 'rgb16', 'rgba16', 'bgr8', 'bgra8', 'bgr16', 'bgra16', 'mono8', 'mono16', 'bayerrggb8', 'bayerbggr8', 'bayergbrg8', 'bayergrbg8', 'bayerrggb16', 'bayerbggr16', 'bayergbrg16', 'bayergrbg16'.">
-      <value></value>
+      <value/>
     </param>
 
   </mandatory>
@@ -93,27 +93,27 @@
     </topic>
 
     <param name="frecuency_rate" type="int" unit="Hz/s" description="Related to audio_raw topic: audio sampling frecuency. Mandatory if audio_raw topic is added.">
-      <value></value>
+      <value/>
     </param>
 
     <param name="auto_calibration" type="bool" unit="[0/1]" description="Enable/disable automatic calibration.">
-      <value></value>
+      <value/>
     </param>
 
     <param name="light" type="bool" unit="[0/1]" description="If camera include a integrated light, enable/disable the light.">
-      <value></value>
+      <value/>
     </param>
 
     <param name="light_brightness" type="float" unit="percentage" description="If camera include a integrated light with the optional to control the brightness, adjust the brightness.">
-      <value></value>
+      <value/>
     </param>
 
     <param name="flash" type="bool" unit="[0/1]" description="If camera include a integrated flash, enable/disable flash.">
-      <value></value>
+      <value/>
     </param>
 
     <param name="auto_flash" type="bool" unit="Hz/s" description="If camera include a integrated flash, enable/disable flash automatic control.">
-      <value></value>
+      <value/>
     </param>
 
   </optional>

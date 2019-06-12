@@ -7,10 +7,10 @@
     </property>
     <response>
       <property name="success" type="boolean" description="true if the call succeeded">
-        <value></value>
+        <value/>
       </property>
       <property name="status_message" type="string" description="used to give details about success">
-        <value></value>
+        <value/>
       </property>
     </response>
   </topic>

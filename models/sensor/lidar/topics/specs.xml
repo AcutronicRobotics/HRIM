@@ -1,37 +1,37 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="device features" fileName="SpecsLidar">
     <response>
       <property name="horizontal_fov" type="float32" unit="radian" description="horizontal field of view">
-        <value></value>
+          <value/>
       </property>
       <property name="vertical_fov" type="float32" unit="radian" description="vertical field of view">
-        <value></value>
+          <value/>
       </property>
       <property name="linear_accuracy" type="float32" unit="metre" description="linear resolution">
-        <value></value>
+          <value/>
       </property>
       <property name="angular_accuracy" type="float32" unit="radian" description="angular resolution">
-        <value></value>
+          <value/>
       </property>
       <property name="min_angle_increment" type="float32" unit="radian" description="minimum angle between measurements">
-        <value></value>
+          <value/>
       </property>
       <property name="min_scan_time" type="float32" unit="" description="minimum time between measurements">
-        <value></value>
+          <value/>
       </property>
       <property name="distance_min" type="float32" unit="metre" description="operating minimum distance">
-        <value></value>
+          <value/>
       </property>
       <property name="distance_max" type="float32" unit="metre" description="operating maximum distance">
-        <value></value>
+          <value/>
       </property>
       <property name="points_max" type="float32" description="maximum points per second">
-        <value></value>
+          <value/>
       </property>
       <property name="intensity" type="boolean">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

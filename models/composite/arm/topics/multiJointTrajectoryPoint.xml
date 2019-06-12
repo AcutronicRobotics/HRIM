@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <property name="multi_points" type="multiJointTrajectoryPoint[]" fileName="MultiDOFJointTrajectoryPoint">
     <property name="transforms" type="transform[]" fileName="Transform" package="geometry_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="velocities" type="twist[]" fileName="Twist" package="geometry_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="accelerations" type="twist[]" fileName="Twist" package="geometry_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="time_from_start" type="duration" fileName="Duration" package="builtin_interfaces">
       <property name="sec" type="int32" unit="second">
-        <value></value>
+          <value/>
       </property>
       <property name="nanosec" type="uint32" unit="nanosecond">
-        <value></value>
+          <value/>
       </property>
     </property>
   </property>

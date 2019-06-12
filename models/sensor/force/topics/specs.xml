@@ -7,16 +7,16 @@
         <xi:include href="specsAxis.xml" xpointer="xpointer(//root/property/property)"/>
       </property>
       <property name="min_ideal_temp" type="float32" unit="celsius" description="minimum temperature where the error margin is at it's lowest">
-        <value></value>
+          <value/>
       </property>
       <property name="max_ideal_temp" type="float32" unit="celsius" description="maximum temperature where the error margin is at it's lowest">
-        <value></value>
+          <value/>
       </property>
       <property name="min_operating_temp" type="float32" unit="celsius" description="minimum operating temperature">
-        <value></value>
+          <value/>
       </property>
       <property name="max_operating_temp" type="float32" unit="celsius" description="maximum operating temperature">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

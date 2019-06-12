@@ -16,7 +16,7 @@
   <optional>
 
     <param name="polar_pattern" type="int" unit="enumeration" description="Current polar pattern, only applicable to microphones with multi-pattern capabilities. Omnidirectional=0, bidirectional=1, cardioid=2">
-      <value></value>
+        <value/>
     </param>
 
   </optional>

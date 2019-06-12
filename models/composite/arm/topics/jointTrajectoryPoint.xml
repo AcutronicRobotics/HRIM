@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <property name="points" type="jointTrajectoryPoint[]" fileName="JointTrajectoryPoint">
     <property name="positions" type="float64[]" unit="radian">
-      <value></value>
+        <value/>
     </property>
     <property name="velocities" type="float64[]" unit="radians per second">
-      <value></value>
+        <value/>
     </property>
     <property name="accelerations" type="float64[]" unit="radians per second squared">
-      <value></value>
+        <value/>
     </property>
     <property name="effort" type="float64[]" unit="newtons per metre">
-      <value></value>
+        <value/>
     </property>
     <property name="time_from_start" type="duration" fileName="Duration" package="builtin_interfaces">
       <property name="sec" type="int32" unit="second">
-        <value></value>
+          <value/>
       </property>
       <property name="nanosec" type="uint32" unit="nanosecond">
-        <value></value>
+          <value/>
       </property>
     </property>
   </property>

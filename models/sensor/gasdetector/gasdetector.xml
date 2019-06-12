@@ -11,11 +11,11 @@
     <xi:include href="topics/gasMeasurements.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="frame_id" type="string" description="tf frame from which the torque sensor is publishing">
-      <value></value>
+        <value/>
     </param>
 
     <param name="response_time" type="double" unit="second" description="refresh time">
-      <value></value>
+        <value/>
     </param>
 
   </mandatory>

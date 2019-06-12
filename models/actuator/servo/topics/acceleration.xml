@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="acceleration" type="publish" description="control the acceleration" fileName="GoalAngularAcceleration">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="acceleration" type="float32" unit="radians per second squared" description="angular acceleration">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>
