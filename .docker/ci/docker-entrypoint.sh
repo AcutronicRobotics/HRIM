@@ -10,6 +10,15 @@ INSTALLATOR_PATH="${HRIM_FULL_PATH}/installator"
 ROS2_SOURCE="/opt/ros/${ROS2_DISTRO}/setup.bash"
 MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/module.xsd"
 
+function installDependencies()
+{
+  echo -e "${CYAN}Checking for missing dependencies${RESET}"
+  apt update -qq
+  rosdep update
+  rosdep install -q -y --from-paths ${HRIM_FULL_PATH} --rosdistro ${ROS2_DISTRO} --as-root=apt:false || true
+  echo -e "${CYAN}All dependencies installed!${RESET}"
+}
+
 function validateSchemas()
 {
   echo -e "${CYAN}Validating xml files!${RESET}"
@@ -92,6 +101,7 @@ function compileWS()
   fi
 }
 
+installDependencies
 validateSchemas
 qaCode
 installHRIM
