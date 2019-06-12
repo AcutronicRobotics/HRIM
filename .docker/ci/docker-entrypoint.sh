@@ -6,14 +6,24 @@ export RED="\e[31m"
 export BOLD"=\e[1m"
 WS_PATH="/home/root/ros2_ws"
 HRIM_FULL_PATH="/home/root/ros2_ws/src/hrim"
+HRIM_FULL_GENERATED_PATH="/home/root/ros2_ws/src/hrim/generated"
 INSTALLATOR_PATH="${HRIM_FULL_PATH}/installator"
 ROS2_SOURCE="/opt/ros/${ROS2_DISTRO}/setup.bash"
 MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/module.xsd"
 
+function installDependencies()
+{
+  echo -e "${CYAN}Checking for missing dependencies${RESET}"
+  apt update -qq
+  rosdep update -q
+  rosdep install -q -y --from-paths ${HRIM_FULL_PATH} --rosdistro ${ROS2_DISTRO} --as-root=apt:false || true
+  echo -e "${CYAN}All dependencies installed!${RESET}"
+}
+
 function validateSchemas()
 {
   echo -e "${CYAN}Validating xml files!${RESET}"
-  XML_FILES=$(find -name "*.xml" | grep -v topics | grep -v dataMapping)
+  XML_FILES=$(find -name "*.xml" | grep -v topics | grep -v dataMapping | grep -v package.xml)
   ERROR_XML=( )
   index=0
   for i in ${XML_FILES}; do
@@ -82,7 +92,7 @@ function compileWS()
   echo -e "${CYAN}Compiling the work space for HRIM!${RESET}"
   source ${ROS2_SOURCE}
   cd ${WS_PATH}
-  colcon build --merge-install
+  colcon build --merge-install --cmake-args -DHRIM_DIRECTORY=${HRIM_FULL_GENERATED_PATH}
   result=$?
   if [ $result -eq 0 ]; then
     echo -e "${CYAN}ROS2 ws compiled successfully!${RESET}"
@@ -92,6 +102,7 @@ function compileWS()
   fi
 }
 
+installDependencies
 validateSchemas
 qaCode
 installHRIM
