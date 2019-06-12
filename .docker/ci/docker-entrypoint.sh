@@ -13,7 +13,7 @@ MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/module.xsd"
 function validateSchemas()
 {
   echo -e "${CYAN}Validating xml files!${RESET}"
-  XML_FILES=$(find -name "*.xml" | grep -v topics | grep -v dataMapping)
+  XML_FILES=$(find -name "*.xml" | grep -v topics | grep -v dataMapping | grep -v package.xml)
   ERROR_XML=( )
   index=0
   for i in ${XML_FILES}; do
