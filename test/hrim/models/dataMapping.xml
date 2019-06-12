@@ -1,0 +1,34 @@
+<dataMapping>
+  <platform name="ros2">
+    <type name="boolean" value="bool"/>
+    <type name="byte" value="byte"/>
+    <type name="double" value="float64"/>
+    <type name="enum" value="enum"/>
+    <type name="float32" value="float32"/>
+    <type name="float64" value="float64"/>
+    <type name="int8" value="int8"/>
+    <type name="int16" value="int16"/>
+    <type name="int32" value="int32"/>
+    <type name="string" value="string"/>
+    <type name="uint8" value="uint8"/>
+    <type name="uint16" value="uint16"/>
+    <type name="uint32" value="uint32"/>
+    <type name="uint64" value="uint64"/>
+  </platform>
+  <platform name="none">
+    <type name="boolean" value="boolean"/>
+    <type name="byte" value="byte"/>
+    <type name="double" value="double"/>
+    <type name="enum" value="enum"/>
+    <type name="float32" value="float32"/>
+    <type name="float64" value="float64"/>
+    <type name="int8" value="int8"/>
+    <type name="int16" value="int16"/>
+    <type name="int32" value="int32"/>
+    <type name="string" value="string"/>
+    <type name="uint8" value="uint8"/>
+    <type name="uint16" value="uint16"/>
+    <type name="uint32" value="uint32"/>
+    <type name="uint64" value="uint64"/>
+  </platform>
+</dataMapping>
