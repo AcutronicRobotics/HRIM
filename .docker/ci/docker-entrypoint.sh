@@ -102,9 +102,24 @@ function compileWS()
   fi
 }
 
+function testWorkspace()
+{
+  echo -e "${CYAN}Testing the work space${RESET}"
+  cd ${WS_PATH}
+  colcon test
+  result=$?
+  if [ $result -eq 0 ]; then
+    echo -e "${CYAN}All checks passed!${RESET}"
+  else
+    echo -e "${RED}Check/s failled, please review it!${RESET}"
+    exit $result
+  fi
+}
+
 installDependencies
 validateSchemas
 qaCode
 installHRIM
 generatePackages
 compileWS
+testWorkspace
