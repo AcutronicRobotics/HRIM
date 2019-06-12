@@ -2,12 +2,12 @@ sudo: required
 dist: xenial
 services:
   - docker
- 
+
 notifications:
   email:
     recipients:
       - ibai@erlerobotics.com
-  on_failure: always
+    on_failure: always
 
 before_script:
   - mkdir /tmp/hrim

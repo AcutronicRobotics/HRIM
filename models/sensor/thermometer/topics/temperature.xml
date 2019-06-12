@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="temperature" type="publish" description="single temperature measurement" fileName="Temperature">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="temperature" type="float64" unit="celsius" description="temperature reading">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

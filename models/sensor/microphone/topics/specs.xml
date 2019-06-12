@@ -1,31 +1,31 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="device features" fileName="SpecsMicrophone">
     <response>
       <property name="sensitivity" type="uint32" unit="decibel" description="typical sensitivity at 1Pa, 1KHz">
-        <value></value>
+          <value/>
       </property>
       <property name="min_frequency" type="uint32" unit="hertz" description="minimum frequency the microphone detects">
-        <value></value>
+          <value/>
       </property>
       <property name="max_frequency" type="uint32" unit="hertz" description="maximum frequency the microphone detects">
-        <value></value>
+          <value/>
       </property>
       <property name="impedance" type="uint32" unit="ohm" description="typical output impedance at 1Pa, 1KHz">
-        <value></value>
+          <value/>
       </property>
       <property name="signal_noise_ratio" type="float32" unit="A-weighted decibel" description="typical signal to noise ratio at 1Pa, 1KHz">
-        <value></value>
+          <value/>
       </property>
       <property name="polar_pattern" type="uint8" unit="enum" enum='{"OMNIDIRECTIONAL": 0, "BIDIRECTIONAL": 1, "CARDIOID": 2, "MULTIPATTERN": 3}' description="the 3-dimensional space surrounding the microphone where it's most sensitive to sound">
-        <value></value>
+          <value/>
       </property>
       <property name="min_operating_temp" type="int32" unit="celsius" description="minimum temperature at which the microphone is operational">
-        <value></value>
+          <value/>
       </property>
       <property name="max_operating_temp" type="int32" unit="celsius" description="maximum temperature at which the microphone is operational">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

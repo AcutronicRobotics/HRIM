@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="audio" type="publish" description="single audio measurement" fileName="Audio">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="frequency" type="uint16" unit="hertz" description="current frequency of the audio interface">
-      <value></value>
+        <value/>
     </property>
     <property name="data" type="int16[]" description="interlaced data of the audio buffer">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

@@ -10,15 +10,16 @@
 
     <xi:include href="topics/goal.xml" xpointer="xpointer(//root/topic)"/>
 
+    <xi:include href="topics/goalJointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
+
     <param name="origin" type="float" unit="radian" description="zero/starting point">
-      <value></value>
+        <value/>
     </param>
 
     <param name="joint_name" type="string" description="name of the joint">
-      <value></value>
+        <value/>
     </param>
 
-    <xi:include href="topics/goalJointTrajectory.xml" xpointer="xpointer(//root/topic)"/>
 
   </mandatory>
   <optional>
@@ -36,15 +37,15 @@
     <xi:include href="topics/acceleration.xml" xpointer="xpointer(//root/topic)"/>
 
     <param name="publish_rate" type="int" unit="hertz" description="publishing rate of the state topic">
-      <value></value>
+        <value/>
     </param>
 
     <param name="min_temperature" type="float" unit="celsius" description="minimum operating temperature">
-      <value></value>
+        <value/>
     </param>
 
     <param name="max_temperature" type="float" unit="celsius" description="maximum operating temperature">
-      <value></value>
+        <value/>
     </param>
 
   </optional>

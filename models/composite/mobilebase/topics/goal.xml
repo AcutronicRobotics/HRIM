@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="goal_position" type="publish" description="movement orders" fileName="GoalMobileBase">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="velocity" type="float32" unit="metres per second" description="vehicle velocity, negative = backwards">
-      <value></value>
+        <value/>
     </property>
     <property name="direction_angle" type="float32" description="turning angle, positive = right, negative = left">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

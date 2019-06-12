@@ -7,22 +7,22 @@
         <xi:include href="gasType.xml" xpointer="xpointer(//root/property/property)"/>
       </property>
       <property name="response_time" type="uint32" unit="second" description="time the sensor needs to refresh">
-        <value></value>
+          <value/>
       </property>
       <property name="display" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
+          <value/>
       </property>
       <property name="alarm" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
+          <value/>
       </property>
       <property name="leds" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
+          <value/>
       </property>
       <property name="wifi" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
+          <value/>
       </property>
       <property name="gps" type="boolean" description="true: the gas detector has this extra | false: it doesn't">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

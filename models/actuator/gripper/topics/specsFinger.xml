@@ -1,34 +1,34 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="specs" type="service" description="main characteristics of the finger gripper" fileName="SpecsFingerGripper">
     <response>
       <property name="min_force" type="float32" unit="newton" description="minimum gripping force">
-        <value></value>
+          <value/>
       </property>
       <property name="max_force" type="float32" unit="newton" description="maximum gripping force">
-        <value></value>
+          <value/>
       </property>
       <property name="max_payload" type="float32" unit="kilogram" description="maximum recommended payload">
-        <value></value>
+          <value/>
       </property>
       <property name="min_speed" type="float32" unit="millimeters per second" description="minimum closing speed, if equal to max_speed the component doesn't have that capability">
-        <value></value>
+          <value/>
       </property>
       <property name="max_speed" type="float32" unit="millimeters per second" description="maximum closing speed, if equal to min_speed the component doesn't have that capability">
-        <value></value>
+          <value/>
       </property>
       <property name="max_acceleration" type="float32" unit="millimeters per second squared" description="maximum acceleration, if 0 the component doesn't have that capability">
-        <value></value>
+          <value/>
       </property>
       <property name="max_length" type="float32" unit="millimeter" description="maximum permitted finger length">
-        <value></value>
+          <value/>
       </property>
       <property name="max_angle" type="float32" unit="radian" description="maximum permitted finger angle">
-        <value></value>
+          <value/>
       </property>
       <property name="repeatability" type="float32" unit="second" description="parallel grip repeatability">
-        <value></value>
+          <value/>
       </property>
     </response>
   </topic>

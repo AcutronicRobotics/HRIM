@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="state" type="publish" description="notify if the gripper is activate or not" fileName="StateGripper">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+        <value/>
     </property>
     <property name="on_off" type="boolean" description="true: the gripper is active | false: the gripper is inactive">
-      <value></value>
+        <value/>
     </property>
   </topic>
 </root>

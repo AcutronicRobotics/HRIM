@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <root
-  xmlns:xi="http://www.w3.org/2001/XInclude">
+>
   <topic name="goal" type="subscribe" description="control the speed" fileName="GoalElectricMotor">
     <property name="header" type="header" fileName="Header" package="std_msgs">
-      <value></value>
+      <value/>
     </property>
     <property name="speed" type="float64" description="negative value indicates reverse rotation">
-      <value></value>
+      <value/>
     </property>
   </topic>
 </root>

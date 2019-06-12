@@ -4,7 +4,7 @@
   <topic name="specs" type="service" description="device features" fileName="SpecsConveyor">
     <response>
       <property name="conveyor_quantity" type="uint16" description="number of independent conveyors">
-        <value></value>
+          <value/>
       </property>
       <property name="characteristics" type="specsConveyorIndependent[]" fileName="SpecsConveyorIndependent" package="hrim_composite_conveyor_msgs">
         <xi:include href="specsIndependent.xml" xpointer="xpointer(//root/property/property)"/>
