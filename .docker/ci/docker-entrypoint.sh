@@ -120,7 +120,7 @@ function testWorkspace()
       echo -e "${RED}${i}${RESET}"
       count=$((count+1))
     done
-    echo -e "${YELLOW}Total failure result${RESET}"
+    echo -e "${YELLOW}Total failure result: ${count}${RESET}"
     exit 6
   fi
 }
