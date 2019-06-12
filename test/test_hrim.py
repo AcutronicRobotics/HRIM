@@ -1,7 +1,7 @@
 import unittest
 from hrim.scripts.utils import getTabs
-from hrim.scripts.parsing import *
-from hrim.scripts.classes import *
+from hrim.scripts.parsing import ModuleParser
+from hrim.scripts.classes import Module, Composition, Topic, Property, Parameter
 
 class HRIMTESTS(unittest.TestCase):
     def test_utils(self):
