@@ -106,7 +106,7 @@ function testWorkspace()
 {
   echo -e "${CYAN}Testing the work space${RESET}"
   cd ${WS_PATH}
-  colcon test
+  colcon test --merge-install --packages-select hrim_qa
   result=$?
   if [ $result -eq 0 ]; then
     echo -e "${CYAN}All checks passed!${RESET}"
