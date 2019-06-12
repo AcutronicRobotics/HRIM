@@ -42,9 +42,12 @@ def listener(message_pkg, message_name, namespace):
     node = rclpy.create_node('listener', namespace=namespace)
 
     received_messages = []
-    a = msg_mod( header=Header() )
-    expected_msgs = [(i, repr(msg)) for i, msg in enumerate([msg_mod(header=Header(stamp=Time(sec=1, nanosec=0))),
-            msg_mod(header=Header(stamp=Time(sec=2, nanosec=0)))])]
+    expected_msgs = []
+    try:
+        expected_msgs = [(i, repr(msg)) for i, msg in enumerate(
+                    [msg_mod(header=Header(stamp=Time(sec=1, nanosec=0)))])]
+    except:
+        expected_msgs = [(i, repr(msg)) for i, msg in enumerate([msg_mod()])]
 
     chatter_callback = functools.partial(
         listener_cb, received_messages=received_messages, expected_msgs=expected_msgs)
