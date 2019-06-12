@@ -46,7 +46,7 @@ def listener(message_pkg, message_name, namespace):
     try:
         expected_msgs = [(i, repr(msg)) for i, msg in enumerate(
                     [msg_mod(header=Header(stamp=Time(sec=1, nanosec=0)))])]
-    except:
+    except Exception as e:
         expected_msgs = [(i, repr(msg)) for i, msg in enumerate([msg_mod()])]
 
     chatter_callback = functools.partial(

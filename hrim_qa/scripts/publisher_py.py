@@ -41,7 +41,7 @@ def talker(message_pkg, message_name, number_of_cycles, namespace):
     msgs = []
     try:
         msgs = [msg_mod(header=Header(stamp=Time(sec=1, nanosec=0)))]
-    except:
+    except Exception as e:
         msgs = [msg_mod()]
 
     while rclpy.ok() and cycle_count < number_of_cycles:
