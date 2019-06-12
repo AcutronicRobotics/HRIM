@@ -107,24 +107,4 @@ FOREACH(TYPE_HRIM ${HRIM_GENERATED_MSGS})
    ENDFOREACH()
 ENDFOREACH()
 
-add_ros_test(
-    test/test_msgs.py
-  TIMEOUT 60
-  ARGS subscriber_args:="hrim_generic_msgs Power hrim"
-       publisher_args:="hrim_generic_msgs Power hrim"
-)
-# add_ros_test(
-#     test/test_msgs.py
-#   TIMEOUT 60
-#   ARGS subscriber_args:="hrim_generic_msgs Status hrim"
-#        publisher_args:="hrim_generic_msgs Status hrim"
-# )
-# add_ros_test(
-#     test/test_msgs.py
-#   TIMEOUT 60
-#   ARGS subscriber_args:="hrim_generic_msgs StateCommunication hrim"
-#        publisher_args:="hrim_generic_msgs StateCommunication hrim"
-# )
-
-
 ament_package()
