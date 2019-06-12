@@ -4,12 +4,14 @@ export RESET="\e[0m"
 export CYAN="\e[36m"
 export RED="\e[31m"
 export BOLD"=\e[1m"
+export YELLOW"\e[93m"
 WS_PATH="/home/root/ros2_ws"
 HRIM_FULL_PATH="/home/root/ros2_ws/src/hrim"
 HRIM_FULL_GENERATED_PATH="/home/root/ros2_ws/src/hrim/generated"
 INSTALLATOR_PATH="${HRIM_FULL_PATH}/installator"
 ROS2_SOURCE="/opt/ros/${ROS2_DISTRO}/setup.bash"
 MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/module.xsd"
+TEST_LOG_PATH=""
 
 function installDependencies()
 {
@@ -97,7 +99,7 @@ function compileWS()
   if [ $result -eq 0 ]; then
     echo -e "${CYAN}ROS2 ws compiled successfully!${RESET}"
   else
-    echo -e "${RED}Failed to build ROS2 ws, please review it!{RESET}"
+    echo -e "${RED}Failed to build ROS2 ws, please review it!${RESET}"
     exit 5
   fi
 }
@@ -107,12 +109,17 @@ function testWorkspace()
   echo -e "${CYAN}Testing the work space${RESET}"
   cd ${WS_PATH}
   colcon test --merge-install --packages-select hrim_qa
-  result=$?
-  if [ $result -eq 0 ]; then
-    echo -e "${CYAN}All checks passed!${RESET}"
+  TEST_FAILURES=$(grep -HiRE '\(FAILED\)' ${TEST_LOG_PATH} | cut -d '-' -f 2 | cut -d '\' -f 1 | cut -d '(' -f 1)
+
+  if [ -z ${TEST_FAILURES} ]; then
+    echo -e "${CYAN}All tests passed!${RESET}"
+    exit 0
   else
-    echo -e "${RED}Check/s failled, please review it!${RESET}"
-    exit $result
+    echo -e "${YELLOW}Detected failures in the test/s${RESET}"
+    for i in ${TEST_FAILURES}; do
+      echo -e "${RED}${i}${RESET}"
+    done
+    exit 6
   fi
 }
 
