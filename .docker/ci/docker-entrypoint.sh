@@ -4,7 +4,7 @@ export RESET="\e[0m"
 export CYAN="\e[36m"
 export RED="\e[31m"
 export BOLD"=\e[1m"
-export YELLOW"\e[93m"
+export YELLOW="\e[93m"
 WS_PATH="/home/root/ros2_ws"
 HRIM_FULL_PATH="/home/root/ros2_ws/src/hrim"
 HRIM_FULL_GENERATED_PATH="/home/root/ros2_ws/src/hrim/generated"
@@ -109,7 +109,7 @@ function testWorkspace()
   echo -e "${CYAN}Testing the work space${RESET}"
   cd ${WS_PATH}
   colcon test --merge-install --packages-select hrim_qa
-  TEST_FAILURES=$(grep -HiRE '\(FAILED\)' ${TEST_LOG_PATH} | cut -d '-' -f 2 | cut -d '\' -f 1 | cut -d '(' -f 1)
+  TEST_FAILURES=$(grep -HiRE '\(FAILED\)' ${TEST_LOG_PATH} | cut -d '(' -f 2 | cut -d '-' -f 2 | grep -v 'Failed)')
 
   if [ -z ${TEST_FAILURES} ]; then
     echo -e "${CYAN}All tests passed!${RESET}"
