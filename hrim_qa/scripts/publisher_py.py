@@ -14,6 +14,8 @@ from rclpy.duration import Duration
 def talker(message_pkg, message_name, number_of_cycles, namespace):
     import rclpy
 
+    time.sleep(0.1)
+
     module = importlib.import_module(message_pkg + '.msg')
     msg_mod = getattr(module, message_name)
 
@@ -36,8 +38,12 @@ def talker(message_pkg, message_name, number_of_cycles, namespace):
 
     cycle_count = 0
     print('talker: beginning loop')
-    msgs = [msg_mod(header=Header(stamp=Time(sec=1, nanosec=0))),
-            msg_mod(header=Header(stamp=Time(sec=2, nanosec=0)))]
+    msgs = []
+    try:
+        msgs = [msg_mod(header=Header(stamp=Time(sec=1, nanosec=0)))]
+    except Exception as e:
+        msgs = [msg_mod()]
+
     while rclpy.ok() and cycle_count < number_of_cycles:
         msg_count = 0
         for msg in msgs:
