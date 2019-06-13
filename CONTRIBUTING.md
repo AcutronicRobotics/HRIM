@@ -37,7 +37,7 @@ Use the following link to submit a bug report: https://github.com/AcutronicRobot
 ### Feature request
 
 Enhancement suggestions are tracked as [GitHub
-issuesi](https://github.com/AcutronicRobotics/HRIM/issues/new/choose).
+issues](https://github.com/AcutronicRobotics/HRIM/issues/new/choose).
 
 #### How to:
 
