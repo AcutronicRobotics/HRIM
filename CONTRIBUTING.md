@@ -13,7 +13,7 @@ Hardware Robot Information Model (HRIM)
 ### Code style
 
 Make sure that your code complies with the code style that we have defined in
-our docs: https://acutronicrobotics.com/docs/technology/hrim/model/qa 
+our docs: https://acutronicrobotics.com/docs/technology/hrim/model/qa
 
 
 ### Submit a pull request
@@ -27,8 +27,8 @@ This section guides you through submitting a bug report for HRIM. Following
 these guidelines helps maintainers and the community understand your report
 and reproduce the bug.
 
-Before creating bug reports, please check this the current issues to check if
-someone already cought the same bug as you. When you are creating a bug report, please
+Before creating bug reports, please check the list of [issues](https://github.com/AcutronicRobotics/HRIM/issues) to make sure if
+someone already had the same bug as you. When you are creating a bug report, please
 include as many details as possible. Fill out the required template, the
 information it asks for helps us resolve issues faster.
 
@@ -37,7 +37,7 @@ Use the following link to submit a bug report: https://github.com/AcutronicRobot
 ### Feature request
 
 Enhancement suggestions are tracked as [GitHub
-issuesi](https://github.com/AcutronicRobotics/HRIM/issues/new/choose). 
+issuesi](https://github.com/AcutronicRobotics/HRIM/issues/new/choose).
 
 #### How to:
 
