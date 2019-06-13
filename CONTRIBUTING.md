@@ -1,8 +1,6 @@
 Hardware Robot Information Model (HRIM)
 =================
 
-[TOC]
-
 ## Contributing HRIM project
 
 ### Summary
