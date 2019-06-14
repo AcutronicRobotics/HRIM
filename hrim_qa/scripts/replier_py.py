@@ -5,6 +5,7 @@ import functools
 import importlib
 import sys
 
+
 def replier_callback(request, response, srv_fixtures):
     for req, resp in srv_fixtures:
         if request.__repr__() == req.__repr__():
@@ -45,7 +46,8 @@ def replier(service_pkg, service_name, number_of_cycles, namespace):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('service_pkg', help='name of the ROS package')
     parser.add_argument('service_name', help='name of the ROS message')
     parser.add_argument('namespace', help='namespace of the ROS node')

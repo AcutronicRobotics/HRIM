@@ -4,6 +4,7 @@ import argparse
 import importlib
 import sys
 
+
 def requester(service_pkg, service_name, namespace):
     import rclpy
 
@@ -24,7 +25,8 @@ def requester(service_pkg, service_name, namespace):
             # wait for the service to be available
             client = node.create_client(srv_mod, service_name)
             tries = 15
-            while rclpy.ok() and not client.wait_for_service(timeout_sec=1.0) and tries > 0:
+            while rclpy.ok() and not client.wait_for_service(
+                    timeout_sec=1.0) and tries > 0:
                 print('service not available, waiting again...')
                 tries -= 1
             assert tries > 0, 'service still not available, aborting test'
@@ -35,7 +37,8 @@ def requester(service_pkg, service_name, namespace):
                 future = client.call_async(req)
                 rclpy.spin_until_future_complete(node, future)
                 assert repr(future.result()) == repr(resp), \
-                    'unexpected response %r\n\nwas expecting %r' % (future.result(), resp)
+                    'unexpected response %r\n\nwas expecting %r' % (
+                    future.result(), resp)
                 print('received reply #%d of %d' % (
                     srv_fixtures.index([req, resp]) + 1, len(srv_fixtures)))
         finally:
@@ -45,7 +48,8 @@ def requester(service_pkg, service_name, namespace):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('service_pkg', help='name of the ROS package')
     parser.add_argument('service_name', help='name of the ROS message')
     parser.add_argument('namespace', help='namespace of the ROS node')

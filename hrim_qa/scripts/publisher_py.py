@@ -11,6 +11,7 @@ from rclpy.qos import QoSProfile
 from rclpy.qos import QoSReliabilityPolicy
 from rclpy.duration import Duration
 
+
 def talker(message_pkg, message_name, number_of_cycles, namespace):
     import rclpy
 
@@ -27,9 +28,11 @@ def talker(message_pkg, message_name, number_of_cycles, namespace):
 
     qos_profile = QoSProfile(
         depth=10,
-        # Guaranteed delivery is needed to send messages to late-joining subscription.
+        # Guaranteed delivery is needed to send messages to late-joining
+        # subscription.
         reliability=QoSReliabilityPolicy.RELIABLE,
-        # Store messages on the publisher so that they can be affected by Lifespan.
+        # Store messages on the publisher so that they can be affected by
+        # Lifespan.
         durability=QoSDurabilityPolicy.TRANSIENT_LOCAL,
         lifespan=lifespan)
 
@@ -58,7 +61,8 @@ def talker(message_pkg, message_name, number_of_cycles, namespace):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('message_pkg', help='name of the ROS package')
     parser.add_argument('message_name', help='name of the ROS message')
     parser.add_argument('namespace', help='namespace of the ROS node')
