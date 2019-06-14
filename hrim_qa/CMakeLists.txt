@@ -9,6 +9,7 @@ install(
   scripts/subscriber_py.py
   scripts/requester_py.py
   scripts/replier_py.py
+  scripts/interface.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
