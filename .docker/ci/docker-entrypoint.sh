@@ -8,7 +8,6 @@ export YELLOW="\e[93m"
 WS_PATH="/home/root/ros2_ws"
 HRIM_FULL_PATH="/home/root/ros2_ws/src/hrim"
 HRIM_FULL_GENERATED_PATH="/home/root/ros2_ws/src/hrim/generated"
-INSTALLATOR_PATH="${HRIM_FULL_PATH}/installator"
 ROS2_SOURCE="/opt/ros/${ROS2_DISTRO}/setup.bash"
 MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/module.xsd"
 TEST_LOG_PATH=""
@@ -51,10 +50,13 @@ function validateSchemas()
 function qaCode()
 {
   echo -e "${CYAN}Linter checks for python code, using: pep8 ${BOLD}$(pep8 --version)${RESET}"
-  pep8 ${INSTALLATOR_PATH}/hrim/
+  PYTHON_SCRIPTS=$(find ${HRIM_FULL_PATH} -name "*.py")
+  for i in ${PYTHON_SCRIPTS}; do
+    pep8 $i
+  done
   result=$?
   if [ $result -ne 0 ]; then
-    echo "${RED}pep8 error/s found, please review it!${RESET}"
+    echo -e "${RED}pep8 error/s found, please review it!${RESET}"
     exit 2
   else
     echo -e "${CYAN}No pep8 errors found!${RESET}"
