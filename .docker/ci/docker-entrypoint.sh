@@ -111,6 +111,9 @@ function testWorkspace()
 {
   echo -e "${CYAN}Testing the work space${RESET}"
   cd ${WS_PATH}
+  # TODO (LanderU)
+  touch ${HRIM_FULL_GENERATED_PATH}/actuator/rotaryservo/hrim_actuator_rotaryservo_actions/COLCON_IGNORE
+  touch ${HRIM_FULL_GENERATED_PATH}/composite/arm/hrim_composite_arm_actions/COLCON_IGNORE
   colcon test --merge-install --packages-select hrim_qa
   TEST_FAILURES=$(grep -HiRE '\(FAILED\)' ${TEST_LOG_PATH} | cut -d '(' -f 2 | cut -d '-' -f 2 | grep -v 'Failed)')
   count=0
