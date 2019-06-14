@@ -1,7 +1,9 @@
 import unittest
 from hrim.scripts.utils import getTabs
 from hrim.scripts.parsing import ModuleParser
-from hrim.scripts.classes import Module, Composition, Topic, Property, Parameter
+from hrim.scripts.classes import Module, Composition, Topic, Property, \
+    Parameter
+
 
 class HRIMTESTS(unittest.TestCase):
     def test_utils(self):
@@ -20,7 +22,12 @@ class HRIMTESTS(unittest.TestCase):
         self.assertEqual(1.5, module_parser.processValue("1.5", "double"))
         self.assertNotEqual(1.5, module_parser.processValue("1.55", "float"))
 
-        datatype_str = {'boolean': 'bool', 'byte': 'byte', 'double': 'float64', 'enum': 'enum', 'float32': 'float32', 'float64': 'float64', 'int8': 'int8', 'int16': 'int16', 'int32': 'int32', 'string': 'string', 'uint8': 'uint8', 'uint16': 'uint16', 'uint32': 'uint32', 'uint64': 'uint64'}
+        datatype_str = {'boolean': 'bool', 'byte': 'byte', 'double': 'float64',
+                        'enum': 'enum', 'float32': 'float32', 
+                        'float64': 'float64', 'int8': 'int8', 
+                        'int16': 'int16', 'int32': 'int32', 'string': 'string',
+                        'uint8': 'uint8', 'uint16': 'uint16', 
+                        'uint32': 'uint32', 'uint64': 'uint64'}
         self.assertEqual(datatype_str, module_parser.getDataTypes("ros2"))
         self.assertNotEqual(datatype_str, module_parser.getDataTypes("none"))
 
@@ -65,6 +72,7 @@ class HRIMTESTS(unittest.TestCase):
         self.assertEqual("uint8", parameters.type)
         self.assertEqual(False, parameters.mandatory)
         self.assertEqual("m", parameters.unit)
+
 
 if __name__ == '__main__':
     print("Running HRIMTESTS")

@@ -144,7 +144,7 @@ class ModuleCompiler:
         return res
 
     def compile_module(self, module, base=False):
-        actionFolderPath = None
+        action_folder_path = None
         srv_pkg_name = None
         srv_folder_path = None
         short_type = None
@@ -233,15 +233,16 @@ class ModuleCompiler:
                             ["actuator", "sensor", "communication",
                              "cognition", "ui", "power", "composite"
                              ]):
-                        actionPkgName = "hrim_" + module.name + "_" \
+                        action_pkg_name = "hrim_" + module.name + "_" \
                                         + short_type + "s"
                     else:
-                        actionPkgName = "hrim_" + module.type + "_" \
+                        action_pkg_name = "hrim_" + module.type + "_" \
                                         + module.name + "_" + short_type + "s"
-                    pkg_name = actionPkgName
-                    actionFolderPath = os.path.join(os.getcwd(), actionPkgName,
-                                                    short_type)
-                    folder_path = actionFolderPath
+                    pkg_name = action_pkg_name
+                    action_folder_path = os.path.join(os.getcwd(),
+                                                      action_pkg_name,
+                                                      short_type)
+                    folder_path = action_folder_path
                 # check if file has already been generated
                 if (topic.fileName not in my_files and
                         (topic.package is None or topic.package == pkg_name)):
@@ -475,12 +476,12 @@ class ModuleCompiler:
 
         # if the package has actions
         if actions:
-            action_files = os.listdir(actionFolderPath)
+            action_files = os.listdir(action_folder_path)
             # reposition ourselves on the package's root
-            os.chdir(actionFolderPath[:-7])
-
-            action_make_file = make_file.replace("%PKGNAME%", actionPkgName)
-            action_pkg = pkg_file.replace("%PKGNAME%", actionPkgName)
+            os.chdir(action_folder_path[:-7])
+            action_pkg_name = ""
+            action_make_file = make_file.replace("%PKGNAME%", action_pkg_name)
+            action_pkg = pkg_file.replace("%PKGNAME%", action_pkg_name)
 
             action_pkg = action_pkg.replace("%PKGDESC%", module.desc)
 
