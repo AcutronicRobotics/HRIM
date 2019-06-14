@@ -6,7 +6,7 @@ import importlib
 import sys
 
 
-def replier_callback(request, response, srv_fixtures):
+def replier_callback(request, srv_fixtures):
     for req, resp in srv_fixtures:
         if request.__repr__() == req.__repr__():
             print('received request #%d of %d' %

@@ -4,12 +4,13 @@ import argparse
 import importlib
 import sys
 import time
+
 from builtin_interfaces.msg import Time
-from std_msgs.msg import Header
+from rclpy.duration import Duration
 from rclpy.qos import QoSDurabilityPolicy
 from rclpy.qos import QoSProfile
 from rclpy.qos import QoSReliabilityPolicy
-from rclpy.duration import Duration
+from std_msgs.msg import Header
 
 
 def talker(message_pkg, message_name, number_of_cycles, namespace):
@@ -41,11 +42,11 @@ def talker(message_pkg, message_name, number_of_cycles, namespace):
 
     cycle_count = 0
     print('talker: beginning loop')
-    msgs = []
     try:
         msgs = [msg_mod(header=Header(stamp=Time(sec=1, nanosec=0)))]
     except Exception as e:
         msgs = [msg_mod()]
+        print(e)
 
     while rclpy.ok() and cycle_count < number_of_cycles:
         msg_count = 0

@@ -4,12 +4,13 @@ import argparse
 import functools
 import importlib
 import sys
+
 from builtin_interfaces.msg import Time
-from std_msgs.msg import Header
+from rclpy.duration import Duration
 from rclpy.qos import QoSDurabilityPolicy
 from rclpy.qos import QoSProfile
 from rclpy.qos import QoSReliabilityPolicy
-from rclpy.duration import Duration
+from std_msgs.msg import Header
 
 
 def listener_cb(msg, received_messages, expected_msgs):
@@ -44,12 +45,12 @@ def listener(message_pkg, message_name, namespace):
     node = rclpy.create_node('listener', namespace=namespace)
 
     received_messages = []
-    expected_msgs = []
     try:
         expected_msgs = [(i, repr(msg)) for i, msg in enumerate(
             [msg_mod(header=Header(stamp=Time(sec=1, nanosec=0)))])]
     except Exception as e:
         expected_msgs = [(i, repr(msg)) for i, msg in enumerate([msg_mod()])]
+        print(e)
 
     chatter_callback = functools.partial(
         listener_cb, received_messages=received_messages,
