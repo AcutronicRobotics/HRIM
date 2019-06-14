@@ -8,9 +8,10 @@ export YELLOW="\e[93m"
 WS_PATH="/home/root/ros2_ws"
 HRIM_FULL_PATH="/home/root/ros2_ws/src/hrim"
 HRIM_FULL_GENERATED_PATH="/home/root/ros2_ws/src/hrim/generated"
+INSTALLATOR_PATH="${HRIM_FULL_PATH}/installator"
 ROS2_SOURCE="/opt/ros/${ROS2_DISTRO}/setup.bash"
 MODULES_SCHEMA="${HRIM_FULL_PATH}/models/schemas/module.xsd"
-TEST_LOG_PATH=""
+TEST_LOG_PATH="${WS_PATH}/log/latest_test/events.log"
 
 function installDependencies()
 {
