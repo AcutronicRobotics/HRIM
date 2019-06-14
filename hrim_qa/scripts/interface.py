@@ -1,34 +1,28 @@
 # Qt5
+import importlib  # dynamic imports
+import math  # for math.nan
+import os
+import re  # urdf editing through regex
+import shutil
+# system
+import sys
+import threading
+import time
+import zipfile  # zip (de)compression for 3D models
+
+# component rviz visualization
+import fastLaunch
+# ROS2
+import rclpy
+from PyQt5 import QtCore, QtGui
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QWidget, QSlider, QGridLayout, QLayout,
                              QPushButton, QStackedWidget,
                              QLabel, QComboBox, QApplication, QTabWidget,
                              QVBoxLayout, QLineEdit)
-from PyQt5.Qt3DExtras import Qt3DWindow
-from PyQt5 import QtCore, Qt, QtGui
-from PyQt5.QtGui import QPixmap, QIcon
-
-# system
-import sys
-import os
-import time
-import threading
-import shutil
-import math  # for math.nan
-import importlib  # dynamic imports
-import re  # urdf editing through regex
-import zipfile  # zip (de)compression for 3D models
-
 from billiard import Process
-
-# component rviz visualization
-import fastLaunch
-
-# ROS2
-import rclpy
-from hrim_generic_msgs.msg import Power
 from hrim_generic_srvs.srv import ID, Simulation3D
 from rclpy.executors import SingleThreadedExecutor as localExecutor
-
 from rclpy.qos import qos_profile_sensor_data as rclpy_qos
 
 # noinspection PyPep8
@@ -104,7 +98,7 @@ def launch_rviz():
 class HrimGripperControl(QWidget):
 
     # Class initializer
-    def __init__(self, app):
+    def __init__(self, main_app):
         self.wLblNodeCount = QLabel("Node")
         self.wSelNode = ComboBox()
         self.wBtnGripperPos = QPushButton("Position")
@@ -150,7 +144,7 @@ class HrimGripperControl(QWidget):
         try:
             super().__init__()
 
-            self.app = app
+            self.app = main_app
 
             self.context = rclpy.context.Context()
             rclpy.init(context=self.context)
@@ -240,7 +234,7 @@ class HrimGripperControl(QWidget):
         self.wSelNode.activated[int].connect(self.node_selected)
         self.wSelNode.popupAboutToBeShown.connect(self.list_nodes)
 
-        # Disconect button
+        # Disconnect button
         w_btn_refresh = QPushButton("")
         w_btn_refresh.setIcon(QIcon('img/refresh.png'))
         w_btn_refresh.clicked.connect(self.clicked_on_refresh)
@@ -490,7 +484,8 @@ class HrimGripperControl(QWidget):
         v_box.addWidget(self.layTabs)
 
     # Closing event override
-    def close_event(sel, event=None):
+    @staticmethod
+    def close_event():
         try:
 
             # Signal worker threads should stop
@@ -555,6 +550,8 @@ class HrimGripperControl(QWidget):
 
     def w_btn_go_clicked(self):
         try:
+            arg1 = None
+            arg2 = None
             if self.type == "Gripper":
                 arg1 = self.firstValue if self.wSldGripperPos.isEnabled() \
                     else math.nan
@@ -1153,11 +1150,6 @@ class HrimGripperControl(QWidget):
                         self.callback_finger_state)
                     )
 
-            power_sub = self.node.create_subscription(Power,
-                                                      "/" + self.node_name +
-                                                      "/power",
-                                                      self.callback_power)
-
             while (
                     self.keepThreads and self.validNode and
                     self.stateCounter < self.maxStateCounter):
@@ -1216,8 +1208,6 @@ class HrimGripperControl(QWidget):
         try:
 
             if self.type == "Servo":
-
-                topic_names = ["goal_axis1", "goal_axis2"]
 
                 publishers = []
 
