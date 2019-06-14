@@ -23,10 +23,10 @@ class HRIMTESTS(unittest.TestCase):
         self.assertNotEqual(1.5, module_parser.processValue("1.55", "float"))
 
         datatype_str = {'boolean': 'bool', 'byte': 'byte', 'double': 'float64',
-                        'enum': 'enum', 'float32': 'float32', 
-                        'float64': 'float64', 'int8': 'int8', 
+                        'enum': 'enum', 'float32': 'float32',
+                        'float64': 'float64', 'int8': 'int8',
                         'int16': 'int16', 'int32': 'int32', 'string': 'string',
-                        'uint8': 'uint8', 'uint16': 'uint16', 
+                        'uint8': 'uint8', 'uint16': 'uint16',
                         'uint32': 'uint32', 'uint64': 'uint64'}
         self.assertEqual(datatype_str, module_parser.getDataTypes("ros2"))
         self.assertNotEqual(datatype_str, module_parser.getDataTypes("none"))
