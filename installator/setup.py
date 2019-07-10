@@ -6,8 +6,12 @@ setup(name='hrim',
       packages=['hrim','hrim.scripts'],
       description="HRIM command line utility",
       long_description='''
-      The Hardware Robot Information Model or HRIM for short, is a common interface that facilitates interoperability among different vendors of robot hardware components with the purpose of building modular robots.
-      HRIM focuses on the standardization of the logical interfaces between robot modules, designing a set of rules that each device has to meet in order to achieve interoperability.
+      The Hardware Robot Information Model or HRIM for short, is a common
+      interface that facilitates interoperability among different vendors
+      of robot hardware components with the purpose of building modular robots.
+      HRIM focuses on the standardization of the logical interfaces between
+      robot modules, designing a set of rules that each device has to meet
+      in order to achieve interoperability.
       ''',
       url="https://github.com/erlerobot/HRIM",
       entry_points={
