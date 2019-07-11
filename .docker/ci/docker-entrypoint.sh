@@ -18,7 +18,7 @@ function installDependencies()
   echo -e "${CYAN}Checking for missing dependencies${RESET}"
   apt update -qq
   rosdep update -q
-  rosdep install -q -y --from-paths ${HRIM_FULL_PATH} --rosdistro ${ROS2_DISTRO} --as-root=apt:false || true
+  rosdep install -q -y --from-paths "${HRIM_FULL_PATH}" --rosdistro "${ROS2_DISTRO}" --as-root=apt:false || true
   echo -e "${CYAN}All dependencies installed!${RESET}"
 }
 
@@ -29,7 +29,7 @@ function validateSchemas()
   ERROR_XML=( )
   index=0
   for i in ${XML_FILES}; do
-    xmllint --schema ${MODULES_SCHEMA} $i --noout  --xinclude 2>/dev/null
+    xmllint --schema ${MODULES_SCHEMA} "${i}" --noout  --xinclude 2>/dev/null
     result=$?
     if [ ${result} -ne 0 ]; then
       ERROR_XML[index]=$i
@@ -38,7 +38,7 @@ function validateSchemas()
   done
 
   if [ "${#ERROR_XML[@]}" -gt 0 ]; then
-    for i in ${ERROR_XML[@]}; do
+    for i in "${ERROR_XML[@]}"; do
       echo "Error on file: ${i}"
     done
     echo -e "${RED}Number of fails: ${#ERROR_XML[@]}${RESET}"
@@ -95,7 +95,7 @@ function generatePackages()
 function compileWS()
 {
   echo -e "${CYAN}Compiling the work space for HRIM!${RESET}"
-  source ${ROS2_SOURCE}
+  source "${ROS2_SOURCE}"
   cd ${WS_PATH}
   # TODO (LanderU)
   touch ${HRIM_FULL_GENERATED_PATH}/actuator/rotaryservo/hrim_actuator_rotaryservo_actions/COLCON_IGNORE
