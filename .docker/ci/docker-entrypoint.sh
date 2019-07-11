@@ -67,7 +67,7 @@ function qaCode()
 function installHRIM()
 {
   echo -e "${CYAN}Installing HRIM command line utility${RESET}"
-  cd ${INSTALLATOR_PATH}
+  cd ${INSTALLATOR_PATH} || exit
   pip3 install -r requirements.txt
   python3 setup.py install
   result=$?
@@ -81,7 +81,7 @@ function installHRIM()
 
 function generatePackages()
 {
-  cd ${HRIM_FULL_PATH}
+  cd ${HRIM_FULL_PATH} || exit
   hrim generate --platform ros2 all
   result=$?
   if [ $result -eq 0 ]; then
@@ -96,10 +96,7 @@ function compileWS()
 {
   echo -e "${CYAN}Compiling the work space for HRIM!${RESET}"
   source "${ROS2_SOURCE}"
-  cd ${WS_PATH}
-  # TODO (LanderU)
-  touch ${HRIM_FULL_GENERATED_PATH}/actuator/rotaryservo/hrim_actuator_rotaryservo_actions/COLCON_IGNORE
-  touch ${HRIM_FULL_GENERATED_PATH}/composite/arm/hrim_composite_arm_actions/COLCON_IGNORE
+  cd ${WS_PATH} || exit
   colcon build --merge-install --cmake-args -DHRIM_DIRECTORY=${HRIM_FULL_GENERATED_PATH}
   result=$?
   if [ $result -eq 0 ]; then
@@ -113,7 +110,7 @@ function compileWS()
 function testWorkspace()
 {
   echo -e "${CYAN}Testing the work space${RESET}"
-  cd ${WS_PATH}
+  cd ${WS_PATH} || exit
   colcon test --merge-install --packages-select hrim_qa
   TEST_FAILURES=$(grep -HiRE '\(FAILED\)' ${TEST_LOG_PATH} | cut -d '(' -f 2 | cut -d '-' -f 2 | grep -v 'Failed)')
   count=0
