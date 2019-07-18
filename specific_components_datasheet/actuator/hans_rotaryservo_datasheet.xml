@@ -17,6 +17,15 @@
         <value>HG186025129<value/>
     </property>
     <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
+        <value/>
+    </property>
+    <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
+        <value/>
+    </property>
+    <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
+      <value/>
+    </property>
+    <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
         <value>10<value/>
     </property>
     <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
