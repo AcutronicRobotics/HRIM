@@ -1,0 +1,77 @@
+\documentclass[12pt,a4paper]{article} % Use A4 paper with a 12pt font size - different paper sizes will require manual recalculation of page margins and border positions
+\usepackage[table]{xcolor}
+
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{1.5}
+
+\usepackage{marginnote} % Required for margin notes
+\usepackage{wallpaper} % Required to set each page to have a background
+\usepackage{lastpage} % Required to print the total number of pages
+
+\usepackage{amsmath} % Required for equation customization
+\usepackage{amssymb} % Required to include mathematical symbols
+\usepackage{xcolor} % Required to specify colors by name
+\usepackage{makecell}
+\usepackage{tabularx}
+
+\usepackage{fancyhdr} % Required to customize headers
+
+\pagestyle{fancy}\fancyhf{} % Use the custom header specified below
+
+\begin{document}
+
+\hfil{\Huge\bf Datasheet }\hfil % Company providing the invoice
+\bigskip\break % Whitespace
+\hrule % Horizontal line
+
+\newcommand\BackgroundStructure{ % Command to specify the background of each page
+\setlength{\unitlength}{1mm} % Set the unit length to millimeters
+
+%\setlength\fboxsep{0mm} % Adjusts the distance between the frameboxes and the borderlines
+%\setlength\fboxrule{0.5mm} % Increase the thickness of the border line
+%\put(10, 10){\fcolorbox{black}{blue!10}{\framebox(155,247){}}} % Main content box
+%\put(165, 10){\fcolorbox{black}{blue!10}{\framebox(37,247){}}} % Margin box
+%\put(10, 262){\fcolorbox{black}{white!10}{\framebox(192, 25){}}} % Header box
+\put(137, 263){\includegraphics[height=23mm,keepaspectratio]{latex/logos/hans}} % Logo box - maximum height/width:
+\put(20, 263){\includegraphics[height=23mm,keepaspectratio]{latex/logos/H-ROS}} % Logo box - maximum height/width:
+\put(95, 263){\includegraphics[height=23mm,keepaspectratio]{latex/logos/actuation_grippers3}} % Logo box - maximum height/width:
+
+}
+
+\AddToShipoutPicture{\BackgroundStructure} % Set the background of each page to that specified above in the header information section
+
+
+\begin{table}[h]
+ \centering
+ \begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\rowcolor[HTML]{000000}
+{\color[HTML]{FFFFFF} Concept }  & {\color[HTML]{FFFFFF} Description } \\ \hline
+{%CONCEPT%}
+   \end{tabularx}
+\end{table}
+
+\begin{table}[h]
+ \centering
+ \begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\rowcolor[HTML]{000000}
+{\color[HTML]{FFFFFF} Characteristic }  & {\color[HTML]{FFFFFF} Value } \\ \hline
+{%CHARACTERISTICS%}
+   \end{tabularx}
+\end{table}
+
+\begin{table}[h]
+ \centering
+ \begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\rowcolor[HTML]{000000}\multicolumn{3}{|c|}{ {\color[HTML]{FFFFFF}Features} } \\ \hline
+\rowcolor[HTML]{000000}
+{\color[HTML]{FFFFFF} Parameter }  & {\color[HTML]{FFFFFF} Range } & {\color[HTML]{FFFFFF} Default value }  \\ \hline
+{%FEATURES%}
+   \end{tabularx}
+\end{table}
+
+
+\end{document}
