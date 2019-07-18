@@ -11,7 +11,7 @@
         <value/>
     </property>
     <property name="vendor_id" type="uint32" description="vendor identifier">
-        <value/>
+        <value>123</value>
     </property>
     <property name="product_id" type="uint32" description="part number">
         <value/>
