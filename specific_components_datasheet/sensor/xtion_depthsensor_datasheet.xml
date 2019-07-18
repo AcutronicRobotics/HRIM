@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<root>
+<generic_specs>
+	<property name="hrim_version" type="string" description="used hrim version">
+        <value>Coliza<value/>
+    </property>
+    <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
+        <value>1<value/>
+    </property>
+    <property name="device_name" type="string" description="sub-type">
+        <value>Asus Xtion PRO<value/>
+    </property>
+    <property name="vendor_id" type="uint32" description="vendor identifier">
+        <value>14<value/>
+    </property>
+    <property name="product_id" type="string" description="part number">
+        <value>Y5GZQBSP<value/>
+    </property>
+    <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
+        <value>10<value/>
+    </property>
+    <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
+        <value>100<value/>
+    </property>
+    <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
+    	<value/>
+    </property>
+  <property name="voltage" type="float32" unit="volt">
+      <value>5<value/>
+  </property>
+  <property name="current_consumption" type="float32" unit="ampere">
+      <value>2<value/>
+  </property>
+  <property name="current_surplus" type="float32" unit="ampere" description="current injection for the whole system">
+      <value/>
+  </property>
+  <property name="power_consumption" type="float32" unit="watt">
+      <value>2.5<value/>
+  </property>
+  <property name="power_surplus" type="float32" unit="watt" description="power injection for the whole system">
+      <value/>
+  </property>
+</generic_specs>
+
+<component_specs>
+	<property name="resolution" type="string" unit="pixel" description="example: 752x480, 1280x1024">
+      <value>640x480,320x240<value/>
+  </property>
+  <property name="horizontal_fov" type="float32" unit="radian" description="horizontal field of view">
+      <value>58<value/>
+  </property>
+  <property name="vertical_fov" type="float32" unit="radian" description="vertical field of view">
+      <value>45<value/>
+  </property>
+  <property name="frame_rate" type="uint16" unit="frames per second" description="maximum possible frame rate">
+      <value>60<value/>
+  </property>
+  <property name="accuracy" type="float32" unit="metre" description="minimum possible accuracy value">
+      <value>0.1<value/>
+  </property>
+  <property name="operation_range" type="uint16[]" unit="metre" description="working distance (min-max)">
+      <value>6.0<value/>
+  </property>
+  <property name="image_formats" type="string" description="example: mono8, rgb1, bayergrbg8">
+      <value>mono8,rgb8<value/>
+  </property>
+  <property name="rgb" type="boolean" description="true: image in RGB (color); false: image in grayscale">
+      <value>true<value/>
+  </property>
+</component_specs>
+</root>
