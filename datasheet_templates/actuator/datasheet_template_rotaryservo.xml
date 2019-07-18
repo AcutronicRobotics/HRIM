@@ -16,28 +16,28 @@
     <property name="product_id" type="uint32" description="part number">
         <value/>
     </property>
-    <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
+    <property name="min_comm_rate" type="double" unit="Hz" description="minimum frequency at which the component can work">
         <value/>
     </property>
-    <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
+    <property name="max_comm_rate" type="double" unit="Hz" description="maximum frequency at which the component can work">
         <value/>
     </property>
-    <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
+    <property name="max_size_msgs" type="double" unit="Mb" description="maximum amount of Mbs the component will send">
     	<value/>
     </property>
   <property name="voltage" type="float32" unit="volt">
       <value/>
   </property>
-  <property name="current_consumption" type="float32" unit="ampere">
+  <property name="current_consumption" type="float32" unit="A">
       <value/>
   </property>
-  <property name="current_surplus" type="float32" unit="ampere" description="current injection for the whole system">
+  <property name="current_surplus" type="float32" unit="A" description="current injection for the whole system">
       <value/>
   </property>
-  <property name="power_consumption" type="float32" unit="watt">
+  <property name="power_consumption" type="float32" unit="W">
       <value/>
   </property>
-  <property name="power_surplus" type="float32" unit="watt" description="power injection for the whole system">
+  <property name="power_surplus" type="float32" unit="W" description="power injection for the whole system">
       <value/>
   </property>
 </generic_specs>
@@ -46,32 +46,35 @@
       <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
           <value/>
       </property>
-      <property name="range_min" type="float64" unit="radian" description="minimum work range">
+      <property name="precision" type="float64" unit="rad" description="angular precision">
           <value/>
       </property>
-      <property name="range_max" type="float64" unit="radian" description="maximum work range">
+      <property name="rated_speed" type="float64" unit="rad/s" description="servomotor speed">
           <value/>
       </property>
-      <property name="precision" type="float64" unit="radian" description="angular precision">
+      <property name="reachable_speed" type="float64" unit="rad/s" description="maximum speed">
           <value/>
       </property>
-      <property name="rated_speed" type="float64" unit="radians per second" description="servomotor speed">
+      <property name="rated_torque" type="float64" unit="N/m" description="servomotor torque">
           <value/>
       </property>
-      <property name="reachable_speed" type="float64" unit="radians per second" description="maximum speed">
-          <value/>
-      </property>
-      <property name="rated_torque" type="float64" unit="newtons per metre" description="servomotor torque">
-          <value/>
-      </property>
-      <property name="reachable_torque" type="float64" unit="newtons per metre" description="peak torque">
-          <value/>
-      </property>
-      <property name="temperature_range_min" type="float64" unit="celsius" description="minimum operational temperature">
-          <value/>
-      </property>
-      <property name="temperature_range_max" type="float64" unit="celsius" description="maximum operational temperature">
+      <property name="reachable_torque" type="float64" unit="N/m" description="peak torque">
           <value/>
       </property>
 </component_specs>
+
+<component_features>
+	<property name="temperature_range_min" type="float64" unit="ºC" description="minimum operational temperature">
+			<value/>
+	</property>
+	<property name="temperature_range_max" type="float64" unit="ºC" description="maximum operational temperature">
+			<value/>
+	</property>
+	<property name="range_min" type="float64" unit="rad" description="minimum work range">
+			<value/>
+	</property>
+	<property name="range_max" type="float64" unit="rad" description="maximum work range">
+			<value/>
+	</property>
+</component_features>
 </root>

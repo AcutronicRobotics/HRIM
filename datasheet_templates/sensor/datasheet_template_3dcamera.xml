@@ -16,28 +16,22 @@
     <property name="product_id" type="uint32" description="part number">
         <value/>
     </property>
-    <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
-        <value/>
-    </property>
-    <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
-        <value/>
-    </property>
-    <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
+    <property name="max_size_msgs" type="double" unit="Mb" description="maximum amount of Mbs the component will send">
     	<value/>
     </property>
-  <property name="voltage" type="float32" unit="volt">
+  <property name="voltage" type="float32" unit="V">
       <value/>
   </property>
-  <property name="current_consumption" type="float32" unit="ampere">
+  <property name="current_consumption" type="float32" unit="A">
       <value/>
   </property>
-  <property name="current_surplus" type="float32" unit="ampere" description="current injection for the whole system">
+  <property name="current_surplus" type="float32" unit="A" description="current injection for the whole system">
       <value/>
   </property>
-  <property name="power_consumption" type="float32" unit="watt">
+  <property name="power_consumption" type="float32" unit="W">
       <value/>
   </property>
-  <property name="power_surplus" type="float32" unit="watt" description="power injection for the whole system">
+  <property name="power_surplus" type="float32" unit="W" description="power injection for the whole system">
       <value/>
   </property>
 </generic_specs>
@@ -46,19 +40,19 @@
 	<property name="resolution" type="string" unit="pixel" description="example: 752x480, 1280x1024">
       <value/>
   </property>
-  <property name="horizontal_fov" type="float32" unit="radian" description="horizontal field of view">
+  <property name="horizontal_fov" type="float32" unit="rad" description="horizontal field of view">
       <value/>
   </property>
-  <property name="vertical_fov" type="float32" unit="radian" description="vertical field of view">
+  <property name="vertical_fov" type="float32" unit="rad" description="vertical field of view">
       <value/>
   </property>
-  <property name="frame_rate" type="uint16" unit="frames per second" description="maximum possible frame rate">
+  <property name="frame_rate" type="uint16" unit="FPS" description="maximum possible frame rate">
       <value/>
   </property>
-  <property name="accuracy" type="float32" unit="metre" description="minimum possible accuracy value">
+  <property name="accuracy" type="float32" unit="m" description="minimum possible accuracy value">
       <value/>
   </property>
-  <property name="operation_range" type="uint16[]" unit="metre" description="working distance (min-max)">
+  <property name="operation_range" type="uint16[]" unit="m" description="working distance (min-max)">
       <value/>
   </property>
   <property name="image_formats" type="string" description="example: mono8, rgb1, bayergrbg8">
@@ -68,4 +62,13 @@
       <value/>
   </property>
 </component_specs>
+
+<component_features>
+	<property name="min_comm_rate" type="double" unit="Hz" description="minimum frequency at which the component can work">
+			<value/>
+	</property>
+	<property name="max_comm_rate" type="double" unit="Hz" description="maximum frequency at which the component can work">
+			<value/>
+	</property>
+</component_features>
 </root>
