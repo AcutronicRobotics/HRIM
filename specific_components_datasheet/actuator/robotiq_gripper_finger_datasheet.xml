@@ -16,13 +16,7 @@
     <property name="product_id" type="string" description="part number">
         <value>c-65652018</value>
     </property>
-    <property name="min_comm_rate" type="double" unit="Hz" description="minimum frequency at which the component can work">
-        <value></value>
-    </property>
-    <property name="max_comm_rate" type="double" unit="Hz" description="maximum frequency at which the component can work">
-        <value></value>
-    </property>
-    <property name="max_size_msgs" type="double" unit="MB" description="maximum amount of megabits the component will send">
+    <property name="max_size_msgs" type="double" unit="Mb" description="maximum amount of megabits the component will send">
     	<value></value>
     </property>
     <property name="min_comm_rate" type="double" unit="Hz" description="minimum frequency at which the component can work">
@@ -49,6 +43,17 @@
 </generic_specs>
 
 <component_specs>
+	<property name="repeatability" type="float32" unit="s" description="parallel grip repeatability">
+			<value>0.08</value>
+	</property>
+</component_specs>
+<component_features>
+	<property name="min_comm_rate" type="double" unit="Hz" description="minimum frequency at which the component can work">
+			<value></value>
+	</property>
+	<property name="max_comm_rate" type="double" unit="Hz" description="maximum frequency at which the component can work">
+			<value></value>
+	</property>
 	<property name="min_force" type="float32" unit="N" description="minimum gripping force">
 			<value>10</value>
 	</property>
@@ -73,8 +78,5 @@
 	<property name="max_angle" type="float32" unit="rad" description="maximum permitted finger angle">
 			<value>0.87</value>
 	</property>
-	<property name="repeatability" type="float32" unit="s" description="parallel grip repeatability">
-			<value>0.08</value>
-	</property>
-</component_specs>
+</component_features
 </root
