@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<root>
+<generic_specs>
+	<property name="hrim_version" type="string" description="used hrim version">
+        <value>Coliza<value/>
+    </property>
+    <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
+        <value>2<value/>
+    </property>
+    <property name="device_name" type="string" description="sub-type">
+        <value>Robotiq-140<value/>
+    </property>
+    <property name="vendor_id" type="uint32" description="vendor identifier">
+        <value>2<value/>
+    </property>
+    <property name="product_id" type="string" description="part number">
+        <value>c-65652018<value/>
+    </property>
+    <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
+        <value/>
+    </property>
+    <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
+        <value/>
+    </property>
+    <property name="max_size_msgs" type="double" unit="megabit" description="maximum amount of megabits the component will send">
+    	<value/>
+    </property>
+    <property name="min_comm_rate" type="double" unit="hertz" description="minimum frequency at which the component can work">
+        <value/>
+    </property>
+    <property name="max_comm_rate" type="double" unit="hertz" description="maximum frequency at which the component can work">
+        <value/>
+    </property>
+  <property name="voltage" type="float32" unit="volt">
+      <value>24<value/>
+  </property>
+  <property name="current_consumption" type="float32" unit="ampere">
+      <vale>1<value/>
+  </property>
+  <property name="current_surplus" type="float32" unit="ampere" description="current injection for the whole system">
+      <value/>
+  </property>
+  <property name="power_consumption" type="float32" unit="watt">
+      <value>24<value/>
+  </property>
+  <property name="power_surplus" type="float32" unit="watt" description="power injection for the whole system">
+      <value/>
+  </property>
+</generic_specs>
+
+<component_specs>
+	<property name="min_force" type="float32" unit="newton" description="minimum gripping force">
+			<value>10<value/>
+	</property>
+	<property name="max_force" type="float32" unit="newton" description="maximum gripping force">
+			<value>125<value/>
+	</property>
+	<property name="max_payload" type="float32" unit="kilogram" description="maximum recommended payload">
+			<value>2.5<value/>
+	</property>
+	<property name="min_speed" type="float32" unit="millimeters per second" description="minimum closing speed, if equal to max_speed the component doesn't have that capability">
+			<value>30<value/>
+	</property>
+	<property name="max_speed" type="float32" unit="millimeters per second" description="maximum closing speed, if equal to min_speed the component doesn't have that capability">
+			<value>250<value/>
+	</property>
+	<property name="max_acceleration" type="float32" unit="millimeters per second squared" description="maximum acceleration, if 0 the component doesn't have that capability">
+			<value>0<value/>
+	</property>
+	<property name="max_length" type="float32" unit="millimeter" description="maximum permitted finger length">
+			<value>209<value/>
+	</property>
+	<property name="max_angle" type="float32" unit="radian" description="maximum permitted finger angle">
+			<value>0.87<value/>
+	</property>
+	<property name="repeatability" type="float32" unit="second" description="parallel grip repeatability">
+			<value>0.08<value/>
+	</property>
+</component_specs>
+</root
