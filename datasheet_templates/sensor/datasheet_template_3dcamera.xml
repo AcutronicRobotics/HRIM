@@ -67,11 +67,5 @@
   <property name="rgb" type="boolean" description="true: image in RGB (color); false: image in grayscale">
       <value/>
   </property>
-  <property name="voltage" type="float32" unit="volt">
-      <value/>
-  </property>
-  <property name="max_power_consumption" type="float32" unit="watt" description="maximum power consumption">
-      <value/>
-  </property>
 </component_specs>
 </root>
