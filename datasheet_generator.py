@@ -1,16 +1,14 @@
 import argparse
-import sys
 import os
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as et
 
-
-if __name__== "__main__":
+if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--filename', help='file name')
     args = parser.parse_args()
 
-    tree = ET.parse(args.filename);
+    tree = et.parse(args.filename)
     root = tree.getroot()
 
     with open('latex/template.tex', 'r') as content_file:
@@ -27,8 +25,9 @@ if __name__== "__main__":
         if str(tag) == "generic_specs":
             for x in property:
 
-                if (index % 2 == 0):
-                    string_concepts = string_concepts + '\\rowcolor[HTML]{C0C0C0} \n'
+                if index % 2 == 0:
+                    string_concepts = string_concepts + \
+                        '\\rowcolor[HTML]{C0C0C0} \n'
 
                 name = x.attrib["name"]
 
@@ -36,12 +35,13 @@ if __name__== "__main__":
                     unit = x.attrib["unit"]
                 else:
                     unit = ""
-
+                v = ""
                 for value in x:
                     v = value.text
                 name = name.replace("_", '\_')
                 print(str(name) + " & " + str(v) + " & " + str(unit))
-                string_concepts += str(name) + ' & ' + str(v) + " " + str(unit) + ' \\\\ \hline\n'
+                string_concepts += str(name) + ' & ' + str(v) + " " + str(
+                    unit) + ' \\\\ \hline\n'
                 index = index + 1
         else:
             for x in property:
@@ -51,11 +51,12 @@ if __name__== "__main__":
                     unit = x.attrib["unit"]
                 else:
                     unit = ""
-
+                v = ""
                 for value in x:
                     v = value.text
                 name = name.replace("_", '\_')
-                string_characteristics += str(name) + ' & ' + str(v) + " " + str(unit) + ' \\\\ \hline\n'
+                string_characteristics += str(name) + ' & ' + str(
+                    v) + " " + str(unit) + ' \\\\ \hline\n'
 
     content = content.replace('{%CONCEPT%}', string_concepts)
     content = content.replace('{%CHARACTERISTICS%}', string_characteristics)
