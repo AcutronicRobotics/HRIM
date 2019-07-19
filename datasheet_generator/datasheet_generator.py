@@ -96,8 +96,8 @@ if __name__ == "__main__":
     f.write(content)
     f.close()
 
-    cmd = subprocess.run(['pdflatex', '-no-file-line-error' 
+    cmd = subprocess.run(['/bin/pdflatex', '-no-file-line-error' 
                                       'latex/output.tex'], shell=False)
     cmd
-    cmd = subprocess.run(['evince output.pdf', 'output.pdf'], shell=False)
+    cmd = subprocess.run(['/bin/evince output.pdf', 'output.pdf'], shell=False)
     cmd
