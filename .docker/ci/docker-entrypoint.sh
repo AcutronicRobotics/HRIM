@@ -25,7 +25,7 @@ function installDependencies()
 function validateSchemas()
 {
   echo -e "${CYAN}Validating xml files!${RESET}"
-  XML_FILES=$(find -name "*.xml" | grep -v topics | grep -v dataMapping | grep -v package.xml)
+  XML_FILES=$(find -name "*.xml" -not -path "./src/hrim/datasheet_generator/*" "./src/hrim/datasheet_templates/*" | grep -v topics | grep -v dataMapping | grep -v package.xml)
   ERROR_XML=( )
   index=0
   for i in ${XML_FILES}; do
