@@ -13,7 +13,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--filename', help='file name')
     parser.add_argument('--logo', help='logo file')
-    parser.add_argument('--component_type', help='component type', choices=component_type_array)
+    parser.add_argument('--component_type', help='component type',
+                        choices=component_type_array)
     args = parser.parse_args()
 
     tree = et.parse(args.filename)
