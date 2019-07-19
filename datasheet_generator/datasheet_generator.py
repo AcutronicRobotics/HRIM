@@ -43,14 +43,34 @@ if __name__ == "__main__":
                 string_concepts += str(name) + ' & ' + str(v) + " " + str(
                     unit) + ' \\\\ \hline\n'
                 index = index + 1
-        else:
+
+        if str(tag) == "component_features":
             for x in property:
                 name = x.attrib["name"]
 
+                unit = ""
                 if "unit" in x.attrib:
                     unit = x.attrib["unit"]
-                else:
-                    unit = ""
+
+                value_min = 0
+                value_max = 0
+                for value in x:
+                    if(value.tag == "value_min"):
+                        value_min = value.text
+                    if(value.tag == "value_max"):
+                        value_max = value.text
+                name = name.replace("_", '\_')
+                string_features += str(name) + ' & ' + str(
+                    value_min) + "/" + str(value_max) + "  " + str(
+                    unit) + " & " + x.attrib["description"] + ' \\\\ \hline\n'
+
+        elif str(tag) == "component_specs":
+            for x in property:
+                name = x.attrib["name"]
+
+                unit = ""
+                if "unit" in x.attrib:
+                    unit = x.attrib["unit"]
                 v = ""
                 for value in x:
                     v = value.text
