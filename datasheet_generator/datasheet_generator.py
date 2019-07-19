@@ -31,10 +31,10 @@ if __name__ == "__main__":
     string_features = ''
     index = 0
 
-    for property in root:
-        tag = property.tag
+    for prop in root:
+        tag = prop.tag
         if str(tag) == "generic_specs":
-            for x in property:
+            for x in prop:
                 if index % 2 == 0:
                     string_concepts = string_concepts + \
                         '\\rowcolor[HTML]{C0C0C0} \n'
@@ -53,7 +53,7 @@ if __name__ == "__main__":
                 index = index + 1
 
         if str(tag) == "component_features":
-            for x in property:
+            for x in prop:
                 name = x.attrib["name"]
 
                 unit = ""
@@ -73,7 +73,7 @@ if __name__ == "__main__":
                     unit) + " & " + x.attrib["description"] + ' \\\\ \hline\n'
 
         elif str(tag) == "component_specs":
-            for x in property:
+            for x in prop:
                 name = x.attrib["name"]
 
                 unit = ""
