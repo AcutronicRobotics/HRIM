@@ -1,6 +1,7 @@
 import argparse
 import subprocess
 import xml.etree.ElementTree as et
+from defusedxml.ElementTree import parse
 
 component_type_array = ['arm', 'battery', "camera", "converyor", "depthsensor",
                         "encoder", "force", "forcetoque", "gasdetector",
@@ -16,8 +17,7 @@ if __name__ == "__main__":
     parser.add_argument('--component_type', help='component type',
                         choices=component_type_array)
     args = parser.parse_args()
-
-    tree = et.parse(args.filename)
+    tree = parse(args.filename)
     root = tree.getroot()
 
     company_name = args.logo
