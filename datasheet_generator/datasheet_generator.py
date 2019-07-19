@@ -1,5 +1,5 @@
 import argparse
-import os
+import subprocess
 import xml.etree.ElementTree as et
 
 if __name__ == "__main__":
@@ -55,9 +55,9 @@ if __name__ == "__main__":
                 value_min = 0
                 value_max = 0
                 for value in x:
-                    if(value.tag == "value_min"):
+                    if value.tag == "value_min":
                         value_min = value.text
-                    if(value.tag == "value_max"):
+                    if value.tag == "value_max" :
                         value_max = value.text
                 name = name.replace("_", '\_')
                 string_features += str(name) + ' & ' + str(
@@ -86,6 +86,8 @@ if __name__ == "__main__":
     f.write(content)
     f.close()
 
-    cmd = 'pdflatex -no-file-line-error latex/output.tex'
-    os.system(cmd)
-    os.system('evince output.pdf')
+    cmd = subprocess.run(['pdflatex', '-no-file-line-error' 
+                                      'latex/output.tex'], shell=False)
+    cmd
+    cmd = subprocess.run(['evince output.pdf', 'output.pdf'], shell=False)
+    cmd
