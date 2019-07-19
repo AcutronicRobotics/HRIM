@@ -78,5 +78,5 @@
 	<property name="max_angle" type="float32" unit="rad" description="maximum permitted finger angle">
 			<value>0.87</value>
 	</property>
-</component_features
-</root
+</component_features>
+</root>
