@@ -16,7 +16,7 @@ The command structure would be the following:
 
 ```bash
 usage: datasheet_generator.py [-h] [--filename FILENAME] [--logo LOGO]
-                              [--component_type {arm,battery,camera,converyor,depthsensor,encoder,force,forcetoque,gasdetector,gps,gripper,hygrometer,lidar,microphone,mobile,motor,rangefinder,rotaryservo,thermometer,torque}]
+                              [--component_type {arm,battery,camera,conveyor,depthsensor,encoder,force,forcetoque,gasdetector,gps,gripper,hygrometer,lidar,microphone,mobile,motor,rangefinder,rotaryservo,thermometer,torque}]
 ```
 
 Where:
@@ -24,7 +24,7 @@ Where:
  - `-h/--help` shows script's help.
  - `--filename` selects which XML file you want to convert to pdf
  - `--logo` selects the logo that the document will show
- - `--component_type` select the component type. Possible options are : `arm`, `battery`,` camera`, `converyor`, `depthsensor`, `encoder`, `force`, `forcetoque`, `gasdetector`, `gps`, `gripper`, `hygrometer`, `lidar`, `microphone`, `mobile` , `motor`, `rangefinder`, `rotaryservo`, `thermometer`, `torque`
+ - `--component_type` select the component type. Possible options are : `arm`, `battery`,` camera`, `conveyor`, `depthsensor`, `encoder`, `force`, `forcetoque`, `gasdetector`, `gps`, `gripper`, `hygrometer`, `lidar`, `microphone`, `mobile` , `motor`, `rangefinder`, `rotaryservo`, `thermometer`, `torque`
 
 ## Examples
 
