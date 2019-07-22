@@ -5,6 +5,13 @@ This tool allows to create a datasheet based on the XML description.
 
 ## Script usage
 
+### Script requirements
+
+```bash
+pip3 install -r requirements.txt
+sudo apt install evince texlive-latex-extra -y
+```
+
 The command structure would be the following:
 
 ```bash
