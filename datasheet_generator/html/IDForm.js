@@ -41,15 +41,15 @@ function generateIDForm(){
     // console.log(myCollection[i])
     // console.log(myCollection[i].getAttribute("name"))
 
-    elements_of_the_form += myCollection[i].getAttribute("name") + ":" +
-      "<input type=\"text\" name=\"" + myCollection[i].getAttribute("name") + "\"><br>"
+    elements_of_the_form += "<tr><td>"+ myCollection[i].getAttribute("name") + "</td><td>" +
+      "<input type=\"text\" name=\"" + myCollection[i].getAttribute("name") + "\"></td></tr>"
 
     elements_of_the_table += "<tr><td>"+ myCollection[i].getAttribute("name") +"</td><td>"+ myCollection[i].getAttribute("description") +" </td></tr>"
   }
 
   // document.getElementById("demo").innerHTML = "<table border=\"1\"><tr><th>Concept</th><th>Description</th></tr>" + elements_of_the_table + "</table>"
   // console.log("<form> " + elements_of_the_form + "</form>")
-  document.getElementById("formhrim").innerHTML = "<form> " + elements_of_the_form + "</form>"
+  document.getElementById("formhrim").innerHTML = "<form><table> " + elements_of_the_form + "</table></form>"
 
 
   return xmlDoc;

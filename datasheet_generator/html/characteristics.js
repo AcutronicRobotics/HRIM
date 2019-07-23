@@ -28,12 +28,12 @@ text = "<component_specs>\n" +
   elements_of_the_form = ""
 
   for (i = 0; i < myCollection.length; i++) {
-    elements_of_the_form += myCollection[i].getAttribute("name") + ":" +
-      "<input type=\"text\" name=\"" + myCollection[i].getAttribute("name") + "\"><br>"
+    elements_of_the_form += "<tr><td>" + myCollection[i].getAttribute("name") + "</td><td>" +
+      "<input type=\"text\" name=\"" + myCollection[i].getAttribute("name") + "\"></td></tr>"
 
     elements_of_the_table += "<tr><td>"+ myCollection[i].getAttribute("name") +"</td><td>"+ myCollection[i].getAttribute("description") +" </td></tr>"
   }
-  document.getElementById("formcharacteristics").innerHTML = "<form> " + elements_of_the_form + "</form>"
+  document.getElementById("formcharacteristics").innerHTML = "<form> <table>" + elements_of_the_form + "</table></form>"
 }
 
 
@@ -73,10 +73,10 @@ var myCollection = xmlDoc.getElementsByTagName("component_specs")[0].getElements
 elements_of_the_form = ""
 
 for (i = 0; i < myCollection.length; i++) {
-  elements_of_the_form += myCollection[i].getAttribute("name") + ":" +
-    "<input type=\"text\" name=\"" + myCollection[i].getAttribute("name") + "\"><br>"
+  elements_of_the_form += "<tr><td>" + myCollection[i].getAttribute("name") + "</td><td>" +
+    "<input type=\"text\" name=\"" + myCollection[i].getAttribute("name") + "\"></td></tr>"
 
   elements_of_the_table += "<tr><td>"+ myCollection[i].getAttribute("name") +"</td><td>"+ myCollection[i].getAttribute("description") +" </td></tr>"
 }
-document.getElementById("formcharacteristicscamera").innerHTML = "<form> " + elements_of_the_form + "</form>"
+document.getElementById("formcharacteristicscamera").innerHTML = "<form><table>" + elements_of_the_form + "</table></form>"
 }
