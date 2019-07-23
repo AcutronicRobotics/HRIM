@@ -1,0 +1,51 @@
+<html>
+<body>
+
+  <p id="demo"></p>
+  <p id="formhrim"></p>
+  <button onclick="saveProperties()">Save</button>
+
+
+  <script src="utils.js"></script>
+  <script src="IDForm.js"></script>
+
+<script>
+
+
+xmlDoc = generateIDForm()
+
+function saveProperties() {
+  var x = document.getElementById("formhrim").getElementsByTagName("form");
+  // console.log(x)
+
+  var myCollection = xmlDoc.getElementsByTagName("topic")[0].getElementsByTagName("response")[0].getElementsByTagName("property")
+
+  // console.log(myCollection)
+
+  for (i = 0; i < x[0].length; i++) {
+
+    var obj = findObjectByKey(myCollection, 'name', x[0][i].name)
+
+    // console.log(obj)
+    // console.log(obj.getElementsByTagName("value"))
+
+    obj.getElementsByTagName("value")[0].innerHTML = x[0][i].value
+    // console.log(obj.getElementsByTagName("value"))
+
+    // console.log("x: " + x[0][i].name + ": " + x[0][i].value)
+  }
+  // console.log(xmlDoc)
+  var s = new XMLSerializer();
+  var xmlString = s.serializeToString( xmlDoc );
+
+  String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+  };
+  createXMLFile([xmlString.replaceAll('&quot;', '\'')], 'output.xml');
+}
+
+</script>
+
+</body>
+</html>
