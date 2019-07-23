@@ -3,16 +3,21 @@
 
   <p id="demo"></p>
   <p id="formhrim"></p>
+  <p id="formcharacteristics"></p>
+  <p id="formcharacteristicscamera"></p>
   <button onclick="saveProperties()">Save</button>
-
 
   <script src="utils.js"></script>
   <script src="IDForm.js"></script>
+  <script src="characteristics.js"></script>
 
 <script>
 
 
 xmlDoc = generateIDForm()
+
+generateCharacteristicsFormRotaryServo();
+generateCharacteristicsFormCamera();
 
 function saveProperties() {
   var x = document.getElementById("formhrim").getElementsByTagName("form");
