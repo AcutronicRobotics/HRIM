@@ -2,70 +2,70 @@
 <root>
 <generic_specs>
 	<property name="hrim_version" type="string" description="used hrim version">
-        <value/>
+        <value></value>
     </property>
     <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
-        <value/>
+        <value></value>
     </property>
     <property name="device_name" type="string" description="sub-type">
-        <value/>
+        <value></value>
     </property>
     <property name="vendor_id" type="uint32" description="vendor identifier">
-        <value/>
+        <value></value>
     </property>
-    <property name="product_id" type="uint32" description="part number">
-        <value/>
+    <property name="product_id" type="string" description="part number">
+        <value></value>
     </property>
     <property name="min_comm_rate" type="double" unit="Hz" description="minimum frequency at which the component can work">
-        <value/>
+        <value></value>
     </property>
     <property name="max_comm_rate" type="double" unit="Hz" description="maximum frequency at which the component can work">
-        <value/>
+        <value></value>
     </property>
     <property name="max_size_msgs" type="double" unit="Mb" description="maximum amount of Mbs the component will send">
-    	<value/>
+    	<value></value>
     </property>
-  <property name="voltage" type="float32" unit="V">
-      <value/>
+  <property name="Voltage" type="float32" unit="V">
+      <value></value>
   </property>
   <property name="current_consumption" type="float32" unit="A">
-      <value/>
+      <value></value>
   </property>
   <property name="current_surplus" type="float32" unit="A" description="current injection for the whole system">
-      <value/>
+      <value></value>
   </property>
   <property name="power_consumption" type="float32" unit="W">
-      <value/>
+      <value></value>
   </property>
   <property name="power_surplus" type="float32" unit="W" description="power injection for the whole system">
-      <value/>
+      <value></value>
   </property>
 </generic_specs>
 
 <component_specs>
 	<property name="resolution" type="string" unit="px" description="example: 752x480, 1280x1024">
-      <value/>
+      <value></value>
   </property>
   <property name="horizontal_fov" type="float32" unit="rad" description="horizontal field of view">
-      <value/>
+      <value></value>
   </property>
   <property name="vertical_fov" type="float32" unit="rad" description="vertical field of view">
-      <value/>
+      <value></value>
   </property>
   <property name="frame_rate" type="uint16" unit="FPS" description="maximum possible frame rate">
-      <value/>
+      <value></value>
   </property>
   <property name="accuracy" type="float32" unit="m" description="minimum possible accuracy value">
-      <value/>
+      <value></value>
   </property>
   <property name="operation_range" type="uint16[]" unit="m" description="working distance (min-max)">
-      <value/>
+      <value></value>
   </property>
   <property name="image_formats" type="string" description="example: mono8, rgb1, bayergrbg8">
-      <value/>
+      <value></value>
   </property>
   <property name="rgb" type="boolean" description="true: image in RGB (color); false: image in grayscale">
-      <value/>
+      <value></value>
   </property>
 </component_specs>
 </root>
