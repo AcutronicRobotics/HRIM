@@ -2,76 +2,79 @@
 <root>
 <generic_specs>
 	<property name="hrim_version" type="string" description="used hrim version">
-        <value/>
-    </property>
-    <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
-        <value/>
-    </property>
-    <property name="device_name" type="string" description="sub-type">
-        <value/>
-    </property>
-    <property name="vendor_id" type="uint32" description="vendor identifier">
-        <value/>
-    </property>
-    <property name="product_id" type="uint32" description="part number">
-        <value/>
-    </property>
-    <property name="min_comm_rate" type="double" unit="Hz" description="minimum frequency at which the component can work">
-        <value/>
-    </property>
-    <property name="max_comm_rate" type="double" unit="Hz" description="maximum frequency at which the component can work">
-        <value/>
-    </property>
-    <property name="max_size_msgs" type="double" unit="Mb" description="maximum amount of Mbs the component will send">
-    	<value/>
-    </property>
-  <property name="voltage" type="float32" unit="V">
-      <value/>
+      <value></value>
   </property>
-  <property name="current_consumption" type="float32" unit="A">
-      <value/>
+  <property name="device_kind_id" type="uint8" unit="enum" enum='{"HRIM_COMM": 0, "HRIM_SENSOR": 1, "HRIM_ACTUATOR": 2, "HRIM_COGNITION": 3, "HRIM_UI": 4, "HRIM_POWER": 5, "HRIM_COMPOSITE": 6}' description="device classification">
+      <value></value>
+  </property>
+  <property name="device_name" type="string" description="sub-type">
+      <value></value>
+  </property>
+  <property name="vendor_id" type="uint32" description="vendor identifier">
+      <value></value>
+  </property>
+  <property name="product_id" type="string" description="part number">
+      <value></value>
+  </property>
+  <property name="min_comm_rate" type="double" unit="Hz" description="minimum frequency at which the component can work">
+      <value></value>
+  </property>
+  <property name="max_comm_rate" type="double" unit="Hz" description="maximum frequency at which the component can work">
+      <value></value>
+  </property>
+  <property name="max_size_msgs" type="double" unit="Mb" description="maximum amount of Mbs the component will send">
+    <value></value>
+  </property>
+	<property name="Vage" type="float32" unit="V">
+    <value></value>
+	</property>
+	<property name="current_consumption" type="float32" unit="A">
+      <value></value>
   </property>
   <property name="current_surplus" type="float32" unit="A" description="current injection for the whole system">
-      <value/>
+      <value></value>
   </property>
   <property name="power_consumption" type="float32" unit="W">
-      <value/>
+      <value></value>
   </property>
   <property name="power_surplus" type="float32" unit="W" description="power injection for the whole system">
-      <value/>
+      <value></value>
   </property>
 </generic_specs>
 
 <component_specs>
-      <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
-          <value/>
-      </property>
-      <property name="range_min" type="float64" unit="rad" description="minimum work range">
-          <value/>
-      </property>
-      <property name="range_max" type="float64" unit="rad" description="maximum work range">
-          <value/>
-      </property>
-      <property name="precision" type="float64" unit="rad" description="angular precision">
-          <value/>
-      </property>
-      <property name="rated_speed" type="float64" unit="rad/s" description="servomotor speed">
-          <value/>
-      </property>
-      <property name="reachable_speed" type="float64" unit="rad/s" description="maximum speed">
-          <value/>
-      </property>
-      <property name="rated_torque" type="float64" unit="N/s" description="servomotor torque">
-          <value/>
-      </property>
-      <property name="reachable_torque" type="float64" unit="N/s" description="peak torque">
-          <value/>
-      </property>
-      <property name="temperature_range_min" type="float64" unit="ºC" description="minimum operational temperature">
-          <value/>
-      </property>
-      <property name="temperature_range_max" type="float64" unit="ºC" description="maximum operational temperature">
-          <value/>
-      </property>
+  <property name="control_type" type="uint8" unit="enum" enum='{"CONTROL_TYPE_NONE": 0, "CONTROL_TYPE_POSITION": 1, "CONTROL_TYPE_EFFORT": 2, "CONTROL_TYPE_VELOCITY": 3, "CONTROL_TYPE_POSITION_VELOCITY": 4, "CONTROL_TYPE_POSITION_EFFORT": 5, "CONTROL_TYPE_VELOCITY_EFFORT": 6, "CONTROL_TYPE_POSITION_VELOCITY_EFFORT": 7}' description="rotary servomotor control type">
+      <value>4</value>
+  </property>
+  <property name="precision" type="float64" unit="rad" description="angular precision">
+      <value></value>
+  </property>
+  <property name="rated_speed" type="float64" unit="rad/s" description="servomotor speed">
+      <value></value>
+  </property>
+  <property name="reachable_speed" type="float64" unit="rad/s" description="maximum speed">
+      <value></value>
+  </property>
+  <property name="rated_torque" type="float64" unit="N/m" description="servomotor torque">
+      <value></value>
+  </property>
+  <property name="reachable_torque" type="float64" unit="N/m" description="peak torque">
+      <value></value>
+  </property>
 </component_specs>
+
+<component_features>
+	<property name="comm_rate" type="double" unit="Hz" description="minimum frequency at which the component can work">
+		<value_max></value_max>
+		<value_min></value_min>
+	</property>
+	<property name="temperature_range" type="float64" unit="ºC" description="Operational temperature">
+		<value_max>-</value_max>
+		<value_min></value_min>
+	</property>
+	<property name="range" type="float64" unit="rad" description="Working range">
+			<value_max></value_max>
+			<value_min></value_min>
+	</property>
+</component_features>
 </root>
