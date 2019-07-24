@@ -25,7 +25,7 @@
   <property name="max_size_msgs" type="double" unit="Mb" description="maximum amount of Mbs the component will send">
     <value></value>
   </property>
-	<property name="Vage" type="float32" unit="V">
+	<property name="Voltage" type="float32" unit="V">
     <value></value>
 	</property>
 	<property name="current_consumption" type="float32" unit="A">
